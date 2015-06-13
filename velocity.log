@@ -1,0 +1,843 @@
+2015-06-13 11:14:09,945 - Null reference [template 'controller.vm', line 86, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:09,946 - Null reference [template 'controller.vm', line 86, column 67] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:09,946 - Null reference [template 'controller.vm', line 87, column 34] : ${className} cannot be resolved.
+2015-06-13 11:14:09,946 - Null reference [template 'controller.vm', line 87, column 49] : ${className} cannot be resolved.
+2015-06-13 11:14:09,946 - Null reference [template 'controller.vm', line 97, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:09,947 - Null reference [template 'controller.vm', line 99, column 64] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:14:09,947 - Null reference [template 'controller.vm', line 99, column 82] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:09,947 - Null reference [template 'controller.vm', line 102, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:09,947 - Null reference [template 'controller.vm', line 102, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:09,947 - Null reference [template 'controller.vm', line 102, column 64] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,003 - Log4JLogChute initialized using file 'velocity.log'
+2015-06-13 11:14:10,004 - Initializing Velocity, Calling init()...
+2015-06-13 11:14:10,004 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-06-13 11:14:10,004 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2015-06-13 11:14:10,004 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-06-13 11:14:10,004 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-06-13 11:14:10,004 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:14:10,004 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:14:10,005 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:14:10,005 - Do unicode file recognition:  false
+2015-06-13 11:14:10,005 - FileResourceLoader : adding path '/Users/a11/Desktop/oneplusMybatisGenerator/target/classes/template/'
+2015-06-13 11:14:10,005 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-06-13 11:14:10,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-06-13 11:14:10,005 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-06-13 11:14:10,006 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-06-13 11:14:10,006 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-06-13 11:14:10,006 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-06-13 11:14:10,006 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-06-13 11:14:10,006 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-06-13 11:14:10,006 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-06-13 11:14:10,006 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-06-13 11:14:10,007 - Created '20' parsers.
+2015-06-13 11:14:10,007 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-06-13 11:14:10,007 - Velocimacro : Default library not found.
+2015-06-13 11:14:10,007 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-06-13 11:14:10,007 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-06-13 11:14:10,007 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-06-13 11:14:10,007 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-06-13 11:14:10,008 - ResourceManager : found controller.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:14:10,008 - Null reference [template 'controller.vm', line 1, column 9] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,008 - Null reference [template 'controller.vm', line 17, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,008 - Null reference [template 'controller.vm', line 18, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,008 - Null reference [template 'controller.vm', line 18, column 29] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,008 - Null reference [template 'controller.vm', line 19, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,009 - Null reference [template 'controller.vm', line 19, column 31] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,009 - Null reference [template 'controller.vm', line 30, column 14] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,009 - Null reference [template 'controller.vm', line 33, column 47] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,009 - Null reference [template 'controller.vm', line 36, column 17] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,009 - Null reference [template 'controller.vm', line 36, column 37] : ${className} cannot be resolved.
+2015-06-13 11:14:10,009 - Null reference [template 'controller.vm', line 38, column 33] : ${className} cannot be resolved.
+2015-06-13 11:14:10,009 - Null reference [template 'controller.vm', line 41, column 30] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,009 - Null reference [template 'controller.vm', line 41, column 51] : ${className} cannot be resolved.
+2015-06-13 11:14:10,009 - Null reference [template 'controller.vm', line 41, column 74] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,010 - Null reference [template 'controller.vm', line 46, column 17] : ${className} cannot be resolved.
+2015-06-13 11:14:10,010 - Null reference [template 'controller.vm', line 49, column 33] : ${className} cannot be resolved.
+2015-06-13 11:14:10,010 - Null reference [template 'controller.vm', line 51, column 50] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,010 - Null reference [template 'controller.vm', line 51, column 66] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:14:10,010 - Null reference [template 'controller.vm', line 51, column 84] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,010 - Null reference [template 'controller.vm', line 54, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,010 - Null reference [template 'controller.vm', line 54, column 38] : ${className} cannot be resolved.
+2015-06-13 11:14:10,010 - Null reference [template 'controller.vm', line 54, column 53] : ${className} cannot be resolved.
+2015-06-13 11:14:10,010 - Null reference [template 'controller.vm', line 54, column 76] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,011 - Null reference [template 'controller.vm', line 54, column 101] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,011 - Null reference [template 'controller.vm', line 55, column 22] : ${className} cannot be resolved.
+2015-06-13 11:14:10,011 - Null reference [template 'controller.vm', line 55, column 37] : ${className} cannot be resolved.
+2015-06-13 11:14:10,011 - Null reference [template 'controller.vm', line 63, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,011 - Null reference [template 'controller.vm', line 65, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,011 - Null reference [template 'controller.vm', line 65, column 67] : ${className} cannot be resolved.
+2015-06-13 11:14:10,011 - Null reference [template 'controller.vm', line 68, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,011 - Null reference [template 'controller.vm', line 68, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,012 - Null reference [template 'controller.vm', line 68, column 64] : ${className} cannot be resolved.
+2015-06-13 11:14:10,012 - Null reference [template 'controller.vm', line 69, column 34] : ${className} cannot be resolved.
+2015-06-13 11:14:10,012 - Null reference [template 'controller.vm', line 69, column 49] : ${className} cannot be resolved.
+2015-06-13 11:14:10,013 - Null reference [template 'controller.vm', line 79, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,013 - Null reference [template 'controller.vm', line 81, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,013 - Null reference [template 'controller.vm', line 81, column 67] : ${className} cannot be resolved.
+2015-06-13 11:14:10,013 - Null reference [template 'controller.vm', line 84, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,013 - Null reference [template 'controller.vm', line 84, column 41] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,014 - Null reference [template 'controller.vm', line 84, column 56] : ${className} cannot be resolved.
+2015-06-13 11:14:10,014 - Null reference [template 'controller.vm', line 84, column 79] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,014 - Null reference [template 'controller.vm', line 84, column 104] : ${className} cannot be resolved.
+2015-06-13 11:14:10,014 - Null reference [template 'controller.vm', line 84, column 120] : ${PrimaryKey} cannot be resolved.
+2015-06-13 11:14:10,014 - Null reference [template 'controller.vm', line 85, column 13] : ${updateAssignValue} cannot be resolved.
+2015-06-13 11:14:10,015 - Null reference [template 'controller.vm', line 86, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,015 - Null reference [template 'controller.vm', line 86, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,015 - Null reference [template 'controller.vm', line 86, column 67] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,015 - Null reference [template 'controller.vm', line 87, column 34] : ${className} cannot be resolved.
+2015-06-13 11:14:10,015 - Null reference [template 'controller.vm', line 87, column 49] : ${className} cannot be resolved.
+2015-06-13 11:14:10,016 - Null reference [template 'controller.vm', line 97, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,016 - Null reference [template 'controller.vm', line 99, column 64] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:14:10,016 - Null reference [template 'controller.vm', line 99, column 82] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,016 - Null reference [template 'controller.vm', line 102, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,016 - Null reference [template 'controller.vm', line 102, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,016 - Null reference [template 'controller.vm', line 102, column 64] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,062 - Log4JLogChute initialized using file 'velocity.log'
+2015-06-13 11:14:10,062 - Initializing Velocity, Calling init()...
+2015-06-13 11:14:10,063 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-06-13 11:14:10,063 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2015-06-13 11:14:10,063 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-06-13 11:14:10,063 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-06-13 11:14:10,063 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:14:10,063 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:14:10,064 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:14:10,064 - Do unicode file recognition:  false
+2015-06-13 11:14:10,064 - FileResourceLoader : adding path '/Users/a11/Desktop/oneplusMybatisGenerator/target/classes/template/'
+2015-06-13 11:14:10,064 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-06-13 11:14:10,064 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-06-13 11:14:10,065 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-06-13 11:14:10,065 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-06-13 11:14:10,065 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-06-13 11:14:10,065 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-06-13 11:14:10,065 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-06-13 11:14:10,065 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-06-13 11:14:10,065 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-06-13 11:14:10,066 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-06-13 11:14:10,066 - Created '20' parsers.
+2015-06-13 11:14:10,066 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-06-13 11:14:10,066 - Velocimacro : Default library not found.
+2015-06-13 11:14:10,066 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-06-13 11:14:10,067 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-06-13 11:14:10,067 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-06-13 11:14:10,067 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-06-13 11:14:10,067 - ResourceManager : found controller.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:14:10,067 - Null reference [template 'controller.vm', line 1, column 9] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,067 - Null reference [template 'controller.vm', line 17, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,068 - Null reference [template 'controller.vm', line 18, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,068 - Null reference [template 'controller.vm', line 18, column 29] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,068 - Null reference [template 'controller.vm', line 19, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,068 - Null reference [template 'controller.vm', line 19, column 31] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,068 - Null reference [template 'controller.vm', line 30, column 14] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,068 - Null reference [template 'controller.vm', line 33, column 47] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,068 - Null reference [template 'controller.vm', line 36, column 17] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,068 - Null reference [template 'controller.vm', line 36, column 37] : ${className} cannot be resolved.
+2015-06-13 11:14:10,069 - Null reference [template 'controller.vm', line 38, column 33] : ${className} cannot be resolved.
+2015-06-13 11:14:10,069 - Null reference [template 'controller.vm', line 41, column 30] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,069 - Null reference [template 'controller.vm', line 41, column 51] : ${className} cannot be resolved.
+2015-06-13 11:14:10,069 - Null reference [template 'controller.vm', line 41, column 74] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,069 - Null reference [template 'controller.vm', line 46, column 17] : ${className} cannot be resolved.
+2015-06-13 11:14:10,069 - Null reference [template 'controller.vm', line 49, column 33] : ${className} cannot be resolved.
+2015-06-13 11:14:10,069 - Null reference [template 'controller.vm', line 51, column 50] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,069 - Null reference [template 'controller.vm', line 51, column 66] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:14:10,070 - Null reference [template 'controller.vm', line 51, column 84] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,070 - Null reference [template 'controller.vm', line 54, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,070 - Null reference [template 'controller.vm', line 54, column 38] : ${className} cannot be resolved.
+2015-06-13 11:14:10,070 - Null reference [template 'controller.vm', line 54, column 53] : ${className} cannot be resolved.
+2015-06-13 11:14:10,070 - Null reference [template 'controller.vm', line 54, column 76] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,070 - Null reference [template 'controller.vm', line 54, column 101] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,070 - Null reference [template 'controller.vm', line 55, column 22] : ${className} cannot be resolved.
+2015-06-13 11:14:10,071 - Null reference [template 'controller.vm', line 55, column 37] : ${className} cannot be resolved.
+2015-06-13 11:14:10,071 - Null reference [template 'controller.vm', line 63, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,071 - Null reference [template 'controller.vm', line 65, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,071 - Null reference [template 'controller.vm', line 65, column 67] : ${className} cannot be resolved.
+2015-06-13 11:14:10,071 - Null reference [template 'controller.vm', line 68, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,071 - Null reference [template 'controller.vm', line 68, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,071 - Null reference [template 'controller.vm', line 68, column 64] : ${className} cannot be resolved.
+2015-06-13 11:14:10,071 - Null reference [template 'controller.vm', line 69, column 34] : ${className} cannot be resolved.
+2015-06-13 11:14:10,072 - Null reference [template 'controller.vm', line 69, column 49] : ${className} cannot be resolved.
+2015-06-13 11:14:10,072 - Null reference [template 'controller.vm', line 79, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,072 - Null reference [template 'controller.vm', line 81, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,072 - Null reference [template 'controller.vm', line 81, column 67] : ${className} cannot be resolved.
+2015-06-13 11:14:10,072 - Null reference [template 'controller.vm', line 84, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,072 - Null reference [template 'controller.vm', line 84, column 41] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,072 - Null reference [template 'controller.vm', line 84, column 56] : ${className} cannot be resolved.
+2015-06-13 11:14:10,072 - Null reference [template 'controller.vm', line 84, column 79] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,072 - Null reference [template 'controller.vm', line 84, column 104] : ${className} cannot be resolved.
+2015-06-13 11:14:10,073 - Null reference [template 'controller.vm', line 84, column 120] : ${PrimaryKey} cannot be resolved.
+2015-06-13 11:14:10,073 - Null reference [template 'controller.vm', line 85, column 13] : ${updateAssignValue} cannot be resolved.
+2015-06-13 11:14:10,073 - Null reference [template 'controller.vm', line 86, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,073 - Null reference [template 'controller.vm', line 86, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,073 - Null reference [template 'controller.vm', line 86, column 67] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,073 - Null reference [template 'controller.vm', line 87, column 34] : ${className} cannot be resolved.
+2015-06-13 11:14:10,073 - Null reference [template 'controller.vm', line 87, column 49] : ${className} cannot be resolved.
+2015-06-13 11:14:10,073 - Null reference [template 'controller.vm', line 97, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,074 - Null reference [template 'controller.vm', line 99, column 64] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:14:10,074 - Null reference [template 'controller.vm', line 99, column 82] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,074 - Null reference [template 'controller.vm', line 102, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,074 - Null reference [template 'controller.vm', line 102, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,074 - Null reference [template 'controller.vm', line 102, column 64] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,142 - Log4JLogChute initialized using file 'velocity.log'
+2015-06-13 11:14:10,143 - Initializing Velocity, Calling init()...
+2015-06-13 11:14:10,143 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-06-13 11:14:10,143 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2015-06-13 11:14:10,143 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-06-13 11:14:10,143 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-06-13 11:14:10,144 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:14:10,144 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:14:10,144 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:14:10,144 - Do unicode file recognition:  false
+2015-06-13 11:14:10,144 - FileResourceLoader : adding path '/Users/a11/Desktop/oneplusMybatisGenerator/target/classes/template/'
+2015-06-13 11:14:10,145 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-06-13 11:14:10,147 - Created '20' parsers.
+2015-06-13 11:14:10,147 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-06-13 11:14:10,147 - Velocimacro : Default library not found.
+2015-06-13 11:14:10,148 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-06-13 11:14:10,148 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-06-13 11:14:10,148 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-06-13 11:14:10,148 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-06-13 11:14:10,149 - ResourceManager : found controller.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 1, column 9] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 17, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 18, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 18, column 29] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 19, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 19, column 31] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 30, column 14] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 33, column 47] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 36, column 17] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 36, column 37] : ${className} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 38, column 33] : ${className} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 41, column 30] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 41, column 51] : ${className} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 41, column 74] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 46, column 17] : ${className} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 49, column 33] : ${className} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 51, column 50] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 51, column 66] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 51, column 84] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 54, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 38] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 53] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 76] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 101] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 55, column 22] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 55, column 37] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 63, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 65, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 65, column 67] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 68, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 68, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 68, column 64] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 69, column 34] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 69, column 49] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 79, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 81, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 81, column 67] : ${className} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 41] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 56] : ${className} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 79] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 104] : ${className} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 120] : ${PrimaryKey} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 85, column 13] : ${updateAssignValue} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 86, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 86, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 86, column 67] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 87, column 34] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 87, column 49] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 97, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 99, column 64] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 99, column 82] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 102, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,156 - Null reference [template 'controller.vm', line 102, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,156 - Null reference [template 'controller.vm', line 102, column 64] : ${primaryKey} cannot be resolved.
+rence [template 'controller.vm', line 102, column 64] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,074 - Null reference [template 'controller.vm', line 102, column 64] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,142 - Log4JLogChute initialized using file 'velocity.log'
+2015-06-13 11:14:10,142 - Log4JLogChute initialized using file 'velocity.log'
+2015-06-13 11:14:10,142 - Log4JLogChute initialized using file 'velocity.log'
+2015-06-13 11:14:10,143 - Initializing Velocity, Calling init()...
+2015-06-13 11:14:10,143 - Initializing Velocity, Calling init()...
+2015-06-13 11:14:10,143 - Initializing Velocity, Calling init()...
+2015-06-13 11:14:10,143 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-06-13 11:14:10,143 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-06-13 11:14:10,143 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-06-13 11:14:10,143 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2015-06-13 11:14:10,143 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2015-06-13 11:14:10,143 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2015-06-13 11:14:10,143 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-06-13 11:14:10,143 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-06-13 11:14:10,143 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-06-13 11:14:10,143 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-06-13 11:14:10,143 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-06-13 11:14:10,143 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-06-13 11:14:10,144 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:14:10,144 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:14:10,144 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:14:10,144 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:14:10,144 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:14:10,144 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:14:10,144 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:14:10,144 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:14:10,144 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:14:10,144 - Do unicode file recognition:  false
+2015-06-13 11:14:10,144 - Do unicode file recognition:  false
+2015-06-13 11:14:10,144 - Do unicode file recognition:  false
+2015-06-13 11:14:10,144 - FileResourceLoader : adding path '/Users/a11/Desktop/oneplusMybatisGenerator/target/classes/template/'
+2015-06-13 11:14:10,144 - FileResourceLoader : adding path '/Users/a11/Desktop/oneplusMybatisGenerator/target/classes/template/'
+2015-06-13 11:14:10,144 - FileResourceLoader : adding path '/Users/a11/Desktop/oneplusMybatisGenerator/target/classes/template/'
+2015-06-13 11:14:10,145 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-06-13 11:14:10,145 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-06-13 11:14:10,145 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-06-13 11:14:10,145 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-06-13 11:14:10,146 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-06-13 11:14:10,147 - Created '20' parsers.
+2015-06-13 11:14:10,147 - Created '20' parsers.
+2015-06-13 11:14:10,147 - Created '20' parsers.
+2015-06-13 11:14:10,147 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-06-13 11:14:10,147 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-06-13 11:14:10,147 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-06-13 11:14:10,147 - Velocimacro : Default library not found.
+2015-06-13 11:14:10,147 - Velocimacro : Default library not found.
+2015-06-13 11:14:10,147 - Velocimacro : Default library not found.
+2015-06-13 11:14:10,148 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-06-13 11:14:10,148 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-06-13 11:14:10,148 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-06-13 11:14:10,148 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-06-13 11:14:10,148 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-06-13 11:14:10,148 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-06-13 11:14:10,148 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-06-13 11:14:10,148 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-06-13 11:14:10,148 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-06-13 11:14:10,148 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-06-13 11:14:10,148 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-06-13 11:14:10,148 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-06-13 11:14:10,149 - ResourceManager : found controller.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:14:10,149 - ResourceManager : found controller.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:14:10,149 - ResourceManager : found controller.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 1, column 9] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 1, column 9] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 1, column 9] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 17, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 17, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 17, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 18, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 18, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 18, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 18, column 29] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 18, column 29] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,149 - Null reference [template 'controller.vm', line 18, column 29] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 19, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 19, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 19, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 19, column 31] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 19, column 31] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 19, column 31] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 30, column 14] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 30, column 14] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 30, column 14] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 33, column 47] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 33, column 47] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 33, column 47] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 36, column 17] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 36, column 17] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 36, column 17] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 36, column 37] : ${className} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 36, column 37] : ${className} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 36, column 37] : ${className} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 38, column 33] : ${className} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 38, column 33] : ${className} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 38, column 33] : ${className} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 41, column 30] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 41, column 30] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 41, column 30] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 41, column 51] : ${className} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 41, column 51] : ${className} cannot be resolved.
+2015-06-13 11:14:10,150 - Null reference [template 'controller.vm', line 41, column 51] : ${className} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 41, column 74] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 41, column 74] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 41, column 74] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 46, column 17] : ${className} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 46, column 17] : ${className} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 46, column 17] : ${className} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 49, column 33] : ${className} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 49, column 33] : ${className} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 49, column 33] : ${className} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 51, column 50] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 51, column 50] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 51, column 50] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 51, column 66] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 51, column 66] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 51, column 66] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 51, column 84] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 51, column 84] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 51, column 84] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 54, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 54, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,151 - Null reference [template 'controller.vm', line 54, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 38] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 38] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 38] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 53] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 53] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 53] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 76] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 76] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 76] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 101] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 101] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 54, column 101] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 55, column 22] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 55, column 22] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 55, column 22] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 55, column 37] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 55, column 37] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 55, column 37] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 63, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 63, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 63, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 65, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 65, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,152 - Null reference [template 'controller.vm', line 65, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 65, column 67] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 65, column 67] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 65, column 67] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 68, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 68, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 68, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 68, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 68, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 68, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 68, column 64] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 68, column 64] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 68, column 64] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 69, column 34] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 69, column 34] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 69, column 34] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 69, column 49] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 69, column 49] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 69, column 49] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 79, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 79, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 79, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 81, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 81, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,153 - Null reference [template 'controller.vm', line 81, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 81, column 67] : ${className} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 81, column 67] : ${className} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 81, column 67] : ${className} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 41] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 41] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 41] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 56] : ${className} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 56] : ${className} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 56] : ${className} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 79] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 79] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 79] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 104] : ${className} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 104] : ${className} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 104] : ${className} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 120] : ${PrimaryKey} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 120] : ${PrimaryKey} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 84, column 120] : ${PrimaryKey} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 85, column 13] : ${updateAssignValue} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 85, column 13] : ${updateAssignValue} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 85, column 13] : ${updateAssignValue} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 86, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 86, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,154 - Null reference [template 'controller.vm', line 86, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 86, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 86, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 86, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 86, column 67] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 86, column 67] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 86, column 67] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 87, column 34] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 87, column 34] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 87, column 34] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 87, column 49] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 87, column 49] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 87, column 49] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 97, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 97, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 97, column 29] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 99, column 64] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 99, column 64] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 99, column 64] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 99, column 82] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 99, column 82] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 99, column 82] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 102, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 102, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,155 - Null reference [template 'controller.vm', line 102, column 25] : ${className} cannot be resolved.
+2015-06-13 11:14:10,156 - Null reference [template 'controller.vm', line 102, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,156 - Null reference [template 'controller.vm', line 102, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,156 - Null reference [template 'controller.vm', line 102, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:14:10,156 - Null reference [template 'controller.vm', line 102, column 64] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,156 - Null reference [template 'controller.vm', line 102, column 64] : ${primaryKey} cannot be resolved.
+2015-06-13 11:14:10,156 - Null reference [template 'controller.vm', line 102, column 64] : ${primaryKey} cannot be resolved.
+2015-06-13 11:28:20,788 - Log4JLogChute initialized using file 'velocity.log'
+2015-06-13 11:28:20,788 - Initializing Velocity, Calling init()...
+2015-06-13 11:28:20,788 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-06-13 11:28:20,788 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2015-06-13 11:28:20,788 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-06-13 11:28:20,789 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-06-13 11:28:20,789 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:28:20,789 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:28:20,792 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:28:20,793 - Do unicode file recognition:  false
+2015-06-13 11:28:20,793 - FileResourceLoader : adding path '/Users/a11/Desktop/oneplusMybatisGenerator/target/classes/template/'
+2015-06-13 11:28:20,800 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-06-13 11:28:20,801 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-06-13 11:28:20,802 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-06-13 11:28:20,802 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-06-13 11:28:20,803 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-06-13 11:28:20,803 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-06-13 11:28:20,804 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-06-13 11:28:20,805 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-06-13 11:28:20,806 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-06-13 11:28:20,807 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-06-13 11:28:20,834 - Created '20' parsers.
+2015-06-13 11:28:20,839 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-06-13 11:28:20,839 - Velocimacro : Default library not found.
+2015-06-13 11:28:20,839 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-06-13 11:28:20,839 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-06-13 11:28:20,839 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-06-13 11:28:20,839 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-06-13 11:28:20,850 - ResourceManager : found controller.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 1, column 9] : ${packageName} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 17, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 18, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 18, column 29] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 19, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 19, column 31] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 30, column 14] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 33, column 47] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 36, column 17] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 36, column 37] : ${className} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 38, column 33] : ${className} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 41, column 30] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 41, column 51] : ${className} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 41, column 74] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 46, column 17] : ${className} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 49, column 33] : ${className} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 51, column 50] : ${primaryKey} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 51, column 66] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 51, column 84] : ${primaryKey} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 54, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,852 - Null reference [template 'controller.vm', line 54, column 38] : ${className} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 54, column 53] : ${className} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 54, column 76] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 54, column 101] : ${primaryKey} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 55, column 22] : ${className} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 55, column 37] : ${className} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 63, column 29] : ${className} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 65, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 65, column 67] : ${className} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 68, column 25] : ${className} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 68, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 68, column 64] : ${className} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 69, column 34] : ${className} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 69, column 49] : ${className} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 79, column 29] : ${className} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 81, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 81, column 67] : ${className} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 84, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 84, column 41] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 84, column 56] : ${className} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 84, column 79] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 84, column 104] : ${className} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 84, column 120] : ${PrimaryKey} cannot be resolved.
+2015-06-13 11:28:20,853 - Null reference [template 'controller.vm', line 85, column 13] : ${updateAssignValue} cannot be resolved.
+2015-06-13 11:28:20,854 - Null reference [template 'controller.vm', line 86, column 25] : ${className} cannot be resolved.
+2015-06-13 11:28:20,854 - Null reference [template 'controller.vm', line 86, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,854 - Null reference [template 'controller.vm', line 86, column 67] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,854 - Null reference [template 'controller.vm', line 87, column 34] : ${className} cannot be resolved.
+2015-06-13 11:28:20,854 - Null reference [template 'controller.vm', line 87, column 49] : ${className} cannot be resolved.
+2015-06-13 11:28:20,854 - Null reference [template 'controller.vm', line 97, column 29] : ${className} cannot be resolved.
+2015-06-13 11:28:20,854 - Null reference [template 'controller.vm', line 99, column 64] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:28:20,854 - Null reference [template 'controller.vm', line 99, column 82] : ${primaryKey} cannot be resolved.
+2015-06-13 11:28:20,854 - Null reference [template 'controller.vm', line 102, column 25] : ${className} cannot be resolved.
+2015-06-13 11:28:20,854 - Null reference [template 'controller.vm', line 102, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:28:20,854 - Null reference [template 'controller.vm', line 102, column 64] : ${primaryKey} cannot be resolved.
+2015-06-13 11:54:18,479 - Log4JLogChute initialized using file 'velocity.log'
+2015-06-13 11:54:18,480 - Initializing Velocity, Calling init()...
+2015-06-13 11:54:18,480 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-06-13 11:54:18,480 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2015-06-13 11:54:18,480 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-06-13 11:54:18,480 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-06-13 11:54:18,480 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:54:18,480 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:54:18,488 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:54:18,488 - Do unicode file recognition:  false
+2015-06-13 11:54:18,488 - FileResourceLoader : adding path '/Users/a11/Desktop/oneplusMybatisGenerator/target/classes/template/'
+2015-06-13 11:54:18,497 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-06-13 11:54:18,498 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-06-13 11:54:18,500 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-06-13 11:54:18,500 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-06-13 11:54:18,501 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-06-13 11:54:18,501 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-06-13 11:54:18,503 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-06-13 11:54:18,504 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-06-13 11:54:18,505 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-06-13 11:54:18,505 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-06-13 11:54:18,533 - Created '20' parsers.
+2015-06-13 11:54:18,538 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-06-13 11:54:18,538 - Velocimacro : Default library not found.
+2015-06-13 11:54:18,538 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-06-13 11:54:18,538 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-06-13 11:54:18,538 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-06-13 11:54:18,538 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-06-13 11:54:18,550 - ResourceManager : found controller.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:54:18,552 - Null reference [template 'controller.vm', line 1, column 9] : ${packageName} cannot be resolved.
+2015-06-13 11:54:18,552 - Null reference [template 'controller.vm', line 17, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:54:18,552 - Null reference [template 'controller.vm', line 18, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:54:18,552 - Null reference [template 'controller.vm', line 18, column 29] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,552 - Null reference [template 'controller.vm', line 19, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:54:18,552 - Null reference [template 'controller.vm', line 19, column 31] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,552 - Null reference [template 'controller.vm', line 30, column 14] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,553 - Null reference [template 'controller.vm', line 33, column 47] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,553 - Null reference [template 'controller.vm', line 36, column 17] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,553 - Null reference [template 'controller.vm', line 36, column 37] : ${className} cannot be resolved.
+2015-06-13 11:54:18,553 - Null reference [template 'controller.vm', line 38, column 33] : ${className} cannot be resolved.
+2015-06-13 11:54:18,553 - Null reference [template 'controller.vm', line 41, column 30] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,553 - Null reference [template 'controller.vm', line 41, column 51] : ${className} cannot be resolved.
+2015-06-13 11:54:18,553 - Null reference [template 'controller.vm', line 41, column 74] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,553 - Null reference [template 'controller.vm', line 46, column 17] : ${className} cannot be resolved.
+2015-06-13 11:54:18,553 - Null reference [template 'controller.vm', line 49, column 33] : ${className} cannot be resolved.
+2015-06-13 11:54:18,553 - Null reference [template 'controller.vm', line 51, column 50] : ${primaryKey} cannot be resolved.
+2015-06-13 11:54:18,553 - Null reference [template 'controller.vm', line 51, column 66] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:54:18,553 - Null reference [template 'controller.vm', line 51, column 84] : ${primaryKey} cannot be resolved.
+2015-06-13 11:54:18,553 - Null reference [template 'controller.vm', line 54, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,553 - Null reference [template 'controller.vm', line 54, column 38] : ${className} cannot be resolved.
+2015-06-13 11:54:18,553 - Null reference [template 'controller.vm', line 54, column 53] : ${className} cannot be resolved.
+2015-06-13 11:54:18,554 - Null reference [template 'controller.vm', line 54, column 76] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,554 - Null reference [template 'controller.vm', line 54, column 101] : ${primaryKey} cannot be resolved.
+2015-06-13 11:54:18,554 - Null reference [template 'controller.vm', line 55, column 22] : ${className} cannot be resolved.
+2015-06-13 11:54:18,554 - Null reference [template 'controller.vm', line 55, column 37] : ${className} cannot be resolved.
+2015-06-13 11:54:18,554 - Null reference [template 'controller.vm', line 63, column 29] : ${className} cannot be resolved.
+2015-06-13 11:54:18,554 - Null reference [template 'controller.vm', line 65, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,554 - Null reference [template 'controller.vm', line 65, column 67] : ${className} cannot be resolved.
+2015-06-13 11:54:18,554 - Null reference [template 'controller.vm', line 68, column 25] : ${className} cannot be resolved.
+2015-06-13 11:54:18,554 - Null reference [template 'controller.vm', line 68, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,554 - Null reference [template 'controller.vm', line 68, column 64] : ${className} cannot be resolved.
+2015-06-13 11:54:18,554 - Null reference [template 'controller.vm', line 69, column 34] : ${className} cannot be resolved.
+2015-06-13 11:54:18,554 - Null reference [template 'controller.vm', line 69, column 49] : ${className} cannot be resolved.
+2015-06-13 11:54:18,554 - Null reference [template 'controller.vm', line 79, column 29] : ${className} cannot be resolved.
+2015-06-13 11:54:18,554 - Null reference [template 'controller.vm', line 81, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,554 - Null reference [template 'controller.vm', line 81, column 67] : ${className} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 84, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 84, column 41] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 84, column 56] : ${className} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 84, column 79] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 84, column 104] : ${className} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 84, column 120] : ${PrimaryKey} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 85, column 13] : ${updateAssignValue} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 86, column 25] : ${className} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 86, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 86, column 67] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 87, column 34] : ${className} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 87, column 49] : ${className} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 97, column 29] : ${className} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 99, column 64] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 99, column 82] : ${primaryKey} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 102, column 25] : ${className} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 102, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:18,555 - Null reference [template 'controller.vm', line 102, column 64] : ${primaryKey} cannot be resolved.
+2015-06-13 11:54:29,973 - Log4JLogChute initialized using file 'velocity.log'
+2015-06-13 11:54:29,973 - Initializing Velocity, Calling init()...
+2015-06-13 11:54:29,973 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-06-13 11:54:29,973 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2015-06-13 11:54:29,973 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-06-13 11:54:29,973 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-06-13 11:54:29,973 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:54:29,973 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 11:54:29,979 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:54:29,980 - Do unicode file recognition:  false
+2015-06-13 11:54:29,980 - FileResourceLoader : adding path '/Users/a11/Desktop/oneplusMybatisGenerator/target/classes/template/'
+2015-06-13 11:54:29,989 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-06-13 11:54:29,990 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-06-13 11:54:29,993 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-06-13 11:54:29,993 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-06-13 11:54:29,994 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-06-13 11:54:29,995 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-06-13 11:54:29,995 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-06-13 11:54:29,996 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-06-13 11:54:29,997 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-06-13 11:54:29,998 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-06-13 11:54:30,022 - Created '20' parsers.
+2015-06-13 11:54:30,027 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-06-13 11:54:30,027 - Velocimacro : Default library not found.
+2015-06-13 11:54:30,027 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-06-13 11:54:30,027 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-06-13 11:54:30,027 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-06-13 11:54:30,027 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-06-13 11:54:30,036 - ResourceManager : found controller.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 11:54:30,037 - Null reference [template 'controller.vm', line 1, column 9] : ${packageName} cannot be resolved.
+2015-06-13 11:54:30,037 - Null reference [template 'controller.vm', line 17, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:54:30,037 - Null reference [template 'controller.vm', line 18, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:54:30,037 - Null reference [template 'controller.vm', line 18, column 29] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,037 - Null reference [template 'controller.vm', line 19, column 8] : ${packageName} cannot be resolved.
+2015-06-13 11:54:30,037 - Null reference [template 'controller.vm', line 19, column 31] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,037 - Null reference [template 'controller.vm', line 30, column 14] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,037 - Null reference [template 'controller.vm', line 33, column 47] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,037 - Null reference [template 'controller.vm', line 36, column 17] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 36, column 37] : ${className} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 38, column 33] : ${className} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 41, column 30] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 41, column 51] : ${className} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 41, column 74] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 46, column 17] : ${className} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 49, column 33] : ${className} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 51, column 50] : ${primaryKey} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 51, column 66] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 51, column 84] : ${primaryKey} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 54, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 54, column 38] : ${className} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 54, column 53] : ${className} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 54, column 76] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 54, column 101] : ${primaryKey} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 55, column 22] : ${className} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 55, column 37] : ${className} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 63, column 29] : ${className} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 65, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 65, column 67] : ${className} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 68, column 25] : ${className} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 68, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 68, column 64] : ${className} cannot be resolved.
+2015-06-13 11:54:30,038 - Null reference [template 'controller.vm', line 69, column 34] : ${className} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 69, column 49] : ${className} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 79, column 29] : ${className} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 81, column 54] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 81, column 67] : ${className} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 84, column 25] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 84, column 41] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 84, column 56] : ${className} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 84, column 79] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 84, column 104] : ${className} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 84, column 120] : ${PrimaryKey} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 85, column 13] : ${updateAssignValue} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 86, column 25] : ${className} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 86, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 86, column 67] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 87, column 34] : ${className} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 87, column 49] : ${className} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 97, column 29] : ${className} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 99, column 64] : ${primaryKeyType} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 99, column 82] : ${primaryKey} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 102, column 25] : ${className} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 102, column 51] : ${ClassName} cannot be resolved.
+2015-06-13 11:54:30,039 - Null reference [template 'controller.vm', line 102, column 64] : ${primaryKey} cannot be resolved.
+2015-06-13 12:01:26,706 - Log4JLogChute initialized using file 'velocity.log'
+2015-06-13 12:01:26,707 - Initializing Velocity, Calling init()...
+2015-06-13 12:01:26,707 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-06-13 12:01:26,707 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2015-06-13 12:01:26,707 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-06-13 12:01:26,707 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-06-13 12:01:26,708 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 12:01:26,708 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 12:01:26,716 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 12:01:26,718 - Do unicode file recognition:  false
+2015-06-13 12:01:26,718 - FileResourceLoader : adding path '/Users/a11/Desktop/oneplusMybatisGenerator/target/classes/template/'
+2015-06-13 12:01:26,729 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-06-13 12:01:26,731 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-06-13 12:01:26,733 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-06-13 12:01:26,734 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-06-13 12:01:26,735 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-06-13 12:01:26,736 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-06-13 12:01:26,738 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-06-13 12:01:26,739 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-06-13 12:01:26,740 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-06-13 12:01:26,741 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-06-13 12:01:26,780 - Created '20' parsers.
+2015-06-13 12:01:26,785 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-06-13 12:01:26,786 - Velocimacro : Default library not found.
+2015-06-13 12:01:26,786 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-06-13 12:01:26,786 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-06-13 12:01:26,786 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-06-13 12:01:26,786 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-06-13 12:01:26,798 - ResourceManager : found controller.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 12:01:26,800 - Null reference [template 'controller.vm', line 18, column 29] : ${upupClassName} cannot be resolved.
+2015-06-13 12:01:26,800 - Null reference [template 'controller.vm', line 19, column 31] : ${upupClassName} cannot be resolved.
+2015-06-13 12:01:26,800 - Null reference [template 'controller.vm', line 30, column 14] : ${upupClassName} cannot be resolved.
+2015-06-13 12:01:26,800 - Null reference [template 'controller.vm', line 33, column 47] : ${upupClassName} cannot be resolved.
+2015-06-13 12:01:26,800 - Null reference [template 'controller.vm', line 36, column 17] : ${upupClassName} cannot be resolved.
+2015-06-13 12:01:26,800 - Null reference [template 'controller.vm', line 41, column 30] : ${upupClassName} cannot be resolved.
+2015-06-13 12:01:26,800 - Null reference [template 'controller.vm', line 41, column 81] : ${upupClassName} cannot be resolved.
+2015-06-13 12:01:26,800 - Null reference [template 'controller.vm', line 54, column 25] : ${upupClassName} cannot be resolved.
+2015-06-13 12:01:26,800 - Null reference [template 'controller.vm', line 54, column 86] : ${upupClassName} cannot be resolved.
+2015-06-13 12:01:26,800 - Null reference [template 'controller.vm', line 65, column 54] : ${upupClassName} cannot be resolved.
+2015-06-13 12:01:26,800 - Null reference [template 'controller.vm', line 68, column 54] : ${upupClassName} cannot be resolved.
+2015-06-13 12:01:26,801 - Null reference [template 'controller.vm', line 81, column 54] : ${upupClassName} cannot be resolved.
+2015-06-13 12:01:26,801 - Null reference [template 'controller.vm', line 84, column 25] : ${upupClassName} cannot be resolved.
+2015-06-13 12:01:26,801 - Null reference [template 'controller.vm', line 84, column 134] : ${PrimaryKey} cannot be resolved.
+2015-06-13 12:01:26,801 - Null reference [template 'controller.vm', line 85, column 13] : ${updateAssignValue} cannot be resolved.
+2015-06-13 12:02:12,159 - Log4JLogChute initialized using file 'velocity.log'
+2015-06-13 12:02:12,160 - Initializing Velocity, Calling init()...
+2015-06-13 12:02:12,160 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2015-06-13 12:02:12,160 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2015-06-13 12:02:12,160 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2015-06-13 12:02:12,160 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2015-06-13 12:02:12,160 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 12:02:12,160 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2015-06-13 12:02:12,170 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 12:02:12,171 - Do unicode file recognition:  false
+2015-06-13 12:02:12,171 - FileResourceLoader : adding path '/Users/a11/Desktop/oneplusMybatisGenerator/target/classes/template/'
+2015-06-13 12:02:12,183 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2015-06-13 12:02:12,185 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2015-06-13 12:02:12,188 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2015-06-13 12:02:12,189 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2015-06-13 12:02:12,190 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2015-06-13 12:02:12,191 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2015-06-13 12:02:12,192 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2015-06-13 12:02:12,194 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2015-06-13 12:02:12,195 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2015-06-13 12:02:12,197 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2015-06-13 12:02:12,233 - Created '20' parsers.
+2015-06-13 12:02:12,239 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2015-06-13 12:02:12,239 - Velocimacro : Default library not found.
+2015-06-13 12:02:12,239 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2015-06-13 12:02:12,239 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2015-06-13 12:02:12,239 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2015-06-13 12:02:12,239 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2015-06-13 12:02:12,254 - ResourceManager : found controller.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
+2015-06-13 12:02:12,259 - Null reference [template 'controller.vm', line 84, column 132] : ${PrimaryKey} cannot be resolved.
+2015-06-13 12:02:12,259 - Null reference [template 'controller.vm', line 85, column 13] : ${updateAssignValue} cannot be resolved.
