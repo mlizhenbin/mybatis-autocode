@@ -2,13 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="${packageName}.dao.${upClassName}Dao">
 
-    <resultMap type="${packageName}.model.${upClassName}" id="${lowClassName}Map">
+    <typeAlias alias="${lowClassName}" type="${packageName}.dao.${upClassName}Dao"/>
+
+    <resultMap type="${packageName}.model.${upClassName}" id="${lowClassName}_result">
 #foreach($resultMapColumn in $resultMapColumns)
         $resultMapColumn
 #end
     </resultMap>
 
-    <sql id="${upClassName}_Where_Clause">
+    <sql id="${upClassName}_Query_List_Sharing">
         <trim prefix="WHERE" prefixOverrides="AND|OR">
 #foreach($whereCondition in $whereConditions)
             $whereCondition
@@ -16,191 +18,82 @@
         </trim>
     </sql>
 
-    <sql id="${upClassName}_Columns">
+    <sql id="${upClassName}_By_${primaryKey}">
+        WHERE ${tableName}.${columnPrimaryKey} = #{${normalPrimaryKey}}#
+    </sql>
+
+    <sql id="${upClassName}_List_Paramter">
+        <dynamic prepend="ORDER BY">
+            <isNotEmpty property = "orderItem">
+                ${tableName}.#{orderItem} #{orderType} <!-- # and $ has difference, this place need $ -->
+            </isNotEmpty>
+        </dynamic>
+    </sql>
+
+    <sql id="${upClassName}_column">
 #foreach($column in $columns)
         $column
 #end
     </sql>
 
-    <select id="selectByExample" resultMap="BaseResultMap" parameterType="mysqlmybatis.pojo.Criteria">
-        select
-        <if test="distinct">
-            distinct
-        </if>
-        <include refid="Base_Column_List"/>
-        from trade
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-        <if test="orderByClause != null">
-            order by ${orderByClause}
-        </if>
-        <include refid="common.Mysql_Pagination_Limit"/>
-    </select>
-
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
-        from trade
-        where id = #{id}
-    </select>
-
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete from trade
-        where id = #{id}
-    </delete>
-
-    <delete id="deleteByExample" parameterType="mysqlmybatis.pojo.Criteria">
-        delete from trade
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </delete>
-
-    <insert id="insert" parameterType="mysqlmybatis.pojo.Trade">
-        <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE">
-            SELECT LAST_INSERT_ID()
-        </selectKey>
-        insert into trade (id, myaccount, otheraccount, type, balance, time, remark
+    <insert id="add${upClassName}" parameterClass="${lowClassName}" >
+        INSERT INTO ${tableName} (
+            <include refid="${upClassName}_column" />
         )
-        values (#{id}, #{myaccount}, #{otheraccount}, #{type}, #{balance}, #{time}, #{remark}
-        )
-    </insert>
-
-    <insert id="insertSelective" parameterType="mysqlmybatis.pojo.Trade">
-        <selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE">
-            SELECT LAST_INSERT_ID()
-        </selectKey>
-        insert into trade
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            id,
-            <if test="myaccount != null">
-                myaccount,
-            </if>
-            <if test="otheraccount != null">
-                otheraccount,
-            </if>
-            <if test="type != null">
-                type,
-            </if>
-            <if test="balance != null">
-                balance,
-            </if>
-            <if test="time != null">
-                time,
-            </if>
-            <if test="remark != null">
-                remark,
-            </if>
-        </trim>
+        VALUES (
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            #{id},
-            <if test="myaccount != null">
-                #{myaccount},
-            </if>
-            <if test="otheraccount != null">
-                #{otheraccount},
-            </if>
-            <if test="type != null">
-                #{type},
-            </if>
-            <if test="balance != null">
-                #{balance},
-            </if>
-            <if test="time != null">
-                #{time},
-            </if>
-            <if test="remark != null">
-                #{remark},
-            </if>
+#foreach($insertCondition in $insertConditions)
+            $insertCondition
+#end
         </trim>
+        <!--<selectKey resultClass="long" keyProperty="${primaryKey}">
+                select last_insert_id() as ID from ${tableName} limit 1
+        </selectKey>-->
     </insert>
 
-    <select id="countByExample" parameterType="mysqlmybatis.pojo.Criteria" resultType="java.lang.Integer">
-        select count(*) from trade
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
+    <update id="update${upClassName}" parameterType="${lowClassName}">
+        UPDATE ${tableName}
+        <set>
+#foreach($updateCondition in $updateConditions)
+            $updateCondition
+#end
+        </set>
+        WHERE <include refid="${upClassName}_By_${primaryKey}" />
+    </update>
+
+    <select id="find${upClassName}" resultMap="${lowClassName}_result" parameterClass="java.util.HashMap">
+        SELECT
+        <include refid="${upClassName}_column" />
+        FROM ${tableName} ${tableName}
+        <include refid="${upClassName}_Query_List_Sharing" />
     </select>
 
-    <update id="updateByExampleSelective" parameterType="map">
-        update trade
-        <set>
-            <if test="record.id != null">
-                id = #{record.id},
-            </if>
-            <if test="record.myaccount != null">
-                myaccount = #{record.myaccount},
-            </if>
-            <if test="record.otheraccount != null">
-                otheraccount = #{record.otheraccount},
-            </if>
-            <if test="record.type != null">
-                type = #{record.type},
-            </if>
-            <if test="record.balance != null">
-                balance = #{record.balance},
-            </if>
-            <if test="record.time != null">
-                time = #{record.time},
-            </if>
-            <if test="record.remark != null">
-                remark = #{record.remark},
-            </if>
-        </set>
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </update>
+    <select id="findBy${primaryKey}" resultMap="${lowClassName}_result" parameterClass="${primaryKeyType}">
+        SELECT
+        <include refid="${upClassName}_column" />
+        FROM ${tableName} ${tableName}
+        <include refid="${upClassName}_By_${primaryKey}" />
+    </select>
 
-    <update id="updateByExample" parameterType="map">
-        update trade
-        set id = #{record.id},
-        myaccount = #{record.myaccount},
-        otheraccount = #{record.otheraccount},
-        type = #{record.type},
-        balance = #{record.balance},
-        time = #{record.time},
-        remark = #{record.remark}
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </update>
+    <select id="list${upClassName}" resultMap="${lowClassName}_result" parameterType="java.util.HashMap">
+        SELECT
+        <include refid="${upClassName}_column" />
+        FROM ${tableName} ${tableName}
+        <include refid="${upClassName}_Query_List_Sharing" />
+        <include refid="${upClassName}_List_Paramter" />
+        limit #{begin},#{pageSize}
+    </select>
 
-    <update id="updateByPrimaryKeySelective" parameterType="mysqlmybatis.pojo.Trade">
-        update trade
-        <set>
-            <if test="myaccount != null">
-                myaccount = #{myaccount},
-            </if>
-            <if test="otheraccount != null">
-                otheraccount = #{otheraccount},
-            </if>
-            <if test="type != null">
-                type = #{type},
-            </if>
-            <if test="balance != null">
-                balance = #{balance},
-            </if>
-            <if test="time != null">
-                time = #{time},
-            </if>
-            <if test="remark != null">
-                remark = #{remark},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
+    <select id="list${upClassName}Count" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+        SELECT
+        COUNT(*)
+        FROM ${tableName} ${tableName}
+        <include refid="${upClassName}_Query_List_Sharing" />
+    </select>
 
-    <update id="updateByPrimaryKey" parameterType="mysqlmybatis.pojo.Trade">
-        update trade
-        set myaccount = #{myaccount},
-        otheraccount = #{otheraccount},
-        type = #{type},
-        balance = #{balance},
-        time = #{time},
-        remark = #{remark}
-        where id = #{id}
-    </update>
+    <delete id="del${upClassName}" parameterClass="${lowClassName}">
+        DELETE  FROM  ${tableName}
+        <include refid="${upClassName}_By_${primaryKey}" />
+    </delete>
 
 </mapper>

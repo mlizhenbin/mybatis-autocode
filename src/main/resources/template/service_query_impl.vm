@@ -4,9 +4,28 @@ import java.util.List;
 import ${packageName}.model.${upClassName};
 
 #parse("author.vm")
-public interface ${upClassName}QueryService {
+public interface ${upClassName}OperateService {
 
-	public List<${upClassName}> get${upClassName}List();
+	/**
+     * 通过主键ID查询
+     */
+    public ${upClassName} findBy${primaryKey}(${primaryKeyType} ${primaryKey});
+
+    /**
+     * 通过参数查询
+     */
+    public ${upClassName} find${upClassName}(Map<String, Object> map);
+
+    /**
+     * 查询list
+     */
+    public List<${upClassName}> list${upClassName}(Map<String, Object> map);
+
+    /**
+     * 查询list数量
+     */
+    public Integer list${upClassName}Count(Map<String, Object> map);
+
 
 	public ${upClassName} get${upClassName}ByPrimaryKey(${primaryKeyType} ${primaryKey});
 

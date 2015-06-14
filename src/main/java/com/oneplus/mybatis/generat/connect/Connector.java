@@ -22,4 +22,6 @@ public interface Connector {
     public Map<String, String> getPrimaryKey(String tableName);
 
     public List<String> getColumnNameList(String tableName);
+
+    public Map<String, String> getFormatedColumnNameTypeMap(String tableName);
 }

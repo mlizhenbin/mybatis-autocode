@@ -1,19 +1,46 @@
 package ${packageName}.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import ${packageName}.model.${upClassName};
 
 #parse("author.vm")
 public interface ${upClassName}Dao {
 
-    public List<${upClassName}> get${upClassName}List();
+    /**
+     * 创建
+     */
+    public void add${upClassName}(${upClassName} ${lowClassName});
 
-    public ${upClassName} get${upClassName}ByPrimaryKey(${primaryKeyType} ${primaryKey});
+    /**
+     * 更新
+     */
+    public void update${upClassName}(${upClassName} ${lowClassName});
 
-    public void create${upClassName}(${upClassName} ${upClassName});
-
-    public void update${upClassName}(${upClassName} ${upClassName});
-
+    /**
+     * 删除
+     */
     public void delete${upClassName}(${primaryKeyType} ${primaryKey});
+
+    /**
+     * 通过主键ID查询
+     */
+    public ${upClassName} findBy${primaryKey}(${primaryKeyType} ${primaryKey});
+
+    /**
+     * 通过参数查询
+     */
+    public ${upClassName} find${upClassName}(Map<String, Object> map);
+
+    /**
+     * 查询list
+     */
+    public List<${upClassName}> list${upClassName}(Map<String, Object> map);
+
+    /**
+     * 查询list数量
+     */
+    public Integer list${upClassName}Count(Map<String, Object> map);
+
 }
