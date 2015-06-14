@@ -1,0 +1,19 @@
+package ${packageName}.dao;
+
+import java.util.List;
+
+import ${packageName}.model.${upClassName};
+
+#parse("author.vm")
+public interface ${upClassName}Dao {
+
+    public List<${upClassName}> get${upClassName}List();
+
+    public ${upClassName} get${upClassName}ByPrimaryKey(${primaryKeyType} ${primaryKey});
+
+    public void create${upClassName}(${upClassName} ${upClassName});
+
+    public void update${upClassName}(${upClassName} ${upClassName});
+
+    public void delete${upClassName}(${primaryKeyType} ${primaryKey});
+}

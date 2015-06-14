@@ -1,0 +1,14 @@
+package ${packageName}.service;
+
+import ${packageName}.model.${upClassName};
+
+#parse("author.vm")
+public interface ${upClassName}QueryService {
+
+	public void create${upClassName}(${upClassName} ${upClassName});
+
+	public void update${upClassName}(${upClassName} ${upClassName});
+
+	public void delete${upClassName}(${primaryKeyType} ${primaryKey});
+
+}
