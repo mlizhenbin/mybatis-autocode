@@ -1,6 +1,8 @@
 package com.oneplus.mybatis.generat.config;
 
+import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -8,7 +10,7 @@ import java.net.URL;
 import java.util.Properties;
 
 /**
- * 功能描述：数组元素验证工具类
+ * 功能描述：基本的配置类实现
  *
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn
@@ -28,7 +30,7 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
         }
     }
 
-    public void initEnvParams() {
+    public void initConfigParams() {
         initPackage();
         initProjectName();
         initTablePrefix();
@@ -38,57 +40,51 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
     }
 
     protected void initPackage() {
-        if (null != System.getProperty("generator.package")) {
+        String value = (String) properties.get("generator.package");
+        if (StringUtils.isNotBlank(value)) {
             return;
         }
-
-        String generatorPackage = (String) getProperties().get(GENERATOR_PACKAGE);
-        System.setProperty("generator.package", generatorPackage);
+        properties.setProperty("generator.package", GENERATOR_PACKAGE);
     }
 
     protected void initProjectName() {
-        if (null != System.getProperty("generator.project.name")) {
+        String value = (String) properties.get("generator.project.name");
+        if (StringUtils.isNotBlank(value)) {
             return;
         }
-
-        String generatorPackage = (String) getProperties().get(GENERATOR_PROJECT_NAME);
-        System.setProperty("generator.project.name", generatorPackage);
+        properties.setProperty("generator.project.name", GENERATOR_PROJECT_NAME);
     }
 
     protected void initTablePrefix() {
-        if (null != System.getProperty("generator.tablePrefix")) {
+        String value = (String) properties.get("generator.tablePrefix");
+        if (StringUtils.isNotBlank(value)) {
             return;
         }
-
-        String generatorPackage = (String) getProperties().get(GENERATOR_TABLEPREFIX);
-        System.setProperty("generator.tablePrefix", generatorPackage);
+        properties.setProperty("generator.tablePrefix", GENERATOR_TABLEPREFIX);
     }
 
     protected void initPrecision() {
-        if (null != System.getProperty("generator.precision")) {
+        String value = (String) properties.get("generator.precision");
+        if (StringUtils.isNotBlank(value)) {
             return;
         }
-
-        String generatorPackage = (String) getProperties().get(GENERATOR_PRECISION);
-        System.setProperty("generator.precision", generatorPackage);
+        properties.setProperty("generator.precision", GENERATOR_PRECISION);
     }
 
     protected void initLayers() {
-        if (null != System.getProperty("generator.layers")) {
+        String value = (String) properties.get("generator.layers");
+        if (StringUtils.isNotBlank(value)) {
             return;
         }
-
-        String generatorPackage = (String) getProperties().get(GENERATOR_LAYERS);
-        System.setProperty("generator.layers", generatorPackage);
+        properties.setProperty("generator.layers", PackageConfigType.getDefaultConfigLayer());
     }
 
     protected void initLocation() {
-        if (null != System.getProperty("generator.location")) {
+        String value = (String) properties.get("generator.location");
+        if (StringUtils.isNotBlank(value)) {
             return;
         }
-
-        String generatorPackage = (String) getProperties().get(GENERATOR_LOCATION);
-        System.setProperty("generator.location", generatorPackage);
+        properties.setProperty("generator.location", GENERATOR_LOCATION);
     }
 
     private void loadProperties() {

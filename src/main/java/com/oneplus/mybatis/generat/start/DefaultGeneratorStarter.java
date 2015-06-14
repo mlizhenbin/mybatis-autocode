@@ -6,7 +6,7 @@ import com.oneplus.mybatis.generat.connect.Connector;
 import com.oneplus.mybatis.generat.connect.MysqlConnector;
 import com.oneplus.mybatis.generat.generator.Generator;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
-import com.oneplus.mybatis.generat.generator.impl.ControllerGenerator;
+import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import com.oneplus.mybatis.generat.utils.FileUtils;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
@@ -15,6 +15,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 import java.util.Map;
@@ -30,6 +32,9 @@ import java.util.Properties;
  */
 public class DefaultGeneratorStarter implements GeneratorStarter {
 
+    /**
+     * sl4j
+     */
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultGeneratorStarter.class);
 
     private static Properties properties;
@@ -39,39 +44,44 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
     static {
         GeneratorConfigurer generatorConfigurer = GeneratorConfigurerFactory.getGeneratorConfigurer();
         properties = generatorConfigurer.getProperties();
+        generatorConfigurer.initConfigParams();
         connector = new MysqlConnector(properties);
     }
 
+    /**
+     * 执行生成方法
+     */
     public void start() {
         try {
             generator();
+            LOGGER.info("全部生成代码成功.");
         } catch (Exception e) {
             throw new RuntimeException("启动创建代码工具出现异常", e);
         }
     }
 
+    /**
+     * 自动化创建代码文件
+     */
     protected void generator() {
+        LOGGER.info("代码生成工具，开始生成代码...");
+
+        // 创建目录
         FileUtils.createPackageDirectory(properties);
-
-        String primaryKey;
-        List<String> tables;
-
-        tables = PropertiesUtils.getTableList(properties);
+        List<String> tables = PropertiesUtils.getTableList(properties);
         if (CollectionUtils.isEmpty(tables)) {
             throw new RuntimeException("配置代码生成表格为空.");
         }
 
+        // 自动化生成文件
         for (String tableName : tables) {
             try {
                 Map<String, String> pkMap = connector.getPrimaryKey(tableName);
-                primaryKey = pkMap.get("primaryKey");
+                if (StringUtils.isBlank(pkMap.get("primaryKey"))) {
+                    throw new RuntimeException(tableName + " 表结构没有主键，请检查表结构，生成代码失败.");
+                }
             } catch (Exception e) {
-                LOGGER.error(tableName + " 在数据库中不存在，请检查配置和数据库表结构.", e);
-                return;
-            }
-
-            if (StringUtils.isBlank(primaryKey)) {
-                LOGGER.error(tableName + " 表结构没有主键，请检查表结构，生成代码失败.");
+                throw new RuntimeException(tableName + " 在数据库中不存在，请检查配置和数据库表结构.", e);
             }
 
             String layerConfig = PropertiesUtils.getLayers(properties);
@@ -81,13 +91,13 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
                 return;
             }
 
-            Generator controllerGenerator = new ControllerGenerator();
-            controllerGenerator.generator(initBaseContext(tableName));
-
+            ApplicationContext context = new ClassPathXmlApplicationContext(GeneratorConfigurer.SPRING_COFIG);
+            for (PackageConfigType configType : PackageConfigType.values()) {
+                Generator generator = (Generator) context.getBean("generatorFacade");
+                generator.generator(initBaseContext(tableName), configType);
+            }
             LOGGER.info(tableName + " 生成代码成功.");
         }
-
-        LOGGER.info("全部生成代码成功.");
     }
 
     /**
@@ -106,6 +116,9 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
 
         GeneratorContext context = new GeneratorContext(tableName, upClassName, lowClassName,
                 packageName, primaryKeyType, primaryKey, properties);
+        context.addAttribute("connector", connector);
+        context.addAttribute("properties", properties);
         return context;
     }
+
 }

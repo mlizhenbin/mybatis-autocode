@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 功能描述：
+ * 功能描述：连接数据库接口
  *
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn
@@ -13,7 +13,13 @@ import java.util.Map;
  */
 public interface Connector {
 
-    public List<String> getAllTables();
-
+    /**
+     * 获取表的键值类型
+     *
+     * @param tableName
+     * @return
+     */
     public Map<String, String> getPrimaryKey(String tableName);
+
+    public List<String> getColumnNameList(String tableName);
 }

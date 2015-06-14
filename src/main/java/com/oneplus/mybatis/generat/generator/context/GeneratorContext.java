@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * 功能描述：
+ * 功能描述：Velocity渲染模板配置上下文信息
  *
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn
@@ -18,20 +18,44 @@ import java.util.Properties;
 public class GeneratorContext implements Serializable {
     private static final long serialVersionUID = -8244453504134436716L;
 
+    /**
+     * 配置文件配置
+     */
     private Properties properties;
 
+    /**
+     * 表名称
+     */
     private String tableName;
 
+    /**
+     * 类的名称
+     */
     private String upClassName;
 
+    /**
+     * 按照JAVA规范，类对应的变量小写
+     */
     private String lowClassName;
 
+    /**
+     * 包名
+     */
     private String packageName;
 
+    /**
+     * 主键类型
+     */
     private String primaryKeyType;
 
+    /**
+     * 主键
+     */
     private String primaryKey;
 
+    /**
+     * 上下文参数
+     */
     private Map<String, Object> attributes = Maps.newHashMap();
 
     public GeneratorContext(String tableName, String upClassName, String lowClassName, String packageName,

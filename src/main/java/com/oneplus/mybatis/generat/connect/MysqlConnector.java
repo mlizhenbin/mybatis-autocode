@@ -40,21 +40,6 @@ public class MysqlConnector implements Connector {
         return meta;
     }
 
-    public List<String> getAllTables() {
-        List<String> tableList = new ArrayList<String>();
-        try {
-            DatabaseMetaData meta = getDatabaseMetaData();
-            ResultSet tableRet = null;
-            tableRet = meta.getTables(null, "%", "%", new String[]{"TABLE"});
-            while (tableRet.next()) {
-                tableList.add(tableRet.getString("TABLE_NAME"));
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return tableList;
-    }
-
     public Map<String, String> getColumnNameTypeMap(String tableName) {
         Map<String, String> colMap = new LinkedHashMap<String, String>();
         DatabaseMetaData meta = getDatabaseMetaData();

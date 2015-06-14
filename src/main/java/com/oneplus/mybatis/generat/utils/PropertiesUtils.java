@@ -1,6 +1,7 @@
 package com.oneplus.mybatis.generat.utils;
 
 import com.google.common.collect.Lists;
+import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
@@ -69,7 +70,7 @@ public class PropertiesUtils {
     public static String getLayers(Properties properties) {
         String layers = properties.getProperty("generator.layers");
         if (StringUtils.isBlank(layers)) {
-            layers = properties.getProperty("generator.layers");
+            layers = PackageConfigType.getDefaultConfigLayer();
         }
         return layers.toLowerCase().trim();
     }

@@ -12,7 +12,7 @@ import org.apache.velocity.VelocityContext;
  * company：一加科技
  * Date: 15/6/13 Time：00:51
  */
-public class ControllerGenerator extends BaseGenerator {
+public class ServiceGenerator extends BaseGenerator {
 
     @Override
     public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
@@ -21,7 +21,6 @@ public class ControllerGenerator extends BaseGenerator {
 
     @Override
     protected PackageConfigType getPackageConfigType() {
-        return PackageConfigType.controller;
+        return PackageConfigType.service;
     }
-
 }

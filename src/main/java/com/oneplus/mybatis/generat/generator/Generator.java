@@ -1,9 +1,10 @@
 package com.oneplus.mybatis.generat.generator;
 
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
+import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 
 /**
- * 功能描述：
+ * 功能描述：读取配置自动化生成代码接口
  *
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn
@@ -12,5 +13,11 @@ import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
  */
 public interface Generator {
 
-    public void generator(GeneratorContext context);
+    /**
+     * 读取配置生成文件
+     *
+     * @param context
+     * @param configType
+     */
+    public void generator(GeneratorContext context, PackageConfigType configType);
 }

@@ -1,17 +1,13 @@
 package com.oneplus.mybatis.generat.utils;
 
 
+import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.*;
 import java.util.Properties;
 
 public class FileUtils {
-
-    public static String getTemplate(String template) {
-        String templatePath = FileUtils.class.getResource("/template/").getPath();
-        File file = new File(templatePath + template);
-        String str = read(file);
-        return str;
-    }
 
     public static String read(File file) {
         StringBuffer res = new StringBuffer();
@@ -53,39 +49,18 @@ public class FileUtils {
         String location = PropertiesUtils.getLocation(properties);
 
         String project = PropertiesUtils.getProject(properties);
-        if (project != null && !"".equals(project)) {
+        if (StringUtils.isNoneBlank(project)) {
             location = location + "/src";
         }
 
         String packageDir = "/" + PropertiesUtils.getPackage(properties).replaceAll("[.]", "/");
-        String daoDir = location + packageDir + "/dao";
-        String mapperDir = location + packageDir + "/dao/mapper";
-        String serviceDir = location + packageDir + "/service";
-        String serviceImplDir = location + packageDir + "/service/impl";
-        String controllerDir = location + packageDir + "/controller";
-        String modelDir = location + packageDir + "/model";
-        String constDir = location + packageDir + "/result";
-
-        if (project != null && !"".equals(project)) {
-            mkdir(constDir);
-        }
-
-        String layers = PropertiesUtils.getLayers(properties);
-        if (layers.contains("controller")) {
-            mkdir(controllerDir);
-        }
-        if (layers.contains("dao")) {
-            mkdir(daoDir);
-        }
-        if (layers.contains("mapper")) {
-            mkdir(mapperDir);
-        }
-        if (layers.contains("service")) {
-            mkdir(serviceDir);
-            mkdir(serviceImplDir);
-        }
-        if (layers.contains("model")) {
-            mkdir(modelDir);
+        if (StringUtils.isNoneBlank(project)) {
+            for (PackageConfigType packageConfigDirType : PackageConfigType.values()) {
+                String[] targetDirs = StringUtils.split(packageConfigDirType.getTargetDir(), "\\|");
+                for (String targetDir : targetDirs) {
+                    mkdir(location + packageDir + targetDir);
+                }
+            }
         }
     }
 
@@ -101,8 +76,8 @@ public class FileUtils {
         String location = PropertiesUtils.getLocation(properties);
         String packageDir = "/" + PropertiesUtils.getPackage(properties).replaceAll("[.]", "/");
         String project = PropertiesUtils.getProject(properties);
-        String directory = null;
-        if (project != null && !"".equals(project)) {
+        String directory;
+        if (StringUtils.isNotBlank(project)) {
             directory = location + "/src" + packageDir + "/" + name + "/";
         } else {
             directory = location + packageDir + "/" + name + "/";

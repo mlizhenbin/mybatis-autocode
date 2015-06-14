@@ -1,7 +1,7 @@
 package com.oneplus.mybatis.generat.config;
 
 /**
- * 功能描述：
+ * 功能描述：获取配置类工厂
  *
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn
@@ -10,13 +10,15 @@ package com.oneplus.mybatis.generat.config;
  */
 public class GeneratorConfigurerFactory {
 
-    /** 测试环境配置器 */
+    /**
+     * 自动化生成代码配置器
+     */
     private static GeneratorConfigurer generatorConfigurer;
 
     /**
-     * 获取测试环境配置器
+     * 获取配置
      *
-     * @return 测试环境配置器
+     * @return
      */
     public synchronized static GeneratorConfigurer getGeneratorConfigurer() {
         if (null == generatorConfigurer) {
