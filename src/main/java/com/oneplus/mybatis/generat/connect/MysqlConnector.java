@@ -57,7 +57,7 @@ public class MysqlConnector implements Connector {
                 String columnName = colRet.getString("COLUMN_NAME");
                 int digits = colRet.getInt("DECIMAL_DIGITS");
                 int dataType = colRet.getInt("DATA_TYPE");
-                String columnType = columnType = getDataType(dataType, digits);
+                String columnType = getDataType(dataType, digits);
                 colMap.put(GeneratorStringUtils.format(columnName), columnType);
             }
         } catch (Exception e) {
