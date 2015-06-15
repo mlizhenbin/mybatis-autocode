@@ -36,7 +36,6 @@
         INSERT INTO ${tableName} (
             <include refid="${upClassName}_column" />
         )
-        VALUES (
         <trim prefix="values (" suffix=")" suffixOverrides=",">
 #foreach($insertCondition in $insertConditions)
             $insertCondition

@@ -82,6 +82,10 @@ public class MapperGenerator extends BaseGenerator {
         velocityContext.put("whereConditions", whereConditions);
         velocityContext.put("insertConditions", insertConditions);
         velocityContext.put("updateConditions", updateConditions);
+        for (int i = 0; i < columns.size() - 1; i++) {
+            String tempCol = columns.get(i) + ",";
+            columns.set(i, tempCol);
+        }
         velocityContext.put("columns", columns);
         velocityContext.put("columnPrimaryKey", generatorContext.getAttribute("columnPrimaryKey"));
     }
