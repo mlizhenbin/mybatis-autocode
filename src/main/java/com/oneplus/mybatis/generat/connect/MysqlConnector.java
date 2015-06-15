@@ -66,6 +66,24 @@ public class MysqlConnector implements Connector {
         return colMap;
     }
 
+//    public Map<String, String> getColumnNameTypeMap(String tableName) {
+//        Map<String, String> colMap = new LinkedHashMap<String, String>();
+//        DatabaseMetaData meta = getDatabaseMetaData();
+//        try {
+//            ResultSet colRet = meta.getColumns(null, "%", tableName, "%");
+//            while (colRet.next()) {
+//                String columnName = colRet.getString("COLUMN_NAME");
+//                int digits = colRet.getInt("DECIMAL_DIGITS");
+//                int dataType = colRet.getInt("DATA_TYPE");
+//                String columnType = getDataType(dataType, digits);
+//                colMap.put(GeneratorStringUtils.format(columnName), columnType);
+//            }
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+//        return colMap;
+//    }
+
     public Map<String, String> getPrimaryKey(String tableName) {
         Map<String, String> map = new HashMap<String, String>();
         try {

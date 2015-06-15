@@ -8,6 +8,6 @@ public interface ${upClassName}QueryService {
 	/**
 	 * 通过主键${primaryKeyType}查询${upClassName}
 	 */
-	public ${upClassName} get${upClassName}ByPrimaryKey(${primaryKeyType} ${primaryKey});
+	public ${upClassName}DTO get${upClassName}ByPrimaryKey(${primaryKeyType} ${primaryKey});
 
 }

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="${packageName}.dao.${upClassName}Dao">
-    <typeAlias alias="${lowClassName}" type="${packageName}.dao.model.${upClassName}"/>
-    <resultMap type="${packageName}.model.${upClassName}" id="${lowClassName}_result">
+<mapper namespace="${packageName}.dao.model.${upClassName}Mapper">
+    <resultMap type="${upClassName}" id="${lowClassName}_result">
 #foreach($resultMapColumn in $resultMapColumns)
         $resultMapColumn
 #end
@@ -32,7 +31,7 @@
 #end
     </sql>
 
-    <insert id="add${upClassName}" parameterClass="${lowClassName}" >
+    <insert id="add${upClassName}" parameterType="${upClassName}" >
         INSERT INTO ${tableName} (
             <include refid="${upClassName}_column" />
         )
@@ -41,12 +40,12 @@
             $insertCondition
 #end
         </trim>
-        <!--<selectKey resultClass="long" keyProperty="${primaryKey}">
+        <!--<selectKey resultType="long" keyProperty="${primaryKey}">
                 select last_insert_id() as ID from ${tableName} limit 1
         </selectKey>-->
     </insert>
 
-    <update id="update${upClassName}" parameterType="${lowClassName}">
+    <update id="update${upClassName}" parameterType="${upClassName}">
         UPDATE ${tableName}
         <set>
 #foreach($updateCondition in $updateConditions)
@@ -56,14 +55,14 @@
         WHERE <include refid="${upClassName}_By_${primaryKey}" />
     </update>
 
-    <select id="find${upClassName}" resultMap="${lowClassName}_result" parameterClass="java.util.HashMap">
+    <select id="find${upClassName}" resultMap="${lowClassName}_result" parameterType="java.util.HashMap">
         SELECT
         <include refid="${upClassName}_column" />
         FROM ${tableName} ${tableName}
         <include refid="${upClassName}_Query_List_Sharing" />
     </select>
 
-    <select id="findBy${primaryKey}" resultMap="${lowClassName}_result" parameterClass="${primaryKeyType}">
+    <select id="findBy${primaryKey}" resultMap="${lowClassName}_result" parameterType="${primaryKeyType}">
         SELECT
         <include refid="${upClassName}_column" />
         FROM ${tableName} ${tableName}
@@ -81,14 +80,14 @@
         </if>
     </select>
 
-    <select id="list${upClassName}Count" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">
+    <select id="list${upClassName}Count" resultType="java.lang.Integer" parameterType="java.util.HashMap">
         SELECT
         COUNT(*)
         FROM ${tableName} ${tableName}
         <include refid="${upClassName}_Query_List_Sharing" />
     </select>
 
-    <delete id="del${upClassName}" parameterClass="${lowClassName}">
+    <delete id="del${upClassName}" parameterType="${upClassName}">
         DELETE  FROM  ${tableName}
         <include refid="${upClassName}_By_${primaryKey}" />
     </delete>

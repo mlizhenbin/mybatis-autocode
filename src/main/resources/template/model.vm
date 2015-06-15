@@ -3,11 +3,12 @@ package ${packageName}.dao.model;
 #foreach($ims in $importSets)
 ${ims}
 #end
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import java.io.Serializable;
 
 #parse("author.vm")
-public class ${upClassName}Model implements Serializable {
-    private static final long serialVersionUID = ${SerialVersionUID}L;
+public class ${upClassName} implements Serializable {
+##    private static final long serialVersionUID = ${SerialVersionUID}L;
 
 #foreach($field in $fields)
     ${field}

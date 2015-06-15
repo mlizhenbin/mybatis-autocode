@@ -2,10 +2,10 @@ package ${packageName}.service.convert;
 
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import com.google.common.collect.Lists;
-import org.apache.commons.collections4.CollectionUtils;
 import com.oneplus.service.dto.${upClassName}DTO;
-import com.oneplus.dao.model.${upClassName}
+import com.oneplus.dao.model.${upClassName};
 
 #parse("author.vm")
 public class ${upClassName}DTOConvert {
@@ -13,20 +13,20 @@ public class ${upClassName}DTOConvert {
     private ${upClassName}DTOConvert() {
     }
 
-    private ${upClassName}DTO convert(${upClassName} ${lowClassName}) {
+    public static ${upClassName}DTO convert(${upClassName} ${lowClassName}) {
         if (${lowClassName} == null) {
             return null;
         }
 
         ${upClassName}DTO ${lowClassName}DTO = new ${upClassName}DTO();
 #foreach($convert in $convertDTOs)
-        ${convert}
+        ${convert};
 #end
 
         return ${lowClassName}DTO;
     }
 
-    public List<${upClassName}DTO> convert(List<${upClassName}> ${lowClassName}s) {
+    public static List<${upClassName}DTO> convert(List<${upClassName}> ${lowClassName}s) {
         if (CollectionUtils.isEmpty(${lowClassName}s)) {
             return Lists.newArrayList();
         }

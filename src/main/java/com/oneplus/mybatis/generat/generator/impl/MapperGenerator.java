@@ -27,24 +27,22 @@ public class MapperGenerator extends BaseGenerator {
 
         String tableName = generatorContext.getTableName();
         Connector connector = (Connector) generatorContext.getAttribute("connector");
-        Map<String, String> nameTypeMap = connector.getFormatedColumnNameTypeMap(tableName);
+        //Map<String, String> nameJavaTypeMap = connector.getFormatedColumnNameTypeMap(tableName);
+        Map<String, String> columnNameTypeMap = connector.getColumnNameTypeMap(tableName);
 
         List<String> resultMapColumns = Lists.newArrayList();
         List<String> whereConditions = Lists.newArrayList();
         List<String> columns = Lists.newArrayList();
         List<String> insertConditions = Lists.newArrayList();
         List<String> updateConditions = Lists.newArrayList();
-        for (String col : nameTypeMap.keySet()) {
+        for (String col : columnNameTypeMap.keySet()) {
             String field = GeneratorStringUtils.format(col);
-
-            String tmpCol = tableName + "." + col;
-            columns.add(tmpCol);
-
+            columns.add(tableName + "." + col);
             StringBuilder cloumBf = new StringBuilder();
-            cloumBf.append("<result property=\"").append(field).append("\" column=\"").append(tmpCol).append("\"/>");
+            cloumBf.append("<result property=\"").append(field).append("\" column=\"").append(col).append("\"/>");
             resultMapColumns.add(cloumBf.toString());
 
-            if (nameTypeMap.get(col).equals("Date")) {
+            if (columnNameTypeMap.get(col).equals("Date")) {
                 StringBuilder conditionBfs = new StringBuilder();
                 conditionBfs.append("<if test=\"").append(field).append(" != null\">\n")
                         .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &gt;= #{").append("dynamicFileds_startTime").append("}\n")

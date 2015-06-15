@@ -5,9 +5,11 @@ import org.slf4j.LoggerFactory;
 import ${packageName}.service.dto.${upClassName}DTO;
 import ${packageName}.dao.${upClassName}Mapper;
 import ${packageName}.dao.model.${upClassName};
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 #parse("author.vm")
-@service("${lowClassName}OperateService")
+@Service("${lowClassName}OperateService")
 public class ${upClassName}OperateServiceImpl implements ${upClassName}OperateService {
 
 	/** sl4j */
@@ -17,15 +19,15 @@ public class ${upClassName}OperateServiceImpl implements ${upClassName}OperateSe
 	private ${upClassName}Mapper ${lowClassName}Mapper;
 
 	public void add${upClassName}(${upClassName}DTO ${lowClassName}DTO) {
-		${upClassName} ${lowClassName} = ${upClassName}Convert(${lowClassName}DTOs);
+		${upClassName} ${lowClassName} = ${upClassName}Convert.convert(${lowClassName}DTO);
 		${lowClassName}Mapper.add${upClassName}(${lowClassName});
-		LOGGER.info("增加${upClassName}成功, ${lowClassName}=", ${lowClassName})
+		LOGGER.info("增加${upClassName}成功, ${lowClassName}=", ${lowClassName});
 	}
 
-	public void update${upClassName}(${upClassName}DTO ${upClassName}DTO) {
-		${upClassName} ${lowClassName} = ${upClassName}Convert(${lowClassName}DTOs);
+	public void update${upClassName}(${upClassName}DTO ${lowClassName}DTO) {
+		${upClassName} ${lowClassName} = ${upClassName}Convert.convert(${lowClassName}DTO);
 		${lowClassName}Mapper.update${upClassName}(${lowClassName});
-		LOGGER.info("更新${upClassName}成功, ${lowClassName}=", ${lowClassName})
+		LOGGER.info("更新${upClassName}成功, ${lowClassName}=", ${lowClassName});
 	}
 
 }
