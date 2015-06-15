@@ -1,19 +1,17 @@
 package com.oneplus.mybatis.generat.generator.impl;
 
-import com.google.common.collect.Lists;
 import com.oneplus.mybatis.generat.connect.Connector;
-import com.oneplus.mybatis.generat.generator.Generator;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
-import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
-import com.oneplus.mybatis.generat.utils.PropertiesUtils;
 import com.sun.corba.se.impl.io.ObjectStreamClass;
 import org.apache.velocity.VelocityContext;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
- * 功能描述：
+ * 功能描述：Model代码生成
  *
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn

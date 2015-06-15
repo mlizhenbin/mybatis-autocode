@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * 功能描述：
+ * 功能描述：分发生成代码适配器
  *
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn

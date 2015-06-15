@@ -6,17 +6,15 @@ import com.oneplus.mybatis.generat.generator.Generator;
 import com.oneplus.mybatis.generat.generator.context.ClassHeadInfo;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
-import com.oneplus.mybatis.generat.utils.FileUtils;
+import com.oneplus.mybatis.generat.utils.GeneratorFileUtils;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateUtils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.apache.velocity.app.VelocityEngine;
 
-import java.io.IOException;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -75,7 +73,7 @@ public abstract class BaseGenerator implements Generator {
             StringWriter writer = new StringWriter();
             template.merge(velocityContext, writer);
             String content = writer.toString();
-            FileUtils.write(content, params.get(templateName));
+            GeneratorFileUtils.write(content, params.get(templateName));
             IOUtils.closeQuietly(writer);
         }
     }
@@ -124,7 +122,7 @@ public abstract class BaseGenerator implements Generator {
 
         Map<String, String> generatorParams = Maps.newHashMap();
         for (int i = 0; i < templates.length; i++) {
-            String fileName = FileUtils.getPackageDirectory(targetDirs[i], properties)
+            String fileName = GeneratorFileUtils.getPackageDirectory(targetDirs[i], properties)
                     + GeneratorStringUtils.firstUpperAndNoPrefix(tableName, properties)
                     + baseFileNames[i];
             generatorParams.put(templates[i], fileName);

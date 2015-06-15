@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 功能描述：
+ * 功能描述：Mapper.xml代码生成
  *
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn

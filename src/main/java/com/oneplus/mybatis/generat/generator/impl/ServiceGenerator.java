@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * 功能描述：
+ * 功能描述：Service代码生成
  *
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn
@@ -27,6 +27,7 @@ public class ServiceGenerator extends BaseGenerator {
     public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
         super.initVelocityContext(velocityContext, generatorContext);
 
+        // TODO
         velocityContext.put("SerialVersionUID", ObjectStreamClass.getSerialVersionUID(this.getClass()));
 
         String tableName = generatorContext.getTableName();

@@ -4,32 +4,13 @@ package com.oneplus.mybatis.generat.utils;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Properties;
 
-public class FileUtils {
-
-    public static String read(File file) {
-        StringBuffer res = new StringBuffer();
-        String line;
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            int i = 0;
-            while ((line = reader.readLine()) != null) {
-                if (i != 0) {
-                    res.append('\n');
-                }
-                res.append(line);
-                i++;
-            }
-            reader.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return res.toString();
-    }
+public class GeneratorFileUtils {
 
     public static boolean write(String content, String path) {
         try {

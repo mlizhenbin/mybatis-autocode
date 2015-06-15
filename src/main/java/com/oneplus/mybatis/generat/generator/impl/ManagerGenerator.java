@@ -5,7 +5,7 @@ import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import org.apache.velocity.VelocityContext;
 
 /**
- * 功能描述：
+ * 功能描述：Manager层代码生成
  *
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn

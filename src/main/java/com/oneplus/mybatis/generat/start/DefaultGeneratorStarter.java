@@ -7,7 +7,7 @@ import com.oneplus.mybatis.generat.connect.MysqlConnector;
 import com.oneplus.mybatis.generat.generator.Generator;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
-import com.oneplus.mybatis.generat.utils.FileUtils;
+import com.oneplus.mybatis.generat.utils.GeneratorFileUtils;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
 import org.apache.commons.collections4.CollectionUtils;
@@ -67,7 +67,7 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
         LOGGER.info("代码生成工具，开始生成代码...");
 
         // 创建目录
-        FileUtils.createPackageDirectory(properties);
+        GeneratorFileUtils.createPackageDirectory(properties);
         List<String> tables = PropertiesUtils.getTableList(properties);
         if (CollectionUtils.isEmpty(tables)) {
             throw new RuntimeException("配置代码生成表格为空.");
