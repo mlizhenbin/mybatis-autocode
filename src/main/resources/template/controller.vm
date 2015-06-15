@@ -32,7 +32,7 @@ public class ${upClassName}Controller {
 	
 	@RequestMapping(value="/${lowClassName}/get")
 	@ResponseBody
-    public Object get(@RequestParam("${primaryKey}") ${primaryKeyType} ${primaryKey}){
+    public Object get(@RequestParam("${primaryKey}") ${primaryKeyType} ${normalPrimaryKey}){
         return null;
     }
     

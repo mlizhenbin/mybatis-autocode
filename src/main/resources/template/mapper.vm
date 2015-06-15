@@ -31,7 +31,7 @@
 #end
     </sql>
 
-    <insert id="add${upClassName}" parameterType="${upClassName}" >
+    <insert id="add${upClassName}" parameterType="${upClassName}" keyProperty="${normalPrimaryKey}">
         INSERT INTO ${tableName} (
             <include refid="${upClassName}_column" />
         )
@@ -40,9 +40,6 @@
             $insertCondition
 #end
         </trim>
-        <!--<selectKey resultType="long" keyProperty="${primaryKey}">
-                select last_insert_id() as ID from ${tableName} limit 1
-        </selectKey>-->
     </insert>
 
     <update id="update${upClassName}" parameterType="${upClassName}">
