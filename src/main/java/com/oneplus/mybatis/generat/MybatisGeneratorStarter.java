@@ -11,7 +11,7 @@ import com.oneplus.mybatis.generat.start.GeneratorStarter;
  * company：一加科技
  * Date: 15/6/12 Time：23:42
  */
-public class WmsGeneratorStarter {
+public class MybatisGeneratorStarter {
 
     public static void main(String[] args) {
         GeneratorStarter starter = new DefaultGeneratorStarter();
