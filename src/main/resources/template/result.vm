@@ -1,19 +1,52 @@
-package ${packageName}.dao;
-
-import java.util.List;
-
-import ${packageName}.model.${upClassName};
+package ${packageName}.result;
 
 #parse("author.vm")
-public interface ${upClassName}Dao {
+public enum ${upClassName}Result {
 
-    public List<${upClassName}> get${upClassName}List();
+    /** 成功 */
+    SUCCESS(200, "SUCCESS"),
 
-    public ${upClassName} get${upClassName}ByPrimaryKey(${primaryKeyType} ${primaryKey});
+    /** */
+    SYSTEM_ERROR(500, "SYSTEM_ERROR"),
 
-    public void create${upClassName}(${upClassName} ${upClassName});
+    ;
 
-    public void update${upClassName}(${upClassName} ${upClassName});
+    private int code;
 
-    public void delete${upClassName}(${primaryKeyType} ${primaryKey});
+    private String type;
+
+    PackageConfigType(String type, int code) {
+        this.type = type;
+        this.code = code;
+    }
+
+    public static ${upClassName}Result getByType(String type) {
+        if (StringUtils.isBlank(type))
+            return null;
+
+        for (${upClassName}Result result : ${upClassName}Result.values()) {
+            if (StringUtils.equals(type, result.getType())) {
+                return result;
+            }
+        }
+
+        return null;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        return this.type = type;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setType(int code) {
+        return this.code = code;
+    }
+
 }

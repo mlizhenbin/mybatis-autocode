@@ -1,5 +1,6 @@
 package com.oneplus.mybatis.generat.generator.impl;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.oneplus.mybatis.generat.generator.Generator;
 import com.oneplus.mybatis.generat.generator.context.ClassHeadInfo;
@@ -18,9 +19,7 @@ import org.apache.velocity.app.VelocityEngine;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * 功能描述：读取配置文件，生成代码基本实现类
@@ -35,7 +34,7 @@ public abstract class BaseGenerator implements Generator {
     /**
      * velocity上下文
      */
-    protected VelocityContext velocityContext = new VelocityContext();
+    protected VelocityContext velocityContext;
 
     /**
      * 模板存放文件夹
@@ -49,6 +48,7 @@ public abstract class BaseGenerator implements Generator {
      * @param configType
      */
     public void generator(GeneratorContext context, PackageConfigType configType) {
+        velocityContext = new VelocityContext();
         write(context);
     }
 
@@ -78,7 +78,6 @@ public abstract class BaseGenerator implements Generator {
             FileUtils.write(content, params.get(templateName));
             IOUtils.closeQuietly(writer);
         }
-
     }
 
     /**
@@ -102,6 +101,7 @@ public abstract class BaseGenerator implements Generator {
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
         velocityContext.put("cerateDate", dateFormat.format(new Date()));
         velocityContext.put("createTime", timeFormat.format(new Date()));
+        velocityContext.put("normalPrimaryKey", generatorContext.getAttribute("normalPrimaryKey"));
     }
 
     /**
@@ -148,5 +148,41 @@ public abstract class BaseGenerator implements Generator {
     protected String getFilePath() {
         return BaseGenerator.class.getClassLoader().getResource("").getFile()
                 + VM_TARGET_PATH + "/";
+    }
+
+    protected List<String> generateFields(Map<String, String> map, Map<String, String> columnRemarkMap) {
+        Set<String> keySet = map.keySet();
+        List<String> fields = Lists.newArrayList();
+        for (String key : keySet) {
+            StringBuilder sb = new StringBuilder();
+            String value = map.get(key);
+            sb.append("/** \n")
+                    .append("\t * ").append(columnRemarkMap.get(key)).append("\n")
+                    .append("\t */\n")
+                    .append("\tprivate ").append(value + " ").append(GeneratorStringUtils.format(key) + ";\n");
+            fields.add(sb.toString());
+        }
+        return fields;
+    }
+
+
+    protected List<String> generateGetAndSetMethods(Map<String, String> map) {
+        Set<String> keySet = map.keySet();
+        List<String> methods = Lists.newArrayList();
+        for (String key : keySet) {
+            StringBuilder getSb = new StringBuilder();
+            StringBuilder setSb = new StringBuilder();
+            String field = GeneratorStringUtils.format(key);
+            String fieldType = map.get(key);
+            //generate get method
+            getSb.append("public ").append(fieldType + " ").append("get" + GeneratorStringUtils.firstUpperNoFormat(field) + "() {\n\t\t")
+                    .append("return " + field + ";\n\t}\n");
+            //generate set method
+            setSb.append("public ").append("void ").append("set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(" + fieldType + " " + field + ") {\n\t\t")
+                    .append("this." + field + " = " + field + ";\n\t}\n");
+            methods.add(getSb.toString());
+            methods.add(setSb.toString());
+        }
+        return methods;
     }
 }

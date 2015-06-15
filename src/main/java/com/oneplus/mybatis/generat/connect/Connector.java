@@ -24,4 +24,8 @@ public interface Connector {
     public List<String> getColumnNameList(String tableName);
 
     public Map<String, String> getFormatedColumnNameTypeMap(String tableName);
+
+    public Map<String, String> getColumnNameTypeMap(String tableName);
+
+    public Map<String, String> getColumnRemarkMap(String tableName);
 }

@@ -16,14 +16,15 @@ import java.util.List;
  */
 public enum PackageConfigType {
 
-    dao("dao", "/dao", "Dao.java", "dao.vm"),
-
-    mapper("mapper", "/dao/mapper", "DaoMapper.xml", "mapper.vm"),
+    mapper("mapper", "/dao/mapper|/dao", "Mapper.xml|Mapper.java", "mapper.vm|dao.vm"),
 
     service("service",
-            "/service|/service/impl|/service|/service/impl",
-            "QueryService.java|QueryServiceImpl.java|OperateService.java|OperateServiceImpl.java",
-            "service_query.vm|service_query_impl.vm|service_operate.vm|service_operate_impl.vm"),
+            "/service|/service/impl|/service|" +
+                    "/service/impl|/service/dto|/service/convert|/service/convert",
+            "QueryService.java|QueryServiceImpl.java|OperateService.java|" +
+                    "OperateServiceImpl.java|DTO.java|TDOConvert.java|Convert.java",
+            "service_query.vm|service_query_impl.vm|service_operate.vm|" +
+                    "service_operate_impl.vm|service_dto.vm|service_convert_dto.vm|service_convert.vm"),
 
     manager("manage",
             "/manage|/manage/impl|/manage|/manage/impl",
@@ -32,7 +33,7 @@ public enum PackageConfigType {
 
     controller("controller", "/controller", "Controller.java", "controller.vm"),
 
-    model("model", "/model", ".java", "model.vm"),
+    model("model", "/dao/model", ".java", "model.vm"),
 
     result("result", "/result", "Result.java", "result.vm");
 

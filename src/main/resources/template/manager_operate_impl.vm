@@ -1,14 +1,27 @@
 package ${packageName}.service;
 
-import ${packageName}.model.${upClassName};
+import ${packageName}.service.${lowClassName}QueryService;
+import ${packageName}.service.${lowClassName}OperateService;
 
 #parse("author.vm")
-public interface ${upClassName}QueryService {
+@Service("${lowClassName}OperateManager")
+public class ${upClassName}OperateManagerImpl implements ${upClassName}OperateManager  {
 
-	public void create${upClassName}(${upClassName} ${upClassName});
+	/** sl4j */
+	private static final Logger LOGGER = LoggerFactory.getLogger(${upClassName}OperateManagerImpl.class);
 
-	public void update${upClassName}(${upClassName} ${upClassName});
+	@Autowired
+	private ${upClassName}QueryService ${lowClassName}QueryService;
 
-	public void delete${upClassName}(${primaryKeyType} ${primaryKey});
+	@Autowired
+	private ${upClassName}OperateService ${lowClassName}OperateService;
+
+	public Result add${upClassName}(${upClassName}DTO ${upClassName}DTO) {
+		return null;
+	}
+
+	public Result update${upClassName}(${upClassName}DTO ${upClassName}DTO) {
+		return null;
+	}
 
 }

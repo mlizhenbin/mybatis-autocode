@@ -1,0 +1,42 @@
+package ${packageName}.service.convert;
+
+import java.util.List;
+
+import com.google.common.collect.Lists;
+import org.apache.commons.collections4.CollectionUtils;
+import com.oneplus.service.dto.${upClassName}DTO;
+import com.oneplus.dao.model.${upClassName}
+
+#parse("author.vm")
+public class ${upClassName}Convert {
+
+    private ${upClassName}Convert() {
+    }
+
+    private ${upClassName} convert(${upClassName}DTO ${lowClassName}DTO) {
+        if (${lowClassName} == null) {
+            return null;
+        }
+
+        ${upClassName} ${lowClassName} = new ${upClassName}();
+#foreach($convert in $converts)
+        ${convert}
+#end
+
+        return ${lowClassName};
+    }
+
+    public List<${upClassName}> convert(List<${upClassName}DTO> ${lowClassName}DTOs) {
+        if (CollectionUtils.isEmpty(${lowClassName}DTOs)) {
+            return Lists.newArrayList();
+        }
+
+        List<${upClassName}> ${lowClassName}s = Lists.newArrayList();
+        for (${upClassName}DTO ${lowClassName}DTO : ${lowClassName}DTOs) {
+            ${lowClassName}s.add(convert(${lowClassName}DTO));
+        }
+
+        return ${lowClassName}s;
+    }
+
+}

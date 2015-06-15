@@ -1,14 +1,31 @@
 package ${packageName}.service;
 
-import ${packageName}.model.${upClassName};
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ${packageName}.service.dto.${upClassName}DTO;
+import ${packageName}.dao.${upClassName}Mapper;
+import ${packageName}.dao.model.${upClassName};
 
 #parse("author.vm")
-public interface ${upClassName}QueryService {
+@service("${lowClassName}OperateService")
+public class ${upClassName}OperateServiceImpl implements ${upClassName}OperateService {
 
-	public void create${upClassName}(${upClassName} ${upClassName});
+	/** sl4j */
+	private static final Logger LOGGER = LoggerFactory.getLogger(${upClassName}OperateServiceImpl.class);
 
-	public void update${upClassName}(${upClassName} ${upClassName});
+	@Autowired
+	private ${upClassName}Mapper ${lowClassName}Mapper;
 
-	public void delete${upClassName}(${primaryKeyType} ${primaryKey});
+	public void add${upClassName}(${upClassName}DTO ${lowClassName}DTO) {
+		${upClassName} ${lowClassName} = ${upClassName}Convert(${lowClassName}DTOs);
+		${lowClassName}Mapper.add${upClassName}(${lowClassName});
+		LOGGER.info("增加${upClassName}成功, ${lowClassName}=", ${lowClassName})
+	}
+
+	public void update${upClassName}(${upClassName}DTO ${upClassName}DTO) {
+		${upClassName} ${lowClassName} = ${upClassName}Convert(${lowClassName}DTOs);
+		${lowClassName}Mapper.update${upClassName}(${lowClassName});
+		LOGGER.info("更新${upClassName}成功, ${lowClassName}=", ${lowClassName})
+	}
 
 }

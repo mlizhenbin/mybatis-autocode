@@ -6,7 +6,7 @@ import java.util.Map;
 import ${packageName}.model.${upClassName};
 
 #parse("author.vm")
-public interface ${upClassName}Dao {
+public interface ${upClassName}Mapper {
 
     /**
      * 创建
@@ -21,12 +21,12 @@ public interface ${upClassName}Dao {
     /**
      * 删除
      */
-    public void delete${upClassName}(${primaryKeyType} ${primaryKey});
+    public void delete${upClassName}(${primaryKeyType} ${normalPrimaryKey});
 
     /**
      * 通过主键ID查询
      */
-    public ${upClassName} findBy${primaryKey}(${primaryKeyType} ${primaryKey});
+    public ${upClassName} findBy${primaryKey}(${primaryKeyType} ${normalPrimaryKey});
 
     /**
      * 通过参数查询

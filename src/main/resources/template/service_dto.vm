@@ -1,4 +1,4 @@
-package ${packageName}.dao.model;
+package ${packageName}.service.dto;
 
 #foreach($ims in $importSets)
 ${ims}
@@ -6,7 +6,7 @@ ${ims}
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 #parse("author.vm")
-public class ${upClassName}Model implements Serializable {
+public class ${upClassName}DTO implements Serializable {
     private static final long serialVersionUID = ${SerialVersionUID}L;
 
 #foreach($field in $fields)

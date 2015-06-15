@@ -84,11 +84,12 @@ public class MapperGenerator extends BaseGenerator {
         velocityContext.put("updateConditions", updateConditions);
         velocityContext.put("columns", columns);
         velocityContext.put("columnPrimaryKey", generatorContext.getAttribute("columnPrimaryKey"));
-        velocityContext.put("normalPrimaryKey", generatorContext.getAttribute("normalPrimaryKey"));
     }
 
     @Override
     protected PackageConfigType getPackageConfigType() {
         return PackageConfigType.mapper;
     }
+
+
 }

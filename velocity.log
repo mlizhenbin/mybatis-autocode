@@ -841,3 +841,6 @@ rence [template 'controller.vm', line 102, column 64] : ${primaryKey} cannot be 
 2015-06-13 12:02:12,254 - ResourceManager : found controller.vm with loader org.apache.velocity.runtime.resource.loader.FileResourceLoader
 2015-06-13 12:02:12,259 - Null reference [template 'controller.vm', line 84, column 132] : ${PrimaryKey} cannot be resolved.
 2015-06-13 12:02:12,259 - Null reference [template 'controller.vm', line 85, column 13] : ${updateAssignValue} cannot be resolved.
+2015-06-15 10:59:16,301 - ResourceManager : unable to find resource 'convert.vm' in any resource loader.
+2015-06-15 10:59:16,301 - ResourceManager : unable to find resource 'convert.vm' in any resource loader.
+2015-06-15 10:59:16,301 - ResourceManager : unable to find resource 'convert.vm' in any resource loader.

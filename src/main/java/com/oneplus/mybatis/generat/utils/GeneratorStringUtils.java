@@ -1,6 +1,5 @@
 package com.oneplus.mybatis.generat.utils;
 
-
 import java.util.Properties;
 
 public class GeneratorStringUtils {
@@ -27,6 +26,7 @@ public class GeneratorStringUtils {
                 sb.append(c);
             }
         }
+
 
         return sb.toString();
     }

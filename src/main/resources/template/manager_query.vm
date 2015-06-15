@@ -1,14 +1,13 @@
 package ${packageName}.service;
 
-import ${packageName}.model.${upClassName};
+import java.util.List;
 
 #parse("author.vm")
-public interface ${upClassName}QueryService {
+public interface ${upClassName}QueryManager {
 
-	public void create${upClassName}(${upClassName} ${upClassName});
-
-	public void update${upClassName}(${upClassName} ${upClassName});
-
-	public void delete${upClassName}(${primaryKeyType} ${primaryKey});
+	/**
+	 * 通过主键${primaryKeyType}查询${upClassName}
+	 */
+	public Result get${upClassName}ByPrimaryKey(${primaryKeyType} ${primaryKey});
 
 }

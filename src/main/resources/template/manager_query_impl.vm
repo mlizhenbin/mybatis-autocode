@@ -1,14 +1,19 @@
 package ${packageName}.service;
 
-import ${packageName}.model.${upClassName};
+import ${packageName}.service.${upClassName}QueryService;
 
 #parse("author.vm")
-public interface ${upClassName}QueryService {
+@Service("${lowClassName}QueryManager")
+public class ${upClassName}QueryManagerImpl implements ${upClassName}QueryManager {
 
-	public void create${upClassName}(${upClassName} ${upClassName});
+	/** sl4j */
+	private static final Logger LOGGER = LoggerFactory.getLogger(${upClassName}QueryManagerImpl.class);
 
-	public void update${upClassName}(${upClassName} ${upClassName});
+	@Autowired
+	private ${upClassName}QueryService ${lowClassName}QueryService;
 
-	public void delete${upClassName}(${primaryKeyType} ${primaryKey});
+	public Result get${upClassName}ByPrimaryKey(${primaryKeyType} ${primaryKey}) {
+		return null;
+	}
 
 }

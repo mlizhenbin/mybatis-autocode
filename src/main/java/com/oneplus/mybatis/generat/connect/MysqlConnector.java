@@ -58,6 +58,22 @@ public class MysqlConnector implements Connector {
         return colMap;
     }
 
+    public Map<String, String> getColumnRemarkMap(String tableName) {
+        Map<String, String> colMap = new LinkedHashMap<String, String>();
+        DatabaseMetaData meta = getDatabaseMetaData();
+        try {
+            ResultSet colRet = meta.getColumns(null, "%", tableName, "%");
+            while (colRet.next()) {
+                String columnName = colRet.getString("COLUMN_NAME");
+                String columnRemark = colRet.getString("REMARKS");
+                colMap.put(columnName, columnRemark);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return colMap;
+    }
+
     public Map<String, String> getFormatedColumnNameTypeMap(String tableName) {
         Map<String, String> colMap = new LinkedHashMap<String, String>();
         DatabaseMetaData meta = getDatabaseMetaData();

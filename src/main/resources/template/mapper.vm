@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="${packageName}.dao.${upClassName}Dao">
-
     <typeAlias alias="${lowClassName}" type="${packageName}.dao.${upClassName}Dao"/>
-
     <resultMap type="${packageName}.model.${upClassName}" id="${lowClassName}_result">
 #foreach($resultMapColumn in $resultMapColumns)
         $resultMapColumn
@@ -23,11 +21,9 @@
     </sql>
 
     <sql id="${upClassName}_List_Paramter">
-        <dynamic prepend="ORDER BY">
-            <isNotEmpty property = "orderItem">
-                ${tableName}.#{orderItem} #{orderType} <!-- # and $ has difference, this place need $ -->
-            </isNotEmpty>
-        </dynamic>
+        <if test="orderItem != null" >
+            ORDER BY ${tableName}.#{orderItem} #{orderType} <!-- # and $ has difference, this place need $ -->
+        </if>
     </sql>
 
     <sql id="${upClassName}_column">
@@ -81,7 +77,9 @@
         FROM ${tableName} ${tableName}
         <include refid="${upClassName}_Query_List_Sharing" />
         <include refid="${upClassName}_List_Paramter" />
-        limit #{begin},#{pageSize}
+        <if test="begin != null and pageSize != null" >
+            limit #{begin},#{pageSize}
+        </if>
     </select>
 
     <select id="list${upClassName}Count" resultClass="java.lang.Integer" parameterClass="java.util.HashMap">

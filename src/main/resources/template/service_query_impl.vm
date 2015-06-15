@@ -1,32 +1,24 @@
 package ${packageName}.service;
 
-import java.util.List;
-import ${packageName}.model.${upClassName};
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import ${packageName}.service.dto.${upClassName}DTO;
+import ${packageName}.dao.${upClassName}Mapper;
+import ${packageName}.dao.model.${upClassName};
 
 #parse("author.vm")
-public interface ${upClassName}OperateService {
+@service("${lowClassName}QueryService")
+public class ${upClassName}QueryServiceImpl implements ${upClassName}QueryService {
 
-	/**
-     * 通过主键ID查询
-     */
-    public ${upClassName} findBy${primaryKey}(${primaryKeyType} ${primaryKey});
+	/** sl4j */
+	private static final Logger LOGGER = LoggerFactory.getLogger(${upClassName}QueryServiceImpl.class);
 
-    /**
-     * 通过参数查询
-     */
-    public ${upClassName} find${upClassName}(Map<String, Object> map);
+	@Autowired
+	private ${upClassName}Mapper ${lowClassName}Mapper;
 
-    /**
-     * 查询list
-     */
-    public List<${upClassName}> list${upClassName}(Map<String, Object> map);
-
-    /**
-     * 查询list数量
-     */
-    public Integer list${upClassName}Count(Map<String, Object> map);
-
-
-	public ${upClassName} get${upClassName}ByPrimaryKey(${primaryKeyType} ${primaryKey});
+    public ${upClassName} get${upClassName}ByPrimaryKey(${primaryKeyType} ${normalPrimaryKey}) {
+        ${upClassName} ${lowClassName} = ${upClassName} findBy${primaryKey}(${normalPrimaryKey})
+        return ${upClassName}DTOConvert(${lowClassName})
+	}
 
 }

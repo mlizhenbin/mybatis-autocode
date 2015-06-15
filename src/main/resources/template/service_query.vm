@@ -1,13 +1,13 @@
 package ${packageName}.service;
 
 import java.util.List;
-import ${packageName}.model.${upClassName};
 
 #parse("author.vm")
 public interface ${upClassName}QueryService {
 
-	public List<${upClassName}> get${upClassName}List();
-
+	/**
+	 * 通过主键${primaryKeyType}查询${upClassName}
+	 */
 	public ${upClassName} get${upClassName}ByPrimaryKey(${primaryKeyType} ${primaryKey});
 
 }

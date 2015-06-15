@@ -1,14 +1,16 @@
 package ${packageName}.service;
 
-import ${packageName}.model.${upClassName};
-
 #parse("author.vm")
-public interface ${upClassName}QueryService {
+public interface ${upClassName}OperateManager {
 
-	public void create${upClassName}(${upClassName} ${upClassName});
+	/**
+	 * 创建${upClassName}
+	*/
+	public Result add${upClassName}(${upClassName}DTO ${upClassName}DTO);
 
-	public void update${upClassName}(${upClassName} ${upClassName});
-
-	public void delete${upClassName}(${primaryKeyType} ${primaryKey});
+	/**
+	 * 更新${upClassName}
+	*/
+	public Result update${upClassName}(${upClassName}DTO ${upClassName}DTO);
 
 }

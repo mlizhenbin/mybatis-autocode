@@ -1,15 +1,9 @@
 package ${packageName}.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,82 +17,35 @@ import ${packageName}.service.${upClassName}Service;
 public class ${upClassName}Controller {
 
     /** sl4j */
-	private Logger log = Logger.getLogger(${upClassName}Controller.class);
+	private Logger LOGGER = Logger.getLogger(${upClassName}Controller.class);
 	
 	@Autowired
-	private ${upClassName}Service ${lowClassName}Service;
-	
+	private ${upClassName}OperateManager ${lowClassName}OperateManager;
+
+	@Autowired
+	private ${upClassName}QueryManager ${lowClassName}QueryManager;
+
 	@RequestMapping(value="/${lowClassName}/lis")
     public String list(ModelMap modelMap){
-		try {
-			List<${upClassName}> list = ${lowClassName}Service.get${upClassName}List();
-			request.setAttribute("list", list);
-		} catch (Exception e) {
-			log.error(e);
-		}
-        return "${lowClassName}";
+        return "${lowClassName}list.vm";
     }
 	
 	@RequestMapping(value="/${lowClassName}/get")
 	@ResponseBody
-    public Map<String,Object> get(@RequestParam("${primaryKey}") ${primaryKeyType} ${primaryKey}){
-		Map<String,Object> map = new HashMap<String,Object>();
-		try {
-			${upClassName} ${lowClassName} = ${lowClassName}Service.get${upClassName}ByPrimaryKey(${primaryKey});
-            map.put("${lowClassName}", ${lowClassName});
-			map.put(Const.STATUS, Const.SUCCESS);
-		} catch (Exception e) {
-			log.error(e);
-		}
-        return map;
+    public Object get(@RequestParam("${primaryKey}") ${primaryKeyType} ${primaryKey}){
+        return null;
     }
     
     @RequestMapping(value="/${lowClassName}/create")
 	@ResponseBody
-    public Map<String,Object> create(@ModelAttribute ${upClassName} ${lowClassName}){
-		Map<String,Object> map = new HashMap<String,Object>();
-		try {
-			${lowClassName}Service.create${upClassName}(${lowClassName});
-			map.put("${lowClassName}", ${lowClassName});
-			map.put(Const.STATUS, Const.SUCCESS);
-		} catch (Exception e) {
-			log.error(e);
-			map.put(Const.STATUS, Const.FAILURE);
-			map.put(Const.ERROR_MESSAGE, Const.CREATE_EXCEPTION);
-		}
-        return map;
+    public Object create(@ModelAttribute ${upClassName} ${lowClassName}){
+		retun null;
     }
 
     @RequestMapping(value="/${lowClassName}/update")
 	@ResponseBody
-    public Map<String,Object> update(@ModelAttribute ${upClassName} ${lowClassName}){
-		Map<String,Object> map = new HashMap<String,Object>();
-		try {
-			${upClassName} old${upClassName} = ${lowClassName}Service.get${upClassName}ByPrimaryKey(${lowClassName}.get${PrimaryKey}());
-            ${updateAssignValue}
-			${lowClassName}Service.update${upClassName}(old${upClassName});
-			map.put("${lowClassName}", ${lowClassName});
-			map.put(Const.STATUS, Const.SUCCESS);
-		} catch (Exception e) {
-			log.error(e);
-			map.put(Const.STATUS, Const.FAILURE);
-			map.put(Const.ERROR_MESSAGE, Const.UPDATE_EXCEPTION);
-		}
-        return map;
+    public Object update(@ModelAttribute ${upClassName} ${lowClassName}){
+        return null;
     }
 
-    @RequestMapping(value="/${lowClassName}/delete")
-	@ResponseBody
-    public Map<String,Object> delete(@RequestParam("deleteId") ${primaryKeyType} ${primaryKey}){
-		Map<String,Object> map = new HashMap<String,Object>();
-		try {
-			${lowClassName}Service.delete${upClassName}(${primaryKey});
-			map.put(Const.STATUS, Const.SUCCESS);
-		} catch (Exception e) {
-			log.error(e);
-			map.put(Const.STATUS, Const.FAILURE);
-			map.put(Const.ERROR_MESSAGE, Const.DELETE_EXCEPTION);
-		}
-        return map;
-    }
 }
