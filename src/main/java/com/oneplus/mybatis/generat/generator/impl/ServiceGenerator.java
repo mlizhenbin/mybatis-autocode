@@ -8,10 +8,7 @@ import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import com.sun.corba.se.impl.io.ObjectStreamClass;
 import org.apache.velocity.VelocityContext;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 功能描述：Service代码生成
@@ -26,9 +23,7 @@ public class ServiceGenerator extends BaseGenerator {
     @Override
     public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
         super.initVelocityContext(velocityContext, generatorContext);
-
-        // TODO
-        velocityContext.put("SerialVersionUID", ObjectStreamClass.getSerialVersionUID(this.getClass()));
+        velocityContext.put("SerialVersionUID", String.valueOf(UUID.randomUUID().getLeastSignificantBits()));
 
         String tableName = generatorContext.getTableName();
         Connector connector = (Connector) generatorContext.getAttribute("connector");

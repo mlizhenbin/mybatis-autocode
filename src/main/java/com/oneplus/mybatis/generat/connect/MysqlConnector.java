@@ -1,10 +1,12 @@
 package com.oneplus.mybatis.generat.connect;
 
-import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
 
 import java.sql.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Properties;
 
 public class MysqlConnector implements Connector {
 
@@ -47,42 +49,6 @@ public class MysqlConnector implements Connector {
         }
         return colMap;
     }
-
-    public Map<String, String> getFormatedColumnNameTypeMap(String tableName) {
-        Map<String, String> colMap = new LinkedHashMap<String, String>();
-        DatabaseMetaData meta = getDatabaseMetaData();
-        try {
-            ResultSet colRet = meta.getColumns(null, "%", tableName, "%");
-            while (colRet.next()) {
-                String columnName = colRet.getString("COLUMN_NAME");
-                int digits = colRet.getInt("DECIMAL_DIGITS");
-                int dataType = colRet.getInt("DATA_TYPE");
-                String columnType = getDataType(dataType, digits);
-                colMap.put(GeneratorStringUtils.format(columnName), columnType);
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return colMap;
-    }
-
-//    public Map<String, String> getColumnNameTypeMap(String tableName) {
-//        Map<String, String> colMap = new LinkedHashMap<String, String>();
-//        DatabaseMetaData meta = getDatabaseMetaData();
-//        try {
-//            ResultSet colRet = meta.getColumns(null, "%", tableName, "%");
-//            while (colRet.next()) {
-//                String columnName = colRet.getString("COLUMN_NAME");
-//                int digits = colRet.getInt("DECIMAL_DIGITS");
-//                int dataType = colRet.getInt("DATA_TYPE");
-//                String columnType = getDataType(dataType, digits);
-//                colMap.put(GeneratorStringUtils.format(columnName), columnType);
-//            }
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//        return colMap;
-//    }
 
     public Map<String, String> getPrimaryKey(String tableName) {
         Map<String, String> map = new HashMap<String, String>();

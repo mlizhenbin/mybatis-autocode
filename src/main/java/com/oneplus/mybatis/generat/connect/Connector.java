@@ -21,14 +21,6 @@ public interface Connector {
     public Map<String, String> getPrimaryKey(String tableName);
 
     /**
-     * 获取格式化之后的类型
-     *
-     * @param tableName
-     * @return
-     */
-    public Map<String, String> getFormatedColumnNameTypeMap(String tableName);
-
-    /**
      * 获取类型
      *
      * @param tableName

@@ -9,6 +9,7 @@ import org.apache.velocity.VelocityContext;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 /**
  * 功能描述：Model代码生成
@@ -23,7 +24,7 @@ public class ModelGenerator extends BaseGenerator {
     @Override
     public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
         super.initVelocityContext(velocityContext, generatorContext);
-        velocityContext.put("SerialVersionUID", ObjectStreamClass.getSerialVersionUID(this.getClass()));
+        velocityContext.put("SerialVersionUID", String.valueOf(UUID.randomUUID().getLeastSignificantBits()));
 
         String tableName = generatorContext.getTableName();
         Connector connector = (Connector) generatorContext.getAttribute("connector");
