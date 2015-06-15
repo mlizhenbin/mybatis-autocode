@@ -1,6 +1,5 @@
 package com.oneplus.mybatis.generat.connect;
 
-import java.util.List;
 import java.util.Map;
 
 /**
