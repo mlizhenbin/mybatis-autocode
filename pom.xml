@@ -9,7 +9,7 @@
     <artifactId>mybatis-generator</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
-    <name>oneplusMybatisGenerator</name>
+    <name>wmsGenerator</name>
 
     <dependencies>
         <dependency>

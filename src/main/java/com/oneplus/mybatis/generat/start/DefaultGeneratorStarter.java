@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * 功能描述：
+ * 功能描述：自动化生成代码默认执行实现
  *
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn

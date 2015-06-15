@@ -1,7 +1,7 @@
 package com.oneplus.mybatis.generat.start;
 
 /**
- * 功能描述：
+ * 功能描述：自动化生成代码接口
  *
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn

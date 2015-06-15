@@ -30,7 +30,8 @@ public interface GeneratorConfigurer {
     /**
      * 过滤表名前缀
      */
-    public static final String GENERATOR_TABLEPREFIX = "wms_";
+//    public static final String GENERATOR_TABLEPREFIX = "wms_";
+    public static final String GENERATOR_TABLEPREFIX = "";
 
     /**
      * 强类型转换，数据库float转换为BigDecimal，不配置转换为Double
