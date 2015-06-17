@@ -48,6 +48,7 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
         initProjectName();
         initTablePrefix();
         initPrecision();
+        initDomain();
         initLayers();
         initLocation();
     }
@@ -83,6 +84,15 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
         }
         properties.setProperty("generator.precision", GENERATOR_PRECISION);
     }
+
+    protected void initDomain() {
+        String value = (String) properties.get("generator.domain");
+        if (StringUtils.isNotBlank(value)) {
+            return;
+        }
+        properties.setProperty("generator.domain", GENERATOR_DOMAIN);
+    }
+
 
     protected void initLayers() {
         String value = (String) properties.get("generator.layers");

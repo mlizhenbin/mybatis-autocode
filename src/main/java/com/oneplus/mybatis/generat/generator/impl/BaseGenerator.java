@@ -126,6 +126,7 @@ public abstract class BaseGenerator implements Generator {
                 .append(" * Date: ").append(dateFormat.format(new Date())).append(" Time: ").append(timeFormat.format(new Date())).append("\n")
                 .append(" */");
         velocityContext.put("classTitle", titleSb.toString());
+        velocityContext.put("domain", generatorContext.getAttribute("domain"));
     }
 
     /**
@@ -148,9 +149,10 @@ public abstract class BaseGenerator implements Generator {
 
         Map<String, String> generatorParams = Maps.newHashMap();
         for (int i = 0; i < templates.length; i++) {
+            String tempFileName = baseFileNames[i].replace("{domain}", (CharSequence) properties.get("generator.domain"));
             String fileName = GeneratorFileUtils.getPackageDirectory(targetDirs[i], properties)
                     + GeneratorStringUtils.firstUpperAndNoPrefix(tableName, properties)
-                    + baseFileNames[i];
+                    + tempFileName;
             generatorParams.put(templates[i], fileName);
         }
         return generatorParams;

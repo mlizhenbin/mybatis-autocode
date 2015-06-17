@@ -15,7 +15,7 @@ public interface GeneratorConfigurer {
     /**
      * 代码生成包
      */
-    public static final String GENERATOR_PACKAGE = "com.oneplus.package";
+    public static final String GENERATOR_PACKAGE = "com.oneplus";
 
     /**
      * 生成代码存放位置
@@ -36,6 +36,11 @@ public interface GeneratorConfigurer {
      * 强类型转换，数据库float转换为BigDecimal，不配置转换为Double
      */
     public static final String GENERATOR_PRECISION = "high";
+
+    /**
+     * domain后缀名称
+     */
+    public static final String GENERATOR_DOMAIN = "DTO";
 
     /**
      * 默认配置文件名称

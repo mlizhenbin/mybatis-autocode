@@ -1,6 +1,6 @@
 package ${packageName}.service;
 
-import ${packageName}.service.dto.${upClassName}DTO;
+import ${packageName}.service.domain.${upClassName}${domain};
 
 ${classTitle}
 public interface ${upClassName}OperateService {
@@ -8,11 +8,11 @@ public interface ${upClassName}OperateService {
 	/**
      * 创建${upClassName}
 	 */
-	public void add${upClassName}(${upClassName}DTO ${upClassName}DTO);
+	public void add${upClassName}(${upClassName}${domain} ${upClassName}${domain});
 
 	/**
 	 * 更新${upClassName}
 	 */
-	public void update${upClassName}(${upClassName}DTO ${upClassName}DTO);
+	public void update${upClassName}(${upClassName}${domain} ${upClassName}${domain});
 
 }

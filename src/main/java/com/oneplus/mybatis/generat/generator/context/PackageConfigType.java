@@ -20,11 +20,11 @@ public enum PackageConfigType {
 
     service("service",
             "/service|/service/impl|/service|" +
-                    "/service/impl|/service/dto|/service/convert|/service/convert",
+                    "/service/impl|/service/domain|/service/convert|/service/convert",
             "QueryService.java|QueryServiceImpl.java|OperateService.java|" +
-                    "OperateServiceImpl.java|DTO.java|DTOConvert.java|Convert.java",
+                    "OperateServiceImpl.java|{domain}.java|{domain}Convert.java|Convert.java",
             "service_query.vm|service_query_impl.vm|service_operate.vm|" +
-                    "service_operate_impl.vm|service_dto.vm|service_convert_dto.vm|service_convert.vm"),
+                    "service_operate_impl.vm|service_domain.vm|service_convert_domain.vm|service_convert.vm"),
 
     manager("manage",
             "/manage|/manage/impl|/manage|/manage/impl",

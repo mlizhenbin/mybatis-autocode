@@ -2,7 +2,7 @@ package ${packageName}.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ${packageName}.service.dto.${upClassName}DTO;
+import ${packageName}.service.domain.${upClassName}${domain};
 import ${packageName}.dao.${upClassName}Mapper;
 import ${packageName}.dao.model.${upClassName};
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +18,9 @@ public class ${upClassName}QueryServiceImpl implements ${upClassName}QueryServic
 	@Autowired
 	private ${upClassName}Mapper ${lowClassName}Mapper;
 
-    public ${upClassName}DTO get${upClassName}ByPrimaryKey(${primaryKeyType} ${normalPrimaryKey}) {
+    public ${upClassName}${domain} get${upClassName}ByPrimaryKey(${primaryKeyType} ${normalPrimaryKey}) {
         ${upClassName} ${lowClassName} = ${lowClassName}Mapper.findBy${primaryKey}(${normalPrimaryKey});
-        return ${upClassName}DTOConvert.convert(${lowClassName});
+        return ${upClassName}${domain}Convert.convert(${lowClassName});
 	}
 
 }

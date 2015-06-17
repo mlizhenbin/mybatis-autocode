@@ -111,7 +111,4 @@ public class GeneratorContext implements Serializable {
         return primaryKey;
     }
 
-    public Map<String, Object> getAttributes() {
-        return attributes;
-    }
 }

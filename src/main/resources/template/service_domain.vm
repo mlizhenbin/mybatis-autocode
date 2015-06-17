@@ -1,4 +1,4 @@
-package ${packageName}.service.dto;
+package ${packageName}.service.domain;
 
 #foreach($ims in $importSets)
 ${ims}
@@ -7,7 +7,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 import java.io.Serializable;
 
 ${classTitle}
-public class ${upClassName}DTO implements Serializable {
+public class ${upClassName}${domain} implements Serializable {
     private static final long serialVersionUID = ${SerialVersionUID}L;
 
 #foreach($field in $fields)

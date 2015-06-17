@@ -6,11 +6,11 @@ public interface ${upClassName}OperateManager {
 	/**
 	 * 创建${upClassName}
 	*/
-	public Result add${upClassName}(${upClassName}DTO ${upClassName}DTO);
+	public Result add${upClassName}(${upClassName}${domain} ${upClassName}${domain});
 
 	/**
 	 * 更新${upClassName}
 	*/
-	public Result update${upClassName}(${upClassName}DTO ${upClassName}DTO);
+	public Result update${upClassName}(${upClassName}${domain} ${upClassName}${domain});
 
 }

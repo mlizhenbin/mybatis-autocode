@@ -131,6 +131,7 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
         context.addAttribute("properties", properties);
         context.addAttribute("columnPrimaryKey", columnPrimaryKey);
         context.addAttribute("normalPrimaryKey", normalPrimaryKey);
+        context.addAttribute("domain", properties.get("generator.domain"));
         return context;
     }
 }

@@ -1,6 +1,7 @@
 package com.oneplus.mybatis.generat.generator.impl;
 
 import com.google.common.collect.Lists;
+import com.oneplus.mybatis.generat.config.GeneratorConfigurer;
 import com.oneplus.mybatis.generat.connect.Connector;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
@@ -44,17 +45,18 @@ public class ServiceGenerator extends BaseGenerator {
         velocityContext.put("methods", generateGetAndSetMethods(colMap));
         velocityContext.put("fields", generateFields(colMap, columnRemarkMap));
         velocityContext.put("importSets", importSets);
-        velocityContext.put("convertDTOs", getCovertDTOFields(colMap));
+        velocityContext.put("convertDomains", getCovertDomainFields(colMap));
         velocityContext.put("converts", getCovertFields(colMap));
     }
 
-    protected List<String> getCovertDTOFields(Map<String, String> map) {
+    protected List<String> getCovertDomainFields(Map<String, String> map) {
         Set<String> keySet = map.keySet();
         List<String> converts = Lists.newArrayList();
         for (String key : keySet) {
             StringBuilder sb = new StringBuilder();
             String field = GeneratorStringUtils.format(key);
-            sb.append(velocityContext.get("lowClassName")).append("DTO").append(".set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(")
+            sb.append(velocityContext.get("lowClassName")).append(GeneratorConfigurer.GENERATOR_DOMAIN)
+                    .append(".set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(")
                     .append(velocityContext.get("lowClassName")).append(".get" + GeneratorStringUtils.firstUpperNoFormat(field) + "())");
             converts.add(sb.toString());
         }
@@ -68,7 +70,8 @@ public class ServiceGenerator extends BaseGenerator {
             StringBuilder sb = new StringBuilder();
             String field = GeneratorStringUtils.format(key);
             sb.append(velocityContext.get("lowClassName")).append(".set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(")
-                    .append(velocityContext.get("lowClassName")).append("DTO").append(".get" + GeneratorStringUtils.firstUpperNoFormat(field) + "())");
+                    .append(velocityContext.get("lowClassName")).append(GeneratorConfigurer.GENERATOR_DOMAIN)
+                    .append(".get" + GeneratorStringUtils.firstUpperNoFormat(field) + "())");
             converts.add(sb.toString());
         }
         return converts;
