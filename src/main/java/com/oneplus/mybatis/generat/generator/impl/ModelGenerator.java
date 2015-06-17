@@ -3,7 +3,6 @@ package com.oneplus.mybatis.generat.generator.impl;
 import com.oneplus.mybatis.generat.connect.Connector;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
-import com.sun.corba.se.impl.io.ObjectStreamClass;
 import org.apache.velocity.VelocityContext;
 
 import java.util.HashSet;

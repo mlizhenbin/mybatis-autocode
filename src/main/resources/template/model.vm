@@ -6,7 +6,7 @@ ${ims}
 import org.apache.commons.lang.builder.ToStringBuilder;
 import java.io.Serializable;
 
-#parse("author.vm")
+${classTitle}
 public class ${upClassName} implements Serializable {
 ##    private static final long serialVersionUID = ${SerialVersionUID}L;
 

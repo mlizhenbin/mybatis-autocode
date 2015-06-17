@@ -2,7 +2,7 @@ package ${packageName}.service;
 
 import java.util.List;
 
-#parse("author.vm")
+${classTitle}
 public interface ${upClassName}QueryService {
 
 	/**

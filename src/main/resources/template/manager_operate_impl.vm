@@ -3,7 +3,7 @@ package ${packageName}.service;
 import ${packageName}.service.${lowClassName}QueryService;
 import ${packageName}.service.${lowClassName}OperateService;
 
-#parse("author.vm")
+${classTitle}
 @Service("${lowClassName}OperateManager")
 public class ${upClassName}OperateManagerImpl implements ${upClassName}OperateManager  {
 

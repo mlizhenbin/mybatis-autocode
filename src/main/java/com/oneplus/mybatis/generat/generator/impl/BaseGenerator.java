@@ -3,19 +3,25 @@ package com.oneplus.mybatis.generat.generator.impl;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.oneplus.mybatis.generat.generator.Generator;
-import com.oneplus.mybatis.generat.generator.context.ClassHeadInfo;
+import com.oneplus.mybatis.generat.generator.context.ClassTitle;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import com.oneplus.mybatis.generat.utils.GeneratorFileUtils;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
+
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.apache.velocity.app.VelocityEngine;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.util.ClassUtils;
 
+import java.io.IOException;
 import java.io.StringWriter;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -28,6 +34,11 @@ import java.util.*;
  * Date: 15/6/13 Time：00:29
  */
 public abstract class BaseGenerator implements Generator {
+
+    /**
+     * 打印BaseGenerator.java日志
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(BaseGenerator.class);
 
     /**
      * velocity上下文
@@ -56,19 +67,13 @@ public abstract class BaseGenerator implements Generator {
      * @param generatorContext
      */
     protected void write(GeneratorContext generatorContext) {
-        // 初始化velocity
-        Properties prop = new Properties();
-        prop.setProperty(VelocityEngine.FILE_RESOURCE_LOADER_PATH, getFilePath());
-        prop.setProperty(Velocity.ENCODING_DEFAULT, "UTF-8");
-        prop.setProperty(Velocity.INPUT_ENCODING, "UTF-8");
-        prop.setProperty(Velocity.OUTPUT_ENCODING, "UTF-8");
-        VelocityEngine velocityEngine = new VelocityEngine(prop);
+        VelocityEngine velocityEngine = new VelocityEngine(initVelocityProperties());
         velocityEngine.init();
 
         // 读取模板渲染内容，同时创建文件
         Map<String, String> params = initGeneratorParams(generatorContext);
         for (String templateName : params.keySet()) {
-            Template template = velocityEngine.getTemplate(templateName);
+            Template template = velocityEngine.getTemplate(VM_TARGET_PATH + "/" + templateName);
             initVelocityContext(velocityContext, generatorContext);
             StringWriter writer = new StringWriter();
             template.merge(velocityContext, writer);
@@ -76,6 +81,22 @@ public abstract class BaseGenerator implements Generator {
             GeneratorFileUtils.write(content, params.get(templateName));
             IOUtils.closeQuietly(writer);
         }
+    }
+
+    /**
+     * 初始化Velocity配置
+     *
+     * @return
+     */
+    protected Properties initVelocityProperties() {
+        Properties properties = new Properties();
+        properties.setProperty("resource.loader", "jar");
+        properties.setProperty("jar.resource.loader.class", "org.apache.velocity.runtime.resource.loader.JarResourceLoader");
+        properties.setProperty("jar.resource.loader.path", "jar:" + getVmFilePath());
+        properties.setProperty(Velocity.ENCODING_DEFAULT, "UTF-8");
+        properties.setProperty(Velocity.INPUT_ENCODING, "UTF-8");
+        properties.setProperty(Velocity.OUTPUT_ENCODING, "UTF-8");
+        return properties;
     }
 
     /**
@@ -92,14 +113,19 @@ public abstract class BaseGenerator implements Generator {
         velocityContext.put("packageName", generatorContext.getPackageName());
         velocityContext.put("primaryKeyType", generatorContext.getPrimaryKeyType());
         velocityContext.put("primaryKey", generatorContext.getPrimaryKey());
-        velocityContext.put("author", System.getProperty("user.name"));
-        velocityContext.put("companyName", ClassHeadInfo.company);
-
+        velocityContext.put("normalPrimaryKey", generatorContext.getAttribute("normalPrimaryKey"));
+        StringBuilder titleSb = new StringBuilder();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-        velocityContext.put("cerateDate", dateFormat.format(new Date()));
-        velocityContext.put("createTime", timeFormat.format(new Date()));
-        velocityContext.put("normalPrimaryKey", generatorContext.getAttribute("normalPrimaryKey"));
+        titleSb.append("/** ").append("\n")
+                .append(" * 功能描述: ").append("\n")
+                .append(" * ").append("\n")
+                .append(" * @author: ").append(System.getProperty("user.name")).append("\n")
+                .append(" * email: ").append(System.getProperty("user.name")).append("@oneplus.cn").append("\n")
+                .append(" * company: ").append(ClassTitle.company).append("\n")
+                .append(" * Date: ").append(dateFormat.format(new Date())).append(" Time: ").append(timeFormat.format(new Date())).append("\n")
+                .append(" */");
+        velocityContext.put("classTitle", titleSb.toString());
     }
 
     /**
@@ -143,9 +169,17 @@ public abstract class BaseGenerator implements Generator {
      *
      * @return
      */
-    protected String getFilePath() {
-        return BaseGenerator.class.getClassLoader().getResource("").getFile()
-                + VM_TARGET_PATH + "/";
+    protected String getVmFilePath() {
+        ClassLoader clToUse = ClassUtils.getDefaultClassLoader();
+        try {
+            Enumeration<URL> urls = clToUse.getResources(VM_TARGET_PATH);
+            URL url = urls.nextElement();
+            String filePath = url.getFile();
+            LOGGER.info("read velocity templates file path = " + filePath);
+            return filePath;
+        } catch (IOException e) {
+            throw new RuntimeException("read velocity templates error, e", e);
+        }
     }
 
     protected List<String> generateFields(Map<String, String> map, Map<String, String> columnRemarkMap) {

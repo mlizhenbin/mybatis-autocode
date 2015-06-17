@@ -8,7 +8,7 @@ import ${packageName}.dao.model.${upClassName};
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-#parse("author.vm")
+${classTitle}
 @Service("${lowClassName}QueryService")
 public class ${upClassName}QueryServiceImpl implements ${upClassName}QueryService {
 

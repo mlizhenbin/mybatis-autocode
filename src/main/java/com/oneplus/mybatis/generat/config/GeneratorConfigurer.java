@@ -15,7 +15,7 @@ public interface GeneratorConfigurer {
     /**
      * 代码生成包
      */
-    public static final String GENERATOR_PACKAGE = "com.oneplus";
+    public static final String GENERATOR_PACKAGE = "com.oneplus.package";
 
     /**
      * 生成代码存放位置
@@ -25,12 +25,11 @@ public interface GeneratorConfigurer {
     /**
      * 所属系统项目
      */
-    public static final String GENERATOR_PROJECT_NAME = "wms";
+    public static final String GENERATOR_PROJECT_NAME = "oneplus";
 
     /**
      * 过滤表名前缀
      */
-//    public static final String GENERATOR_TABLEPREFIX = "wms_";
     public static final String GENERATOR_TABLEPREFIX = "";
 
     /**
@@ -39,14 +38,19 @@ public interface GeneratorConfigurer {
     public static final String GENERATOR_PRECISION = "high";
 
     /**
-     * 配置文件名称
+     * 默认配置文件名称
      */
-    public static final String LOCAL_GENERATOR_PATH = "local-generat.properties";
+    public static final String LOCAL_GENERATOR_PATH = "local-generator.properties";
+
+    /**
+     * project下配置的内容
+     */
+    public static final String CONFIG_GENERATOR_PATH = "generator.properties";
 
     /**
      * Spring配置文件
      */
-    public static final String SPRING_COFIG = "oneplus-spring-generator.xml";
+    public static final String SPRING_CONFIG = "oneplus-spring-generator.xml";
 
     /**
      * 获取配置文件配置集

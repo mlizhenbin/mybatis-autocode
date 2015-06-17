@@ -37,15 +37,27 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultGeneratorStarter.class);
 
+    /**
+     * 读取配置
+     */
     private static Properties properties;
 
+    /**
+     * 读取数据连接
+     */
     private static Connector connector;
+
+    /**
+     * 上下文
+     */
+	private static ApplicationContext context;
 
     static {
         GeneratorConfigurer generatorConfigurer = GeneratorConfigurerFactory.getGeneratorConfigurer();
         properties = generatorConfigurer.getProperties();
         generatorConfigurer.initConfigParams();
         connector = new MysqlConnector(properties);
+        context = new ClassPathXmlApplicationContext(GeneratorConfigurer.SPRING_CONFIG);
     }
 
     /**
@@ -54,7 +66,6 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
     public void start() {
         try {
             generator();
-            LOGGER.info("全部生成代码成功.");
         } catch (Exception e) {
             throw new RuntimeException("启动创建代码工具出现异常", e);
         }
@@ -91,12 +102,10 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
                 return;
             }
 
-            ApplicationContext context = new ClassPathXmlApplicationContext(GeneratorConfigurer.SPRING_COFIG);
             for (PackageConfigType configType : PackageConfigType.values()) {
                 Generator generator = (Generator) context.getBean("generatorFacade");
                 generator.generator(initBaseContext(tableName), configType);
             }
-            LOGGER.info(tableName + " 生成代码成功.");
         }
     }
 
@@ -115,6 +124,7 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
         String primaryKey = GeneratorStringUtils.firstUpperNoFormat(GeneratorStringUtils.format(propMap.get("primaryKey")));
         String columnPrimaryKey = propMap.get("primaryKey");
         String normalPrimaryKey = GeneratorStringUtils.format(propMap.get("primaryKey"));
+
         GeneratorContext context = new GeneratorContext(tableName, upClassName, lowClassName,
                 packageName, primaryKeyType, primaryKey, properties);
         context.addAttribute("connector", connector);
@@ -123,5 +133,4 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
         context.addAttribute("normalPrimaryKey", normalPrimaryKey);
         return context;
     }
-
 }

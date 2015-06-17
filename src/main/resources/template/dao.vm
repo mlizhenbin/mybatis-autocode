@@ -5,7 +5,7 @@ import java.util.Map;
 
 import ${packageName}.model.${upClassName};
 
-#parse("author.vm")
+${classTitle}
 public interface ${upClassName}Mapper {
 
     /**

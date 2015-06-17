@@ -8,7 +8,7 @@ package com.oneplus.mybatis.generat.generator.context;
  * company：一加科技
  * Date: 15/6/14 Time：17:36
  */
-public interface ClassHeadInfo {
+public interface ClassTitle {
 
     public static final String company = "一加科技";
 

@@ -1,6 +1,6 @@
 package ${packageName}.service;
 
-#parse("author.vm")
+${classTitle}
 public interface ${upClassName}OperateManager {
 
 	/**

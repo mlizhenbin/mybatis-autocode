@@ -1,15 +1,15 @@
 package com.oneplus.mybatis.generat.generator.impl;
 
+import java.util.List;
+import java.util.Map;
+
+import org.apache.velocity.VelocityContext;
+
 import com.google.common.collect.Lists;
 import com.oneplus.mybatis.generat.connect.Connector;
-import com.oneplus.mybatis.generat.generator.Generator;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
-import org.apache.velocity.VelocityContext;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * 功能描述：Mapper.xml代码生成
@@ -27,7 +27,6 @@ public class MapperGenerator extends BaseGenerator {
 
         String tableName = generatorContext.getTableName();
         Connector connector = (Connector) generatorContext.getAttribute("connector");
-        //Map<String, String> nameJavaTypeMap = connector.getFormatedColumnNameTypeMap(tableName);
         Map<String, String> columnNameTypeMap = connector.getColumnNameTypeMap(tableName);
 
         List<String> resultMapColumns = Lists.newArrayList();

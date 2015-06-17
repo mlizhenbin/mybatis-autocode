@@ -1,6 +1,6 @@
 package ${packageName}.result;
 
-#parse("author.vm")
+${classTitle}
 public enum ${upClassName}Result {
 
     /** 成功 */

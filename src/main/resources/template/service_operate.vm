@@ -2,7 +2,7 @@ package ${packageName}.service;
 
 import ${packageName}.service.dto.${upClassName}DTO;
 
-#parse("author.vm")
+${classTitle}
 public interface ${upClassName}OperateService {
 
 	/**
