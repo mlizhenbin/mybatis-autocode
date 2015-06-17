@@ -5,9 +5,30 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.oneplus</groupId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
-    <artifactId>oneplus-autocode</artifactId>
+    <artifactId>autocode</artifactId>
+    <name>oneplus-autocode</name>
+    <url>http://maven.apache.org</url>
+
+    <!-- 配置本地仓库 -->
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>central</name>
+            <url>http://172.21.107.247:8081/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://172.21.107.247:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -76,8 +97,8 @@
         <plugins>
             <plugin>
                 <groupId>com.oneplus</groupId>
-                <artifactId>oneplus-autocode</artifactId>
-                <version>1.0.1-SNAPSHOT</version>
+                <artifactId>autocode</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
             </plugin>
         </plugins>
     </build>
