@@ -75,7 +75,7 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
      * 自动化创建代码文件
      */
     protected void generator() {
-        LOGGER.info("代码生成工具，开始生成代码...");
+        LOGGER.info("代码生成工具，开始自动生成代码...");
 
         // 创建目录
         GeneratorFileUtils.createPackageDirectory(properties);
