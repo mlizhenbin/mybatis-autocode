@@ -84,7 +84,7 @@
         <include refid="${upClassName}_Query_List_Sharing" />
     </select>
 
-    <delete id="del${upClassName}" parameterType="${upClassName}">
+    <delete id="delete${upClassName}" parameterType="${upClassName}">
         DELETE  FROM  ${tableName}
         <include refid="${upClassName}_By_${primaryKey}" />
     </delete>
