@@ -16,7 +16,7 @@
     </sql>
 
     <sql id="${upClassName}_By_${primaryKey}">
-        WHERE ${tableName}.${columnPrimaryKey} = #{${normalPrimaryKey}}#
+        WHERE ${tableName}.${columnPrimaryKey} = #{${normalPrimaryKey}}
     </sql>
 
     <sql id="${upClassName}_List_Paramter">
