@@ -1,5 +1,7 @@
 package com.oneplus.mybatis.generat.utils;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.util.Properties;
 
 public class GeneratorStringUtils {
@@ -15,6 +17,10 @@ public class GeneratorStringUtils {
      * @return
      */
     public static String format(String string) {
+        if (!StringUtils.contains(string, "_")) {
+            return string;
+        }
+
         StringBuilder sb = new StringBuilder();
         char[] cArr = string.trim().toLowerCase().toCharArray();
         for (int i = 0; i < cArr.length; i++) {
