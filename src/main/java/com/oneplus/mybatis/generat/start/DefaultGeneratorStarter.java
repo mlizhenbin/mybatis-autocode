@@ -50,7 +50,7 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
     /**
      * 上下文
      */
-	private static ApplicationContext context;
+    private static ApplicationContext context;
 
     static {
         GeneratorConfigurer generatorConfigurer = GeneratorConfigurerFactory.getGeneratorConfigurer();
@@ -104,9 +104,21 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
 
             for (PackageConfigType configType : PackageConfigType.values()) {
                 Generator generator = (Generator) context.getBean("generatorFacade");
-                generator.generator(initBaseContext(tableName), configType);
+                GeneratorContext generatorContext = initBaseContext(tableName);
+                doGeneratorService(generator, generatorContext, configType);
             }
         }
+    }
+
+    /**
+     * 调用创建模板的方式
+     *
+     * @param generator
+     * @param generatorContext
+     * @param configType
+     */
+    protected void doGeneratorService(Generator generator, GeneratorContext generatorContext, PackageConfigType configType) {
+        generator.defaultGenerator(generatorContext, configType);
     }
 
     /**

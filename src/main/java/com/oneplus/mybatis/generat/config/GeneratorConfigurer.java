@@ -50,7 +50,7 @@ public interface GeneratorConfigurer {
     /**
      * project下配置的内容
      */
-    public static final String CONFIG_GENERATOR_PATH = "generator.properties";
+    public static final String CONFIG_GENERATOR_PATH = "defaultGenerator.properties";
 
     /**
      * Spring配置文件

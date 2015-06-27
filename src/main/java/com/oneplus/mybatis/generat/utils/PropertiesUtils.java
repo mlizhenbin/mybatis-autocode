@@ -11,7 +11,7 @@ import java.util.Properties;
 public class PropertiesUtils {
 
     public static String getPackage(Properties properties) {
-        String propertiesProperty = properties.getProperty("generator.package");
+        String propertiesProperty = properties.getProperty("defaultGenerator.package");
         if (StringUtils.isNotBlank(propertiesProperty)) {
             propertiesProperty = propertiesProperty.trim();
         }
@@ -19,7 +19,7 @@ public class PropertiesUtils {
     }
 
     public static String getLocation(Properties properties) {
-        String location = properties.getProperty("generator.location");
+        String location = properties.getProperty("defaultGenerator.location");
         if (location != null) {
             location = location.trim();
         }
@@ -31,7 +31,7 @@ public class PropertiesUtils {
     }
 
     public static String getProject(Properties properties) {
-        String project = properties.getProperty("generator.project.name");
+        String project = properties.getProperty("defaultGenerator.project.name");
         if (project != null) {
             project = project.trim();
         }
@@ -60,7 +60,7 @@ public class PropertiesUtils {
     }
 
     public static String getPrecision(Properties properties) {
-        String precision = properties.getProperty("generator.precision");
+        String precision = properties.getProperty("defaultGenerator.precision");
         if (StringUtils.isBlank(precision)) {
             precision = "";
         }
@@ -68,7 +68,7 @@ public class PropertiesUtils {
     }
 
     public static String getLayers(Properties properties) {
-        String layers = properties.getProperty("generator.layers");
+        String layers = properties.getProperty("defaultGenerator.layers");
         if (StringUtils.isBlank(layers)) {
             layers = PackageConfigType.getDefaultConfigLayer();
         }

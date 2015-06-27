@@ -21,8 +21,12 @@ public class GeneratorFacade implements Generator {
 
     private Map<PackageConfigType, Generator> generatorMap = Maps.newHashMap();
 
-    public void generator(GeneratorContext context, PackageConfigType configType) {
-        getGenerator(configType).generator(context, configType);
+    public void defaultGenerator(GeneratorContext context, PackageConfigType configType) {
+        getGenerator(configType).defaultGenerator(context, configType);
+    }
+
+    public void pluginGenerator(GeneratorContext context, PackageConfigType configType) {
+        getGenerator(configType).pluginGenerator(context, configType);
     }
 
     public void setGeneratorMap(Map<String, Generator> map) {

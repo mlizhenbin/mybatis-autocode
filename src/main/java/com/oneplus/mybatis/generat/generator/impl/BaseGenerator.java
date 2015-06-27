@@ -8,7 +8,6 @@ import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import com.oneplus.mybatis.generat.utils.GeneratorFileUtils;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
-
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.velocity.Template;
@@ -56,20 +55,33 @@ public abstract class BaseGenerator implements Generator {
      * @param context
      * @param configType
      */
-    public void generator(GeneratorContext context, PackageConfigType configType) {
+    public void defaultGenerator(GeneratorContext context, PackageConfigType configType) {
         velocityContext = new VelocityContext();
-        write(context);
+        VelocityEngine velocityEngine = new VelocityEngine(initDefaultProperties());
+        velocityEngine.init();
+        write(context, velocityEngine);
+    }
+
+    /**
+     * 插件读取模板文件要从jar包中读取
+     *
+     * @param context
+     * @param configType
+     */
+    public void pluginGenerator(GeneratorContext context, PackageConfigType configType) {
+        velocityContext = new VelocityContext();
+        VelocityEngine velocityEngine = new VelocityEngine(initPluginProperties());
+        velocityEngine.init();
+        write(context, velocityEngine);
     }
 
     /**
      * 读取配置渲染模板，生成文件
      *
      * @param generatorContext
+     * @param velocityEngine
      */
-    protected void write(GeneratorContext generatorContext) {
-        VelocityEngine velocityEngine = new VelocityEngine(initVelocityProperties());
-        velocityEngine.init();
-
+    protected void write(GeneratorContext generatorContext, VelocityEngine velocityEngine) {
         // 读取模板渲染内容，同时创建文件
         Map<String, String> params = initGeneratorParams(generatorContext);
         for (String templateName : params.keySet()) {
@@ -88,7 +100,22 @@ public abstract class BaseGenerator implements Generator {
      *
      * @return
      */
-    protected Properties initVelocityProperties() {
+    protected Properties initDefaultProperties() {
+        Properties properties = new Properties();
+        properties.setProperty("resource.loader", "class");
+        properties.setProperty("class.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+        properties.setProperty(Velocity.ENCODING_DEFAULT, "UTF-8");
+        properties.setProperty(Velocity.INPUT_ENCODING, "UTF-8");
+        properties.setProperty(Velocity.OUTPUT_ENCODING, "UTF-8");
+        return properties;
+    }
+
+    /**
+     * 初始化Velocity配置
+     *
+     * @return
+     */
+    protected Properties initPluginProperties() {
         Properties properties = new Properties();
         properties.setProperty("resource.loader", "jar");
         properties.setProperty("jar.resource.loader.class", "org.apache.velocity.runtime.resource.loader.JarResourceLoader");
@@ -177,7 +204,6 @@ public abstract class BaseGenerator implements Generator {
             Enumeration<URL> urls = clToUse.getResources(VM_TARGET_PATH);
             URL url = urls.nextElement();
             String filePath = url.getFile();
-            LOGGER.info("read velocity templates file path = " + filePath);
             return filePath;
         } catch (IOException e) {
             throw new RuntimeException("read velocity templates error, e", e);

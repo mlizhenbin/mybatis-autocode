@@ -19,5 +19,13 @@ public interface Generator {
      * @param context
      * @param configType
      */
-    public void generator(GeneratorContext context, PackageConfigType configType);
+    public void defaultGenerator(GeneratorContext context, PackageConfigType configType);
+
+    /**
+     * 读取配置生成文件
+     *
+     * @param context
+     * @param configType
+     */
+    public void pluginGenerator(GeneratorContext context, PackageConfigType configType);
 }
