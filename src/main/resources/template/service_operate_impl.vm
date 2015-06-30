@@ -18,12 +18,14 @@ public class ${upClassName}OperateServiceImpl implements ${upClassName}OperateSe
 	@Autowired
 	private ${upClassName}Mapper ${lowClassName}Mapper;
 
+	@Override
 	public void add${upClassName}(${upClassName}${domain} ${lowClassName}${domain}) {
 		${upClassName} ${lowClassName} = ${upClassName}Convert.convert(${lowClassName}${domain});
 		${lowClassName}Mapper.add${upClassName}(${lowClassName});
 		LOGGER.info("增加${upClassName}成功, ${lowClassName}=", ${lowClassName});
 	}
 
+	@Override
 	public void update${upClassName}(${upClassName}${domain} ${lowClassName}${domain}) {
 		${upClassName} ${lowClassName} = ${upClassName}Convert.convert(${lowClassName}${domain});
 		${lowClassName}Mapper.update${upClassName}(${lowClassName});

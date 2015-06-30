@@ -18,6 +18,7 @@ public class ${upClassName}QueryServiceImpl implements ${upClassName}QueryServic
 	@Autowired
 	private ${upClassName}Mapper ${lowClassName}Mapper;
 
+	@Override
     public ${upClassName}${domain} get${upClassName}ByPrimaryKey(${primaryKeyType} ${normalPrimaryKey}) {
         ${upClassName} ${lowClassName} = ${lowClassName}Mapper.findBy${primaryKey}(${normalPrimaryKey});
         return ${upClassName}${domain}Convert.convert(${lowClassName});

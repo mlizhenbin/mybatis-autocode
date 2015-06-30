@@ -1,0 +1,42 @@
+package ${packageName}.result;
+
+${classTitle}
+public class ${upClassName}Exception extends RuntimeException {
+    private static final long serialVersionUID = ${SerialVersionUID}L;
+
+    private ${upClassName}Result ${lowClassName}Result;
+
+    public ${upClassName}Exception(${upClassName}Result ${lowClassName}Result) {
+        this.${lowClassName}Result = ${lowClassName}Result;
+    }
+
+    public ${upClassName}Exception(String message, ${upClassName}Result ${lowClassName}Result) {
+        super(message);
+        this.${lowClassName}Result = ${lowClassName}Result;
+    }
+
+    public ${upClassName}Exception(String message, Throwable cause, ${upClassName}Result ${lowClassName}Result) {
+        super(message, cause);
+        this.${lowClassName}Result = ${lowClassName}Result;
+    }
+
+    public ${upClassName}Exception(Throwable cause, ${upClassName}Result ${lowClassName}Result) {
+        super(cause);
+        this.${lowClassName}Result = ${lowClassName}Result;
+    }
+
+    public ${upClassName}Exception(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace, ${upClassName}Result ${lowClassName}Result) {
+        super(message, cause, enableSuppression, writableStackTrace);
+        this.${lowClassName}Result = ${lowClassName}Result;
+    }
+
+    @Override
+    public ${upClassName}Result get${upClassName}Result() {
+        return this.${lowClassName}Result;
+    }
+
+    public void setMessage(${upClassName}Result ${lowClassName}Result) {
+        this.${lowClassName}Result = ${lowClassName}Result;
+    }
+}
+

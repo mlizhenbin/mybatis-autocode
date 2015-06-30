@@ -16,10 +16,12 @@ public class ${upClassName}OperateManagerImpl implements ${upClassName}OperateMa
 	@Autowired
 	private ${upClassName}OperateService ${lowClassName}OperateService;
 
+	@Override
 	public Result add${upClassName}(${upClassName}${domain} ${upClassName}${domain}) {
 		return null;
 	}
 
+	@Override
 	public Result update${upClassName}(${upClassName}${domain} ${upClassName}${domain}) {
 		return null;
 	}

@@ -12,6 +12,7 @@ public class ${upClassName}QueryManagerImpl implements ${upClassName}QueryManage
 	@Autowired
 	private ${upClassName}QueryService ${lowClassName}QueryService;
 
+	@Override
 	public Result get${upClassName}ByPrimaryKey(${primaryKeyType} ${primaryKey}) {
 		return null;
 	}

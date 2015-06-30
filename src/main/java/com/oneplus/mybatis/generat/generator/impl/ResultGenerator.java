@@ -4,6 +4,8 @@ import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import org.apache.velocity.VelocityContext;
 
+import java.util.UUID;
+
 /**
  * 功能描述：
  *
@@ -17,6 +19,7 @@ public class ResultGenerator extends BaseGenerator {
     @Override
     public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
         super.initVelocityContext(velocityContext, generatorContext);
+        velocityContext.put("SerialVersionUID", String.valueOf(UUID.randomUUID().getLeastSignificantBits()));
     }
 
     @Override

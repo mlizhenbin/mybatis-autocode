@@ -35,7 +35,7 @@ public enum PackageConfigType {
 
     model("model", "/dao/model", ".java", "model.vm"),
 
-    result("result", "/result", "Result.java", "result.vm");
+    result("result", "/result|/result", "Result.java|Exception.java", "result.vm|exception.vm");
 
     /**
      * 生成文件类型

@@ -123,14 +123,15 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
                 break;
             }
         }
-        LOGGER.info("read config configFilePath = " + configFilePath);
+
         DefaultGeneratorConfigurer.properties = new Properties();
         InputStream input = null;
         try {
+            LOGGER.info("加载配置文件" + configFilePath);
             input = new FileInputStream(configFilePath);
             DefaultGeneratorConfigurer.properties.load(input);
         } catch (Exception e) {
-            LOGGER.warn("加载配置文件出现异常，读取默认配置");
+            LOGGER.warn("加载配置文件出现异常，读取默认配置" + LOCAL_GENERATOR_PATH);
             try {
                 DefaultGeneratorConfigurer.properties = PropertiesLoaderUtils.loadAllProperties(LOCAL_GENERATOR_PATH);
             } catch (IOException ex) {

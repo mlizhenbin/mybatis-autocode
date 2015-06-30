@@ -1,5 +1,7 @@
 package ${packageName}.result;
 
+import org.apache.commons.lang.StringUtils;
+
 ${classTitle}
 public enum ${upClassName}Result {
 
@@ -15,7 +17,7 @@ public enum ${upClassName}Result {
 
     private String type;
 
-    PackageConfigType(String type, int code) {
+    ${upClassName}Result(String type, int code) {
         this.type = type;
         this.code = code;
     }
@@ -34,19 +36,19 @@ public enum ${upClassName}Result {
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
     public void setType(String type) {
-        return this.type = type;
+        this.type = type;
     }
 
     public int getCode() {
-        return code;
+        return this.code;
     }
 
     public void setType(int code) {
-        return this.code = code;
+        this.code = code;
     }
 
 }

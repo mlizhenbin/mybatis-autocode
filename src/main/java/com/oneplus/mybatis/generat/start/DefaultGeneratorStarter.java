@@ -81,7 +81,7 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
         GeneratorFileUtils.createPackageDirectory(properties);
         List<String> tables = PropertiesUtils.getTableList(properties);
         if (CollectionUtils.isEmpty(tables)) {
-            throw new RuntimeException("配置代码生成表格为空.");
+            throw new RuntimeException("配置代码生成数据库表为空.");
         }
 
         // 自动化生成文件
