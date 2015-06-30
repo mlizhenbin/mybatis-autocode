@@ -54,19 +54,19 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
     }
 
     protected void initPackage() {
-        String value = (String) properties.get("defaultGenerator.package");
+        String value = (String) properties.get("generator.package");
         if (StringUtils.isNotBlank(value)) {
             return;
         }
-        properties.setProperty("defaultGenerator.package", GENERATOR_PACKAGE);
+        properties.setProperty("generator.package", GENERATOR_PACKAGE);
     }
 
     protected void initProjectName() {
-        String value = (String) properties.get("defaultGenerator.project.name");
+        String value = (String) properties.get("generator.project.name");
         if (StringUtils.isNotBlank(value)) {
             return;
         }
-        properties.setProperty("defaultGenerator.project.name", GENERATOR_PROJECT_NAME);
+        properties.setProperty("generator.project.name", GENERATOR_PROJECT_NAME);
     }
 
     protected void initTablePrefix() {
@@ -78,11 +78,11 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
     }
 
     protected void initPrecision() {
-        String value = (String) properties.get("defaultGenerator.precision");
+        String value = (String) properties.get("generator.precision");
         if (StringUtils.isNotBlank(value)) {
             return;
         }
-        properties.setProperty("defaultGenerator.precision", GENERATOR_PRECISION);
+        properties.setProperty("generator.precision", GENERATOR_PRECISION);
     }
 
     protected void initDomain() {
@@ -95,19 +95,19 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
 
 
     protected void initLayers() {
-        String value = (String) properties.get("defaultGenerator.layers");
+        String value = (String) properties.get("generator.layers");
         if (StringUtils.isNotBlank(value)) {
             return;
         }
-        properties.setProperty("defaultGenerator.layers", PackageConfigType.getDefaultConfigLayer());
+        properties.setProperty("generator.layers", PackageConfigType.getDefaultConfigLayer());
     }
 
     protected void initLocation() {
-        String value = (String) properties.get("defaultGenerator.location");
+        String value = (String) properties.get("generator.location");
         if (StringUtils.isNotBlank(value)) {
             return;
         }
-        properties.setProperty("defaultGenerator.location", GENERATOR_LOCATION);
+        properties.setProperty("generator.location", GENERATOR_LOCATION);
     }
 
     protected void loadProperties() {
