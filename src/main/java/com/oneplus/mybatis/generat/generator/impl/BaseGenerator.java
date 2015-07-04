@@ -85,7 +85,7 @@ public abstract class BaseGenerator implements Generator {
         // 读取模板渲染内容，同时创建文件
         Map<String, String> params = initGeneratorParams(generatorContext);
         for (String templateName : params.keySet()) {
-            Template template = velocityEngine.getTemplate(VM_TARGET_PATH + "/" + templateName);
+            Template template = velocityEngine.getTemplate(VM_TARGET_PATH + "/" + templateName, "UTF-8");
             initVelocityContext(velocityContext, generatorContext);
             StringWriter writer = new StringWriter();
             template.merge(velocityContext, writer);

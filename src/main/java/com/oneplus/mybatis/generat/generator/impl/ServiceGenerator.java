@@ -42,20 +42,23 @@ public class ServiceGenerator extends BaseGenerator {
                 importSets.add("import java.sql.Timestamp;\n");
             }
         }
+
+        Properties properties = generatorContext.getProperties();
+
         velocityContext.put("methods", generateGetAndSetMethods(colMap));
         velocityContext.put("fields", generateFields(colMap, columnRemarkMap));
         velocityContext.put("importSets", importSets);
-        velocityContext.put("convertDomains", getCovertDomainFields(colMap));
-        velocityContext.put("converts", getCovertFields(colMap));
+        velocityContext.put("convertDomains", getCovertDomainFields(colMap, properties));
+        velocityContext.put("converts", getCovertFields(colMap, properties));
     }
 
-    protected List<String> getCovertDomainFields(Map<String, String> map) {
+    protected List<String> getCovertDomainFields(Map<String, String> map, Properties properties) {
         Set<String> keySet = map.keySet();
         List<String> converts = Lists.newArrayList();
         for (String key : keySet) {
             StringBuilder sb = new StringBuilder();
             String field = GeneratorStringUtils.format(key);
-            sb.append(velocityContext.get("lowClassName")).append(GeneratorConfigurer.GENERATOR_DOMAIN)
+            sb.append(velocityContext.get("lowClassName")).append(properties.get("generator.domain"))
                     .append(".set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(")
                     .append(velocityContext.get("lowClassName")).append(".get" + GeneratorStringUtils.firstUpperNoFormat(field) + "())");
             converts.add(sb.toString());
@@ -63,14 +66,14 @@ public class ServiceGenerator extends BaseGenerator {
         return converts;
     }
 
-    protected List<String> getCovertFields(Map<String, String> map) {
+    protected List<String> getCovertFields(Map<String, String> map, Properties properties) {
         Set<String> keySet = map.keySet();
         List<String> converts = Lists.newArrayList();
         for (String key : keySet) {
             StringBuilder sb = new StringBuilder();
             String field = GeneratorStringUtils.format(key);
             sb.append(velocityContext.get("lowClassName")).append(".set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(")
-                    .append(velocityContext.get("lowClassName")).append(GeneratorConfigurer.GENERATOR_DOMAIN)
+                    .append(velocityContext.get("lowClassName")).append(properties.get("generator.domain"))
                     .append(".get" + GeneratorStringUtils.firstUpperNoFormat(field) + "())");
             converts.add(sb.toString());
         }
