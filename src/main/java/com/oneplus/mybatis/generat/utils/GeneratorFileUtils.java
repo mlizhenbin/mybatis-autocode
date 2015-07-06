@@ -4,18 +4,15 @@ package com.oneplus.mybatis.generat.utils;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 public class GeneratorFileUtils {
 
     public static boolean write(String content, String path) {
         try {
-            File file = new File(path);
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            OutputStreamWriter writerStream = new OutputStreamWriter(new FileOutputStream(path), "UTF-8");
+            BufferedWriter writer = new BufferedWriter(writerStream);
             writer.write(content);
             writer.flush();
             writer.close();
