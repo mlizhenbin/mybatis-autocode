@@ -49,7 +49,7 @@
             $updateCondition
 #end
         </set>
-        WHERE <include refid="${upClassName}_By_${primaryKey}" />
+        <include refid="${upClassName}_By_${primaryKey}" />
     </update>
 
     <select id="find${upClassName}" resultMap="${lowClassName}_result" parameterType="java.util.HashMap">
