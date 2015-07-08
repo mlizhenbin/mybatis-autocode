@@ -3,6 +3,7 @@ package com.oneplus.mybatis.generat.generator.impl;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
 
 import com.google.common.collect.Lists;
@@ -43,21 +44,33 @@ public class MapperGenerator extends BaseGenerator {
 
             if (columnNameTypeMap.get(col).equals("Date")) {
                 StringBuilder conditionBfs = new StringBuilder();
-                conditionBfs.append("<if test=\"").append(field).append(" != null\">\n")
+                conditionBfs.append("<if test=\"").append(field).append(" != null AND '' != ").append(field).append("\">\n")
                         .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &gt;= #{").append("dynamicFileds_startTime").append("}\n")
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBfs.toString());
                 StringBuilder conditionBfe = new StringBuilder();
-                conditionBfe.append("<if test=\"").append(field).append(" != null\">\n")
+                conditionBfe.append("<if test=\"").append(field).append(" != null AND '' != ").append(field).append("\">\n")
                         .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &lt; #{").append("dynamicFileds_endTime").append("}\n")
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBfe.toString());
             } else {
                 StringBuilder conditionBf = new StringBuilder();
-                conditionBf.append("<if test=\"").append(field).append(" != null\">\n")
+                conditionBf.append("<if test=\"").append(field).append(" != null AND '' != ").append(field).append("\">\n")
                         .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" = #{").append(field).append("}\n")
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBf.toString());
+
+                if (StringUtils.equals(field, (String) velocityContext.get("normalPrimaryKey")) && !StringUtils.equals(field, "id")) {
+                    StringBuilder builder = new StringBuilder();
+                    builder.append("<if test=\"").append(field).append("s").append(" != null AND '' != ").append(field).append("s").append("\">\n")
+                            .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" IN\n")
+                            .append("\t\t\t\t<foreach collection=\"").append(field).append("s\" item=\"").append(field).append("\" open=\"(\" close=\")\" separator=\",\">\n")
+                            .append("\t\t\t\t\t").append("#{").append(field).append("}\n")
+                            .append("\t\t\t\t</foreach>\n")
+                            .append("\t\t\t</if>");
+
+                    whereConditions.add(builder.toString());
+                }
             }
 
             if (col.startsWith("gmt")) {
@@ -69,7 +82,7 @@ public class MapperGenerator extends BaseGenerator {
             }
 
             StringBuilder upBf = new StringBuilder();
-            upBf.append("<if test=\"").append(field).append(" != null\">\n")
+            upBf.append("<if test=\"").append(field).append(" != null AND '' != ").append(field).append("\">\n")
                     .append("\t\t\t\t").append(tableName).append(".").append(col).append(" = #{").append(field).append("},\n")
                     .append("\t\t\t</if>");
             updateConditions.add(upBf.toString());
