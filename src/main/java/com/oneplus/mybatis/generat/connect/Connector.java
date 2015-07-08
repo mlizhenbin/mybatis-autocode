@@ -1,5 +1,6 @@
 package com.oneplus.mybatis.generat.connect;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,7 +27,7 @@ public interface Connector {
      * @param tableName
      * @return
      */
-    public Map<String, String> getColumnNameTypeMap(String tableName);
+    public Map<String, String> mapColumnNameType(String tableName);
 
     /**
      * 获取备注
@@ -34,5 +35,13 @@ public interface Connector {
      * @param tableName
      * @return
      */
-    public Map<String, String> getColumnRemarkMap(String tableName);
+    public Map<String, String> mapColumnRemark(String tableName);
+
+    /**
+     * 获取所有的索引信息
+     *
+     * @param tableName
+     * @return
+     */
+    public List<String> listAllIndex(String tableName);
 }

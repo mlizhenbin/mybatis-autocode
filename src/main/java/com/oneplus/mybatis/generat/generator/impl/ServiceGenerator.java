@@ -1,7 +1,6 @@
 package com.oneplus.mybatis.generat.generator.impl;
 
 import com.google.common.collect.Lists;
-import com.oneplus.mybatis.generat.config.GeneratorConfigurer;
 import com.oneplus.mybatis.generat.connect.Connector;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
@@ -28,8 +27,8 @@ public class ServiceGenerator extends BaseGenerator {
         String tableName = generatorContext.getTableName();
         Connector connector = (Connector) generatorContext.getAttribute("connector");
 
-        Map<String, String> colMap = connector.getColumnNameTypeMap(tableName);
-        Map<String, String> columnRemarkMap = connector.getColumnRemarkMap(tableName);
+        Map<String, String> colMap = connector.mapColumnNameType(tableName);
+        Map<String, String> columnRemarkMap = connector.mapColumnRemark(tableName);
         Set<String> keySet = colMap.keySet();
         Set<String> importSets = new HashSet<String>();
         for (String key : keySet) {

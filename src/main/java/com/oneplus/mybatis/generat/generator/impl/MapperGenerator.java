@@ -11,6 +11,7 @@ import com.oneplus.mybatis.generat.connect.Connector;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
+import org.springframework.util.CollectionUtils;
 
 /**
  * 功能描述：Mapper.xml代码生成
@@ -28,7 +29,8 @@ public class MapperGenerator extends BaseGenerator {
 
         String tableName = generatorContext.getTableName();
         Connector connector = (Connector) generatorContext.getAttribute("connector");
-        Map<String, String> columnNameTypeMap = connector.getColumnNameTypeMap(tableName);
+        Map<String, String> columnNameTypeMap = connector.mapColumnNameType(tableName);
+        List<String> allIndexs = connector.listAllIndex(tableName);
 
         List<String> resultMapColumns = Lists.newArrayList();
         List<String> whereConditions = Lists.newArrayList();
@@ -60,7 +62,17 @@ public class MapperGenerator extends BaseGenerator {
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBf.toString());
 
-                if (StringUtils.equals(field, (String) velocityContext.get("normalPrimaryKey")) && !StringUtils.equals(field, "id")) {
+                String pk = (String) velocityContext.get("normalPrimaryKey");
+                boolean isKey = false;
+                if (!CollectionUtils.isEmpty(allIndexs)) {
+                    for (String allIndex : allIndexs) {
+                        if (StringUtils.contains(allIndex, col)) {
+                            isKey = true;
+                            break;
+                        }
+                    }
+                }
+                if ((StringUtils.equals(field, pk) || isKey) && !StringUtils.equals(field, "id")) {
                     StringBuilder builder = new StringBuilder();
                     builder.append("<if test=\"").append(field).append("s").append(" != null AND '' != ").append(field).append("s").append("\">\n")
                             .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" IN\n")
@@ -68,7 +80,6 @@ public class MapperGenerator extends BaseGenerator {
                             .append("\t\t\t\t\t").append("#{").append(field).append("}\n")
                             .append("\t\t\t\t</foreach>\n")
                             .append("\t\t\t</if>");
-
                     whereConditions.add(builder.toString());
                 }
             }

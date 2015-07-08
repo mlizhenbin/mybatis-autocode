@@ -1,12 +1,10 @@
 package com.oneplus.mybatis.generat.connect;
 
+import com.google.common.collect.Lists;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
 
 import java.sql.*;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 public class MysqlConnector implements Connector {
 
@@ -16,7 +14,7 @@ public class MysqlConnector implements Connector {
         this.properties = properties;
     }
 
-    public Map<String, String> getColumnNameTypeMap(String tableName) {
+    public Map<String, String> mapColumnNameType(String tableName) {
         Map<String, String> colMap = new LinkedHashMap<String, String>();
         DatabaseMetaData meta = getDatabaseMetaData();
         try {
@@ -34,7 +32,7 @@ public class MysqlConnector implements Connector {
         return colMap;
     }
 
-    public Map<String, String> getColumnRemarkMap(String tableName) {
+    public Map<String, String> mapColumnRemark(String tableName) {
         Map<String, String> colMap = new LinkedHashMap<String, String>();
         DatabaseMetaData meta = getDatabaseMetaData();
         try {
@@ -50,13 +48,27 @@ public class MysqlConnector implements Connector {
         return colMap;
     }
 
+    public List<String> listAllIndex(String tableName) {
+        try {
+            List<String> indexs = Lists.newArrayList();
+            ResultSet pkRSet = getDatabaseMetaData().getIndexInfo(null, null, tableName, true, false);
+            while (pkRSet.next()) {
+                String indexName = pkRSet.getString("INDEX_NAME");
+                indexs.add(indexName);
+            }
+            return indexs;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Map<String, String> getPrimaryKey(String tableName) {
         Map<String, String> map = new HashMap<String, String>();
         try {
             ResultSet pkRSet = getDatabaseMetaData().getPrimaryKeys(null, null, tableName);
             while (pkRSet.next()) {
                 String primaryKey = pkRSet.getString("COLUMN_NAME");
-                String primaryKeyType = getColumnNameTypeMap(pkRSet.getString("TABLE_NAME")).get(primaryKey);
+                String primaryKeyType = mapColumnNameType(pkRSet.getString("TABLE_NAME")).get(primaryKey);
                 map.put("primaryKey", primaryKey);
                 map.put("primaryKeyType", primaryKeyType);
             }

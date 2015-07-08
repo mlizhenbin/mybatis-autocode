@@ -28,8 +28,8 @@ public class ModelGenerator extends BaseGenerator {
         String tableName = generatorContext.getTableName();
         Connector connector = (Connector) generatorContext.getAttribute("connector");
 
-        Map<String, String> colMap = connector.getColumnNameTypeMap(tableName);
-        Map<String, String> columnRemarkMap = connector.getColumnRemarkMap(tableName);
+        Map<String, String> colMap = connector.mapColumnNameType(tableName);
+        Map<String, String> columnRemarkMap = connector.mapColumnRemark(tableName);
         Set<String> keySet = colMap.keySet();
         Set<String> importSets = new HashSet<String>();
         for (String key : keySet) {
