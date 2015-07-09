@@ -37,6 +37,8 @@ public class MapperGenerator extends BaseGenerator {
         List<String> columns = Lists.newArrayList();
         List<String> insertConditions = Lists.newArrayList();
         List<String> updateConditions = Lists.newArrayList();
+
+        String pk = (String) velocityContext.get("normalPrimaryKey");
         for (String col : columnNameTypeMap.keySet()) {
             String field = GeneratorStringUtils.format(col);
             columns.add(tableName + "." + col);
@@ -62,7 +64,7 @@ public class MapperGenerator extends BaseGenerator {
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBf.toString());
 
-                String pk = (String) velocityContext.get("normalPrimaryKey");
+
                 boolean isKey = false;
                 if (!CollectionUtils.isEmpty(allIndexs)) {
                     for (String allIndex : allIndexs) {
@@ -92,11 +94,13 @@ public class MapperGenerator extends BaseGenerator {
                 insertConditions.add(conditionBf.toString());
             }
 
-            StringBuilder upBf = new StringBuilder();
-            upBf.append("<if test=\"").append(field).append(" != null AND '' != ").append(field).append("\">\n")
-                    .append("\t\t\t\t").append(tableName).append(".").append(col).append(" = #{").append(field).append("},\n")
-                    .append("\t\t\t</if>");
-            updateConditions.add(upBf.toString());
+            if (!StringUtils.equals(pk, field)) {
+                StringBuilder upBf = new StringBuilder();
+                upBf.append("<if test=\"").append(field).append(" != null AND '' != ").append(field).append("\">\n")
+                        .append("\t\t\t\t").append(tableName).append(".").append(col).append(" = #{").append(field).append("},\n")
+                        .append("\t\t\t</if>");
+                updateConditions.add(upBf.toString());
+            }
         }
 
         velocityContext.put("resultMapColumns", resultMapColumns);
