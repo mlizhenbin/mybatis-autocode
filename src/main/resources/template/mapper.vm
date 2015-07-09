@@ -32,12 +32,15 @@
     </sql>
 
     <insert id="add${upClassName}" parameterType="${upClassName}" keyProperty="${normalPrimaryKey}">
-        INSERT INTO ${tableName} (
-            <include refid="${upClassName}_column" />
-        )
+        INSERT INTO ${tableName}
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+#foreach($insertColsCondition in $insertColsConditions)
+            $insertColsCondition
+#end
+        </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-#foreach($insertCondition in $insertConditions)
-            $insertCondition
+#foreach($insertValueCondition in $insertValueConditions)
+            $insertValueCondition
 #end
         </trim>
     </insert>
@@ -85,7 +88,7 @@
     </select>
 
     <delete id="delete${upClassName}" parameterType="${upClassName}">
-        DELETE  FROM  ${tableName}
+        DELETE FROM ${tableName}
         <include refid="${upClassName}_By_${primaryKey}" />
     </delete>
 
