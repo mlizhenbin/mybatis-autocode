@@ -51,6 +51,7 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
         initDomain();
         initLayers();
         initLocation();
+        initJavaSrc();
     }
 
     protected void initPackage() {
