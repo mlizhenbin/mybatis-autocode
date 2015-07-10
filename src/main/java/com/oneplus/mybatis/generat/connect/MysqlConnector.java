@@ -51,9 +51,11 @@ public class MysqlConnector implements Connector {
     public List<String> listAllIndex(String tableName) {
         try {
             List<String> indexs = Lists.newArrayList();
-            ResultSet pkRSet = getDatabaseMetaData().getIndexInfo(null, null, tableName, true, false);
-            while (pkRSet.next()) {
-                String indexName = pkRSet.getString("INDEX_NAME");
+            ResultSet resultSet = getDatabaseMetaData().getIndexInfo(null, null, tableName, false, true);
+//            ResultSet resultSet = getDatabaseMetaData().getTables(null, null, null, new String[]{tableName});
+            while (resultSet.next()) {
+
+                String indexName =  resultSet.getString("INDEX_NAME");
                 indexs.add(indexName);
             }
             return indexs;

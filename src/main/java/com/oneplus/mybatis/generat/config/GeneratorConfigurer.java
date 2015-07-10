@@ -58,6 +58,11 @@ public interface GeneratorConfigurer {
     public static final String SPRING_CONFIG = "oneplus-spring-generator.xml";
 
     /**
+     * JAVA文件生成的所在包文件
+     */
+    public static final String JAVA_SRC = "java";
+
+    /**
      * 获取配置文件配置集
      *
      * @return 配置文件配置集

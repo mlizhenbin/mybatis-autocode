@@ -110,6 +110,14 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
         properties.setProperty("generator.location", GENERATOR_LOCATION);
     }
 
+    protected void initJavaSrc() {
+        String value = (String) properties.get("java.src");
+        if (StringUtils.isNotBlank(value)) {
+            return;
+        }
+        properties.setProperty("java.src", JAVA_SRC);
+    }
+
     protected void loadProperties() {
         List<String> dirAllFiles = listProjectDirAllFiles(System.getProperties().getProperty("user.dir"));
         if (CollectionUtils.isEmpty(dirAllFiles)) {

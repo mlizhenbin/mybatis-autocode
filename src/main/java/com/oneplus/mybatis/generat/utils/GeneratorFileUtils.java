@@ -28,7 +28,7 @@ public class GeneratorFileUtils {
 
         String project = PropertiesUtils.getProject(properties);
         if (StringUtils.isNoneBlank(project)) {
-            location = location + "/src";
+            location = location + "/" + properties.get("java.src");
         }
 
         String packageDir = "/" + PropertiesUtils.getPackage(properties).replaceAll("[.]", "/");
@@ -56,7 +56,7 @@ public class GeneratorFileUtils {
         String project = PropertiesUtils.getProject(properties);
         String directory;
         if (StringUtils.isNotBlank(project)) {
-            directory = location + "/src" + packageDir + "/" + name + "/";
+            directory = location + "/" + properties.get("java.src") + packageDir + "/" + name + "/";
         } else {
             directory = location + packageDir + "/" + name + "/";
         }
