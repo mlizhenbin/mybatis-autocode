@@ -21,7 +21,7 @@
 
     <sql id="${upClassName}_List_Paramter">
         <if test="orderItem != null" >
-            ORDER BY #{orderItem} #{orderType} <!-- # and $ has difference, this place need $ -->
+            ORDER BY ${orderItem} ${orderType} <!-- # and $ has difference, this place need $ -->
         </if>
     </sql>
 
