@@ -1,12 +1,15 @@
 package com.oneplus.mybatis.generat.connect;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
 
 import java.sql.*;
 import java.util.*;
 
 public class MysqlConnector implements Connector {
+
+    public Map<String, Object> session = Maps.newHashMap();
 
     private Properties properties;
 
@@ -52,7 +55,6 @@ public class MysqlConnector implements Connector {
         try {
             List<String> indexs = Lists.newArrayList();
             ResultSet resultSet = getDatabaseMetaData().getIndexInfo(null, null, tableName, false, true);
-//            ResultSet resultSet = getDatabaseMetaData().getTables(null, null, null, new String[]{tableName});
             while (resultSet.next()) {
 
                 String indexName =  resultSet.getString("INDEX_NAME");
@@ -148,7 +150,11 @@ public class MysqlConnector implements Connector {
     }
 
     private Connection getConnection() {
-        Connection connection;
+        Connection connection = (Connection) session.get("connection");
+        if (connection != null) {
+            return connection;
+        }
+
         try {
             String driverClassName = properties.getProperty("jdbc.driverClassName");
             String url = properties.getProperty("jdbc.url");
@@ -159,6 +165,7 @@ public class MysqlConnector implements Connector {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        session.put("connection", connection);
         return connection;
     }
 
