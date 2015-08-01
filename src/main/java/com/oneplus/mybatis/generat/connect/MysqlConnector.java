@@ -9,7 +9,7 @@ import java.util.*;
 
 public class MysqlConnector implements Connector {
 
-    public Map<String, Object> session = Maps.newHashMap();
+    public Map<SessionType, Object> session = Maps.newHashMap();
 
     private Properties properties;
 
@@ -150,7 +150,7 @@ public class MysqlConnector implements Connector {
     }
 
     private Connection getConnection() {
-        Connection connection = (Connection) session.get("connection");
+        Connection connection = (Connection) session.get(SessionType.connection);
         if (connection != null) {
             return connection;
         }
@@ -165,18 +165,28 @@ public class MysqlConnector implements Connector {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        session.put("connection", connection);
+        session.put(SessionType.connection, connection);
         return connection;
     }
 
     private DatabaseMetaData getDatabaseMetaData() {
         Connection connection = getConnection();
-        DatabaseMetaData meta;
+        DatabaseMetaData meta = (DatabaseMetaData) session.get(SessionType.DatabaseMetaData);
+        if (meta != null) {
+            return meta;
+        }
+
         try {
             meta = connection.getMetaData();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        session.put(SessionType.DatabaseMetaData, meta);
         return meta;
+    }
+
+    enum SessionType {
+        connection, DatabaseMetaData
+
     }
 }
