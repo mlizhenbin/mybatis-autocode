@@ -26,7 +26,8 @@ public class MysqlConnector implements Connector {
                 String columnName = colRet.getString("COLUMN_NAME");
                 int digits = colRet.getInt("DECIMAL_DIGITS");
                 int dataType = colRet.getInt("DATA_TYPE");
-                String columnType = getDataType(dataType, digits);
+                int columnSize = colRet.getInt("COLUMN_SIZE");
+                String columnType = getDataType(dataType, digits, columnSize);
                 colMap.put(columnName, columnType);
             }
         } catch (Exception e) {
@@ -57,7 +58,7 @@ public class MysqlConnector implements Connector {
             ResultSet resultSet = getDatabaseMetaData().getIndexInfo(null, null, tableName, false, true);
             while (resultSet.next()) {
 
-                String indexName =  resultSet.getString("INDEX_NAME");
+                String indexName = resultSet.getString("INDEX_NAME");
                 indexs.add(indexName);
             }
             return indexs;
@@ -88,14 +89,14 @@ public class MysqlConnector implements Connector {
      * @param type
      * @return
      */
-    private String getDataType(int type, int digits) {
+    private String getDataType(int type, int digits, int columnSize) {
         String dataType = "";
         switch (type) {
             case Types.VARCHAR:  //12
                 dataType = "String";
                 break;
             case Types.INTEGER:    //4
-                dataType = "Integer";
+                dataType = columnSize >= 8 ? "Long" : "Integer";
                 break;
             case Types.BIT:    //-7
                 dataType = "Integer";
