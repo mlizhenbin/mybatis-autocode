@@ -8,8 +8,8 @@ package com.oneplus.mybatis.generat.generator.context;
  * company：一加科技
  * Date: 15/6/14 Time：17:36
  */
-public interface ClassTitle {
+public interface AutoCreateClassTitle {
 
-    public static final String company = "一加科技";
+    public static final String COMPANY = "一加科技";
 
 }

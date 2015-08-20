@@ -186,7 +186,7 @@ public class MysqlConnector implements Connector {
         return meta;
     }
 
-    enum SessionType {
+    private enum SessionType {
         connection, DatabaseMetaData
 
     }

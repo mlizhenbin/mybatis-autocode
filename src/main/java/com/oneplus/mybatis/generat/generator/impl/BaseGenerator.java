@@ -3,7 +3,7 @@ package com.oneplus.mybatis.generat.generator.impl;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.oneplus.mybatis.generat.generator.Generator;
-import com.oneplus.mybatis.generat.generator.context.ClassTitle;
+import com.oneplus.mybatis.generat.generator.context.AutoCreateClassTitle;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import com.oneplus.mybatis.generat.utils.GeneratorFileUtils;
@@ -149,7 +149,7 @@ public abstract class BaseGenerator implements Generator {
                 .append(" * ").append("\n")
                 .append(" * @author: ").append(System.getProperty("user.name")).append("\n")
                 .append(" * email: ").append(System.getProperty("user.name")).append("@oneplus.cn").append("\n")
-                .append(" * company: ").append(ClassTitle.company).append("\n")
+                .append(" * company: ").append(AutoCreateClassTitle.COMPANY).append("\n")
                 .append(" * Date: ").append(dateFormat.format(new Date())).append(" Time: ").append(timeFormat.format(new Date())).append("\n")
                 .append(" */");
         velocityContext.put("classTitle", titleSb.toString());
