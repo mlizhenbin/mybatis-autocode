@@ -16,26 +16,35 @@ import java.util.List;
  */
 public enum PackageConfigType {
 
-    mapper("mapper", "/dao/mapper|/dao", "Mapper.xml|Mapper.java", "mapper.vm|dao.vm"),
+    mapper("mapper",
+            "/dao/mapper|/dao",
+            "Mapper.xml|Mapper.java",
+            "mapper.vm|dao.vm"),
 
     service("service",
-            "/service|/service/impl|/service|" +
-                    "/service/impl|/service/domain|/service/convert|/service/convert",
-            "QueryService.java|QueryServiceImpl.java|OperateService.java|" +
-                    "OperateServiceImpl.java|{domain}.java|{domain}Convert.java|Convert.java",
-            "service_query.vm|service_query_impl.vm|service_operate.vm|" +
-                    "service_operate_impl.vm|service_domain.vm|service_convert_domain.vm|service_convert.vm"),
+            "/service|/service/impl|/service|/service/impl|/service/domain|/service/convert|/service/convert",
+            "QueryService.java|QueryServiceImpl.java|OperateService.java|OperateServiceImpl.java|{domain}.java|{domain}Convert.java|Convert.java",
+            "service_query.vm|service_query_impl.vm|service_operate.vm|service_operate_impl.vm|service_domain.vm|service_convert_domain.vm|service_convert.vm"),
 
     manager("manage",
             "/manage|/manage/impl|/manage|/manage/impl",
             "QueryManager.java|QueryManagerImpl.java|OperateManager.java|OperateManagerImpl.java",
             "manager_query.vm|manager_query_impl.vm|manager_operate.vm|manager_operate_impl.vm"),
 
-    controller("controller", "/controller", "Controller.java", "controller.vm"),
+    controller("controller",
+            "/controller",
+            "Controller.java",
+            "controller.vm"),
 
-    model("model", "/dao/model", ".java", "model.vm"),
+    model("model",
+            "/dao/model",
+            ".java",
+            "model.vm"),
 
-    result("result", "/result|/result", "Result.java|Exception.java", "result.vm|exception.vm");
+    result("result",
+            "/result|/result",
+            "Result.java|Exception.java",
+            "result.vm|exception.vm");
 
     /**
      * 生成文件类型
