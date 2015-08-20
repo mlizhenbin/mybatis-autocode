@@ -48,6 +48,6 @@ mybatis自动生成代码工具。
   #generator.layers=dao,mapper,service,controller,model,result
 
 3、再pom.xml目录下或者工程下，使用插件
-  mvn oneplus-autocode:create
+  mvn autocode:create
 
   
