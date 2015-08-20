@@ -14,8 +14,6 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.apache.velocity.app.VelocityEngine;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.util.ClassUtils;
 
 import java.io.IOException;
@@ -33,11 +31,6 @@ import java.util.*;
  * Date: 15/6/13 Time：00:29
  */
 public abstract class BaseGenerator implements Generator {
-
-    /**
-     * 打印BaseGenerator.java日志
-     */
-    private static final Logger LOGGER = LoggerFactory.getLogger(BaseGenerator.class);
 
     /**
      * velocity上下文
@@ -141,18 +134,7 @@ public abstract class BaseGenerator implements Generator {
         velocityContext.put("primaryKeyType", generatorContext.getPrimaryKeyType());
         velocityContext.put("primaryKey", generatorContext.getPrimaryKey());
         velocityContext.put("normalPrimaryKey", generatorContext.getAttribute("normalPrimaryKey"));
-        StringBuilder titleSb = new StringBuilder();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-        titleSb.append("/** ").append("\n")
-                .append(" * 功能描述: ").append("\n")
-                .append(" * ").append("\n")
-                .append(" * @author: ").append(System.getProperty("user.name")).append("\n")
-                .append(" * email: ").append(System.getProperty("user.name")).append("@oneplus.cn").append("\n")
-                .append(" * company: ").append(AutoCreateClassTitle.COMPANY).append("\n")
-                .append(" * Date: ").append(dateFormat.format(new Date())).append(" Time: ").append(timeFormat.format(new Date())).append("\n")
-                .append(" */");
-        velocityContext.put("classTitle", titleSb.toString());
+        velocityContext.put("classTitle", assemblyAutoCreateClassTitle());
         velocityContext.put("domain", generatorContext.getAttribute("domain"));
     }
 
@@ -206,10 +188,17 @@ public abstract class BaseGenerator implements Generator {
             String filePath = url.getFile();
             return filePath;
         } catch (IOException e) {
-            throw new RuntimeException("read velocity templates error, e", e);
+            throw new RuntimeException("read velocity templates error.", e);
         }
     }
 
+    /**
+     * 生成field
+     *
+     * @param map
+     * @param columnRemarkMap
+     * @return
+     */
     protected List<String> generateFields(Map<String, String> map, Map<String, String> columnRemarkMap) {
         Set<String> keySet = map.keySet();
         List<String> fields = Lists.newArrayList();
@@ -225,7 +214,12 @@ public abstract class BaseGenerator implements Generator {
         return fields;
     }
 
-
+    /**
+     * 生成get/set
+     *
+     * @param map
+     * @return
+     */
     protected List<String> generateGetAndSetMethods(Map<String, String> map) {
         Set<String> keySet = map.keySet();
         List<String> methods = Lists.newArrayList();
@@ -244,5 +238,25 @@ public abstract class BaseGenerator implements Generator {
             methods.add(setSb.toString());
         }
         return methods;
+    }
+
+    /**
+     * 组装自动生成类title信息
+     *
+     * @return
+     */
+    private String assemblyAutoCreateClassTitle() {
+        StringBuilder builder = new StringBuilder();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+        builder.append("/** ").append("\n")
+                .append(" * 功能描述: ").append("\n")
+                .append(" * ").append("\n")
+                .append(" * @author: ").append(System.getProperty("user.name")).append("\n")
+                .append(" * email: ").append(System.getProperty("user.name")).append(AutoCreateClassTitle.MAIL_PREFIX).append("\n")
+                .append(" * company: ").append(AutoCreateClassTitle.COMPANY).append("\n")
+                .append(" * Date: ").append(dateFormat.format(new Date())).append(" Time: ").append(timeFormat.format(new Date())).append("\n")
+                .append(" */");
+        return builder.toString();
     }
 }

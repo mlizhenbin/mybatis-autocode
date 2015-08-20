@@ -12,4 +12,6 @@ public interface AutoCreateClassTitle {
 
     public static final String COMPANY = "一加科技";
 
+    public static final String MAIL_PREFIX = "@oneplus.cn";
+
 }
