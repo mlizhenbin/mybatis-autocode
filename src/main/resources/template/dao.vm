@@ -9,37 +9,55 @@ ${classTitle}
 public interface ${upClassName}Mapper {
 
     /**
-     * 创建
+     * 创建${upClassName}
+     *
+     * @param ${lowClassName} ${upClassName}对象
      */
     public void add${upClassName}(${upClassName} ${lowClassName});
 
     /**
-     * 更新
+     * 更新${upClassName}
+     *
+     * @param ${lowClassName} ${upClassName}对象
      */
     public void update${upClassName}(${upClassName} ${lowClassName});
 
     /**
-     * 删除
+     * 主键${normalPrimaryKey}删除${upClassName}
+     *
+     * @param ${normalPrimaryKey} ${upClassName}主键
      */
     public void delete${upClassName}(${primaryKeyType} ${normalPrimaryKey});
 
     /**
-     * 通过主键ID查询
+     * 主键${normalPrimaryKey}查询${upClassName}
+     *
+     * @param ${normalPrimaryKey} ${upClassName}主键
+     * @return ${upClassName}对象
      */
     public ${upClassName} findBy${primaryKey}(${primaryKeyType} ${normalPrimaryKey});
 
     /**
-     * 通过参数查询
+     * 查询${upClassName}对象
+     *
+     * @param map 查询参数HashMap
+     * @return ${upClassName}对象
      */
     public ${upClassName} find${upClassName}(Map<String, Object> map);
 
     /**
-     * 查询list
+     * 查询${upClassName} list集合
+     *
+     * @param map 查询参数HashMap
+     * @return List<${upClassName}>对象
      */
     public List<${upClassName}> list${upClassName}(Map<String, Object> map);
 
     /**
-     * 查询list数量
+     * 查询${upClassName}数量
+     *
+     * @param map 查询参数HashMap
+     * @return 查询记录条数
      */
     public Integer list${upClassName}Count(Map<String, Object> map);
 
