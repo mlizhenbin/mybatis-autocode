@@ -51,4 +51,9 @@ public class ModelGenerator extends BaseGenerator {
     protected PackageConfigType getPackageConfigType() {
         return PackageConfigType.model;
     }
+
+    @Override
+    protected String getDescription() {
+        return " Model";
+    }
 }

@@ -15,4 +15,9 @@ public class VoGenerator extends ModelGenerator {
     protected PackageConfigType getPackageConfigType() {
         return PackageConfigType.vo;
     }
+
+    @Override
+    protected String getDescription() {
+        return "查询VO";
+    }
 }

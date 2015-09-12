@@ -23,4 +23,9 @@ public class ManagerGenerator extends BaseGenerator {
     protected PackageConfigType getPackageConfigType() {
         return PackageConfigType.manager;
     }
+
+    @Override
+    protected String getDescription() {
+        return " Manager";
+    }
 }

@@ -110,4 +110,9 @@ public class ServiceGenerator extends BaseGenerator {
     protected PackageConfigType getPackageConfigType() {
         return PackageConfigType.service;
     }
+
+    @Override
+    protected String getDescription() {
+        return " Service";
+    }
 }

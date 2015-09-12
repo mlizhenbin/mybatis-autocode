@@ -134,7 +134,7 @@ public abstract class BaseGenerator implements Generator {
         velocityContext.put("primaryKeyType", generatorContext.getPrimaryKeyType());
         velocityContext.put("primaryKey", generatorContext.getPrimaryKey());
         velocityContext.put("normalPrimaryKey", generatorContext.getAttribute("normalPrimaryKey"));
-        velocityContext.put("classTitle", assemblyAutoCreateClassTitle());
+        velocityContext.put("classTitle", assemblyAutoCreateClassTitle(generatorContext.getUpClassName()));
         velocityContext.put("domain", generatorContext.getAttribute("domain"));
         velocityContext.put("colPrimaryKey", generatorContext.getAttribute("colPrimaryKey"));
     }
@@ -244,20 +244,39 @@ public abstract class BaseGenerator implements Generator {
     /**
      * 组装自动生成类title信息
      *
+     * @param upClassName
      * @return
      */
-    private String assemblyAutoCreateClassTitle() {
+    protected String assemblyAutoCreateClassTitle(String upClassName) {
         StringBuilder builder = new StringBuilder();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
         builder.append("/** ").append("\n")
-                .append(" * 功能描述: ").append("\n")
+                .append(" * 功能描述: ").append("{classDescription}").append("\n")
                 .append(" * ").append("\n")
                 .append(" * @author: ").append(System.getProperty("user.name")).append("\n")
                 .append(" * email: ").append(System.getProperty("user.name")).append(AutoCreateClassTitle.MAIL_PREFIX).append("\n")
                 .append(" * company: ").append(AutoCreateClassTitle.COMPANY).append("\n")
                 .append(" * Date: ").append(dateFormat.format(new Date())).append(" Time: ").append(timeFormat.format(new Date())).append("\n")
                 .append(" */");
-        return builder.toString();
+        return replaceClassTitleDescription(builder.toString(), upClassName);
     }
+
+    /**
+     * 生成类的说明
+     *
+     * @param defaultClassTitle
+     * @param upClassName
+     * @return
+     */
+    protected String replaceClassTitleDescription(String defaultClassTitle, String upClassName) {
+        return StringUtils.replace(defaultClassTitle, "{classDescription}", upClassName + getDescription());
+    }
+
+    /**
+     * 获取描述
+     *
+     * @return
+     */
+    protected abstract String getDescription();
 }

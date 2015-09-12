@@ -47,4 +47,9 @@ public class ResultGenerator extends BaseGenerator {
     protected PackageConfigType getPackageConfigType() {
         return PackageConfigType.result;
     }
+
+    @Override
+    protected String getDescription() {
+        return "结果Result";
+    }
 }

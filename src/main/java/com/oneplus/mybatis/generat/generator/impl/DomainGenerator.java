@@ -26,4 +26,9 @@ public class DomainGenerator extends ServiceGenerator {
     protected PackageConfigType getPackageConfigType() {
         return PackageConfigType.domain;
     }
+
+    @Override
+    protected String getDescription() {
+        return "DO领域对象";
+    }
 }

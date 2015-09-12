@@ -129,5 +129,10 @@ public class MapperGenerator extends BaseGenerator {
         return PackageConfigType.mapper;
     }
 
+    @Override
+    protected String getDescription() {
+        return " Dao Mapper";
+    }
+
 
 }
