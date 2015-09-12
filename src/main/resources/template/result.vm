@@ -5,6 +5,12 @@ import org.apache.commons.lang.StringUtils;
 ${classTitle}
 public enum ${upClassName}Result {
 
+#foreach($allUpCaseCol in $allUpCaseCols)
+    /** $remarkMap.get(${allUpCaseCol})为空 */
+    #set($coudeIndex = $velocityCount + 1000)
+${allUpCaseCol}_NULL($coudeIndex, "${allUpCaseCol}_NULL"),
+
+#end
     /** 成功 */
     SUCCESS(200, "SUCCESS"),
 

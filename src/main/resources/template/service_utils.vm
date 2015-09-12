@@ -1,0 +1,31 @@
+package ${packageName}.service.Utils;
+
+import java.util.List;
+
+import com.google.common.collect.Lists;
+import org.apache.commons.collections.CollectionUtils;
+import com.oneplus.dao.model.${upClassName};
+
+${classTitle}
+public class ${upClassName}Util {
+
+    /** slf4j */
+    private static final Logger LOGGER = LoggerFactory.getLogger(${upClassName}Util.class);
+
+    /**
+     * Don't let anyone instantiate this class.
+     */
+    private ${upClassName}Util() {
+    }
+
+    /**
+     * 校验${upClassName}参数
+     *
+     * @param ${lowClassName}
+     */
+    public void valid${upClassName}(${upClassName} ${lowClassName}) {
+#foreach($util in $utils)
+    ${util}
+#end
+    }
+}

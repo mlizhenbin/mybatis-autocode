@@ -5,6 +5,7 @@ import com.oneplus.mybatis.generat.connect.Connector;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
 
 import java.util.*;
@@ -49,6 +50,7 @@ public class ServiceGenerator extends BaseGenerator {
         velocityContext.put("importSets", importSets);
         velocityContext.put("convertDomains", getCovertDomainFields(colMap, properties));
         velocityContext.put("converts", getCovertFields(colMap, properties));
+        velocityContext.put("utils", getUtilFields(colMap, columnRemarkMap));
     }
 
     protected List<String> getCovertDomainFields(Map<String, String> map, Properties properties) {
@@ -65,8 +67,8 @@ public class ServiceGenerator extends BaseGenerator {
         return converts;
     }
 
-    protected List<String> getCovertFields(Map<String, String> map, Properties properties) {
-        Set<String> keySet = map.keySet();
+    protected List<String> getCovertFields(Map<String, String> colMap, Properties properties) {
+        Set<String> keySet = colMap.keySet();
         List<String> converts = Lists.newArrayList();
         for (String key : keySet) {
             StringBuilder sb = new StringBuilder();
@@ -77,6 +79,31 @@ public class ServiceGenerator extends BaseGenerator {
             converts.add(sb.toString());
         }
         return converts;
+    }
+
+    protected List<String> getUtilFields(Map<String, String> colMap, Map<String, String> columnRemarkMap) {
+        Set<String> keySet = colMap.keySet();
+        List<String> utils = Lists.newArrayList();
+        for (String key : keySet) {
+            StringBuilder sb = new StringBuilder();
+            String field = GeneratorStringUtils.format(key);
+            String colType = colMap.get(key);
+            if (StringUtils.equals(colType, "String")) {
+                sb.append("\tif (StringUtils.isBlank(").append(velocityContext.get("lowClassName"))
+                        .append(".get").append(GeneratorStringUtils.firstUpperNoFormat(field)).append("())) {\n");
+            } else {
+                sb.append("\tif (").append(velocityContext.get("lowClassName")).append(".get")
+                        .append(GeneratorStringUtils.firstUpperNoFormat(field)).append("() == null) {\n");
+            }
+            String remark = columnRemarkMap.get(key);
+            sb.append("\t\t\tLOGGER.warn(\"").append(field).append(remark).append("为空, ").append(velocityContext.get("lowClassName"))
+                    .append("=\" + ").append(velocityContext.get("lowClassName")).append(";\n");
+            sb.append("\t\t\t").append("throw new ").append(velocityContext.get("upClassName")).append("Exception(")
+                    .append(velocityContext.get("upClassName")).append("Result.").append(StringUtils.upperCase(key)).append("_NULL));\n");
+            sb.append("\t\t}\n");
+            utils.add(sb.toString());
+        }
+        return utils;
     }
 
     @Override

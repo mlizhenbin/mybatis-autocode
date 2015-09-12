@@ -1,9 +1,15 @@
 package com.oneplus.mybatis.generat.generator.impl;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.oneplus.mybatis.generat.connect.Connector;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
 
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -20,6 +26,21 @@ public class ResultGenerator extends BaseGenerator {
     public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
         super.initVelocityContext(velocityContext, generatorContext);
         velocityContext.put("SerialVersionUID", String.valueOf(UUID.randomUUID().getLeastSignificantBits()));
+
+        String tableName = generatorContext.getTableName();
+        Connector connector = (Connector) generatorContext.getAttribute("connector");
+        Map<String, String> columnNameTypeMap = connector.mapColumnNameType(tableName);
+        Map<String, String> columnRemarkMap = connector.mapColumnRemark(tableName);
+
+        List<String> allUpCaseCols = Lists.newArrayList();
+        Map<String, String> remarkMap = Maps.newHashMap();
+        for (String col : columnNameTypeMap.keySet()) {
+            String upCaseCol = StringUtils.upperCase(col);
+            allUpCaseCols.add(upCaseCol);
+            remarkMap.put(upCaseCol, columnRemarkMap.get(col));
+        }
+        velocityContext.put("allUpCaseCols", allUpCaseCols);
+        velocityContext.put("remarkMap", remarkMap);
     }
 
     @Override

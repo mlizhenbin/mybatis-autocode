@@ -16,6 +16,7 @@
     <bean id="modelGenerator" class="com.oneplus.mybatis.generat.generator.impl.ModelGenerator"></bean>
     <bean id="resultGenerator" class="com.oneplus.mybatis.generat.generator.impl.ResultGenerator"></bean>
     <bean id="serviceGenerator" class="com.oneplus.mybatis.generat.generator.impl.ServiceGenerator"></bean>
+    <bean id="domainGenerator" class="com.oneplus.mybatis.generat.generator.impl.DomainGenerator"></bean>
 
 
     <bean id="generatorFacade" class="com.oneplus.mybatis.generat.generator.impl.GeneratorFacade">
@@ -27,6 +28,7 @@
                 <entry key="model" value-ref="modelGenerator"/>
                 <entry key="result" value-ref="resultGenerator"/>
                 <entry key="service" value-ref="serviceGenerator"/>
+                <entry key="domain" value-ref="domainGenerator"/>
             </map>
         </property>
     </bean>

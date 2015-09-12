@@ -22,9 +22,9 @@ public enum PackageConfigType {
             "mapper.vm|dao.vm"),
 
     service("service",
-            "/service|/service/impl|/service|/service/impl|/service/domain|/service/convert|/service/convert",
-            "QueryService.java|QueryServiceImpl.java|OperateService.java|OperateServiceImpl.java|{domain}.java|{domain}Convert.java|Convert.java",
-            "service_query.vm|service_query_impl.vm|service_operate.vm|service_operate_impl.vm|service_domain.vm|service_convert_domain.vm|service_convert.vm"),
+            "/service|/service/impl|/service|/service/impl|/service/convert|/service/convert|/service/utils",
+            "QueryService.java|QueryServiceImpl.java|OperateService.java|OperateServiceImpl.java|{domain}Convert.java|Convert.java|Util.java",
+            "service_query.vm|service_query_impl.vm|service_operate.vm|service_operate_impl.vm|service_convert_domain.vm|service_convert.vm|service_utils.vm"),
 
     manager("manage",
             "/manage|/manage/impl|/manage|/manage/impl",
@@ -35,6 +35,11 @@ public enum PackageConfigType {
             "/controller",
             "Controller.java",
             "controller.vm"),
+
+    domain("domain",
+            "/domain",
+            "{domain}.java",
+            "service_domain.vm"),
 
     model("model",
             "/dao/model",

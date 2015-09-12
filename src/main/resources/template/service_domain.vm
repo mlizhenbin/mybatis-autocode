@@ -1,4 +1,4 @@
-package ${packageName}.service.domain;
+package ${packageName}.domain;
 
 #foreach($ims in $importSets)
 ${ims}
