@@ -4,20 +4,16 @@ package ${packageName}.service.domain;
 ${ims}
 #end
 import org.apache.commons.lang.builder.ToStringBuilder;
+import com.oneplus.wms.common.NoNullStyle;
+import ${packageName}.dao.model.${upClassName};
 import java.io.Serializable;
 
 ${classTitle}
-public class ${upClassName}${domain} implements Serializable {
+public class ${upClassName}${domain} extends ${upClassName} implements Serializable {
     private static final long serialVersionUID = ${SerialVersionUID}L;
 
-#foreach($field in $fields)
-    ${field}
-#end
-#foreach($method in $methods)
-    ${method}
-#end
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this);
+        return ToStringBuilder.reflectionToString(this, new NoNullStyle());
     }
 }

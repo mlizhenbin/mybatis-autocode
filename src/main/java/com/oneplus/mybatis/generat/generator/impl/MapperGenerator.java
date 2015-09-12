@@ -50,12 +50,12 @@ public class MapperGenerator extends BaseGenerator {
             if (columnNameTypeMap.get(col).equals("Date")) {
                 StringBuilder conditionBfs = new StringBuilder();
                 conditionBfs.append("<if test=\"").append(field).append("!=null and ''!=").append(field).append("\">\n")
-                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &gt;= #{").append("dynamicFileds_startTime").append("}\n")
+                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &gt;= #{").append("dynamicFileds_").append(col).append("}\n")
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBfs.toString());
                 StringBuilder conditionBfe = new StringBuilder();
                 conditionBfe.append("<if test=\"").append(field).append("!=null and ''!=").append(field).append("\">\n")
-                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &lt; #{").append("dynamicFileds_endTime").append("}\n")
+                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &lt; #{").append("dynamicFileds_").append(col).append("}\n")
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBfe.toString());
             } else {

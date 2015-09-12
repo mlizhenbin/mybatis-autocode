@@ -2,7 +2,7 @@ package ${packageName}.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ${packageName}.service.domain.${upClassName}${domain};
+import ${packageName}.dao.model.${upClassName};
 import ${packageName}.dao.${upClassName}Mapper;
 import ${packageName}.dao.model.${upClassName};
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +19,13 @@ public class ${upClassName}OperateServiceImpl implements ${upClassName}OperateSe
 	private ${upClassName}Mapper ${lowClassName}Mapper;
 
 	@Override
-	public void add${upClassName}(${upClassName}${domain} ${lowClassName}${domain}) {
-		${upClassName} ${lowClassName} = ${upClassName}Convert.convert(${lowClassName}${domain});
+	public void add${upClassName}(${upClassName} ${lowClassName}) {
 		${lowClassName}Mapper.add${upClassName}(${lowClassName});
 		LOGGER.info("增加${upClassName}成功, ${lowClassName}=", ${lowClassName});
 	}
 
 	@Override
-	public void update${upClassName}(${upClassName}${domain} ${lowClassName}${domain}) {
-		${upClassName} ${lowClassName} = ${upClassName}Convert.convert(${lowClassName}${domain});
+	public void update${upClassName}(${upClassName} ${lowClassName}) {
 		${lowClassName}Mapper.update${upClassName}(${lowClassName});
 		LOGGER.info("更新${upClassName}成功, ${lowClassName}=", ${lowClassName});
 	}

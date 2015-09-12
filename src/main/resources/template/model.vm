@@ -4,6 +4,7 @@ package ${packageName}.dao.model;
 ${ims}
 #end
 import org.apache.commons.lang.builder.ToStringBuilder;
+import com.oneplus.wms.common.NoNullStyle;
 import java.io.Serializable;
 
 ${classTitle}
@@ -18,6 +19,6 @@ public class ${upClassName} implements Serializable {
 #end
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this);
+        return ToStringBuilder.reflectionToString(this, new NoNullStyle());
     }
 }

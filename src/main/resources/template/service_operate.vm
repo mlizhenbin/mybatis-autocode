@@ -1,18 +1,22 @@
 package ${packageName}.service;
 
-import ${packageName}.service.domain.${upClassName}${domain};
+import ${packageName}.dao.model.${upClassName};
 
 ${classTitle}
 public interface ${upClassName}OperateService {
 
 	/**
      * 创建${upClassName}
+     *
+     * @param ${lowClassName} ${upClassName}对象
 	 */
-	public void add${upClassName}(${upClassName}${domain} ${upClassName}${domain});
+	public void add${upClassName}(${upClassName} ${upClassName});
 
 	/**
 	 * 更新${upClassName}
+	 *
+	 * @param ${lowClassName} ${upClassName}对象
 	 */
-	public void update${upClassName}(${upClassName}${domain} ${upClassName}${domain});
+	public void update${upClassName}(${upClassName} ${upClassName});
 
 }

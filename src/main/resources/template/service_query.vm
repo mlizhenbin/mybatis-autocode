@@ -1,5 +1,6 @@
 package ${packageName}.service;
 
+import ${packageName}.dao.model.${upClassName};
 import java.util.List;
 
 ${classTitle}
@@ -7,7 +8,10 @@ public interface ${upClassName}QueryService {
 
 	/**
 	 * 通过主键${primaryKeyType}查询${upClassName}
+     *
+	 * @param ${normalPrimaryKey} ${upClassName}主键
+	 * @return ${upClassName}对象
 	 */
-	public ${upClassName}${domain} get${upClassName}ByPrimaryKey(${primaryKeyType} ${primaryKey});
+	public ${upClassName} find${upClassName}By${primaryKey}(${primaryKeyType} ${normalPrimaryKey});
 
 }
