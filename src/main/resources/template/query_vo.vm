@@ -1,0 +1,24 @@
+package ${packageName}.vo;
+
+#foreach($ims in $importSets)
+${ims}
+#end
+import org.apache.commons.lang.builder.ToStringBuilder;
+import com.oneplus.wms.common.NoNullStyle;
+import java.io.Serializable;
+
+${classTitle}
+public class ${upClassName}VO implements Serializable {
+    private static final long serialVersionUID = ${SerialVersionUID}L;
+
+#foreach($field in $fields)
+    ${field}
+#end
+#foreach($method in $methods)
+    ${method}
+#end
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, new NoNullStyle());
+    }
+}

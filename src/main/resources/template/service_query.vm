@@ -1,7 +1,12 @@
 package ${packageName}.service;
 
 import ${packageName}.dao.model.${upClassName};
+import ${packageName}.vo.${upClassName}VO;
+import com.oneplus.wms.common.page.Paging;
+import com.oneplus.wms.common.page.PagingRequest;
+
 import java.util.List;
+import java.util.Map;
 
 ${classTitle}
 public interface ${upClassName}QueryService {
@@ -13,5 +18,30 @@ public interface ${upClassName}QueryService {
 	 * @return ${upClassName}对象
 	 */
 	public ${upClassName} find${upClassName}By${primaryKey}(${primaryKeyType} ${normalPrimaryKey});
+
+	/**
+	 * 通过${primaryKeyType}集合查询${upClassName}
+	 *
+	 * @param ${normalPrimaryKey} ${upClassName}s主键数组
+	 * @return List<${upClassName}>
+	 */
+	public List<${upClassName}> list${upClassName}(${primaryKeyType}[] ${normalPrimaryKey}s);
+
+	/**
+	 * 通过${primaryKeyType}集合查询${upClassName}
+	 *
+	 * @param ${normalPrimaryKey} ${upClassName}s主键数组
+	 * @return Map<${primaryKeyType}, ${upClassName}> KEY:${normalPrimaryKey} Value:${upClassName}
+	 */
+	public Map<${primaryKeyType}, ${upClassName}> map${upClassName}(${primaryKeyType}[] ${normalPrimaryKey}s);
+
+	/**
+	 * 分页查询${upClassName}
+	 *
+	 * @param ${lowClassName}
+     * @param request 分页请求
+     * @return paging对象
+	 */
+	public Paging<${upClassName}> find${upClassName}ByPage(PagingRequest pagingRequest, ${upClassName}VO ${lowClassName}VO);
 
 }

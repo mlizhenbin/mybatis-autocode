@@ -134,6 +134,7 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
         String packageName = PropertiesUtils.getPackage(properties);
         String primaryKeyType = propMap.get("primaryKeyType");
         String primaryKey = GeneratorStringUtils.firstUpperNoFormat(GeneratorStringUtils.format(propMap.get("primaryKey")));
+        String colPrimaryKey = StringUtils.upperCase(propMap.get("primaryKey"));
         String columnPrimaryKey = propMap.get("primaryKey");
         String normalPrimaryKey = GeneratorStringUtils.format(propMap.get("primaryKey"));
 
@@ -144,6 +145,7 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
         context.addAttribute("columnPrimaryKey", columnPrimaryKey);
         context.addAttribute("normalPrimaryKey", normalPrimaryKey);
         context.addAttribute("domain", properties.get("generator.domain"));
+        context.addAttribute("colPrimaryKey", colPrimaryKey);
         return context;
     }
 }

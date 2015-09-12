@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import ${packageName}.dao.model.${upClassName};
 import ${packageName}.dao.${upClassName}Mapper;
 import ${packageName}.dao.model.${upClassName};
+import ${packageName}.service.Utils.${upClassName}Util;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +22,19 @@ public class ${upClassName}OperateServiceImpl implements ${upClassName}OperateSe
 
 	@Override
 	public void add${upClassName}(${upClassName} ${lowClassName}) {
+		${upClassName}Util.valid${upClassName}(${lowClassName});
+
 		${lowClassName}Mapper.add${upClassName}(${lowClassName});
 		LOGGER.info("增加${upClassName}成功, ${lowClassName}=", ${lowClassName});
 	}
 
 	@Override
 	public void update${upClassName}(${upClassName} ${lowClassName}) {
+		if (${lowClassName}.get${primaryKey} == null) {
+			LOGGER.warn("更新${upClassName}业务，主键${normalPrimaryKey}为空, ${lowClassName}=" + ${lowClassName});
+			throw new ${upClassName}Exception(${upClassName}Result.${colPrimaryKey}_NULL);
+		}
+
 		${lowClassName}Mapper.update${upClassName}(${lowClassName});
 		LOGGER.info("更新${upClassName}成功, ${lowClassName}=", ${lowClassName});
 	}

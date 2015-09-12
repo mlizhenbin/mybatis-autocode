@@ -41,6 +41,11 @@ public enum PackageConfigType {
             "{domain}.java",
             "service_domain.vm"),
 
+    vo("vo",
+            "/vo",
+            "VO.java",
+            "query_vo.vm"),
+
     model("model",
             "/dao/model",
             ".java",

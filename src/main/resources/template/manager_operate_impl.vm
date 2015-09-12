@@ -1,7 +1,7 @@
-package ${packageName}.service;
+package ${packageName}.manage.impl;
 
-import ${packageName}.service.${lowClassName}QueryService;
 import ${packageName}.service.${lowClassName}OperateService;
+import ${packageName}.dao.model.${upClassName};
 
 ${classTitle}
 @Service("${lowClassName}OperateManager")
@@ -13,17 +13,14 @@ public class ${upClassName}OperateManagerImpl implements ${upClassName}OperateMa
 	@Autowired
 	private ${upClassName}QueryService ${lowClassName}QueryService;
 
-	@Autowired
-	private ${upClassName}OperateService ${lowClassName}OperateService;
-
 	@Override
-	public Result add${upClassName}(${upClassName}${domain} ${upClassName}${domain}) {
-		return null;
+	public void add${upClassName}(${upClassName} ${lowClassName}) {
+		return ${lowClassName}QueryService.add${upClassName}(${lowClassName});
 	}
 
 	@Override
-	public Result update${upClassName}(${upClassName}${domain} ${upClassName}${domain}) {
-		return null;
+	public void update${upClassName}(${upClassName} ${lowClassName}) {
+		return ${lowClassName}QueryService.update${upClassName}(${lowClassName})
 	}
 
 }

@@ -1,5 +1,12 @@
-package ${packageName}.service;
+package ${packageName}.manage.impl;
 
+import ${packageName}.dao.model.${upClassName};
+import ${packageName}.vo.${upClassName}VO;
+import com.oneplus.wms.common.page.Paging;
+import com.oneplus.wms.common.page.PagingRequest;
+
+import java.util.List;
+import java.util.Map;
 import ${packageName}.service.${upClassName}QueryService;
 
 ${classTitle}
@@ -13,8 +20,23 @@ public class ${upClassName}QueryManagerImpl implements ${upClassName}QueryManage
 	private ${upClassName}QueryService ${lowClassName}QueryService;
 
 	@Override
-	public Result get${upClassName}ByPrimaryKey(${primaryKeyType} ${primaryKey}) {
-		return null;
+    public ${upClassName} find${upClassName}By${primaryKey}(${primaryKeyType} ${normalPrimaryKey}) {
+        return ${lowClassName}QueryService.find${upClassName}By${primaryKey}(${normalPrimaryKey});
+	}
+
+	@Override
+	public List<${upClassName}> list${upClassName}(${primaryKeyType}[] ${normalPrimaryKey}s) {
+        return ${lowClassName}QueryService.list${upClassName}(${normalPrimaryKey}s);
+	}
+
+	@Override
+	public Map<${primaryKeyType}, ${upClassName}> map${upClassName}(${primaryKeyType}[] ${normalPrimaryKey}s) {
+		return ${lowClassName}QueryService.map${upClassName}(${normalPrimaryKey}s);
+	}
+
+	@Override
+	public Paging<${upClassName}> find${upClassName}ByPage(PagingRequest pagingRequest, ${upClassName}VO ${lowClassName}VO) {
+        return ${lowClassName}QueryService.find${upClassName}ByPage(pagingRequest, ${lowClassName}VO);
 	}
 
 }
