@@ -36,7 +36,7 @@ public class ${upClassName}QueryServiceImpl implements ${upClassName}QueryServic
 
 	@Override
     public ${upClassName} find${upClassName}By${primaryKey}(${primaryKeyType} ${normalPrimaryKey}) {
-		#if(${primaryKeyType} == "String")
+#if(${primaryKeyType} == "String")
 if (StringUtils.isBlank(${normalPrimaryKey})) {
         	return null;
         }
