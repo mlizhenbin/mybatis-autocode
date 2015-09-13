@@ -1,0 +1,23 @@
+// 初始化
+$("#searchBtn").click(function () {
+    $("#queryForm").submit();
+});
+
+// 查询跳转
+function goToQueryPage(pageNo) {
+    $("#_pageNo").val(pageNo);
+    $("#queryForm").submit();
+}
+
+$(function () {
+    $("#checkAll").prop("checked", false);
+    $(".checkMe").prop("checked", false);
+    $("#checkAll").live('click', function () {
+        if (this.checked) {
+            $("input[name='checkList']").prop("checked", true);
+        } else {
+            $("input[name='checkList']").prop("checked", false);
+        }
+    });
+});
+

@@ -22,3 +22,435 @@ Caused by: java.lang.NullPointerException: invalid url: /Users/a11/git/mybatisGe
 	at sun.net.www.protocol.jar.Handler.parseURL(Handler.java:150)
 	at java.net.URL.<init>(URL.java:614)
 	... 16 more
+2015-09-13 13:16:23,091 - Parser Exception: template/jsp_list.vm
+org.apache.velocity.runtime.parser.ParseException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at line 67, column 46.
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.runtime.parser.Parser.generateParseException(Parser.java:3679)
+	at org.apache.velocity.runtime.parser.Parser.jj_consume_token(Parser.java:3558)
+	at org.apache.velocity.runtime.parser.Parser.Reference(Parser.java:1521)
+	at org.apache.velocity.runtime.parser.Parser.Statement(Parser.java:357)
+	at org.apache.velocity.runtime.parser.Parser.process(Parser.java:317)
+	at org.apache.velocity.runtime.parser.Parser.parse(Parser.java:117)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1226)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1181)
+	at org.apache.velocity.Template.process(Template.java:134)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+2015-09-13 13:16:23,091 - Parser Exception: template/jsp_list.vm
+org.apache.velocity.runtime.parser.ParseException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at line 67, column 46.
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.runtime.parser.Parser.generateParseException(Parser.java:3679)
+	at org.apache.velocity.runtime.parser.Parser.jj_consume_token(Parser.java:3558)
+	at org.apache.velocity.runtime.parser.Parser.Reference(Parser.java:1521)
+	at org.apache.velocity.runtime.parser.Parser.Statement(Parser.java:357)
+	at org.apache.velocity.runtime.parser.Parser.process(Parser.java:317)
+	at org.apache.velocity.runtime.parser.Parser.parse(Parser.java:117)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1226)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1181)
+	at org.apache.velocity.Template.process(Template.java:134)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+2015-09-13 13:16:23,094 - ResourceManager.getResource() parse exception
+org.apache.velocity.exception.ParseErrorException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at template/jsp_list.vm[line 67, column 46]
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.Template.process(Template.java:151)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+2015-09-13 13:16:23,094 - ResourceManager.getResource() parse exception
+org.apache.velocity.exception.ParseErrorException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at template/jsp_list.vm[line 67, column 46]
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.Template.process(Template.java:151)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+2015-09-13 13:18:42,052 - Parser Exception: template/jsp_list.vm
+org.apache.velocity.runtime.parser.ParseException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at line 67, column 48.
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.runtime.parser.Parser.generateParseException(Parser.java:3679)
+	at org.apache.velocity.runtime.parser.Parser.jj_consume_token(Parser.java:3558)
+	at org.apache.velocity.runtime.parser.Parser.Reference(Parser.java:1521)
+	at org.apache.velocity.runtime.parser.Parser.Statement(Parser.java:357)
+	at org.apache.velocity.runtime.parser.Parser.process(Parser.java:317)
+	at org.apache.velocity.runtime.parser.Parser.parse(Parser.java:117)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1226)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1181)
+	at org.apache.velocity.Template.process(Template.java:134)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+2015-09-13 13:18:42,052 - Parser Exception: template/jsp_list.vm
+org.apache.velocity.runtime.parser.ParseException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at line 67, column 48.
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.runtime.parser.Parser.generateParseException(Parser.java:3679)
+	at org.apache.velocity.runtime.parser.Parser.jj_consume_token(Parser.java:3558)
+	at org.apache.velocity.runtime.parser.Parser.Reference(Parser.java:1521)
+	at org.apache.velocity.runtime.parser.Parser.Statement(Parser.java:357)
+	at org.apache.velocity.runtime.parser.Parser.process(Parser.java:317)
+	at org.apache.velocity.runtime.parser.Parser.parse(Parser.java:117)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1226)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1181)
+	at org.apache.velocity.Template.process(Template.java:134)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+2015-09-13 13:18:42,054 - ResourceManager.getResource() parse exception
+org.apache.velocity.exception.ParseErrorException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at template/jsp_list.vm[line 67, column 48]
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.Template.process(Template.java:151)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+2015-09-13 13:18:42,054 - ResourceManager.getResource() parse exception
+org.apache.velocity.exception.ParseErrorException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at template/jsp_list.vm[line 67, column 48]
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.Template.process(Template.java:151)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+2015-09-13 13:19:00,330 - Parser Exception: template/jsp_list.vm
+org.apache.velocity.runtime.parser.ParseException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at line 67, column 48.
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.runtime.parser.Parser.generateParseException(Parser.java:3679)
+	at org.apache.velocity.runtime.parser.Parser.jj_consume_token(Parser.java:3558)
+	at org.apache.velocity.runtime.parser.Parser.Reference(Parser.java:1521)
+	at org.apache.velocity.runtime.parser.Parser.Statement(Parser.java:357)
+	at org.apache.velocity.runtime.parser.Parser.process(Parser.java:317)
+	at org.apache.velocity.runtime.parser.Parser.parse(Parser.java:117)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1226)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1181)
+	at org.apache.velocity.Template.process(Template.java:134)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+2015-09-13 13:19:00,330 - Parser Exception: template/jsp_list.vm
+org.apache.velocity.runtime.parser.ParseException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at line 67, column 48.
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.runtime.parser.Parser.generateParseException(Parser.java:3679)
+	at org.apache.velocity.runtime.parser.Parser.jj_consume_token(Parser.java:3558)
+	at org.apache.velocity.runtime.parser.Parser.Reference(Parser.java:1521)
+	at org.apache.velocity.runtime.parser.Parser.Statement(Parser.java:357)
+	at org.apache.velocity.runtime.parser.Parser.process(Parser.java:317)
+	at org.apache.velocity.runtime.parser.Parser.parse(Parser.java:117)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1226)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1181)
+	at org.apache.velocity.Template.process(Template.java:134)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+2015-09-13 13:19:00,332 - ResourceManager.getResource() parse exception
+org.apache.velocity.exception.ParseErrorException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at template/jsp_list.vm[line 67, column 48]
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.Template.process(Template.java:151)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+2015-09-13 13:19:00,332 - ResourceManager.getResource() parse exception
+org.apache.velocity.exception.ParseErrorException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at template/jsp_list.vm[line 67, column 48]
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.Template.process(Template.java:151)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+2015-09-13 13:19:41,892 - Parser Exception: template/jsp_list.vm
+org.apache.velocity.runtime.parser.ParseException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at line 67, column 48.
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.runtime.parser.Parser.generateParseException(Parser.java:3679)
+	at org.apache.velocity.runtime.parser.Parser.jj_consume_token(Parser.java:3558)
+	at org.apache.velocity.runtime.parser.Parser.Reference(Parser.java:1521)
+	at org.apache.velocity.runtime.parser.Parser.Statement(Parser.java:357)
+	at org.apache.velocity.runtime.parser.Parser.process(Parser.java:317)
+	at org.apache.velocity.runtime.parser.Parser.parse(Parser.java:117)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1226)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1181)
+	at org.apache.velocity.Template.process(Template.java:134)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+2015-09-13 13:19:41,892 - Parser Exception: template/jsp_list.vm
+org.apache.velocity.runtime.parser.ParseException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at line 67, column 48.
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.runtime.parser.Parser.generateParseException(Parser.java:3679)
+	at org.apache.velocity.runtime.parser.Parser.jj_consume_token(Parser.java:3558)
+	at org.apache.velocity.runtime.parser.Parser.Reference(Parser.java:1521)
+	at org.apache.velocity.runtime.parser.Parser.Statement(Parser.java:357)
+	at org.apache.velocity.runtime.parser.Parser.process(Parser.java:317)
+	at org.apache.velocity.runtime.parser.Parser.parse(Parser.java:117)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1226)
+	at org.apache.velocity.runtime.RuntimeInstance.parse(RuntimeInstance.java:1181)
+	at org.apache.velocity.Template.process(Template.java:134)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+2015-09-13 13:19:41,895 - ResourceManager.getResource() parse exception
+org.apache.velocity.exception.ParseErrorException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at template/jsp_list.vm[line 67, column 48]
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.Template.process(Template.java:151)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)
+2015-09-13 13:19:41,895 - ResourceManager.getResource() parse exception
+org.apache.velocity.exception.ParseErrorException: Encountered " != null && paging.result.size() > 0}\">\n                    <c:forEach items=\"" at template/jsp_list.vm[line 67, column 48]
+Was expecting one of:
+    "[" ...
+    "}" ...
+    
+	at org.apache.velocity.Template.process(Template.java:151)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.loadResource(ResourceManagerImpl.java:437)
+	at org.apache.velocity.runtime.resource.ResourceManagerImpl.getResource(ResourceManagerImpl.java:352)
+	at org.apache.velocity.runtime.RuntimeInstance.getTemplate(RuntimeInstance.java:1533)
+	at org.apache.velocity.app.VelocityEngine.getTemplate(VelocityEngine.java:392)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.write(BaseGenerator.java:81)
+	at com.oneplus.mybatis.generat.generator.impl.BaseGenerator.defaultGenerator(BaseGenerator.java:55)
+	at com.oneplus.mybatis.generat.generator.impl.GeneratorFacade.defaultGenerator(GeneratorFacade.java:25)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.doGeneratorService(DefaultGeneratorStarter.java:121)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.generator(DefaultGeneratorStarter.java:108)
+	at com.oneplus.mybatis.generat.start.DefaultGeneratorStarter.start(DefaultGeneratorStarter.java:68)
+	at com.oneplus.mybatis.generat.MybatisGeneratorStarter.main(MybatisGeneratorStarter.java:18)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:140)

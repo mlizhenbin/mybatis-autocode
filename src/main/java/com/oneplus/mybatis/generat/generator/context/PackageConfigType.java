@@ -54,7 +54,12 @@ public enum PackageConfigType {
     result("result",
             "/result|/result",
             "Result.java|Exception.java",
-            "result.vm|exception.vm");
+            "result.vm|exception.vm"),
+
+    jsp("jsp",
+            "/jsp|/jsp",
+            ".jsp|.js",
+            "jsp_list.vm|js_list.vm"),;
 
     /**
      * 生成文件类型

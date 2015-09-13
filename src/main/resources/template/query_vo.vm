@@ -3,12 +3,13 @@ package ${packageName}.vo;
 #foreach($ims in $importSets)
 ${ims}
 #end
+import com.oneplus.wms.dao.vo.PagingVO;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import com.oneplus.wms.common.NoNullStyle;
 import java.io.Serializable;
 
 ${classTitle}
-public class ${upClassName}VO implements Serializable {
+public class ${upClassName}VO extends PagingVO implements Serializable {
     private static final long serialVersionUID = ${SerialVersionUID}L;
 
 #foreach($field in $fields)

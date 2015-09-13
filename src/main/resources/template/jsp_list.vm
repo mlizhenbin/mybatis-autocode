@@ -1,0 +1,99 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="wms" uri="http://www.oneplus.cn/jsp/jstl/functions" %>
+
+<!doctype html>
+<html lang="zh-cn">
+<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<head>
+    <title>B2B制单中心</title>
+    <%@include file="/v/wmsCommon/public_head.jsp" %>
+    <script src="/v/js/common/wms.upload.js"></script>
+    <script src="/v/js/common/wms.jquery.extend.js"></script>
+    <script src="/v/js/${lowClassName}/${lowClassName}.js"></script>
+</head>
+<body class="wms">
+<div id="dataListDiv">
+    <div class="search-box">
+        <span class="p-ladder-shaped-down">搜索区</span>
+
+        <div id="search-form">
+            <form id="queryForm" action="../${lowClassName}/find${upClassName}ByPage" method="GET">
+                <input id="_pageNo" type="hidden" name="pageNo" value="$!${lowClassName}VO.pageNo}">
+                <input id="_pageSize" type="hidden" name="pageSize" value="$!${lowClassName}VO.pageSize}">
+                <table width="98%" border="0" cellspacing="0" cellpadding="0" class="noclick">
+                    <tr>
+                        <td align="right"> 订单号：</td>
+                        <td><input type="text" id="_${normalPrimaryKey}" name="${normalPrimaryKey}" value="${${lowClassName}VO.${normalPrimaryKey}}"/></td>
+                        <td colspan="2">
+                            <input class="l-button l-button-submit" type="submit" value="搜索" id="searchBtn"/>
+                            <input class="l-button l-button-reset" type="reset" value="重置" id="resetBtn"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div ligeruiid="toptoolbar" class="l-toolbar" id="toptoolbar">
+        <div toolbarid="item-1" class="l-toolbar-item l-panel-btn l-toolbar-item-hasicon">
+        </div>
+        <%@include file="/v/wmsCommon/wms_page.jsp" %>
+    </div>
+
+    <div class="in-order-list">
+        <table id="" width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="p-table">
+            <thead class="p-table-header">
+            <tr class="p-table-header">
+                <td width="40">
+                    <input type="checkbox" class="checkAll" id="checkAll">全选
+                </td>
+                <td width="100"></td>
+                <td width="100"></td>
+                <td width="100"></td>
+                <td width="100"></td>
+                <td width="100"></td>
+                <td width="100"></td>
+                <td width="100"></td>
+                <td width="100"></td>
+            </tr>
+            </thead>
+            <tbody id="dataListTbody">
+            <c:choose>
+                <c:when test="">
+                    <c:forEach items="" var="item">
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="checkList" class="checkMe" value="${item.orderNo}">
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    <tr>
+                        <td colspan="9">暂无订单数据</td>
+                    </tr>
+                </c:otherwise>
+            </c:choose>
+
+            </tbody>
+        </table>
+    </div>
+
+    <%--引入分页--%>
+    <%@include file="/v/wmsCommon/wms_page.jsp" %>
+</div>
+</body>
+</html>
