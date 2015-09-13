@@ -35,7 +35,7 @@ public class ${upClassName}QueryManagerImpl implements ${upClassName}QueryManage
 	}
 
 	@Override
-	public Paging<${upClassName}> find${upClassName}ByPage(PagingRequest pagingRequest, ${upClassName}VO ${lowClassName}VO) {
+	public Paging<${upClassName}> find${upClassName}ByPage(${upClassName}VO ${lowClassName}VO, PagingRequest pagingRequest) {
         return ${lowClassName}QueryService.find${upClassName}ByPage(pagingRequest, ${lowClassName}VO);
 	}
 

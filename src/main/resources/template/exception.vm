@@ -30,7 +30,6 @@ public class ${upClassName}Exception extends RuntimeException {
         this.${lowClassName}Result = ${lowClassName}Result;
     }
 
-    @Override
     public ${upClassName}Result get${upClassName}Result() {
         return this.${lowClassName}Result;
     }

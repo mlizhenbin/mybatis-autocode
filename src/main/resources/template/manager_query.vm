@@ -38,10 +38,10 @@ public interface ${upClassName}QueryManager {
 	/**
 	 * 分页查询${upClassName}
 	 *
-	 * @param ${lowClassName}
+	 * @param ${lowClassName}VO
      * @param request 分页请求
      * @return paging对象
 	 */
-	public Paging<${upClassName}> find${upClassName}ByPage(PagingRequest pagingRequest, ${upClassName}VO ${lowClassName}VO);
+	public Paging<${upClassName}> find${upClassName}ByPage(${upClassName}VO ${lowClassName}VO, PagingRequest pagingRequest);
 
 }

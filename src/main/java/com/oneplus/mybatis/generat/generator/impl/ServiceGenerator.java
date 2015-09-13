@@ -99,7 +99,7 @@ public class ServiceGenerator extends BaseGenerator {
             sb.append("\t\t\tLOGGER.warn(\"").append(field).append(remark).append("为空, ").append(velocityContext.get("lowClassName"))
                     .append("=\" + ").append(velocityContext.get("lowClassName")).append(";\n");
             sb.append("\t\t\t").append("throw new ").append(velocityContext.get("upClassName")).append("Exception(")
-                    .append(velocityContext.get("upClassName")).append("Result.").append(StringUtils.upperCase(key)).append("_NULL));\n");
+                    .append(velocityContext.get("upClassName")).append("Result.").append(StringUtils.upperCase(key)).append("_NULL);\n");
             sb.append("\t\t}\n");
             utils.add(sb.toString());
         }

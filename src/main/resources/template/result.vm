@@ -23,9 +23,9 @@ ${allUpCaseCol}_NULL($coudeIndex, "${allUpCaseCol}_NULL"),
 
     private String type;
 
-    ${upClassName}Result(String type, int code) {
-        this.type = type;
+    ${upClassName}Result(int code, String type) {
         this.code = code;
+        this.type = type;
     }
 
     public static ${upClassName}Result getByType(String type) {

@@ -8,9 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import ${packageName}.constant.Const;
-import ${packageName}.model.${upClassName};
-import ${packageName}.service.${upClassName}Service;
+import ${packageName}.manager.${upClassName}OperateManager;
+import ${packageName}.manager.${upClassName}QueryManager;
+import ${packageName}.dao.model.${upClassName};
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Map;
 
 ${classTitle}
 @Controller
@@ -25,27 +29,92 @@ public class ${upClassName}Controller {
 	@Autowired
 	private ${upClassName}QueryManager ${lowClassName}QueryManager;
 
-	@RequestMapping(value="/${lowClassName}/lis")
-    public String list(ModelMap modelMap){
-        return "${lowClassName}list.vm";
-    }
-	
-	@RequestMapping(value="/${lowClassName}/get")
-	@ResponseBody
-    public Object get(@RequestParam("${primaryKey}") ${primaryKeyType} ${normalPrimaryKey}){
-        return null;
-    }
-    
-    @RequestMapping(value="/${lowClassName}/create")
-	@ResponseBody
-    public Object create(@ModelAttribute ${upClassName} ${lowClassName}){
-		retun null;
+    /**
+     * 分页查询${upClassName}
+     *
+     * @param ${lowClassName}VO
+     * @param modelMap
+     * @return
+     */
+	@RequestMapping(value="/${lowClassName}/find${upClassName}ByPage", method = {RequestMethod.GET, RequestMethod.POST})
+    public String find${upClassName}ByPage(${upClassName}VO ${lowClassName}VO, ModelMap modelMap){
+        // 分页查询请求
+        PagingRequest pagingRequest = new PagingRequest();
+        pagingRequest.setPageNo(salesOrderQueryVo.getPageNo());
+        pagingRequest.setPageSize(salesOrderQueryVo.getPageSize());
+        pagingRequest.desc("${columnPrimaryKey}");
+
+        // 分页查询
+        Paging<${upClassName}> paging = ${lowClassName}QueryManager.find${upClassName}ByPage(${lowClassName}VO, pagingRequest);
+        modelMap.addAttribute("paging", paging);
+
+        return "/v/${lowClassName}/${lowClassName}list";
     }
 
-    @RequestMapping(value="/${lowClassName}/update")
-	@ResponseBody
-    public Object update(@ModelAttribute ${upClassName} ${lowClassName}){
-        return null;
+	/**
+     * 查询${upClassName}详情
+     *
+     * @param orderNo
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping(value = "/${lowClassName}/find${upClassName}By${primaryKey}", method = RequestMethod.GET)
+    public String find${upClassName}By${primaryKey}(@RequestParam(required = true) ${primaryKeyType} ${normalPrimaryKey}, ModelMap modelMap) {
+        ${upClassName} ${lowClassName} = ${lowClassName}QueryManager.find${upClassName}By${primaryKey}(${normalPrimaryKey});
+        modelMap.addAttribute("${lowClassName}", ${lowClassName});
+        return "/v/${lowClassName}/${lowClassName}detail";
+    }
+
+    /**
+     * 增加${upClassName}
+     *
+     * @param orderNo
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping(value = "/${lowClassName}/add${upClassName}", method = RequestMethod.POST)
+    public String add${upClassName}(@Valid ${upClassName} ${lowClassName}, ModelMap modelMap) {
+        try {
+            ${lowClassName}OperateManager.add${upClassName}(${lowClassName});
+            LOGGER.info("增加${lowClassName}成功, ${lowClassName}=" + ${lowClassName});
+        } catch (${upClassName}Exception ex) {
+            LOGGER.warn("增加${lowClassName}失败, ${lowClassName}=" + ${lowClassName}
+                    + ", errorCode=" + ex.get${upClassName}Result());
+            return "error";
+        } catch (Exception ex) {
+            LOGGER.warn("增加${lowClassName}异常, ${lowClassName}=" + ${lowClassName}, ex);
+            return "error";
+        }
+
+        modelMap.addAttribute("${lowClassName}", ${lowClassName});
+
+        return "success";
+    }
+
+    /**
+     * 修改${upClassName}
+     *
+     * @param orderNo
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping(value = "/${lowClassName}/add${upClassName}", method = RequestMethod.POST)
+    public String update${upClassName}(@Valid ${upClassName} ${lowClassName}, ModelMap modelMap) {
+        try {
+            ${lowClassName}OperateManager.update${upClassName}(${lowClassName});
+            LOGGER.info("修改${lowClassName}成功, ${lowClassName}=" + ${lowClassName});
+        } catch (${upClassName}Exception ex) {
+            LOGGER.warn("修改${lowClassName}失败, ${lowClassName}=" + ${lowClassName}
+                    + ", errorCode=" + ex.get${upClassName}Result());
+            return "error";
+        } catch (Exception ex) {
+            LOGGER.warn("修改${lowClassName}异常, ${lowClassName}=" + ${lowClassName}, ex);
+            return "error";
+        }
+
+        modelMap.addAttribute("${lowClassName}", ${lowClassName});
+
+        return "success";
     }
 
 }

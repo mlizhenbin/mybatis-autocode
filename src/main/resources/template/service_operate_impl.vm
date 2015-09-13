@@ -6,6 +6,8 @@ import ${packageName}.dao.model.${upClassName};
 import ${packageName}.dao.${upClassName}Mapper;
 import ${packageName}.dao.model.${upClassName};
 import ${packageName}.service.Utils.${upClassName}Util;
+import ${packageName}.result.${upClassName}Exception;
+import ${packageName}.result.${upClassName}Result;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

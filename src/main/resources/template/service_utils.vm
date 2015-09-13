@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 import org.apache.commons.collections.CollectionUtils;
-import com.oneplus.dao.model.${upClassName};
+import ${packageName}.dao.model.${upClassName};
+import ${packageName}.result.${upClassName}Exception;
+import ${packageName}.result.${upClassName}Result;
 
 ${classTitle}
 public class ${upClassName}Util {

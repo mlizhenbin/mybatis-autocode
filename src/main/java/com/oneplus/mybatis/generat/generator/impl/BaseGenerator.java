@@ -137,6 +137,7 @@ public abstract class BaseGenerator implements Generator {
         velocityContext.put("classTitle", assemblyAutoCreateClassTitle(generatorContext.getUpClassName()));
         velocityContext.put("domain", generatorContext.getAttribute("domain"));
         velocityContext.put("colPrimaryKey", generatorContext.getAttribute("colPrimaryKey"));
+        velocityContext.put("columnPrimaryKey", generatorContext.getAttribute("columnPrimaryKey"));
     }
 
     /**
