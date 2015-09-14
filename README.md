@@ -50,4 +50,8 @@ mybatis自动生成代码工具。
 3、再pom.xml目录下或者工程下，使用插件
   mvn autocode:create
 
-  
+二、1.0.3-SNAPSHOT
+1、个性化配置
+2、增加JSP、JS等模板
+3、增加生成模板的方法模板
+4、工具类更新
