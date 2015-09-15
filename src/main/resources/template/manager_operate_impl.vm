@@ -1,6 +1,6 @@
 package ${packageName}.manage.impl;
 
-import ${packageName}.service.${lowClassName}OperateService;
+import ${packageName}.service.${upClassName}OperateService;
 import ${packageName}.dao.model.${upClassName};
 
 ${classTitle}
@@ -11,16 +11,16 @@ public class ${upClassName}OperateManagerImpl implements ${upClassName}OperateMa
 	private static final Logger LOGGER = LoggerFactory.getLogger(${upClassName}OperateManagerImpl.class);
 
 	@Autowired
-	private ${upClassName}QueryService ${lowClassName}QueryService;
+	private ${upClassName}OperateService ${lowClassName}OperateService;
 
 	@Override
 	public void add${upClassName}(${upClassName} ${lowClassName}) {
-		return ${lowClassName}QueryService.add${upClassName}(${lowClassName});
+		${lowClassName}OperateService.add${upClassName}(${lowClassName});
 	}
 
 	@Override
 	public void update${upClassName}(${upClassName} ${lowClassName}) {
-		return ${lowClassName}QueryService.update${upClassName}(${lowClassName})
+		${lowClassName}OperateService.update${upClassName}(${lowClassName})
 	}
 
 }
