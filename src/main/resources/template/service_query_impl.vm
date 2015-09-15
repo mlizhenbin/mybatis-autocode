@@ -57,7 +57,7 @@ public class ${upClassName}QueryServiceImpl implements ${upClassName}QueryServic
 		}
 
 		Map<String, Object> map = QueryMapperUtils.toQueryMap();
-		queryMap.put("${normalPrimaryKey}s", ${normalPrimaryKey}s);
+		map.put("${normalPrimaryKey}s", ${normalPrimaryKey}s);
 		List<${upClassName}> ${lowClassName}s = ${lowClassName}Mapper.list${upClassName}(map);
         return ${lowClassName}s;
 	}
