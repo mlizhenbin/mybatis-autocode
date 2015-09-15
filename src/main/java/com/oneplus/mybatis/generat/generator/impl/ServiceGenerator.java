@@ -97,7 +97,7 @@ public class ServiceGenerator extends BaseGenerator {
             }
             String remark = columnRemarkMap.get(key);
             sb.append("\t\t\tLOGGER.warn(\"").append(field).append(remark).append("为空, ").append(velocityContext.get("lowClassName"))
-                    .append("=\" + ").append(velocityContext.get("lowClassName")).append(";\n");
+                    .append("=\" + ").append(velocityContext.get("lowClassName")).append(");\n");
             sb.append("\t\t\t").append("throw new ").append(velocityContext.get("upClassName")).append("Exception(")
                     .append(velocityContext.get("upClassName")).append("Result.").append(StringUtils.upperCase(key)).append("_NULL);\n");
             sb.append("\t\t}\n");

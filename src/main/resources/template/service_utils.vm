@@ -7,6 +7,7 @@ import org.apache.commons.collections.CollectionUtils;
 import ${packageName}.dao.model.${upClassName};
 import ${packageName}.result.${upClassName}Exception;
 import ${packageName}.result.${upClassName}Result;
+import org.apache.commons.lang.StringUtils;
 
 ${classTitle}
 public class ${upClassName}Util {
