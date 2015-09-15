@@ -10,13 +10,13 @@ public interface ${upClassName}OperateService {
      *
      * @param ${lowClassName} ${upClassName}对象
 	 */
-	public void add${upClassName}(${upClassName} ${upClassName});
+	public void add${upClassName}(${upClassName} ${lowClassName});
 
 	/**
 	 * 更新${upClassName}
 	 *
 	 * @param ${lowClassName} ${upClassName}对象
 	 */
-	public void update${upClassName}(${upClassName} ${upClassName});
+	public void update${upClassName}(${upClassName} ${lowClassName});
 
 }
