@@ -75,7 +75,7 @@ public class ${upClassName}QueryServiceImpl implements ${upClassName}QueryServic
 	}
 
 	@Override
-	public Paging<${upClassName}> find${upClassName}ByPage(PagingRequest pagingRequest, ${upClassName}VO ${lowClassName}VO) {
+	public Paging<${upClassName}> find${upClassName}ByPage(${upClassName}VO ${lowClassName}VO, PagingRequest pagingRequest) {
 		// 查询请求参数转换
         ListAdapter<${upClassName}VO> listAdapter = ListAdapterUtil.<${upClassName}VO>convert2ListAdapter(pagingRequest);
         Map<String, Object> queryMap = listAdapter.convert(${lowClassName}VO);

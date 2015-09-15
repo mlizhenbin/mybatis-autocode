@@ -22,7 +22,7 @@ public interface ${upClassName}QueryManager {
 	/**
 	 * 通过${primaryKeyType}集合查询${upClassName}
 	 *
-	 * @param ${normalPrimaryKey} ${upClassName}s主键数组
+	 * @param ${normalPrimaryKey}s ${upClassName}s主键数组
 	 * @return List<${upClassName}>
 	 */
 	public List<${upClassName}> list${upClassName}(${primaryKeyType}[] ${normalPrimaryKey}s);
@@ -30,7 +30,7 @@ public interface ${upClassName}QueryManager {
 	/**
 	 * 通过${primaryKeyType}集合查询${upClassName}
 	 *
-	 * @param ${normalPrimaryKey} ${upClassName}s主键数组
+	 * @param ${normalPrimaryKey}s ${upClassName}s主键数组
 	 * @return Map<${primaryKeyType}, ${upClassName}> KEY:${normalPrimaryKey} Value:${upClassName}
 	 */
 	public Map<${primaryKeyType}, ${upClassName}> map${upClassName}(${primaryKeyType}[] ${normalPrimaryKey}s);
@@ -38,8 +38,8 @@ public interface ${upClassName}QueryManager {
 	/**
 	 * 分页查询${upClassName}
 	 *
-	 * @param ${lowClassName}VO
-     * @param request 分页请求
+	 * @param ${lowClassName}VO ${upClassName}VO对象
+     * @param pagingRequest 分页请求
      * @return paging对象
 	 */
 	public Paging<${upClassName}> find${upClassName}ByPage(${upClassName}VO ${lowClassName}VO, PagingRequest pagingRequest);
