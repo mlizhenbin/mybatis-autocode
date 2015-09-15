@@ -26,7 +26,7 @@ public class ${upClassName}Util {
      *
      * @param ${lowClassName}
      */
-    public void valid${upClassName}(${upClassName} ${lowClassName}) {
+    public static void valid${upClassName}(${upClassName} ${lowClassName}) {
 #foreach($util in $utils)
     ${util}
 #end
