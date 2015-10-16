@@ -47,11 +47,11 @@
 
     <update id="update${upClassName}" parameterType="${upClassName}">
         UPDATE ${tableName} ${tableName}
-        <set>
+        <trim prefix="SET" suffixOverrides=",">
 #foreach($updateCondition in $updateConditions)
             $updateCondition
 #end
-        </set>
+        </trim>
         <include refid="${upClassName}_By_${primaryKey}" />
     </update>
 
