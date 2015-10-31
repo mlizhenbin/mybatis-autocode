@@ -15,20 +15,14 @@
     <repositories>
         <repository>
             <id>central</id>
-            <name>central</name>
-            <url>http://172.21.107.247:8081/nexus/content/groups/public/</url>
+            <name>Maven Repository Switchboard</name>
+            <url>http://repo1.maven.org/maven2</url>
+            <layout>default</layout>
             <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
+                <enabled>false</enabled>
             </snapshots>
         </repository>
     </repositories>
-    <distributionManagement>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <url>http://172.21.107.247:8081/nexus/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -98,7 +92,7 @@
             <plugin>
                 <groupId>com.oneplus.maven.plugins</groupId>
                 <artifactId>autocode-plugin</artifactId>
-                <version>1.0.2-SNAPSHOT</version>
+                <version>1.0.3-SNAPSHOT</version>
             </plugin>
         </plugins>
     </build>
