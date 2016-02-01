@@ -1,17 +1,17 @@
 package com.oneplus.mybatis.generat.generator.impl;
 
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.velocity.VelocityContext;
-
 import com.google.common.collect.Lists;
 import com.oneplus.mybatis.generat.connect.Connector;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
+import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.velocity.VelocityContext;
 import org.springframework.util.CollectionUtils;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * 功能描述：Mapper.xml代码生成
@@ -47,20 +47,25 @@ public class MapperGenerator extends BaseGenerator {
             cloumBf.append("<result property=\"").append(field).append("\" column=\"").append(col).append("\"/>");
             resultMapColumns.add(cloumBf.toString());
 
+            String defaultFieldStr = "<if test=\"" + field + "!=null and ''!=" + field + "\">\n";
+            String defaultFieldStrs = "<if test=\"" + field + "s" + "!=null and ''!=" + field + "s" + "\">\n";
             if (columnNameTypeMap.get(col).equals("Date")) {
                 StringBuilder conditionBfs = new StringBuilder();
-                conditionBfs.append("<if test=\"").append(field).append("!=null and ''!=").append(field).append("\">\n")
+                conditionBfs.append(defaultFieldStr)
                         .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &gt;= #{").append("dynamicFileds_").append(col).append("}\n")
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBfs.toString());
                 StringBuilder conditionBfe = new StringBuilder();
-                conditionBfe.append("<if test=\"").append(field).append("!=null and ''!=").append(field).append("\">\n")
+                conditionBfe.append(defaultFieldStr)
                         .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &lt; #{").append("dynamicFileds_").append(col).append("}\n")
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBfe.toString());
             } else {
+                if (columnNameTypeMap.get(col).equals("Long") || columnNameTypeMap.get(col).equals("Integer")) {
+                    defaultFieldStr = "<if test=\"" + field + "!=null\">\n";
+                }
                 StringBuilder conditionBf = new StringBuilder();
-                conditionBf.append("<if test=\"").append(field).append("!=null and ''!=").append(field).append("\">\n")
+                conditionBf.append(defaultFieldStr)
                         .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" = #{").append(field).append("}\n")
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBf.toString());
@@ -75,9 +80,13 @@ public class MapperGenerator extends BaseGenerator {
                         }
                     }
                 }
+
+                if (columnNameTypeMap.get(col).equals("Long") || columnNameTypeMap.get(col).equals("Integer")) {
+                    defaultFieldStrs = "<if test=\"" + field + "s" + "!=null\">\n";
+                }
                 if ((StringUtils.equals(field, pk) || isKey) && !StringUtils.equals(field, "id")) {
                     StringBuilder builder = new StringBuilder();
-                    builder.append("<if test=\"").append(field).append("s").append("!=null and ''!=").append(field).append("s").append("\">\n")
+                    builder.append(defaultFieldStrs)
                             .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" IN\n")
                             .append("\t\t\t\t<foreach collection=\"").append(field).append("s\" item=\"").append(field).append("\" open=\"(\" close=\")\" separator=\",\">\n")
                             .append("\t\t\t\t\t").append("#{").append(field).append("}\n")
@@ -87,26 +96,34 @@ public class MapperGenerator extends BaseGenerator {
                 }
             }
 
-            if (col.startsWith("gmt")) {
+            if (col.startsWith("gmt") || StringUtils.equals(field, "createTime") ||  StringUtils.equals(field, "modifyTime")) {
                 insertValueConditions.add("now(),");
+
+                insertColsConditions.add(col + ", ");
             } else {
                 StringBuilder conditionValueBf = new StringBuilder();
-                conditionValueBf.append("<if test=\"").append(field).append("!=null and ''!=").append(field).append("\">\n")
+                conditionValueBf.append(defaultFieldStr)
                         .append("\t\t\t\t").append("#{").append(field).append("},\n")
                         .append("\t\t\t</if>");
                 insertValueConditions.add(conditionValueBf.toString());
-            }
-            StringBuilder conditionColBf = new StringBuilder();
-            conditionColBf.append("<if test=\"").append(field).append("!=null and ''!=").append(field).append("\">\n")
-                    .append("\t\t\t\t").append(col).append(",\n")
-                    .append("\t\t\t</if>");
-            insertColsConditions.add(conditionColBf.toString());
 
-            if (!StringUtils.equals(pk, field)) {
-                StringBuilder upBf = new StringBuilder();
-                upBf.append("<if test=\"").append(field).append("!=null and ''!=").append(field).append("\">\n")
-                        .append("\t\t\t\t").append(tableName).append(".").append(col).append(" = #{").append(field).append("},\n")
+                StringBuilder conditionColBf = new StringBuilder();
+                conditionColBf.append(defaultFieldStr)
+                        .append("\t\t\t\t").append(col).append(",\n")
                         .append("\t\t\t</if>");
+                insertColsConditions.add(conditionColBf.toString());
+            }
+
+            String[] updateFilters = {pk, "createTime"};
+            if (!ArrayUtils.contains(updateFilters, field)) {
+                StringBuilder upBf = new StringBuilder();
+                if (StringUtils.equals(field, "modifyTime")) {
+                    upBf.append(tableName).append(".").append(col).append(" = NOW(),");
+                } else {
+                    upBf.append(defaultFieldStr)
+                            .append("\t\t\t\t").append(tableName).append(".").append(col).append(" = #{").append(field).append("},\n")
+                            .append("\t\t\t</if>");
+                }
                 updateConditions.add(upBf.toString());
             }
         }

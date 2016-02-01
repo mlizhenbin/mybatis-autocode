@@ -9,7 +9,7 @@ import com.oneplus.wms.common.NoNullStyle;
 import java.io.Serializable;
 
 ${classTitle}
-public class ${upClassName}Vo extends PagingVO implements Serializable {
+public class ${upClassName}VO extends PagingVo implements Serializable {
     private static final long serialVersionUID = ${SerialVersionUID}L;
 
 #foreach($field in $fields)
