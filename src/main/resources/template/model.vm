@@ -3,11 +3,13 @@ package ${packageName}.dao.model;
 #foreach($ims in $importSets)
 ${ims}
 #end
+import org.apache.ibatis.type.Alias;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import com.oneplus.wms.common.NoNullStyle;
 import java.io.Serializable;
 
 ${classTitle}
+@Alias("${upClassName}")
 public class ${upClassName} implements Serializable {
     private static final long serialVersionUID = ${SerialVersionUID}L;
 
