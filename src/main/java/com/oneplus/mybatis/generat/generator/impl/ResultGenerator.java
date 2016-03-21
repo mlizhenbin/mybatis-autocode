@@ -5,6 +5,7 @@ import com.google.common.collect.Maps;
 import com.oneplus.mybatis.generat.connect.Connector;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import com.oneplus.mybatis.generat.utils.PropertiesUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
 
@@ -39,6 +40,9 @@ public class ResultGenerator extends BaseGenerator {
             allUpCaseCols.add(upCaseCol);
             remarkMap.put(upCaseCol, columnRemarkMap.get(col));
         }
+
+        String noPrefixTableName = StringUtils.upperCase(tableName.toLowerCase().replaceFirst(PropertiesUtils.getTablePrefix(generatorContext.getProperties()), ""));
+        velocityContext.put("noPrefixTableName", noPrefixTableName);
         velocityContext.put("allUpCaseCols", allUpCaseCols);
         velocityContext.put("remarkMap", remarkMap);
     }

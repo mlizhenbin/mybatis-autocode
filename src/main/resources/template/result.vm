@@ -8,7 +8,7 @@ public enum ${upClassName}Result {
 #foreach($allUpCaseCol in $allUpCaseCols)
     /** $remarkMap.get(${allUpCaseCol})为空 */
     #set($coudeIndex = $velocityCount + 1000)
-${allUpCaseCol}_NULL($coudeIndex, "${allUpCaseCol}_NULL"),
+${noPrefixTableName}_${allUpCaseCol}_NULL($coudeIndex, "${noPrefixTableName}_${allUpCaseCol}_NULL"),
 
 #end
     /** 成功 */
