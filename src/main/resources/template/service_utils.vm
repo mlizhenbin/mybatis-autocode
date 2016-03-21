@@ -22,12 +22,23 @@ public class ${upClassName}Util {
     }
 
     /**
-     * 校验${upClassName}参数
+     * 校验增加${upClassName}参数
      *
      * @param ${lowClassName}
      */
-    public static void valid${upClassName}(${upClassName} ${lowClassName}) {
-#foreach($util in $utils)
+    public static void validAdd${upClassName}(${upClassName} ${lowClassName}) {
+#foreach($util in $addUtils)
+    ${util}
+#end
+    }
+
+    /**
+     * 校验修改${upClassName}参数
+     *
+     * @param ${lowClassName}
+     */
+    public static void validUpdate${upClassName}(${upClassName} ${lowClassName}) {
+#foreach($util in $uptUtils)
     ${util}
 #end
     }

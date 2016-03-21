@@ -1,10 +1,12 @@
 package com.oneplus.mybatis.generat.generator.impl;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.oneplus.mybatis.generat.connect.Connector;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
+import com.oneplus.mybatis.generat.utils.PropertiesUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
 
@@ -50,7 +52,19 @@ public class ServiceGenerator extends BaseGenerator {
         velocityContext.put("importSets", importSets);
         velocityContext.put("convertDomains", getCovertDomainFields(colMap, properties));
         velocityContext.put("converts", getCovertFields(colMap, properties));
-        velocityContext.put("utils", getUtilFields(colMap, columnRemarkMap));
+
+        String noPrefixTableName = StringUtils.upperCase(tableName.toLowerCase().replaceFirst(PropertiesUtils.getTablePrefix(generatorContext.getProperties()), ""));
+        velocityContext.put("noPrefixTableName", noPrefixTableName);
+        velocityContext.put("addUtils", getUtilFields(colMap, columnRemarkMap, noPrefixTableName));
+
+        Map<String, String> checkUpdateMap = Maps.newHashMap();
+        String columnPrimaryKey = (String) generatorContext.getAttribute("columnPrimaryKey");
+        for (String col : colMap.keySet()) {
+            if (StringUtils.equals(col, columnPrimaryKey)) {
+                checkUpdateMap.put(col, colMap.get(col));
+            }
+        }
+        velocityContext.put("uptUtils", getUtilFields(checkUpdateMap, columnRemarkMap, noPrefixTableName));
     }
 
     protected List<String> getCovertDomainFields(Map<String, String> map, Properties properties) {
@@ -81,7 +95,7 @@ public class ServiceGenerator extends BaseGenerator {
         return converts;
     }
 
-    protected List<String> getUtilFields(Map<String, String> colMap, Map<String, String> columnRemarkMap) {
+    protected List<String> getUtilFields(Map<String, String> colMap, Map<String, String> columnRemarkMap, String noPrefixTableName) {
         Set<String> keySet = colMap.keySet();
         List<String> utils = Lists.newArrayList();
         for (String key : keySet) {
@@ -99,7 +113,8 @@ public class ServiceGenerator extends BaseGenerator {
             sb.append("\t\t\tLOGGER.warn(\"").append(field).append(remark).append("为空, ").append(velocityContext.get("lowClassName"))
                     .append("=\" + ").append(velocityContext.get("lowClassName")).append(");\n");
             sb.append("\t\t\t").append("throw new ").append(velocityContext.get("upClassName")).append("Exception(")
-                    .append(velocityContext.get("upClassName")).append("Result.").append(StringUtils.upperCase(key)).append("_NULL);\n");
+                    .append(velocityContext.get("upClassName")).append("Result.").append(noPrefixTableName).append("_")
+                    .append(StringUtils.upperCase(key)).append("_NULL);\n");
             sb.append("\t\t}\n");
             utils.add(sb.toString());
         }

@@ -24,7 +24,7 @@ public class ${upClassName}OperateServiceImpl implements ${upClassName}OperateSe
 
 	@Override
 	public void add${upClassName}(${upClassName} ${lowClassName}) {
-		${upClassName}Util.valid${upClassName}(${lowClassName});
+		${upClassName}Util.validAdd${upClassName}(${lowClassName});
 
 		${lowClassName}Mapper.add${upClassName}(${lowClassName});
 		LOGGER.info("增加${upClassName}成功, ${lowClassName}=", ${lowClassName});
@@ -32,10 +32,7 @@ public class ${upClassName}OperateServiceImpl implements ${upClassName}OperateSe
 
 	@Override
 	public void update${upClassName}(${upClassName} ${lowClassName}) {
-		if (${lowClassName}.get${primaryKey}() == null) {
-			LOGGER.warn("更新${upClassName}业务，主键${normalPrimaryKey}为空, ${lowClassName}=" + ${lowClassName});
-			throw new ${upClassName}Exception(${upClassName}Result.${colPrimaryKey}_NULL);
-		}
+		${upClassName}Util.validUpdate${upClassName}(${lowClassName});
 
 		${lowClassName}Mapper.update${upClassName}(${lowClassName});
 		LOGGER.info("更新${upClassName}成功, ${lowClassName}=", ${lowClassName});
