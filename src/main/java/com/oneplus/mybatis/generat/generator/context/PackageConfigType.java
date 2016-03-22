@@ -17,7 +17,7 @@ import java.util.List;
 public enum PackageConfigType {
 
     mapper("mapper",
-            "/dao/mapper|/dao",
+            "/dao|/dao",
             "Mapper.xml|Mapper.java",
             "mapper.vm|dao.vm"),
 
