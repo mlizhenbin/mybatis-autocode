@@ -132,6 +132,41 @@ public enum Constants {
      */
     REMARK_MAP("REMARK_MAP", "remarkMap"),
 
+    /**
+     * 方法集合
+     */
+    METHODS("methods", "methods"),
+
+    /**
+     * 属性集合
+     */
+    FIELDS("FIELDS", "fields"),
+
+    /**
+     * 导入包集合
+     */
+    IMPORT_SETS("IMPORT_SETS", "importSets"),
+
+    /**
+     * 转换domain
+     */
+    CONVERT_DOMAINS("CONVERT_DOMAINS", "convertDomains"),
+
+    /**
+     * 转换entity
+     */
+    CONVERTS("CONVERTS", "converts"),
+
+    /**
+     * 工具类
+     */
+    ADD_UTILS("ADD_UTILS", "addUtils"),
+
+    /**
+     * 修改工具类
+     */
+    UPT_UTILS("UPT_UTILS", "uptUtils"),
+
 
     ;
 

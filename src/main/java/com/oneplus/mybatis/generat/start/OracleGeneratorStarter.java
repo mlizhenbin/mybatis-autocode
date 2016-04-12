@@ -32,7 +32,7 @@ public class OracleGeneratorStarter extends DefaultGeneratorStarter {
 
     @Override
     protected boolean isLoop(PackageConfigType configType) {
-        if (configType == PackageConfigType.manager) {
+        if (configType == PackageConfigType.ORACLE_MAPPER) {
             return false;
         }
         return true;

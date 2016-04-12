@@ -118,7 +118,7 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
      * @return
      */
     protected boolean isLoop(PackageConfigType configType) {
-        if (configType == PackageConfigType.oracle_mapper) {
+        if (configType == PackageConfigType.MANAGER) {
             return false;
         }
         return true;

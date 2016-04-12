@@ -26,7 +26,7 @@ public enum PackageConfigType {
             "Mapper.xml|Mapper.java",
             "oracle_mapper.vm|dao.vm"),
 
-    service("service",
+    SERVICE("service",
             "/service|/service/impl|/service|/service/impl|/service/convert|/service/convert|/service/utils",
             "QueryService.java|QueryServiceImpl.java|OperateService.java|OperateServiceImpl.java|{domain}Convert.java|Convert.java|Util.java",
             "service_query.vm|service_query_impl.vm|service_operate.vm|service_operate_impl.vm|service_convert_domain.vm|service_convert.vm|service_utils.vm"),
@@ -46,7 +46,7 @@ public enum PackageConfigType {
             "{domain}.java",
             "service_domain.vm"),
 
-    vo("vo",
+    VO("vo",
             "/vo",
             "VO.java",
             "query_vo.vm"),

@@ -48,15 +48,15 @@ public class ServiceGenerator extends AbstractGeneratorImpl {
 
         Properties properties = cxt.getProperties();
 
-        velocityContext.put("methods", generateGetAndSetMethods(colMap));
-        velocityContext.put("fields", generateFields(colMap, columnRemarkMap));
-        velocityContext.put("importSets", importSets);
-        velocityContext.put("convertDomains", getCovertDomainFields(colMap, properties));
-        velocityContext.put("converts", getCovertFields(colMap, properties));
-
-        String noPrefixTableName = StringUtils.upperCase(tableName.toLowerCase().replaceFirst(PropertiesUtils.getTablePrefix(cxt.getProperties()), ""));
-        velocityContext.put("noPrefixTableName", noPrefixTableName);
-        velocityContext.put("addUtils", getUtilFields(colMap, columnRemarkMap, noPrefixTableName));
+        velocityContext.put(Constants.METHODS.getDesc(), generateGetAndSetMethods(colMap));
+        velocityContext.put(Constants.FIELDS.getDesc(), generateFields(colMap, columnRemarkMap));
+        velocityContext.put(Constants.IMPORT_SETS.getDesc(), importSets);
+        velocityContext.put(Constants.CONVERT_DOMAINS.getDesc(), getCovertDomainFields(colMap, properties));
+        velocityContext.put(Constants.CONVERTS.getDesc(), getCovertFields(colMap, properties));
+        String noPrefixTableName = StringUtils.upperCase(tableName.toLowerCase()
+                .replaceFirst(PropertiesUtils.getTablePrefix(cxt.getProperties()), ""));
+        velocityContext.put(Constants.NO_PREFIX_TABLE_NAME.getDesc(), noPrefixTableName);
+        velocityContext.put(Constants.ADD_UTILS.getDesc(), getUtilFields(colMap, columnRemarkMap, noPrefixTableName));
 
         Map<String, String> checkUpdateMap = Maps.newHashMap();
         String primaryKey = (String) cxt.getAttribute(Constants.PRIMARY_KEY);
@@ -65,37 +65,63 @@ public class ServiceGenerator extends AbstractGeneratorImpl {
                 checkUpdateMap.put(col, colMap.get(col));
             }
         }
-        velocityContext.put("uptUtils", getUtilFields(checkUpdateMap, columnRemarkMap, noPrefixTableName));
+        velocityContext.put(Constants.UPT_UTILS.getDesc(), getUtilFields(checkUpdateMap, columnRemarkMap, noPrefixTableName));
     }
 
+    /**
+     * domain模板
+     *
+     * @param map
+     * @param properties
+     * @return
+     */
     protected List<String> getCovertDomainFields(Map<String, String> map, Properties properties) {
         Set<String> keySet = map.keySet();
         List<String> converts = Lists.newArrayList();
         for (String key : keySet) {
             StringBuilder sb = new StringBuilder();
             String field = GeneratorStringUtils.format(key);
-            sb.append(velocityContext.get("lowClassName")).append(properties.get("generator.domain"))
+            sb.append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
+                    .append(properties.get(Constants.DOMAIN.getType()))
                     .append(".set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(")
-                    .append(velocityContext.get("lowClassName")).append(".get" + GeneratorStringUtils.firstUpperNoFormat(field) + "())");
-            converts.add(sb.toString());
-        }
-        return converts;
-    }
-
-    protected List<String> getCovertFields(Map<String, String> colMap, Properties properties) {
-        Set<String> keySet = colMap.keySet();
-        List<String> converts = Lists.newArrayList();
-        for (String key : keySet) {
-            StringBuilder sb = new StringBuilder();
-            String field = GeneratorStringUtils.format(key);
-            sb.append(velocityContext.get("lowClassName")).append(".set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(")
-                    .append(velocityContext.get("lowClassName")).append(properties.get("generator.domain"))
+                    .append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
                     .append(".get" + GeneratorStringUtils.firstUpperNoFormat(field) + "())");
             converts.add(sb.toString());
         }
         return converts;
     }
 
+    /**
+     * 转换类
+     *
+     * @param colMap
+     * @param properties
+     * @return
+     */
+    protected List<String> getCovertFields(Map<String, String> colMap, Properties properties) {
+        Set<String> keySet = colMap.keySet();
+        List<String> converts = Lists.newArrayList();
+        for (String key : keySet) {
+            StringBuilder sb = new StringBuilder();
+            String field = GeneratorStringUtils.format(key);
+            sb.append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
+                    .append(".set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(")
+                    .append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
+                    .append(properties.get(Constants.DOMAIN.getType()))
+                    .append(".get" + GeneratorStringUtils.firstUpperNoFormat(field) + "())");
+            converts.add(sb.toString());
+        }
+        return converts;
+    }
+
+    /**
+     * 组装工具类模板
+     *
+     * @param colMap
+     * @param columnRemarkMap
+     * @param noPrefixTableName
+     * @return
+     */
     protected List<String> getUtilFields(Map<String, String> colMap, Map<String, String> columnRemarkMap, String noPrefixTableName) {
         Set<String> keySet = colMap.keySet();
         List<String> utils = Lists.newArrayList();
@@ -104,18 +130,37 @@ public class ServiceGenerator extends AbstractGeneratorImpl {
             String field = GeneratorStringUtils.format(key);
             String colType = colMap.get(key);
             if (StringUtils.equals(colType, "String")) {
-                sb.append("\tif (StringUtils.isBlank(").append(velocityContext.get("lowClassName"))
-                        .append(".get").append(GeneratorStringUtils.firstUpperNoFormat(field)).append("())) {\n");
+                sb.append("\tif (StringUtils.isBlank(")
+                        .append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
+                        .append(".get")
+                        .append(GeneratorStringUtils.firstUpperNoFormat(field))
+                        .append("())) {\n");
             } else {
-                sb.append("\tif (").append(velocityContext.get("lowClassName")).append(".get")
-                        .append(GeneratorStringUtils.firstUpperNoFormat(field)).append("() == null) {\n");
+                sb.append("\tif (")
+                        .append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
+                        .append(".get")
+                        .append(GeneratorStringUtils.firstUpperNoFormat(field))
+                        .append("() == null) {\n");
             }
             String remark = columnRemarkMap.get(key);
-            sb.append("\t\t\tLOGGER.warn(\"").append(field).append(remark).append("为空, ").append(velocityContext.get("lowClassName"))
-                    .append("=\" + ").append(velocityContext.get("lowClassName")).append(");\n");
-            sb.append("\t\t\t").append("throw new ").append(velocityContext.get("upClassName")).append("Exception(")
-                    .append(velocityContext.get("upClassName")).append("Result.").append(noPrefixTableName).append("_")
-                    .append(StringUtils.upperCase(key)).append("_NULL);\n");
+            sb.append("\t\t\tLOGGER.warn(\"")
+                    .append(field)
+                    .append(remark)
+                    .append("为空, ")
+                    .append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
+                    .append("=\" + ")
+                    .append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
+                    .append(");\n");
+            sb.append("\t\t\t")
+                    .append("throw new ")
+                    .append(velocityContext.get(Constants.UP_CLASS_NAME.getDesc()))
+                    .append("Exception(")
+                    .append(velocityContext.get(Constants.UP_CLASS_NAME.getDesc()))
+                    .append("Result.")
+                    .append(noPrefixTableName)
+                    .append("_")
+                    .append(StringUtils.upperCase(key))
+                    .append("_NULL);\n");
             sb.append("\t\t}\n");
             utils.add(sb.toString());
         }
@@ -124,7 +169,7 @@ public class ServiceGenerator extends AbstractGeneratorImpl {
 
     @Override
     protected PackageConfigType getPackageConfigType() {
-        return PackageConfigType.service;
+        return PackageConfigType.SERVICE;
     }
 
     @Override

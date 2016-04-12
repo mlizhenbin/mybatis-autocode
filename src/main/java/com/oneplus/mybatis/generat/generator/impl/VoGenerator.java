@@ -11,9 +11,10 @@ import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
  * Date: 15/9/12 Time: 21:48
  */
 public class VoGenerator extends ModelGenerator {
+
     @Override
     protected PackageConfigType getPackageConfigType() {
-        return PackageConfigType.vo;
+        return PackageConfigType.VO;
     }
 
     @Override
