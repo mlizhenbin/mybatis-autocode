@@ -81,13 +81,14 @@
                 SELECT tmp1.RID, ROWNUM LINENUM
                 FROM (
                     SELECT
-                        ROWID RID
+                        ROWID RID,
+                        ROWNUM RN
                     FROM ${oracleSchemaName}.${tableName} ${tableName}
                     <include refid="${upClassName}_Query_List_Sharing" />
                     <include refid="${upClassName}_List_Paramter" />
                 ) tmp1
                 <if test="begin != null and end != null" >
-                    WHERE ROWNUM &lt; \#{end}
+                    WHERE RN &lt; \#{end}
                 </if>
             )
             <if test="begin != null and end != null" >
