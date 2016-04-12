@@ -2,6 +2,7 @@ package com.oneplus.mybatis.generat.connect;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.oneplus.mybatis.generat.utils.ConstantsType;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
 
 import java.sql.*;
@@ -74,8 +75,8 @@ public class MysqlConnector implements Connector {
             while (pkRSet.next()) {
                 String primaryKey = pkRSet.getString("COLUMN_NAME");
                 String primaryKeyType = mapColumnNameType(pkRSet.getString("TABLE_NAME")).get(primaryKey);
-                map.put("primaryKey", primaryKey);
-                map.put("primaryKeyType", primaryKeyType);
+                map.put(ConstantsType.PRIMARY_KEY.getDesc(), primaryKey);
+                map.put(ConstantsType.PRIMARY_KEY_TYPE.getDesc(), primaryKeyType);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
