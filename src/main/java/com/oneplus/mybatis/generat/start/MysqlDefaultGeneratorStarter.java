@@ -31,12 +31,12 @@ import java.util.Properties;
  * company：一加科技
  * Date: 15/6/12 Time：23:41
  */
-public class DefaultGeneratorStarter implements GeneratorStarter {
+public class MysqlDefaultGeneratorStarter implements GeneratorStarter {
 
     /**
      * sl4j
      */
-    private static final Logger LOGGER = LoggerFactory.getLogger(DefaultGeneratorStarter.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MysqlDefaultGeneratorStarter.class);
 
     /**
      * 读取配置

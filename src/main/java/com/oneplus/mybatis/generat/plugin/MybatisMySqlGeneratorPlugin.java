@@ -1,4 +1,4 @@
-package com.oneplus.mybatis.generat;
+package com.oneplus.mybatis.generat.plugin;
 
 import com.oneplus.mybatis.generat.start.GeneratorStarter;
 import com.oneplus.mybatis.generat.start.PluginGeneratorStarter;

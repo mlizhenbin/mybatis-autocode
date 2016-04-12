@@ -12,9 +12,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn
  * company：一加科技
- * Date: 16/4/12 Time: 13:16
+ * Date: 16/4/12 Time: 17:29
  */
-public class OracleGeneratorStarter extends MysqlDefaultGeneratorStarter {
+public class OracleDefaultGeneratorStarter extends MysqlDefaultGeneratorStarter {
 
     /**
      * 重新初始化上线文信息

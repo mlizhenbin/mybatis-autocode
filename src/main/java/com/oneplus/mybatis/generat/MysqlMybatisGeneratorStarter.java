@@ -1,6 +1,6 @@
 package com.oneplus.mybatis.generat;
 
-import com.oneplus.mybatis.generat.start.DefaultGeneratorStarter;
+import com.oneplus.mybatis.generat.start.MysqlDefaultGeneratorStarter;
 import com.oneplus.mybatis.generat.start.GeneratorStarter;
 
 /**
@@ -11,10 +11,10 @@ import com.oneplus.mybatis.generat.start.GeneratorStarter;
  * company：一加科技
  * Date: 15/6/12 Time：23:42
  */
-public class MybatisGeneratorStarter {
+public class MysqlMybatisGeneratorStarter {
 
     public static void main(String[] args) {
-        GeneratorStarter starter = new DefaultGeneratorStarter();
+        GeneratorStarter starter = new MysqlDefaultGeneratorStarter();
         starter.start();
     }
 }

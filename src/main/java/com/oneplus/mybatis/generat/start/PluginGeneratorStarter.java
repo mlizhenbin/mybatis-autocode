@@ -12,7 +12,7 @@ import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
  * company：一加科技
  * Date: 15/6/12 Time：23:41
  */
-public class PluginGeneratorStarter extends DefaultGeneratorStarter {
+public class PluginGeneratorStarter extends MysqlDefaultGeneratorStarter {
 
     @Override
     protected void executeGenerator(Generator generator, GeneratorContext generatorContext, PackageConfigType configType) {
