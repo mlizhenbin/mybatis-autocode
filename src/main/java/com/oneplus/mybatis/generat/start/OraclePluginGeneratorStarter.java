@@ -7,14 +7,14 @@ import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * 功能描述：oracle默认实现
+ * 功能描述：Oracle自动化生成代码实现
  *
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn
  * company：一加科技
- * Date: 16/4/12 Time: 13:16
+ * Date: 16/4/12 Time: 11:09
  */
-public class OracleGeneratorStarter extends DefaultGeneratorStarter {
+public class OraclePluginGeneratorStarter extends PluginGeneratorStarter {
 
     /**
      * 重新初始化上线文信息
