@@ -17,7 +17,8 @@ public class OracleMapperGenerator extends MapperGenerator {
     @Override
     public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
         super.initVelocityContext(velocityContext, generatorContext);
-        velocityContext.put("oracleSchemaName", generatorContext.getAttribute("oracleSchemaName"));
+        velocityContext.put("oracleSchemaName", generatorContext
+                .getAttribute(GeneratorContext.GeneratorContextType.ORACLE_SCHEMA));
     }
 
     @Override

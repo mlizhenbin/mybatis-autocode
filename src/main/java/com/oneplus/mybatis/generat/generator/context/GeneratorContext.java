@@ -1,7 +1,9 @@
 package com.oneplus.mybatis.generat.generator.context;
 
 import com.google.common.collect.Maps;
-import org.apache.commons.lang3.StringUtils;
+import com.oneplus.mybatis.generat.utils.Constants;
+import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
+import com.oneplus.mybatis.generat.utils.PropertiesUtils;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -56,28 +58,34 @@ public class GeneratorContext implements Serializable {
     /**
      * 上下文参数
      */
-    private Map<String, Object> attributes = Maps.newHashMap();
+    private Map<GeneratorContextType, Object> attributes = Maps.newHashMap();
 
-    public GeneratorContext(String tableName, String upClassName, String lowClassName, String packageName,
-                            String primaryKeyType, String primaryKey, Properties properties) {
+    /**
+     * 构造生成代码上下文
+     *
+     * @param tableName  表名称
+     * @param propMap    JDBC数据map
+     * @param properties 配置
+     */
+    public GeneratorContext(String tableName, Map<String, String> propMap, Properties properties) {
         this.tableName = tableName;
-        this.upClassName = upClassName;
-        this.lowClassName = lowClassName;
-        this.packageName = packageName;
-        this.primaryKeyType = primaryKeyType;
-        this.primaryKey = primaryKey;
+        this.upClassName = GeneratorStringUtils.firstUpperAndNoPrefix(tableName, properties);
+        this.lowClassName = GeneratorStringUtils.formatAndNoPrefix(tableName, properties);
+        this.packageName = PropertiesUtils.getPackage(properties);
+        this.primaryKeyType = propMap.get(Constants.PRIMARY_KEY_TYPE.getType());
+        this.primaryKey = GeneratorStringUtils.firstUpperNoFormat(GeneratorStringUtils.format(propMap.get(Constants.PRIMARY_KEY.getType())));
         this.properties = properties;
     }
 
-    public Object getAttribute(String key) {
-        if (StringUtils.isBlank(key)) {
+    public Object getAttribute(GeneratorContextType key) {
+        if (key == null) {
             return null;
         }
         return this.attributes.get(key);
     }
 
-    public void addAttribute(String key, Object value) {
-        if (StringUtils.isBlank(key)) {
+    public void addAttribute(GeneratorContextType key, Object value) {
+        if (key == null) {
             return;
         }
         this.attributes.put(key, value);
@@ -109,6 +117,47 @@ public class GeneratorContext implements Serializable {
 
     public String getPrimaryKey() {
         return primaryKey;
+    }
+
+    /**
+     * 上线文session类型
+     */
+    public enum GeneratorContextType {
+
+        /**
+         * 数据库连接池
+         */
+        JDBC_CONNECTOR,
+
+        /**
+         * 配置文件配置
+         */
+        CONFIG_PROPERTIES,
+
+        /**
+         * daomain
+         */
+        DOMAIN,
+
+        /**
+         * 表主键, 与Java属性对应,去掉下划线"_"变成驼峰
+         */
+        NORMAL_PRIMARY_KEY,
+
+        /**
+         * 数据库主键名称
+         */
+        COLUMN_PRIMARY_KEY,
+
+        /**
+         * 主键全部大写
+         */
+        COL_ALL_UPPERCASE_PRIMARY_KEY,
+
+        /**
+         * oracle schema
+         */
+        ORACLE_SCHEMA,
     }
 
 }

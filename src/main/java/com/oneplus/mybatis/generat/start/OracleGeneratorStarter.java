@@ -20,7 +20,7 @@ public class OracleGeneratorStarter extends DefaultGeneratorStarter {
      * 重新初始化上线文信息
      */
     @Override
-    public void initConnector() {
+    public void buildConnector() {
         GeneratorConfigurer generatorConfigurer = GeneratorConfigurerFactory.getGeneratorConfigurer();
         properties = generatorConfigurer.getProperties();
         generatorConfigurer.initConfigParams();

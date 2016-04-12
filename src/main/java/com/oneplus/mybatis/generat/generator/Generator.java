@@ -22,7 +22,7 @@ public interface Generator {
     public void defaultGenerator(GeneratorContext context, PackageConfigType configType);
 
     /**
-     * 读取配置生成文件
+     * 插件配置生成文件
      *
      * @param context
      * @param configType

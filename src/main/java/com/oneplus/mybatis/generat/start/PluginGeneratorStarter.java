@@ -15,7 +15,7 @@ import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 public class PluginGeneratorStarter extends DefaultGeneratorStarter {
 
     @Override
-    protected void doGeneratorService(Generator generator, GeneratorContext generatorContext, PackageConfigType configType) {
+    protected void executeGenerator(Generator generator, GeneratorContext generatorContext, PackageConfigType configType) {
         generator.pluginGenerator(generatorContext, configType);
     }
 }

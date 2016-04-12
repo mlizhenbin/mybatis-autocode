@@ -13,5 +13,5 @@ public interface GeneratorStarter {
     /**
      * 启动创建代码
      */
-    public void start();
+    void start();
 }

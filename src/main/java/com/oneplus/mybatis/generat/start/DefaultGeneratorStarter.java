@@ -7,6 +7,7 @@ import com.oneplus.mybatis.generat.connect.MysqlConnector;
 import com.oneplus.mybatis.generat.generator.Generator;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import com.oneplus.mybatis.generat.utils.Constants;
 import com.oneplus.mybatis.generat.utils.GeneratorFileUtils;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
@@ -53,11 +54,16 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
     protected ApplicationContext context;
 
     /**
+     * 生成代码转发器名称
+     */
+    private static final String GENERATOR_FACADE = "generatorFacade";
+
+    /**
      * 执行生成方法
      */
     public void start() {
         try {
-            initConnector();
+            buildConnector();
             generator();
         } catch (Exception e) {
             throw new RuntimeException("启动创建代码工具出现异常", e);
@@ -81,7 +87,7 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
         for (String tableName : tables) {
             try {
                 Map<String, String> pkMap = connector.getPrimaryKey(tableName);
-                if (StringUtils.isBlank(pkMap.get("primaryKey"))) {
+                if (StringUtils.isBlank(pkMap.get(Constants.PRIMARY_KEY.getType()))) {
                     throw new RuntimeException(tableName + " 表结构没有主键，请检查表结构，生成代码失败.");
                 }
             } catch (Exception e) {
@@ -97,16 +103,16 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
 
             for (PackageConfigType configType : PackageConfigType.values()) {
                 if (isLoop(configType)) {
-                    Generator generator = (Generator) context.getBean("generatorFacade");
-                    GeneratorContext generatorContext = initBaseContext(tableName);
-                    doGeneratorService(generator, generatorContext, configType);
+                    Generator generator = (Generator) context.getBean(GENERATOR_FACADE);
+                    GeneratorContext generatorContext = assemblyContext(tableName);
+                    executeGenerator(generator, generatorContext, configType);
                 }
             }
         }
     }
 
     /**
-     * 是否可以继续循环
+     * 控制区分数据库生成代码层次, 是否可以继续循环
      *
      * @param configType
      * @return
@@ -125,8 +131,21 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
      * @param generatorContext
      * @param configType
      */
-    protected void doGeneratorService(Generator generator, GeneratorContext generatorContext, PackageConfigType configType) {
+    protected void executeGenerator(Generator generator, GeneratorContext generatorContext, PackageConfigType configType) {
         generator.defaultGenerator(generatorContext, configType);
+    }
+
+    /**
+     * 构建生成器内容参数
+     */
+    protected void buildConnector() {
+        GeneratorConfigurer generatorConfigurer = GeneratorConfigurerFactory.getGeneratorConfigurer();
+        properties = generatorConfigurer.getProperties();
+        generatorConfigurer.initConfigParams();
+        context = new ClassPathXmlApplicationContext(GeneratorConfigurer.SPRING_CONFIG);
+        setConnector(new MysqlConnector(properties));
+        setProperties(properties);
+        setContext(context);
     }
 
     /**
@@ -135,44 +154,22 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
      * @param tableName
      * @return
      */
-    protected GeneratorContext initBaseContext(String tableName) {
+    protected GeneratorContext assemblyContext(String tableName) {
         Map<String, String> propMap = connector.getPrimaryKey(tableName);
-        String upClassName = GeneratorStringUtils.firstUpperAndNoPrefix(tableName, properties);
-        String lowClassName = GeneratorStringUtils.formatAndNoPrefix(tableName, properties);
-        String packageName = PropertiesUtils.getPackage(properties);
-        String primaryKeyType = propMap.get("primaryKeyType");
-        String primaryKey = GeneratorStringUtils.firstUpperNoFormat(GeneratorStringUtils.format(propMap.get("primaryKey")));
-        String colPrimaryKey = StringUtils.upperCase(propMap.get("primaryKey"));
-        String columnPrimaryKey = propMap.get("primaryKey");
-        String normalPrimaryKey = GeneratorStringUtils.format(propMap.get("primaryKey"));
-        String oracleSchemaName = (String) properties.get("oracle.schema.name");
-
-        GeneratorContext context = new GeneratorContext(tableName, upClassName, lowClassName,
-                packageName, primaryKeyType, primaryKey, properties);
-        context.addAttribute("connector", connector);
-        context.addAttribute("properties", properties);
-        context.addAttribute("columnPrimaryKey", columnPrimaryKey);
-        context.addAttribute("normalPrimaryKey", normalPrimaryKey);
-        context.addAttribute("domain", properties.get("generator.domain"));
-        context.addAttribute("colPrimaryKey", colPrimaryKey);
-        context.addAttribute("oracleSchemaName", oracleSchemaName);
+        GeneratorContext context = new GeneratorContext(tableName, propMap, properties);
+        context.addAttribute(GeneratorContext.GeneratorContextType.JDBC_CONNECTOR, connector);
+        context.addAttribute(GeneratorContext.GeneratorContextType.CONFIG_PROPERTIES, properties);
+        context.addAttribute(GeneratorContext.GeneratorContextType.DOMAIN,
+                properties.get(Constants.GENERATOR_DOMAIN.getType()));
+        context.addAttribute(GeneratorContext.GeneratorContextType.NORMAL_PRIMARY_KEY,
+                GeneratorStringUtils.format(propMap.get(Constants.PRIMARY_KEY.getType())));
+        context.addAttribute(GeneratorContext.GeneratorContextType.COLUMN_PRIMARY_KEY,
+                propMap.get(Constants.PRIMARY_KEY.getType()));
+        context.addAttribute(GeneratorContext.GeneratorContextType.COL_ALL_UPPERCASE_PRIMARY_KEY,
+                StringUtils.upperCase(propMap.get(Constants.PRIMARY_KEY.getType())));
+        context.addAttribute(GeneratorContext.GeneratorContextType.ORACLE_SCHEMA,
+                properties.get(Constants.ORACLE_SCHEMA_NAME.getType()));
         return context;
-    }
-
-    public void initConnector() {
-        GeneratorConfigurer generatorConfigurer = GeneratorConfigurerFactory.getGeneratorConfigurer();
-        properties = generatorConfigurer.getProperties();
-        generatorConfigurer.initConfigParams();
-        context = new ClassPathXmlApplicationContext(GeneratorConfigurer.SPRING_CONFIG);
-
-        // 设置上下文参数
-        setConnector(new MysqlConnector(properties));
-        setProperties(properties);
-        setContext(context);
-    }
-
-    public Connector getConnector() {
-        return connector;
     }
 
     public void setConnector(Connector connector) {

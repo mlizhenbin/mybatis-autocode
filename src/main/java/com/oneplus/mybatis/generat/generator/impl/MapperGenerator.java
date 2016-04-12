@@ -28,7 +28,7 @@ public class MapperGenerator extends BaseGenerator {
         super.initVelocityContext(velocityContext, generatorContext);
 
         String tableName = generatorContext.getTableName();
-        Connector connector = (Connector) generatorContext.getAttribute("connector");
+        Connector connector = (Connector) generatorContext.getAttribute(GeneratorContext.GeneratorContextType.JDBC_CONNECTOR);
         Map<String, String> columnNameTypeMap = connector.mapColumnNameType(tableName);
         List<String> allIndexs = connector.listAllIndex(tableName);
 
@@ -96,7 +96,7 @@ public class MapperGenerator extends BaseGenerator {
                 }
             }
 
-            if (col.startsWith("gmt") || StringUtils.equals(field, "createTime") ||  StringUtils.equals(field, "modifyTime")) {
+            if (col.startsWith("gmt") || StringUtils.equals(field, "createTime") || StringUtils.equals(field, "modifyTime")) {
                 insertValueConditions.add("now(),");
 
                 insertColsConditions.add(col + ", ");
@@ -138,7 +138,7 @@ public class MapperGenerator extends BaseGenerator {
             columns.set(i, tempCol);
         }
         velocityContext.put("columns", columns);
-        velocityContext.put("columnPrimaryKey", generatorContext.getAttribute("columnPrimaryKey"));
+        velocityContext.put("columnPrimaryKey", generatorContext.getAttribute(GeneratorContext.GeneratorContextType.COLUMN_PRIMARY_KEY));
     }
 
     @Override

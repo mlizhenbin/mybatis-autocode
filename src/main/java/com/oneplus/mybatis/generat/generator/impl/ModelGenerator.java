@@ -26,7 +26,7 @@ public class ModelGenerator extends BaseGenerator {
         velocityContext.put("SerialVersionUID", String.valueOf(UUID.randomUUID().getLeastSignificantBits()));
 
         String tableName = generatorContext.getTableName();
-        Connector connector = (Connector) generatorContext.getAttribute("connector");
+        Connector connector = (Connector) generatorContext.getAttribute(GeneratorContext.GeneratorContextType.JDBC_CONNECTOR);
 
         Map<String, String> colMap = connector.mapColumnNameType(tableName);
         Map<String, String> columnRemarkMap = connector.mapColumnRemark(tableName);
