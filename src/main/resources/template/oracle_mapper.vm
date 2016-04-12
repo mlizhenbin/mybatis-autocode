@@ -95,7 +95,7 @@
                 WHERE LINENUM &gt;= #{begin}
             </if>
         ) tmp2, ${oracleSchemaName}.${tableName} ${tableName}
-        WHERE tmp2.RID = ${tableName}.ROWID;
+        WHERE tmp2.RID = ${tableName}.ROWID
     </select>
 
     <select id="list${upClassName}Count" resultType="java.lang.Integer" parameterType="java.util.HashMap">
