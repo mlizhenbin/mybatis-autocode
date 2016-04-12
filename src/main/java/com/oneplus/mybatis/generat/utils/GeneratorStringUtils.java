@@ -18,7 +18,11 @@ public class GeneratorStringUtils {
      */
     public static String format(String string) {
         if (!StringUtils.contains(string, "_")) {
-            return string;
+            if (StringUtils.equals(string, StringUtils.upperCase(string))) {
+                return StringUtils.lowerCase(string);
+            } else {
+                return string;
+            }
         }
 
         StringBuilder sb = new StringBuilder();
