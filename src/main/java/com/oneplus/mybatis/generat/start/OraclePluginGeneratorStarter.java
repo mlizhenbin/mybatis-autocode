@@ -32,7 +32,7 @@ public class OraclePluginGeneratorStarter extends PluginGeneratorStarter {
 
     @Override
     protected boolean isLoop(PackageConfigType configType) {
-        if (configType == PackageConfigType.ORACLE_MAPPER) {
+        if (configType == PackageConfigType.MAPPER) {
             return false;
         }
         return true;
