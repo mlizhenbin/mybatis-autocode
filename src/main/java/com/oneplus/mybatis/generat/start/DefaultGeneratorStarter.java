@@ -7,7 +7,7 @@ import com.oneplus.mybatis.generat.connect.MysqlConnector;
 import com.oneplus.mybatis.generat.generator.Generator;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
-import com.oneplus.mybatis.generat.utils.Constants;
+import com.oneplus.mybatis.generat.utils.ConstantsType;
 import com.oneplus.mybatis.generat.utils.GeneratorFileUtils;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
@@ -87,7 +87,7 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
         for (String tableName : tables) {
             try {
                 Map<String, String> pkMap = connector.getPrimaryKey(tableName);
-                if (StringUtils.isBlank(pkMap.get(Constants.PRIMARY_KEY.getType()))) {
+                if (StringUtils.isBlank(pkMap.get(ConstantsType.PRIMARY_KEY.getType()))) {
                     throw new RuntimeException(tableName + " 表结构没有主键，请检查表结构，生成代码失败.");
                 }
             } catch (Exception e) {
@@ -157,15 +157,15 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
     protected GeneratorContext assemblyContext(String tableName) {
         Map<String, String> propMap = connector.getPrimaryKey(tableName);
         GeneratorContext context = new GeneratorContext(tableName, propMap, properties);
-        context.addAttribute(Constants.JDBC_CONNECTOR, connector);
-        context.addAttribute(Constants.CONFIG_PROPERTIES, properties);
-        context.addAttribute(Constants.DOMAIN, properties.get(Constants.DOMAIN.getType()));
-        context.addAttribute(Constants.NORMAL_PRIMARY_KEY,
-                GeneratorStringUtils.format(propMap.get(Constants.PRIMARY_KEY.getType())));
-        context.addAttribute(Constants.COL_ALL_UPPERCASE_PRIMARY_KEY,
-                StringUtils.upperCase(propMap.get(Constants.PRIMARY_KEY.getType())));
-        context.addAttribute(Constants.ORACLE_SCHEMA,
-                properties.get(Constants.ORACLE_SCHEMA.getType()));
+        context.addAttribute(ConstantsType.JDBC_CONNECTOR, connector);
+        context.addAttribute(ConstantsType.CONFIG_PROPERTIES, properties);
+        context.addAttribute(ConstantsType.DOMAIN, properties.get(ConstantsType.DOMAIN.getType()));
+        context.addAttribute(ConstantsType.NORMAL_PRIMARY_KEY,
+                GeneratorStringUtils.format(propMap.get(ConstantsType.PRIMARY_KEY.getType())));
+        context.addAttribute(ConstantsType.COL_ALL_UPPERCASE_PRIMARY_KEY,
+                StringUtils.upperCase(propMap.get(ConstantsType.PRIMARY_KEY.getType())));
+        context.addAttribute(ConstantsType.ORACLE_SCHEMA,
+                properties.get(ConstantsType.ORACLE_SCHEMA.getType()));
         return context;
     }
 

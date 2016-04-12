@@ -6,7 +6,7 @@ import com.oneplus.mybatis.generat.generator.Generator;
 import com.oneplus.mybatis.generat.generator.context.AutoCreateClassTitle;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
-import com.oneplus.mybatis.generat.utils.Constants;
+import com.oneplus.mybatis.generat.utils.ConstantsType;
 import com.oneplus.mybatis.generat.utils.GeneratorFileUtils;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import org.apache.commons.io.IOUtils;
@@ -128,16 +128,16 @@ public abstract class AbstractGeneratorImpl implements Generator {
      * @return
      */
     public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
-        velocityContext.put(Constants.TABLE_NAME.getType(), cxt.getTableName());
-        velocityContext.put(Constants.UP_CLASS_NAME.getType(), cxt.getUpClassName());
-        velocityContext.put(Constants.LOW_CLASS_NAME.getType(), cxt.getLowClassName());
-        velocityContext.put(Constants.PACKAGE_NAME.getType(), cxt.getPackageName());
-        velocityContext.put(Constants.PRIMARY_KEY_TYPE.getDesc(), cxt.getPrimaryKeyType());
-        velocityContext.put(Constants.PRIMARY_KEY.getDesc(), cxt.getPrimaryKey());
-        velocityContext.put(Constants.NORMAL_PRIMARY_KEY.getDesc(), cxt.getAttribute(Constants.NORMAL_PRIMARY_KEY));
-        velocityContext.put(Constants.CLASS_TITLE.getDesc(), assemblyAutoCreateClassTitle(cxt.getUpClassName()));
-        velocityContext.put(Constants.DOMAIN.getDesc(), cxt.getAttribute(Constants.DOMAIN));
-        velocityContext.put(Constants.COL_ALL_UPPERCASE_PRIMARY_KEY.getDesc(), cxt.getAttribute(Constants.COL_ALL_UPPERCASE_PRIMARY_KEY));
+        velocityContext.put(ConstantsType.TABLE_NAME.getType(), cxt.getTableName());
+        velocityContext.put(ConstantsType.UP_CLASS_NAME.getType(), cxt.getUpClassName());
+        velocityContext.put(ConstantsType.LOW_CLASS_NAME.getType(), cxt.getLowClassName());
+        velocityContext.put(ConstantsType.PACKAGE_NAME.getType(), cxt.getPackageName());
+        velocityContext.put(ConstantsType.PRIMARY_KEY_TYPE.getDesc(), cxt.getPrimaryKeyType());
+        velocityContext.put(ConstantsType.PRIMARY_KEY.getDesc(), cxt.getPrimaryKey());
+        velocityContext.put(ConstantsType.NORMAL_PRIMARY_KEY.getDesc(), cxt.getAttribute(ConstantsType.NORMAL_PRIMARY_KEY));
+        velocityContext.put(ConstantsType.CLASS_TITLE.getDesc(), assemblyAutoCreateClassTitle(cxt.getUpClassName()));
+        velocityContext.put(ConstantsType.DOMAIN.getDesc(), cxt.getAttribute(ConstantsType.DOMAIN));
+        velocityContext.put(ConstantsType.COL_ALL_UPPERCASE_PRIMARY_KEY.getDesc(), cxt.getAttribute(ConstantsType.COL_ALL_UPPERCASE_PRIMARY_KEY));
     }
 
     /**
@@ -160,7 +160,7 @@ public abstract class AbstractGeneratorImpl implements Generator {
 
         Map<String, String> generatorParams = Maps.newHashMap();
         for (int i = 0; i < templates.length; i++) {
-            String tempFileName = baseFileNames[i].replace("{domain}", (CharSequence) properties.get(Constants.DOMAIN.getType()));
+            String tempFileName = baseFileNames[i].replace("{domain}", (CharSequence) properties.get(ConstantsType.DOMAIN.getType()));
             String fileName = GeneratorFileUtils.getPackageDirectory(targetDirs[i], properties)
                     + GeneratorStringUtils.firstUpperAndNoPrefix(tableName, properties)
                     + tempFileName;

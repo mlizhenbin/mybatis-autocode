@@ -2,7 +2,7 @@ package com.oneplus.mybatis.generat.generator.impl;
 
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
-import com.oneplus.mybatis.generat.utils.Constants;
+import com.oneplus.mybatis.generat.utils.ConstantsType;
 import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
 
@@ -21,8 +21,8 @@ public class ControllerGenerator extends AbstractGeneratorImpl {
         super.initVelocityContext(velocityContext, cxt);
         String description = (String) velocityContext.get("classTitle");
         String replace = StringUtils.replace(description, "{classDescription}",
-                velocityContext.get(Constants.UP_CLASS_NAME.getDesc()) + "控制器");
-        velocityContext.put(Constants.CLASS_TITLE.getDesc(), replace);
+                velocityContext.get(ConstantsType.UP_CLASS_NAME.getDesc()) + "控制器");
+        velocityContext.put(ConstantsType.CLASS_TITLE.getDesc(), replace);
     }
 
     @Override

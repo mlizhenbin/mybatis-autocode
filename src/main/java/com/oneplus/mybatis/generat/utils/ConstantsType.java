@@ -10,7 +10,7 @@ import org.apache.commons.lang.StringUtils;
  * company：一加科技
  * Date: 16/4/12 Time: 14:13
  */
-public enum Constants {
+public enum ConstantsType {
 
     /**
      * 数据库连接池
@@ -174,7 +174,7 @@ public enum Constants {
 
     private String desc;
 
-    Constants(String type, String desc) {
+    ConstantsType(String type, String desc) {
         this.type = type;
         this.desc = desc;
     }
@@ -195,12 +195,12 @@ public enum Constants {
         this.desc = desc;
     }
 
-    public static Constants getByType(String typeCode) {
+    public static ConstantsType getByType(String typeCode) {
         if (StringUtils.isEmpty(typeCode)) {
             return null;
         }
 
-        for (Constants type : Constants.values()) {
+        for (ConstantsType type : ConstantsType.values()) {
             if (type.getType().equals(typeCode)) {
                 return type;
             }

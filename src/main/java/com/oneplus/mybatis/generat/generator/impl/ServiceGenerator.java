@@ -5,7 +5,7 @@ import com.google.common.collect.Maps;
 import com.oneplus.mybatis.generat.connect.Connector;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
-import com.oneplus.mybatis.generat.utils.Constants;
+import com.oneplus.mybatis.generat.utils.ConstantsType;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
 import org.apache.commons.lang.StringUtils;
@@ -26,10 +26,10 @@ public class ServiceGenerator extends AbstractGeneratorImpl {
     @Override
     public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
         super.initVelocityContext(velocityContext, cxt);
-        velocityContext.put(Constants.SERIAL_VERSION_UID.getDesc(), String.valueOf(UUID.randomUUID().getLeastSignificantBits()));
+        velocityContext.put(ConstantsType.SERIAL_VERSION_UID.getDesc(), String.valueOf(UUID.randomUUID().getLeastSignificantBits()));
 
         String tableName = cxt.getTableName();
-        Connector connector = (Connector) cxt.getAttribute(Constants.JDBC_CONNECTOR);
+        Connector connector = (Connector) cxt.getAttribute(ConstantsType.JDBC_CONNECTOR);
 
         Map<String, String> colMap = connector.mapColumnNameType(tableName);
         Map<String, String> columnRemarkMap = connector.mapColumnRemark(tableName);
@@ -48,24 +48,24 @@ public class ServiceGenerator extends AbstractGeneratorImpl {
 
         Properties properties = cxt.getProperties();
 
-        velocityContext.put(Constants.METHODS.getDesc(), generateGetAndSetMethods(colMap));
-        velocityContext.put(Constants.FIELDS.getDesc(), generateFields(colMap, columnRemarkMap));
-        velocityContext.put(Constants.IMPORT_SETS.getDesc(), importSets);
-        velocityContext.put(Constants.CONVERT_DOMAINS.getDesc(), getCovertDomainFields(colMap, properties));
-        velocityContext.put(Constants.CONVERTS.getDesc(), getCovertFields(colMap, properties));
+        velocityContext.put(ConstantsType.METHODS.getDesc(), generateGetAndSetMethods(colMap));
+        velocityContext.put(ConstantsType.FIELDS.getDesc(), generateFields(colMap, columnRemarkMap));
+        velocityContext.put(ConstantsType.IMPORT_SETS.getDesc(), importSets);
+        velocityContext.put(ConstantsType.CONVERT_DOMAINS.getDesc(), getCovertDomainFields(colMap, properties));
+        velocityContext.put(ConstantsType.CONVERTS.getDesc(), getCovertFields(colMap, properties));
         String noPrefixTableName = StringUtils.upperCase(tableName.toLowerCase()
                 .replaceFirst(PropertiesUtils.getTablePrefix(cxt.getProperties()), ""));
-        velocityContext.put(Constants.NO_PREFIX_TABLE_NAME.getDesc(), noPrefixTableName);
-        velocityContext.put(Constants.ADD_UTILS.getDesc(), getUtilFields(colMap, columnRemarkMap, noPrefixTableName));
+        velocityContext.put(ConstantsType.NO_PREFIX_TABLE_NAME.getDesc(), noPrefixTableName);
+        velocityContext.put(ConstantsType.ADD_UTILS.getDesc(), getUtilFields(colMap, columnRemarkMap, noPrefixTableName));
 
         Map<String, String> checkUpdateMap = Maps.newHashMap();
-        String primaryKey = (String) cxt.getAttribute(Constants.PRIMARY_KEY);
+        String primaryKey = (String) cxt.getAttribute(ConstantsType.PRIMARY_KEY);
         for (String col : colMap.keySet()) {
             if (StringUtils.equals(col, primaryKey)) {
                 checkUpdateMap.put(col, colMap.get(col));
             }
         }
-        velocityContext.put(Constants.UPT_UTILS.getDesc(), getUtilFields(checkUpdateMap, columnRemarkMap, noPrefixTableName));
+        velocityContext.put(ConstantsType.UPT_UTILS.getDesc(), getUtilFields(checkUpdateMap, columnRemarkMap, noPrefixTableName));
     }
 
     /**
@@ -81,10 +81,10 @@ public class ServiceGenerator extends AbstractGeneratorImpl {
         for (String key : keySet) {
             StringBuilder sb = new StringBuilder();
             String field = GeneratorStringUtils.format(key);
-            sb.append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
-                    .append(properties.get(Constants.DOMAIN.getType()))
+            sb.append(velocityContext.get(ConstantsType.LOW_CLASS_NAME.getDesc()))
+                    .append(properties.get(ConstantsType.DOMAIN.getType()))
                     .append(".set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(")
-                    .append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
+                    .append(velocityContext.get(ConstantsType.LOW_CLASS_NAME.getDesc()))
                     .append(".get" + GeneratorStringUtils.firstUpperNoFormat(field) + "())");
             converts.add(sb.toString());
         }
@@ -104,10 +104,10 @@ public class ServiceGenerator extends AbstractGeneratorImpl {
         for (String key : keySet) {
             StringBuilder sb = new StringBuilder();
             String field = GeneratorStringUtils.format(key);
-            sb.append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
+            sb.append(velocityContext.get(ConstantsType.LOW_CLASS_NAME.getDesc()))
                     .append(".set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(")
-                    .append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
-                    .append(properties.get(Constants.DOMAIN.getType()))
+                    .append(velocityContext.get(ConstantsType.LOW_CLASS_NAME.getDesc()))
+                    .append(properties.get(ConstantsType.DOMAIN.getType()))
                     .append(".get" + GeneratorStringUtils.firstUpperNoFormat(field) + "())");
             converts.add(sb.toString());
         }
@@ -131,13 +131,13 @@ public class ServiceGenerator extends AbstractGeneratorImpl {
             String colType = colMap.get(key);
             if (StringUtils.equals(colType, "String")) {
                 sb.append("\tif (StringUtils.isBlank(")
-                        .append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
+                        .append(velocityContext.get(ConstantsType.LOW_CLASS_NAME.getDesc()))
                         .append(".get")
                         .append(GeneratorStringUtils.firstUpperNoFormat(field))
                         .append("())) {\n");
             } else {
                 sb.append("\tif (")
-                        .append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
+                        .append(velocityContext.get(ConstantsType.LOW_CLASS_NAME.getDesc()))
                         .append(".get")
                         .append(GeneratorStringUtils.firstUpperNoFormat(field))
                         .append("() == null) {\n");
@@ -147,15 +147,15 @@ public class ServiceGenerator extends AbstractGeneratorImpl {
                     .append(field)
                     .append(remark)
                     .append("为空, ")
-                    .append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
+                    .append(velocityContext.get(ConstantsType.LOW_CLASS_NAME.getDesc()))
                     .append("=\" + ")
-                    .append(velocityContext.get(Constants.LOW_CLASS_NAME.getDesc()))
+                    .append(velocityContext.get(ConstantsType.LOW_CLASS_NAME.getDesc()))
                     .append(");\n");
             sb.append("\t\t\t")
                     .append("throw new ")
-                    .append(velocityContext.get(Constants.UP_CLASS_NAME.getDesc()))
+                    .append(velocityContext.get(ConstantsType.UP_CLASS_NAME.getDesc()))
                     .append("Exception(")
-                    .append(velocityContext.get(Constants.UP_CLASS_NAME.getDesc()))
+                    .append(velocityContext.get(ConstantsType.UP_CLASS_NAME.getDesc()))
                     .append("Result.")
                     .append(noPrefixTableName)
                     .append("_")

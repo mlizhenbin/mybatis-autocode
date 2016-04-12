@@ -1,7 +1,7 @@
 package com.oneplus.mybatis.generat.generator.context;
 
 import com.google.common.collect.Maps;
-import com.oneplus.mybatis.generat.utils.Constants;
+import com.oneplus.mybatis.generat.utils.ConstantsType;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
 
@@ -58,7 +58,7 @@ public class GeneratorContext implements Serializable {
     /**
      * 上下文参数
      */
-    private Map<Constants, Object> attributes = Maps.newHashMap();
+    private Map<ConstantsType, Object> attributes = Maps.newHashMap();
 
     /**
      * 构造生成代码上下文
@@ -72,19 +72,19 @@ public class GeneratorContext implements Serializable {
         this.upClassName = GeneratorStringUtils.firstUpperAndNoPrefix(tableName, properties);
         this.lowClassName = GeneratorStringUtils.formatAndNoPrefix(tableName, properties);
         this.packageName = PropertiesUtils.getPackage(properties);
-        this.primaryKeyType = propMap.get(Constants.PRIMARY_KEY_TYPE.getType());
-        this.primaryKey = GeneratorStringUtils.firstUpperNoFormat(GeneratorStringUtils.format(propMap.get(Constants.PRIMARY_KEY.getType())));
+        this.primaryKeyType = propMap.get(ConstantsType.PRIMARY_KEY_TYPE.getType());
+        this.primaryKey = GeneratorStringUtils.firstUpperNoFormat(GeneratorStringUtils.format(propMap.get(ConstantsType.PRIMARY_KEY.getType())));
         this.properties = properties;
     }
 
-    public Object getAttribute(Constants key) {
+    public Object getAttribute(ConstantsType key) {
         if (key == null) {
             return null;
         }
         return this.attributes.get(key);
     }
 
-    public void addAttribute(Constants key, Object value) {
+    public void addAttribute(ConstantsType key, Object value) {
         if (key == null) {
             return;
         }

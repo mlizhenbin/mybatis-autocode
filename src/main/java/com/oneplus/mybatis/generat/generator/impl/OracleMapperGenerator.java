@@ -2,7 +2,7 @@ package com.oneplus.mybatis.generat.generator.impl;
 
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
-import com.oneplus.mybatis.generat.utils.Constants;
+import com.oneplus.mybatis.generat.utils.ConstantsType;
 import org.apache.velocity.VelocityContext;
 
 /**
@@ -18,7 +18,7 @@ public class OracleMapperGenerator extends MapperGenerator {
     @Override
     public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
         super.initVelocityContext(velocityContext, cxt);
-        velocityContext.put(Constants.ORACLE_SCHEMA.getDesc(), cxt.getAttribute(Constants.ORACLE_SCHEMA));
+        velocityContext.put(ConstantsType.ORACLE_SCHEMA.getDesc(), cxt.getAttribute(ConstantsType.ORACLE_SCHEMA));
     }
 
     @Override
