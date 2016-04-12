@@ -32,6 +32,9 @@
     </sql>
 
     <insert id="add${upClassName}" parameterType="${upClassName}" keyProperty="${primaryKey}">
+        <selectKey resultType="${primaryKeyType}" keyProperty="${primaryKey}" order="BEFORE">
+            SELECT ${oracleSchemaName}.${tableName}_S.NEXTVAL FROM DUAL
+        </selectKey>
         INSERT INTO ${oracleSchemaName}.${tableName}
         <trim prefix="(" suffix=")" suffixOverrides=",">
 #foreach($insertColsCondition in $insertColsConditions)
@@ -72,12 +75,26 @@
     <select id="list${upClassName}" resultMap="${lowClassName}_result" parameterType="java.util.HashMap">
         SELECT
         <include refid="${upClassName}_column" />
-        FROM ${oracleSchemaName}.${tableName} ${oracleSchemaName}.${tableName}
-        <include refid="${upClassName}_Query_List_Sharing" />
-        <include refid="${upClassName}_List_Paramter" />
-        <if test="begin != null and pageSize != null" >
-            limit #{begin},#{pageSize}
-        </if>
+        FROM (
+            SELECT RID
+            FROM (
+                SELECT tmp1.RID, ROWNUM LINENUM
+                FROM (
+                    SELECT
+                        ROWID RID
+                    FROM ${oracleSchemaName}.${tableName} ${tableName}
+                    <include refid="${upClassName}_Query_List_Sharing" />
+                    <include refid="${upClassName}_List_Paramter" />
+                ) tmp1
+                <if test="begin != null and end != null" >
+                    WHERE ROWNUM &lt; \#{end}
+                </if>
+            )
+            <if test="begin != null and end != null" >
+                WHERE LINENUM &gt;= #{begin}
+            </if>
+        ) tmp2, ${oracleSchemaName}.${tableName} ${tableName}
+        WHERE tmp2.RID = ${tableName}.ROWID;
     </select>
 
     <select id="list${upClassName}Count" resultType="java.lang.Integer" parameterType="java.util.HashMap">

@@ -50,7 +50,7 @@ public enum ConstantsType {
     /**
      * oracle schema
      */
-    ORACLE_SCHEMA("oracle.schema", "oracle_schema"),
+    ORACLE_SCHEMA("oracle.schema", "oracleSchemaName"),
 
     /**
      * 数据库表名称
