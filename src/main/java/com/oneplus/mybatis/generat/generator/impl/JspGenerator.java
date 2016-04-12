@@ -12,16 +12,16 @@ import org.apache.velocity.VelocityContext;
  * company：一加科技
  * Date: 15/9/13 Time: 13:03
  */
-public class JspGenerator extends BaseGenerator {
+public class JspGenerator extends AbstractGeneratorImpl {
 
     @Override
-    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
-        super.initVelocityContext(velocityContext, generatorContext);
+    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
+        super.initVelocityContext(velocityContext, cxt);
     }
 
     @Override
     protected PackageConfigType getPackageConfigType() {
-        return PackageConfigType.jsp;
+        return PackageConfigType.JSP;
     }
 
     @Override

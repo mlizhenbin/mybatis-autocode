@@ -16,12 +16,12 @@ import java.util.List;
  */
 public enum PackageConfigType {
 
-    mapper("mapper",
+    MAPPER("mapper",
             "/dao|/dao",
             "Mapper.xml|Mapper.java",
             "mapper.vm|dao.vm"),
 
-    oracle_mapper("oracle_mapper",
+    ORACLE_MAPPER("oracle_mapper",
             "/dao|/dao",
             "Mapper.xml|Mapper.java",
             "oracle_mapper.vm|dao.vm"),
@@ -31,17 +31,17 @@ public enum PackageConfigType {
             "QueryService.java|QueryServiceImpl.java|OperateService.java|OperateServiceImpl.java|{domain}Convert.java|Convert.java|Util.java",
             "service_query.vm|service_query_impl.vm|service_operate.vm|service_operate_impl.vm|service_convert_domain.vm|service_convert.vm|service_utils.vm"),
 
-    manager("manage",
+    MANAGER("manage",
             "/manage|/manage/impl|/manage|/manage/impl",
             "QueryManager.java|QueryManagerImpl.java|OperateManager.java|OperateManagerImpl.java",
             "manager_query.vm|manager_query_impl.vm|manager_operate.vm|manager_operate_impl.vm"),
 
-    controller("controller",
+    CONTROLLER("controller",
             "/controller",
             "Controller.java",
             "controller.vm"),
 
-    domain("domain",
+    DOMAIN("domain",
             "/domain",
             "{domain}.java",
             "service_domain.vm"),
@@ -61,7 +61,7 @@ public enum PackageConfigType {
             "Result.java|Exception.java",
             "result.vm|exception.vm"),
 
-    jsp("jsp",
+    JSP("jsp",
             "/jsp|/jsp",
             ".jsp|.js",
             "jsp_list.vm|js_list.vm"),;

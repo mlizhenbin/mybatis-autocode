@@ -3,9 +3,6 @@ package com.oneplus.mybatis.generat.generator.impl;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 import org.apache.velocity.VelocityContext;
-import org.springframework.stereotype.Service;
-
-import java.util.Properties;
 
 /**
  * 功能描述：Domain代码生成器
@@ -18,13 +15,13 @@ import java.util.Properties;
 public class DomainGenerator extends ServiceGenerator {
 
     @Override
-    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
-        super.initVelocityContext(velocityContext, generatorContext);
+    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
+        super.initVelocityContext(velocityContext, cxt);
     }
 
     @Override
     protected PackageConfigType getPackageConfigType() {
-        return PackageConfigType.domain;
+        return PackageConfigType.DOMAIN;
     }
 
     @Override

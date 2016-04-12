@@ -16,7 +16,7 @@
     </sql>
 
     <sql id="${upClassName}_By_${primaryKey}">
-        WHERE ${tableName}.${columnPrimaryKey} = #{${normalPrimaryKey}}
+        WHERE ${tableName}.${primaryKey} = #{${primaryKey}}
     </sql>
 
     <sql id="${upClassName}_List_Paramter">
@@ -31,7 +31,7 @@
 #end
     </sql>
 
-    <insert id="add${upClassName}" parameterType="${upClassName}" keyProperty="${normalPrimaryKey}">
+    <insert id="add${upClassName}" parameterType="${upClassName}" keyProperty="${primaryKey}">
         INSERT INTO ${tableName}
         <trim prefix="(" suffix=")" suffixOverrides=",">
 #foreach($insertColsCondition in $insertColsConditions)

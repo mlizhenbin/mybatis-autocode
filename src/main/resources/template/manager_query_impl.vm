@@ -20,18 +20,18 @@ public class ${upClassName}QueryManagerImpl implements ${upClassName}QueryManage
 	private ${upClassName}QueryService ${lowClassName}QueryService;
 
 	@Override
-    public ${upClassName} find${upClassName}By${primaryKey}(${primaryKeyType} ${normalPrimaryKey}) {
-        return ${lowClassName}QueryService.find${upClassName}By${primaryKey}(${normalPrimaryKey});
+    public ${upClassName} find${upClassName}By${primaryKey}(${primaryKeyType} ${primaryKey}) {
+        return ${lowClassName}QueryService.find${upClassName}By${primaryKey}(${primaryKey});
 	}
 
 	@Override
-	public List<${upClassName}> list${upClassName}(${primaryKeyType}[] ${normalPrimaryKey}s) {
-        return ${lowClassName}QueryService.list${upClassName}(${normalPrimaryKey}s);
+	public List<${upClassName}> list${upClassName}(${primaryKeyType}[] ${primaryKey}s) {
+        return ${lowClassName}QueryService.list${upClassName}(${primaryKey}s);
 	}
 
 	@Override
-	public Map<${primaryKeyType}, ${upClassName}> map${upClassName}(${primaryKeyType}[] ${normalPrimaryKey}s) {
-		return ${lowClassName}QueryService.map${upClassName}(${normalPrimaryKey}s);
+	public Map<${primaryKeyType}, ${upClassName}> map${upClassName}(${primaryKeyType}[] ${primaryKey}s) {
+		return ${lowClassName}QueryService.map${upClassName}(${primaryKey}s);
 	}
 
 	@Override

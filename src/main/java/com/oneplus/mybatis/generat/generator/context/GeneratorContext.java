@@ -58,7 +58,7 @@ public class GeneratorContext implements Serializable {
     /**
      * 上下文参数
      */
-    private Map<GeneratorContextType, Object> attributes = Maps.newHashMap();
+    private Map<Constants, Object> attributes = Maps.newHashMap();
 
     /**
      * 构造生成代码上下文
@@ -77,14 +77,14 @@ public class GeneratorContext implements Serializable {
         this.properties = properties;
     }
 
-    public Object getAttribute(GeneratorContextType key) {
+    public Object getAttribute(Constants key) {
         if (key == null) {
             return null;
         }
         return this.attributes.get(key);
     }
 
-    public void addAttribute(GeneratorContextType key, Object value) {
+    public void addAttribute(Constants key, Object value) {
         if (key == null) {
             return;
         }
@@ -118,46 +118,4 @@ public class GeneratorContext implements Serializable {
     public String getPrimaryKey() {
         return primaryKey;
     }
-
-    /**
-     * 上线文session类型
-     */
-    public enum GeneratorContextType {
-
-        /**
-         * 数据库连接池
-         */
-        JDBC_CONNECTOR,
-
-        /**
-         * 配置文件配置
-         */
-        CONFIG_PROPERTIES,
-
-        /**
-         * daomain
-         */
-        DOMAIN,
-
-        /**
-         * 表主键, 与Java属性对应,去掉下划线"_"变成驼峰
-         */
-        NORMAL_PRIMARY_KEY,
-
-        /**
-         * 数据库主键名称
-         */
-        COLUMN_PRIMARY_KEY,
-
-        /**
-         * 主键全部大写
-         */
-        COL_ALL_UPPERCASE_PRIMARY_KEY,
-
-        /**
-         * oracle schema
-         */
-        ORACLE_SCHEMA,
-    }
-
 }

@@ -14,26 +14,26 @@ public interface ${upClassName}QueryManager {
 	/**
 	 * 通过主键${primaryKeyType}查询${upClassName}
      *
-	 * @param ${normalPrimaryKey} ${upClassName}主键
+	 * @param ${primaryKey} ${upClassName}主键
 	 * @return ${upClassName}对象
 	 */
-	public ${upClassName} find${upClassName}By${primaryKey}(${primaryKeyType} ${normalPrimaryKey});
+	public ${upClassName} find${upClassName}By${primaryKey}(${primaryKeyType} ${primaryKey});
 
 	/**
 	 * 通过${primaryKeyType}集合查询${upClassName}
 	 *
-	 * @param ${normalPrimaryKey}s ${upClassName}s主键数组
+	 * @param ${primaryKey}s ${upClassName}s主键数组
 	 * @return List<${upClassName}>
 	 */
-	public List<${upClassName}> list${upClassName}(${primaryKeyType}[] ${normalPrimaryKey}s);
+	public List<${upClassName}> list${upClassName}(${primaryKeyType}[] ${primaryKey}s);
 
 	/**
 	 * 通过${primaryKeyType}集合查询${upClassName}
 	 *
-	 * @param ${normalPrimaryKey}s ${upClassName}s主键数组
-	 * @return Map<${primaryKeyType}, ${upClassName}> KEY:${normalPrimaryKey} Value:${upClassName}
+	 * @param ${primaryKey}s ${upClassName}s主键数组
+	 * @return Map<${primaryKeyType}, ${upClassName}> KEY:${primaryKey} Value:${upClassName}
 	 */
-	public Map<${primaryKeyType}, ${upClassName}> map${upClassName}(${primaryKeyType}[] ${normalPrimaryKey}s);
+	public Map<${primaryKeyType}, ${upClassName}> map${upClassName}(${primaryKeyType}[] ${primaryKey}s);
 
 	/**
 	 * 分页查询${upClassName}

@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.oneplus.mybatis.generat.connect.Connector;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import com.oneplus.mybatis.generat.utils.Constants;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
@@ -21,14 +22,14 @@ import java.util.Map;
  * company：一加科技
  * Date: 15/6/13 Time：00:51
  */
-public class MapperGenerator extends BaseGenerator {
+public class MapperGenerator extends AbstractGeneratorImpl {
 
     @Override
-    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
-        super.initVelocityContext(velocityContext, generatorContext);
+    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
+        super.initVelocityContext(velocityContext, cxt);
 
-        String tableName = generatorContext.getTableName();
-        Connector connector = (Connector) generatorContext.getAttribute(GeneratorContext.GeneratorContextType.JDBC_CONNECTOR);
+        String tableName = cxt.getTableName();
+        Connector connector = (Connector) cxt.getAttribute(Constants.JDBC_CONNECTOR);
         Map<String, String> columnNameTypeMap = connector.mapColumnNameType(tableName);
         List<String> allIndexs = connector.listAllIndex(tableName);
 
@@ -39,7 +40,7 @@ public class MapperGenerator extends BaseGenerator {
         List<String> insertColsConditions = Lists.newArrayList();
         List<String> updateConditions = Lists.newArrayList();
 
-        String pk = (String) velocityContext.get("normalPrimaryKey");
+        String pk = (String) velocityContext.get(Constants.PRIMARY_KEY.getDesc());
         for (String col : columnNameTypeMap.keySet()) {
             String field = GeneratorStringUtils.format(col);
             columns.add(tableName + "." + col);
@@ -52,12 +53,12 @@ public class MapperGenerator extends BaseGenerator {
             if (columnNameTypeMap.get(col).equals("Date")) {
                 StringBuilder conditionBfs = new StringBuilder();
                 conditionBfs.append(defaultFieldStr)
-                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &gt;= #{").append("dynamicFileds_").append(col).append("}\n")
+                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &gt;= #{").append(Constants.DYNAMIC_FILEDS.getDesc()).append(col).append("}\n")
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBfs.toString());
                 StringBuilder conditionBfe = new StringBuilder();
                 conditionBfe.append(defaultFieldStr)
-                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &lt; #{").append("dynamicFileds_").append(col).append("}\n")
+                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &lt; #{").append(Constants.DYNAMIC_FILEDS.getDesc()).append(col).append("}\n")
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBfe.toString());
             } else {
@@ -98,7 +99,6 @@ public class MapperGenerator extends BaseGenerator {
 
             if (col.startsWith("gmt") || StringUtils.equals(field, "createTime") || StringUtils.equals(field, "modifyTime")) {
                 insertValueConditions.add("now(),");
-
                 insertColsConditions.add(col + ", ");
             } else {
                 StringBuilder conditionValueBf = new StringBuilder();
@@ -128,22 +128,21 @@ public class MapperGenerator extends BaseGenerator {
             }
         }
 
-        velocityContext.put("resultMapColumns", resultMapColumns);
-        velocityContext.put("whereConditions", whereConditions);
-        velocityContext.put("insertValueConditions", insertValueConditions);
-        velocityContext.put("insertColsConditions", insertColsConditions);
-        velocityContext.put("updateConditions", updateConditions);
+        velocityContext.put(Constants.RESULT_MAP_COLUMNS.getDesc(), resultMapColumns);
+        velocityContext.put(Constants.WHERE_CONDITIONS.getDesc(), whereConditions);
+        velocityContext.put(Constants.INSERT_VALUE_CONDITIONS.getDesc(), insertValueConditions);
+        velocityContext.put(Constants.INSERT_COLS_CONDITIONS.getDesc(), insertColsConditions);
+        velocityContext.put(Constants.UPDATE_CONDITIONS.getDesc(), updateConditions);
         for (int i = 0; i < columns.size() - 1; i++) {
             String tempCol = columns.get(i) + ",";
             columns.set(i, tempCol);
         }
-        velocityContext.put("columns", columns);
-        velocityContext.put("columnPrimaryKey", generatorContext.getAttribute(GeneratorContext.GeneratorContextType.COLUMN_PRIMARY_KEY));
+        velocityContext.put(Constants.COLUMNS.getDesc(), columns);
     }
 
     @Override
     protected PackageConfigType getPackageConfigType() {
-        return PackageConfigType.mapper;
+        return PackageConfigType.MAPPER;
     }
 
     @Override

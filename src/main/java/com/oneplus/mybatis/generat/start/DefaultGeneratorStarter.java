@@ -157,18 +157,15 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
     protected GeneratorContext assemblyContext(String tableName) {
         Map<String, String> propMap = connector.getPrimaryKey(tableName);
         GeneratorContext context = new GeneratorContext(tableName, propMap, properties);
-        context.addAttribute(GeneratorContext.GeneratorContextType.JDBC_CONNECTOR, connector);
-        context.addAttribute(GeneratorContext.GeneratorContextType.CONFIG_PROPERTIES, properties);
-        context.addAttribute(GeneratorContext.GeneratorContextType.DOMAIN,
-                properties.get(Constants.GENERATOR_DOMAIN.getType()));
-        context.addAttribute(GeneratorContext.GeneratorContextType.NORMAL_PRIMARY_KEY,
+        context.addAttribute(Constants.JDBC_CONNECTOR, connector);
+        context.addAttribute(Constants.CONFIG_PROPERTIES, properties);
+        context.addAttribute(Constants.DOMAIN, properties.get(Constants.DOMAIN.getType()));
+        context.addAttribute(Constants.NORMAL_PRIMARY_KEY,
                 GeneratorStringUtils.format(propMap.get(Constants.PRIMARY_KEY.getType())));
-        context.addAttribute(GeneratorContext.GeneratorContextType.COLUMN_PRIMARY_KEY,
-                propMap.get(Constants.PRIMARY_KEY.getType()));
-        context.addAttribute(GeneratorContext.GeneratorContextType.COL_ALL_UPPERCASE_PRIMARY_KEY,
+        context.addAttribute(Constants.COL_ALL_UPPERCASE_PRIMARY_KEY,
                 StringUtils.upperCase(propMap.get(Constants.PRIMARY_KEY.getType())));
-        context.addAttribute(GeneratorContext.GeneratorContextType.ORACLE_SCHEMA,
-                properties.get(Constants.ORACLE_SCHEMA_NAME.getType()));
+        context.addAttribute(Constants.ORACLE_SCHEMA,
+                properties.get(Constants.ORACLE_SCHEMA.getType()));
         return context;
     }
 

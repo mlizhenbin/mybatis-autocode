@@ -6,6 +6,7 @@ import com.oneplus.mybatis.generat.generator.Generator;
 import com.oneplus.mybatis.generat.generator.context.AutoCreateClassTitle;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import com.oneplus.mybatis.generat.utils.Constants;
 import com.oneplus.mybatis.generat.utils.GeneratorFileUtils;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import org.apache.commons.io.IOUtils;
@@ -30,7 +31,7 @@ import java.util.*;
  * company：一加科技
  * Date: 15/6/13 Time：00:29
  */
-public abstract class BaseGenerator implements Generator {
+public abstract class AbstractGeneratorImpl implements Generator {
 
     /**
      * velocity上下文
@@ -123,25 +124,20 @@ public abstract class BaseGenerator implements Generator {
      * 初始化上下文
      *
      * @param velocityContext
-     * @param generatorContext
+     * @param cxt
      * @return
      */
-    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
-        velocityContext.put("tableName", generatorContext.getTableName());
-        velocityContext.put("upClassName", generatorContext.getUpClassName());
-        velocityContext.put("lowClassName", generatorContext.getLowClassName());
-        velocityContext.put("packageName", generatorContext.getPackageName());
-        velocityContext.put("primaryKeyType", generatorContext.getPrimaryKeyType());
-        velocityContext.put("primaryKey", generatorContext.getPrimaryKey());
-        velocityContext.put("normalPrimaryKey", generatorContext
-                .getAttribute(GeneratorContext.GeneratorContextType.NORMAL_PRIMARY_KEY));
-        velocityContext.put("classTitle", assemblyAutoCreateClassTitle(generatorContext.getUpClassName()));
-        velocityContext.put("domain", generatorContext
-                .getAttribute(GeneratorContext.GeneratorContextType.DOMAIN));
-        velocityContext.put("colPrimaryKey", generatorContext
-                .getAttribute(GeneratorContext.GeneratorContextType.COL_ALL_UPPERCASE_PRIMARY_KEY));
-        velocityContext.put("columnPrimaryKey", generatorContext
-                .getAttribute(GeneratorContext.GeneratorContextType.COLUMN_PRIMARY_KEY));
+    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
+        velocityContext.put(Constants.TABLE_NAME.getType(), cxt.getTableName());
+        velocityContext.put(Constants.UP_CLASS_NAME.getType(), cxt.getUpClassName());
+        velocityContext.put(Constants.LOW_CLASS_NAME.getType(), cxt.getLowClassName());
+        velocityContext.put(Constants.PACKAGE_NAME.getType(), cxt.getPackageName());
+        velocityContext.put(Constants.PRIMARY_KEY_TYPE.getDesc(), cxt.getPrimaryKeyType());
+        velocityContext.put(Constants.PRIMARY_KEY.getDesc(), cxt.getPrimaryKey());
+        velocityContext.put(Constants.NORMAL_PRIMARY_KEY.getDesc(), cxt.getAttribute(Constants.NORMAL_PRIMARY_KEY));
+        velocityContext.put(Constants.CLASS_TITLE.getDesc(), assemblyAutoCreateClassTitle(cxt.getUpClassName()));
+        velocityContext.put(Constants.DOMAIN.getDesc(), cxt.getAttribute(Constants.DOMAIN));
+        velocityContext.put(Constants.COL_ALL_UPPERCASE_PRIMARY_KEY.getDesc(), cxt.getAttribute(Constants.COL_ALL_UPPERCASE_PRIMARY_KEY));
     }
 
     /**
@@ -164,7 +160,7 @@ public abstract class BaseGenerator implements Generator {
 
         Map<String, String> generatorParams = Maps.newHashMap();
         for (int i = 0; i < templates.length; i++) {
-            String tempFileName = baseFileNames[i].replace("{domain}", (CharSequence) properties.get("generator.domain"));
+            String tempFileName = baseFileNames[i].replace("{domain}", (CharSequence) properties.get(Constants.DOMAIN.getType()));
             String fileName = GeneratorFileUtils.getPackageDirectory(targetDirs[i], properties)
                     + GeneratorStringUtils.firstUpperAndNoPrefix(tableName, properties)
                     + tempFileName;

@@ -35,42 +35,42 @@ public class ${upClassName}QueryServiceImpl implements ${upClassName}QueryServic
 	private ${upClassName}Mapper ${lowClassName}Mapper;
 
 	@Override
-    public ${upClassName} find${upClassName}By${primaryKey}(${primaryKeyType} ${normalPrimaryKey}) {
+    public ${upClassName} find${upClassName}By${primaryKey}(${primaryKeyType} ${primaryKey}) {
 #if(${primaryKeyType} == "String")
-		if (StringUtils.isBlank(${normalPrimaryKey})) {
+		if (StringUtils.isBlank(${primaryKey})) {
         	return null;
         }
 #else
-        if (${normalPrimaryKey} == null) {
+        if (${primaryKey} == null) {
         	return null;
         }
 		#end
 
-        ${upClassName} ${lowClassName} = ${lowClassName}Mapper.findBy${primaryKey}(${normalPrimaryKey});
+        ${upClassName} ${lowClassName} = ${lowClassName}Mapper.findBy${primaryKey}(${primaryKey});
         return ${lowClassName};
 	}
 
 	@Override
-	public List<${upClassName}> list${upClassName}(${primaryKeyType}[] ${normalPrimaryKey}s) {
-		if (ArrayUtils.isEmpty(${normalPrimaryKey}s)) {
+	public List<${upClassName}> list${upClassName}(${primaryKeyType}[] ${primaryKey}s) {
+		if (ArrayUtils.isEmpty(${primaryKey}s)) {
 			return Lists.newArrayList();
 		}
 
 		Map<String, Object> map = QueryMapperUtils.toQueryMap();
-		map.put("${normalPrimaryKey}s", ${normalPrimaryKey}s);
+		map.put("${primaryKey}s", ${primaryKey}s);
 		List<${upClassName}> ${lowClassName}s = ${lowClassName}Mapper.list${upClassName}(map);
         return ${lowClassName}s;
 	}
 
 	@Override
-	public Map<${primaryKeyType}, ${upClassName}> map${upClassName}(${primaryKeyType}[] ${normalPrimaryKey}s) {
-		List<${upClassName}> ${lowClassName}s = list${upClassName}(${normalPrimaryKey}s);
+	public Map<${primaryKeyType}, ${upClassName}> map${upClassName}(${primaryKeyType}[] ${primaryKey}s) {
+		List<${upClassName}> ${lowClassName}s = list${upClassName}(${primaryKey}s);
 		if (CollectionUtil.isEmpty(${lowClassName}s)) {
 			return Maps.newHashMap();
 		}
 
 		Map<${primaryKeyType}, ${upClassName}> ${lowClassName}Map = ListFieldConvertUtils
-			.getObjectMap(${lowClassName}s, "${normalPrimaryKey}");
+			.getObjectMap(${lowClassName}s, "${primaryKey}");
 		return ${lowClassName}Map;
 	}
 

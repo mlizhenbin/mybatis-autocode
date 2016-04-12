@@ -121,11 +121,11 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
     }
 
     protected void initSchema() {
-        String value = (String) properties.get("oracle.schema.name");
+        String value = (String) properties.get("oracle.schema");
         if (StringUtils.isNotBlank(value)) {
             return;
         }
-        properties.setProperty("oracle.schema.name", ORACLE_SCHEMA);
+        properties.setProperty("oracle.schema", ORACLE_SCHEMA);
     }
 
     protected void loadProperties() {

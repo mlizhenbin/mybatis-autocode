@@ -12,16 +12,16 @@ import org.apache.velocity.VelocityContext;
  * company：一加科技
  * Date: 15/6/13 Time：00:51
  */
-public class ManagerGenerator extends BaseGenerator {
+public class ManagerGenerator extends AbstractGeneratorImpl {
 
     @Override
-    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
-        super.initVelocityContext(velocityContext, generatorContext);
+    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
+        super.initVelocityContext(velocityContext, cxt);
     }
 
     @Override
     protected PackageConfigType getPackageConfigType() {
-        return PackageConfigType.manager;
+        return PackageConfigType.MANAGER;
     }
 
     @Override

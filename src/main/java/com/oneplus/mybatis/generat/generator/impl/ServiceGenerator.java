@@ -5,6 +5,7 @@ import com.google.common.collect.Maps;
 import com.oneplus.mybatis.generat.connect.Connector;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import com.oneplus.mybatis.generat.utils.Constants;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
 import org.apache.commons.lang.StringUtils;
@@ -20,15 +21,15 @@ import java.util.*;
  * company：一加科技
  * Date: 15/6/13 Time：00:51
  */
-public class ServiceGenerator extends BaseGenerator {
+public class ServiceGenerator extends AbstractGeneratorImpl {
 
     @Override
-    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
-        super.initVelocityContext(velocityContext, generatorContext);
-        velocityContext.put("SerialVersionUID", String.valueOf(UUID.randomUUID().getLeastSignificantBits()));
+    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
+        super.initVelocityContext(velocityContext, cxt);
+        velocityContext.put(Constants.SERIAL_VERSION_UID.getDesc(), String.valueOf(UUID.randomUUID().getLeastSignificantBits()));
 
-        String tableName = generatorContext.getTableName();
-        Connector connector = (Connector) generatorContext.getAttribute(GeneratorContext.GeneratorContextType.JDBC_CONNECTOR);
+        String tableName = cxt.getTableName();
+        Connector connector = (Connector) cxt.getAttribute(Constants.JDBC_CONNECTOR);
 
         Map<String, String> colMap = connector.mapColumnNameType(tableName);
         Map<String, String> columnRemarkMap = connector.mapColumnRemark(tableName);
@@ -45,7 +46,7 @@ public class ServiceGenerator extends BaseGenerator {
             }
         }
 
-        Properties properties = generatorContext.getProperties();
+        Properties properties = cxt.getProperties();
 
         velocityContext.put("methods", generateGetAndSetMethods(colMap));
         velocityContext.put("fields", generateFields(colMap, columnRemarkMap));
@@ -53,14 +54,14 @@ public class ServiceGenerator extends BaseGenerator {
         velocityContext.put("convertDomains", getCovertDomainFields(colMap, properties));
         velocityContext.put("converts", getCovertFields(colMap, properties));
 
-        String noPrefixTableName = StringUtils.upperCase(tableName.toLowerCase().replaceFirst(PropertiesUtils.getTablePrefix(generatorContext.getProperties()), ""));
+        String noPrefixTableName = StringUtils.upperCase(tableName.toLowerCase().replaceFirst(PropertiesUtils.getTablePrefix(cxt.getProperties()), ""));
         velocityContext.put("noPrefixTableName", noPrefixTableName);
         velocityContext.put("addUtils", getUtilFields(colMap, columnRemarkMap, noPrefixTableName));
 
         Map<String, String> checkUpdateMap = Maps.newHashMap();
-        String columnPrimaryKey = (String) generatorContext.getAttribute(GeneratorContext.GeneratorContextType.COLUMN_PRIMARY_KEY);
+        String primaryKey = (String) cxt.getAttribute(Constants.PRIMARY_KEY);
         for (String col : colMap.keySet()) {
-            if (StringUtils.equals(col, columnPrimaryKey)) {
+            if (StringUtils.equals(col, primaryKey)) {
                 checkUpdateMap.put(col, colMap.get(col));
             }
         }

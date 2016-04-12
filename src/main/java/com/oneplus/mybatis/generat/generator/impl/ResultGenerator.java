@@ -5,6 +5,7 @@ import com.google.common.collect.Maps;
 import com.oneplus.mybatis.generat.connect.Connector;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import com.oneplus.mybatis.generat.utils.Constants;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
@@ -14,22 +15,22 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * 功能描述：
+ * 功能描述：ResultGenerator
  *
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn
  * company：一加科技
  * Date: 15/6/13 Time：00:51
  */
-public class ResultGenerator extends BaseGenerator {
+public class ResultGenerator extends AbstractGeneratorImpl {
 
     @Override
-    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
-        super.initVelocityContext(velocityContext, generatorContext);
-        velocityContext.put("SerialVersionUID", String.valueOf(UUID.randomUUID().getLeastSignificantBits()));
+    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
+        super.initVelocityContext(velocityContext, cxt);
+        velocityContext.put(Constants.SERIAL_VERSION_UID.getDesc(), String.valueOf(UUID.randomUUID().getLeastSignificantBits()));
 
-        String tableName = generatorContext.getTableName();
-        Connector connector = (Connector) generatorContext.getAttribute(GeneratorContext.GeneratorContextType.JDBC_CONNECTOR);
+        String tableName = cxt.getTableName();
+        Connector connector = (Connector) cxt.getAttribute(Constants.JDBC_CONNECTOR);
         Map<String, String> columnNameTypeMap = connector.mapColumnNameType(tableName);
         Map<String, String> columnRemarkMap = connector.mapColumnRemark(tableName);
 
@@ -41,10 +42,10 @@ public class ResultGenerator extends BaseGenerator {
             remarkMap.put(upCaseCol, columnRemarkMap.get(col));
         }
 
-        String noPrefixTableName = StringUtils.upperCase(tableName.toLowerCase().replaceFirst(PropertiesUtils.getTablePrefix(generatorContext.getProperties()), ""));
-        velocityContext.put("noPrefixTableName", noPrefixTableName);
-        velocityContext.put("allUpCaseCols", allUpCaseCols);
-        velocityContext.put("remarkMap", remarkMap);
+        String noPrefixTableName = StringUtils.upperCase(tableName.toLowerCase().replaceFirst(PropertiesUtils.getTablePrefix(cxt.getProperties()), ""));
+        velocityContext.put(Constants.NO_PREFIX_TABLE_NAME.getDesc(), noPrefixTableName);
+        velocityContext.put(Constants.ALL_UP_CASE_COLS.getDesc(), allUpCaseCols);
+        velocityContext.put(Constants.REMARK_MAP.getDesc(), remarkMap);
     }
 
     @Override

@@ -28,7 +28,7 @@
                 <table width="98%" border="0" cellspacing="0" cellpadding="0" class="noclick">
                     <tr>
                         <td align="right"> 订单号：</td>
-                        <td><input type="text" id="_${normalPrimaryKey}" name="${normalPrimaryKey}" value="${${lowClassName}VO.${normalPrimaryKey}}"/></td>
+                        <td><input type="text" id="_${primaryKey}" name="${primaryKey}" value="${${lowClassName}VO.${primaryKey}}"/></td>
                         <td colspan="2">
                             <input class="l-button l-button-submit" type="submit" value="搜索" id="searchBtn"/>
                             <input class="l-button l-button-reset" type="reset" value="重置" id="resetBtn"/>

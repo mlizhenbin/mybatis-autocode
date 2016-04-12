@@ -42,7 +42,7 @@ public class ${upClassName}Controller {
         PagingRequest pagingRequest = new PagingRequest();
         pagingRequest.setPageNo(salesOrderQueryVo.getPageNo());
         pagingRequest.setPageSize(salesOrderQueryVo.getPageSize());
-        pagingRequest.desc("${columnPrimaryKey}");
+        pagingRequest.desc("${primaryKey}");
 
         // 分页查询
         Paging<${upClassName}> paging = ${lowClassName}QueryManager.find${upClassName}ByPage(${lowClassName}VO, pagingRequest);
@@ -59,8 +59,8 @@ public class ${upClassName}Controller {
      * @return
      */
     @RequestMapping(value = "/${lowClassName}/find${upClassName}By${primaryKey}", method = RequestMethod.GET)
-    public String find${upClassName}By${primaryKey}(@RequestParam(required = true) ${primaryKeyType} ${normalPrimaryKey}, ModelMap modelMap) {
-        ${upClassName} ${lowClassName} = ${lowClassName}QueryManager.find${upClassName}By${primaryKey}(${normalPrimaryKey});
+    public String find${upClassName}By${primaryKey}(@RequestParam(required = true) ${primaryKeyType} ${primaryKey}, ModelMap modelMap) {
+        ${upClassName} ${lowClassName} = ${lowClassName}QueryManager.find${upClassName}By${primaryKey}(${primaryKey});
         modelMap.addAttribute("${lowClassName}", ${lowClassName});
         return "/v/${lowClassName}/${lowClassName}detail";
     }

@@ -2,10 +2,11 @@ package com.oneplus.mybatis.generat.generator.impl;
 
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import com.oneplus.mybatis.generat.utils.Constants;
 import org.apache.velocity.VelocityContext;
 
 /**
- * 功能描述：
+ * 功能描述：OracleMapperGenerator
  *
  * @author: Zhenbin.Li
  * email： lizhenbin@oneplus.cn
@@ -15,14 +16,13 @@ import org.apache.velocity.VelocityContext;
 public class OracleMapperGenerator extends MapperGenerator {
 
     @Override
-    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
-        super.initVelocityContext(velocityContext, generatorContext);
-        velocityContext.put("oracleSchemaName", generatorContext
-                .getAttribute(GeneratorContext.GeneratorContextType.ORACLE_SCHEMA));
+    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
+        super.initVelocityContext(velocityContext, cxt);
+        velocityContext.put(Constants.ORACLE_SCHEMA.getDesc(), cxt.getAttribute(Constants.ORACLE_SCHEMA));
     }
 
     @Override
     protected PackageConfigType getPackageConfigType() {
-        return PackageConfigType.oracle_mapper;
+        return PackageConfigType.ORACLE_MAPPER;
     }
 }

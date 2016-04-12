@@ -3,6 +3,7 @@ package com.oneplus.mybatis.generat.generator.impl;
 import com.oneplus.mybatis.generat.connect.Connector;
 import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
 import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import com.oneplus.mybatis.generat.utils.Constants;
 import org.apache.velocity.VelocityContext;
 
 import java.util.HashSet;
@@ -18,15 +19,15 @@ import java.util.UUID;
  * company：一加科技
  * Date: 15/6/13 Time：00:51
  */
-public class ModelGenerator extends BaseGenerator {
+public class ModelGenerator extends AbstractGeneratorImpl {
 
     @Override
-    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext generatorContext) {
-        super.initVelocityContext(velocityContext, generatorContext);
+    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
+        super.initVelocityContext(velocityContext, cxt);
         velocityContext.put("SerialVersionUID", String.valueOf(UUID.randomUUID().getLeastSignificantBits()));
 
-        String tableName = generatorContext.getTableName();
-        Connector connector = (Connector) generatorContext.getAttribute(GeneratorContext.GeneratorContextType.JDBC_CONNECTOR);
+        String tableName = cxt.getTableName();
+        Connector connector = (Connector) cxt.getAttribute(Constants.JDBC_CONNECTOR);
 
         Map<String, String> colMap = connector.mapColumnNameType(tableName);
         Map<String, String> columnRemarkMap = connector.mapColumnRemark(tableName);

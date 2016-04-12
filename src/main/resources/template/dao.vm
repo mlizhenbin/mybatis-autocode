@@ -23,19 +23,19 @@ public interface ${upClassName}Mapper {
     public void update${upClassName}(${upClassName} ${lowClassName});
 
     /**
-     * 主键${normalPrimaryKey}删除${upClassName}
+     * 主键${primaryKey}删除${upClassName}
      *
-     * @param ${normalPrimaryKey} ${upClassName}主键
+     * @param ${primaryKey} ${upClassName}主键
      */
-    public void delete${upClassName}(${primaryKeyType} ${normalPrimaryKey});
+    public void delete${upClassName}(${primaryKeyType} ${primaryKey});
 
     /**
-     * 主键${normalPrimaryKey}查询${upClassName}
+     * 主键${primaryKey}查询${upClassName}
      *
-     * @param ${normalPrimaryKey} ${upClassName}主键
+     * @param ${primaryKey} ${upClassName}主键
      * @return ${upClassName}对象
      */
-    public ${upClassName} findBy${primaryKey}(${primaryKeyType} ${normalPrimaryKey});
+    public ${upClassName} findBy${primaryKey}(${primaryKeyType} ${primaryKey});
 
     /**
      * 查询${upClassName}对象
