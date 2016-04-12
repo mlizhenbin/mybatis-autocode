@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @goal create
+ * @goal mysql
  */
 public class MybatisMySqlGeneratorPlugin extends AbstractMojo {
 
