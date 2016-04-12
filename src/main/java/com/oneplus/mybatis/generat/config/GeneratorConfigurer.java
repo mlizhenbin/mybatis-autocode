@@ -63,6 +63,11 @@ public interface GeneratorConfigurer {
     public static final String JAVA_SRC = "java";
 
     /**
+     * oracle schema
+     */
+    public static final String ORACLE_SCHEMA ="APPS";
+
+    /**
      * 获取配置文件配置集
      *
      * @return 配置文件配置集

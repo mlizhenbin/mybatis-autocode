@@ -11,7 +11,7 @@ public class MysqlConnector implements Connector {
 
     public Map<SessionType, Object> session = Maps.newHashMap();
 
-    private Properties properties;
+    protected Properties properties;
 
     public MysqlConnector(Properties properties) {
         this.properties = properties;
@@ -150,7 +150,7 @@ public class MysqlConnector implements Connector {
         return dataType;
     }
 
-    private Connection getConnection() {
+    protected Connection getConnection() {
         Connection connection = (Connection) session.get(SessionType.connection);
         if (connection != null) {
             return connection;
@@ -170,7 +170,7 @@ public class MysqlConnector implements Connector {
         return connection;
     }
 
-    private DatabaseMetaData getDatabaseMetaData() {
+    protected DatabaseMetaData getDatabaseMetaData() {
         Connection connection = getConnection();
         DatabaseMetaData meta = (DatabaseMetaData) session.get(SessionType.DatabaseMetaData);
         if (meta != null) {
@@ -186,8 +186,16 @@ public class MysqlConnector implements Connector {
         return meta;
     }
 
-    private enum SessionType {
+    protected enum SessionType {
         connection, DatabaseMetaData
 
+    }
+
+    public Properties getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Properties properties) {
+        this.properties = properties;
     }
 }

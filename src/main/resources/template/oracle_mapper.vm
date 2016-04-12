@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${packageName}.dao.model.${upClassName}Mapper">
+    <resultMap type="${upClassName}" id="${lowClassName}_result">
+#foreach($resultMapColumn in $resultMapColumns)
+        $resultMapColumn
+#end
+    </resultMap>
+
+    <sql id="${upClassName}_Query_List_Sharing">
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+#foreach($whereCondition in $whereConditions)
+            $whereCondition
+#end
+        </trim>
+    </sql>
+
+    <sql id="${upClassName}_By_${primaryKey}">
+        WHERE ${oracleSchemaName}.${tableName}.${columnPrimaryKey} = #{${normalPrimaryKey}}
+    </sql>
+
+    <sql id="${upClassName}_List_Paramter">
+        <if test="orderItem != null" >
+            ORDER BY ${orderItem} ${orderType} <!-- # and $ has difference, this place need $ -->
+        </if>
+    </sql>
+
+    <sql id="${upClassName}_column">
+#foreach($column in $columns)
+        $column
+#end
+    </sql>
+
+    <insert id="add${upClassName}" parameterType="${upClassName}" keyProperty="${normalPrimaryKey}">
+        INSERT INTO ${oracleSchemaName}.${tableName}
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+#foreach($insertColsCondition in $insertColsConditions)
+            $insertColsCondition
+#end
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+#foreach($insertValueCondition in $insertValueConditions)
+            $insertValueCondition
+#end
+        </trim>
+    </insert>
+
+    <update id="update${upClassName}" parameterType="${upClassName}">
+        UPDATE ${oracleSchemaName}.${tableName} ${oracleSchemaName}.${tableName}
+        <trim prefix="SET" suffixOverrides=",">
+#foreach($updateCondition in $updateConditions)
+            $updateCondition
+#end
+        </trim>
+        <include refid="${upClassName}_By_${primaryKey}" />
+    </update>
+
+    <select id="find${upClassName}" resultMap="${lowClassName}_result" parameterType="java.util.HashMap">
+        SELECT
+        <include refid="${upClassName}_column" />
+        FROM ${oracleSchemaName}.${tableName} ${oracleSchemaName}.${tableName}
+        <include refid="${upClassName}_Query_List_Sharing" />
+    </select>
+
+    <select id="findBy${primaryKey}" resultMap="${lowClassName}_result" parameterType="${primaryKeyType}">
+        SELECT
+        <include refid="${upClassName}_column" />
+        FROM ${oracleSchemaName}.${tableName} ${oracleSchemaName}.${tableName}
+        <include refid="${upClassName}_By_${primaryKey}" />
+    </select>
+
+    <select id="list${upClassName}" resultMap="${lowClassName}_result" parameterType="java.util.HashMap">
+        SELECT
+        <include refid="${upClassName}_column" />
+        FROM ${oracleSchemaName}.${tableName} ${oracleSchemaName}.${tableName}
+        <include refid="${upClassName}_Query_List_Sharing" />
+        <include refid="${upClassName}_List_Paramter" />
+        <if test="begin != null and pageSize != null" >
+            limit #{begin},#{pageSize}
+        </if>
+    </select>
+
+    <select id="list${upClassName}Count" resultType="java.lang.Integer" parameterType="java.util.HashMap">
+        SELECT
+        COUNT(*)
+        FROM ${oracleSchemaName}.${tableName} ${oracleSchemaName}.${tableName}
+        <include refid="${upClassName}_Query_List_Sharing" />
+    </select>
+
+    <delete id="delete${upClassName}" parameterType="${upClassName}">
+        DELETE FROM ${oracleSchemaName}.${tableName}
+        <include refid="${upClassName}_By_${primaryKey}" />
+    </delete>
+
+</mapper>

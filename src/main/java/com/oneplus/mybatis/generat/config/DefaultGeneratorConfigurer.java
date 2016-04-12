@@ -52,6 +52,7 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
         initLayers();
         initLocation();
         initJavaSrc();
+        initSchema();
     }
 
     protected void initPackage() {
@@ -117,6 +118,14 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
             return;
         }
         properties.setProperty("java.src", JAVA_SRC);
+    }
+
+    protected void initSchema() {
+        String value = (String) properties.get("oracle.schema.name");
+        if (StringUtils.isNotBlank(value)) {
+            return;
+        }
+        properties.setProperty("oracle.schema.name", ORACLE_SCHEMA);
     }
 
     protected void loadProperties() {

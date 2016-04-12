@@ -40,31 +40,24 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
     /**
      * 读取配置
      */
-    private static Properties properties;
+    protected Properties properties;
 
     /**
      * 读取数据连接
      */
-    private static Connector connector;
+    protected Connector connector;
 
     /**
      * 上下文
      */
-    private static ApplicationContext context;
-
-    static {
-        GeneratorConfigurer generatorConfigurer = GeneratorConfigurerFactory.getGeneratorConfigurer();
-        properties = generatorConfigurer.getProperties();
-        generatorConfigurer.initConfigParams();
-        connector = new MysqlConnector(properties);
-        context = new ClassPathXmlApplicationContext(GeneratorConfigurer.SPRING_CONFIG);
-    }
+    protected ApplicationContext context;
 
     /**
      * 执行生成方法
      */
     public void start() {
         try {
+            initConnector();
             generator();
         } catch (Exception e) {
             throw new RuntimeException("启动创建代码工具出现异常", e);
@@ -103,11 +96,26 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
             }
 
             for (PackageConfigType configType : PackageConfigType.values()) {
-                Generator generator = (Generator) context.getBean("generatorFacade");
-                GeneratorContext generatorContext = initBaseContext(tableName);
-                doGeneratorService(generator, generatorContext, configType);
+                if (isLoop(configType)) {
+                    Generator generator = (Generator) context.getBean("generatorFacade");
+                    GeneratorContext generatorContext = initBaseContext(tableName);
+                    doGeneratorService(generator, generatorContext, configType);
+                }
             }
         }
+    }
+
+    /**
+     * 是否可以继续循环
+     *
+     * @param configType
+     * @return
+     */
+    protected boolean isLoop(PackageConfigType configType) {
+        if (configType == PackageConfigType.oracle_mapper) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -137,6 +145,7 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
         String colPrimaryKey = StringUtils.upperCase(propMap.get("primaryKey"));
         String columnPrimaryKey = propMap.get("primaryKey");
         String normalPrimaryKey = GeneratorStringUtils.format(propMap.get("primaryKey"));
+        String oracleSchemaName = (String) properties.get("oracle.schema.name");
 
         GeneratorContext context = new GeneratorContext(tableName, upClassName, lowClassName,
                 packageName, primaryKeyType, primaryKey, properties);
@@ -146,6 +155,43 @@ public class DefaultGeneratorStarter implements GeneratorStarter {
         context.addAttribute("normalPrimaryKey", normalPrimaryKey);
         context.addAttribute("domain", properties.get("generator.domain"));
         context.addAttribute("colPrimaryKey", colPrimaryKey);
+        context.addAttribute("oracleSchemaName", oracleSchemaName);
         return context;
+    }
+
+    public void initConnector() {
+        GeneratorConfigurer generatorConfigurer = GeneratorConfigurerFactory.getGeneratorConfigurer();
+        properties = generatorConfigurer.getProperties();
+        generatorConfigurer.initConfigParams();
+        context = new ClassPathXmlApplicationContext(GeneratorConfigurer.SPRING_CONFIG);
+
+        // 设置上下文参数
+        setConnector(new MysqlConnector(properties));
+        setProperties(properties);
+        setContext(context);
+    }
+
+    public Connector getConnector() {
+        return connector;
+    }
+
+    public void setConnector(Connector connector) {
+        this.connector = connector;
+    }
+
+    public Properties getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Properties properties) {
+        this.properties = properties;
+    }
+
+    public ApplicationContext getContext() {
+        return context;
+    }
+
+    public void setContext(ApplicationContext context) {
+        this.context = context;
     }
 }

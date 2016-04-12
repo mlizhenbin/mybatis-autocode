@@ -11,12 +11,12 @@ import org.slf4j.LoggerFactory;
 /**
  * @goal create
  */
-public class MybatisGeneratorPlugin extends AbstractMojo {
+public class MybatisMySqlGeneratorPlugin extends AbstractMojo {
 
     /**
      * 打印MybatisGeneratorPlugin.java日志
      */
-    private static final Logger LOGGER = LoggerFactory.getLogger(MybatisGeneratorPlugin.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MybatisMySqlGeneratorPlugin.class);
 
     public void execute() throws MojoExecutionException, MojoFailureException {
         GeneratorStarter starter = new PluginGeneratorStarter();
