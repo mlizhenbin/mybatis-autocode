@@ -1,7 +1,7 @@
 package com.oneplus.mybatis.generat.plugin;
 
-import com.oneplus.mybatis.generat.start.GeneratorStarter;
-import com.oneplus.mybatis.generat.start.PluginGeneratorStarter;
+import com.oneplus.mybatis.generat.starter.GeneratorStarter;
+import com.oneplus.mybatis.generat.starter.impl.MySqlPluginGeneratorStarterImpl;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -19,7 +19,7 @@ public class MybatisMySqlGeneratorPlugin extends AbstractMojo {
     private static final Logger LOGGER = LoggerFactory.getLogger(MybatisMySqlGeneratorPlugin.class);
 
     public void execute() throws MojoExecutionException, MojoFailureException {
-        GeneratorStarter starter = new PluginGeneratorStarter();
+        GeneratorStarter starter = new MySqlPluginGeneratorStarterImpl();
         starter.start();
         LOGGER.info("auto plugin Generator code finish...");
     }

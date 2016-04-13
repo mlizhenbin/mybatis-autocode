@@ -1,4 +1,4 @@
-package com.oneplus.mybatis.generat.start;
+package com.oneplus.mybatis.generat.starter;
 
 /**
  * 功能描述：自动化生成代码接口

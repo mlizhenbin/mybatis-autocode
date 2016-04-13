@@ -1,4 +1,4 @@
-package com.oneplus.mybatis.generat.connect;
+package com.oneplus.mybatis.generat.core.connect;
 
 import java.util.List;
 import java.util.Map;
@@ -44,4 +44,9 @@ public interface Connector {
      * @return
      */
     public List<String> listAllIndex(String tableName);
+
+    /**
+     * 关闭JDBC连接
+     */
+    public void closeConnection();
 }

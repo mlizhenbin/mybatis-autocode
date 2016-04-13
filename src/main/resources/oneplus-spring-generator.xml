@@ -3,19 +3,19 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="controllerGenerator" class="com.oneplus.mybatis.generat.generator.impl.ControllerGenerator"></bean>
-    <bean id="managerGenerator" class="com.oneplus.mybatis.generat.generator.impl.ManagerGenerator"></bean>
-    <bean id="oracleMapperGenerator" class="com.oneplus.mybatis.generat.generator.impl.OracleMapperGenerator"></bean>
-    <bean id="mapperGenerator" class="com.oneplus.mybatis.generat.generator.impl.MapperGenerator"></bean>
-    <bean id="modelGenerator" class="com.oneplus.mybatis.generat.generator.impl.ModelGenerator"></bean>
-    <bean id="resultGenerator" class="com.oneplus.mybatis.generat.generator.impl.ResultGenerator"></bean>
-    <bean id="serviceGenerator" class="com.oneplus.mybatis.generat.generator.impl.ServiceGenerator"></bean>
-    <bean id="domainGenerator" class="com.oneplus.mybatis.generat.generator.impl.DomainGenerator"></bean>
-    <bean id="voGenerator" class="com.oneplus.mybatis.generat.generator.impl.VoGenerator"></bean>
-    <bean id="jspGenerator" class="com.oneplus.mybatis.generat.generator.impl.JspGenerator"></bean>
+    <bean id="controllerGenerator" class="com.oneplus.mybatis.generat.core.impl.ControllerGenerator"></bean>
+    <bean id="managerGenerator" class="com.oneplus.mybatis.generat.core.impl.ManagerGenerator"></bean>
+    <bean id="oracleMapperGenerator" class="com.oneplus.mybatis.generat.core.impl.OracleMapperGenerator"></bean>
+    <bean id="mapperGenerator" class="com.oneplus.mybatis.generat.core.impl.MapperGenerator"></bean>
+    <bean id="modelGenerator" class="com.oneplus.mybatis.generat.core.impl.ModelGenerator"></bean>
+    <bean id="resultGenerator" class="com.oneplus.mybatis.generat.core.impl.ResultGenerator"></bean>
+    <bean id="serviceGenerator" class="com.oneplus.mybatis.generat.core.impl.ServiceGenerator"></bean>
+    <bean id="domainGenerator" class="com.oneplus.mybatis.generat.core.impl.DomainGenerator"></bean>
+    <bean id="voGenerator" class="com.oneplus.mybatis.generat.core.impl.VoGenerator"></bean>
+    <bean id="jspGenerator" class="com.oneplus.mybatis.generat.core.impl.JspGenerator"></bean>
 
 
-    <bean id="generatorFacade" class="com.oneplus.mybatis.generat.generator.impl.GeneratorFacade">
+    <bean id="generatorFacade" class="com.oneplus.mybatis.generat.core.impl.GeneratorFacade">
         <property name="generatorMap">
             <map>
                 <entry key="controller" value-ref="controllerGenerator"/>

@@ -1,10 +1,10 @@
-package com.oneplus.mybatis.generat.generator.impl;
+package com.oneplus.mybatis.generat.core.impl;
 
 import com.google.common.collect.Lists;
-import com.oneplus.mybatis.generat.connect.Connector;
-import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
-import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
-import com.oneplus.mybatis.generat.utils.ConstantsType;
+import com.oneplus.mybatis.generat.core.connect.Connector;
+import com.oneplus.mybatis.generat.core.context.AutoCodeContext;
+import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
+import com.oneplus.mybatis.generat.config.AutoCodeConstantsType;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
@@ -25,11 +25,11 @@ import java.util.Map;
 public class MapperGenerator extends AbstractGeneratorImpl {
 
     @Override
-    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
+    public void initVelocityContext(VelocityContext velocityContext, AutoCodeContext cxt) {
         super.initVelocityContext(velocityContext, cxt);
 
         String tableName = cxt.getTableName();
-        Connector connector = (Connector) cxt.getAttribute(ConstantsType.JDBC_CONNECTOR);
+        Connector connector = (Connector) cxt.getAttribute(AutoCodeConstantsType.JDBC_CONNECTOR);
         Map<String, String> columnNameTypeMap = connector.mapColumnNameType(tableName);
         List<String> allIndexs = connector.listAllIndex(tableName);
 
@@ -40,7 +40,7 @@ public class MapperGenerator extends AbstractGeneratorImpl {
         List<String> insertColsConditions = Lists.newArrayList();
         List<String> updateConditions = Lists.newArrayList();
 
-        String pk = (String) velocityContext.get(ConstantsType.PRIMARY_KEY.getDesc());
+        String pk = (String) velocityContext.get(AutoCodeConstantsType.PRIMARY_KEY.getDesc());
         for (String col : columnNameTypeMap.keySet()) {
             String field = GeneratorStringUtils.format(col);
             columns.add(tableName + "." + col);
@@ -53,12 +53,12 @@ public class MapperGenerator extends AbstractGeneratorImpl {
             if (columnNameTypeMap.get(col).equals("Date")) {
                 StringBuilder conditionBfs = new StringBuilder();
                 conditionBfs.append(defaultFieldStr)
-                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &gt;= #{").append(ConstantsType.DYNAMIC_FILEDS.getDesc()).append(col).append("}\n")
+                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &gt;= #{").append(AutoCodeConstantsType.DYNAMIC_FILEDS.getDesc()).append(col).append("}\n")
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBfs.toString());
                 StringBuilder conditionBfe = new StringBuilder();
                 conditionBfe.append(defaultFieldStr)
-                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &lt; #{").append(ConstantsType.DYNAMIC_FILEDS.getDesc()).append(col).append("}\n")
+                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &lt; #{").append(AutoCodeConstantsType.DYNAMIC_FILEDS.getDesc()).append(col).append("}\n")
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBfe.toString());
             } else {
@@ -128,21 +128,21 @@ public class MapperGenerator extends AbstractGeneratorImpl {
             }
         }
 
-        velocityContext.put(ConstantsType.RESULT_MAP_COLUMNS.getDesc(), resultMapColumns);
-        velocityContext.put(ConstantsType.WHERE_CONDITIONS.getDesc(), whereConditions);
-        velocityContext.put(ConstantsType.INSERT_VALUE_CONDITIONS.getDesc(), insertValueConditions);
-        velocityContext.put(ConstantsType.INSERT_COLS_CONDITIONS.getDesc(), insertColsConditions);
-        velocityContext.put(ConstantsType.UPDATE_CONDITIONS.getDesc(), updateConditions);
+        velocityContext.put(AutoCodeConstantsType.RESULT_MAP_COLUMNS.getDesc(), resultMapColumns);
+        velocityContext.put(AutoCodeConstantsType.WHERE_CONDITIONS.getDesc(), whereConditions);
+        velocityContext.put(AutoCodeConstantsType.INSERT_VALUE_CONDITIONS.getDesc(), insertValueConditions);
+        velocityContext.put(AutoCodeConstantsType.INSERT_COLS_CONDITIONS.getDesc(), insertColsConditions);
+        velocityContext.put(AutoCodeConstantsType.UPDATE_CONDITIONS.getDesc(), updateConditions);
         for (int i = 0; i < columns.size() - 1; i++) {
             String tempCol = columns.get(i) + ",";
             columns.set(i, tempCol);
         }
-        velocityContext.put(ConstantsType.COLUMNS.getDesc(), columns);
+        velocityContext.put(AutoCodeConstantsType.COLUMNS.getDesc(), columns);
     }
 
     @Override
-    protected PackageConfigType getPackageConfigType() {
-        return PackageConfigType.MAPPER;
+    protected AutoCodeGeneratorType getPackageConfigType() {
+        return AutoCodeGeneratorType.MAPPER;
     }
 
     @Override

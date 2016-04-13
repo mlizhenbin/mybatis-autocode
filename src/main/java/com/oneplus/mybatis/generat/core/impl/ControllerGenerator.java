@@ -1,8 +1,8 @@
-package com.oneplus.mybatis.generat.generator.impl;
+package com.oneplus.mybatis.generat.core.impl;
 
-import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
-import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
-import com.oneplus.mybatis.generat.utils.ConstantsType;
+import com.oneplus.mybatis.generat.core.context.AutoCodeContext;
+import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
+import com.oneplus.mybatis.generat.config.AutoCodeConstantsType;
 import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
 
@@ -17,17 +17,17 @@ import org.apache.velocity.VelocityContext;
 public class ControllerGenerator extends AbstractGeneratorImpl {
 
     @Override
-    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
+    public void initVelocityContext(VelocityContext velocityContext, AutoCodeContext cxt) {
         super.initVelocityContext(velocityContext, cxt);
         String description = (String) velocityContext.get("classTitle");
         String replace = StringUtils.replace(description, "{classDescription}",
-                velocityContext.get(ConstantsType.UP_CLASS_NAME.getDesc()) + "控制器");
-        velocityContext.put(ConstantsType.CLASS_TITLE.getDesc(), replace);
+                velocityContext.get(AutoCodeConstantsType.UP_CLASS_NAME.getDesc()) + "控制器");
+        velocityContext.put(AutoCodeConstantsType.CLASS_TITLE.getDesc(), replace);
     }
 
     @Override
-    protected PackageConfigType getPackageConfigType() {
-        return PackageConfigType.CONTROLLER;
+    protected AutoCodeGeneratorType getPackageConfigType() {
+        return AutoCodeGeneratorType.CONTROLLER;
     }
 
     @Override

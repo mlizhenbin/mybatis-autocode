@@ -1,7 +1,7 @@
-package com.oneplus.mybatis.generat.generator.context;
+package com.oneplus.mybatis.generat.core.context;
 
 import com.google.common.collect.Maps;
-import com.oneplus.mybatis.generat.utils.ConstantsType;
+import com.oneplus.mybatis.generat.config.AutoCodeConstantsType;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
 
@@ -17,7 +17,7 @@ import java.util.Properties;
  * company：一加科技
  * Date: 15/6/13 Time：00:58
  */
-public class GeneratorContext implements Serializable {
+public class AutoCodeContext implements Serializable {
     private static final long serialVersionUID = -8244453504134436716L;
 
     /**
@@ -58,7 +58,7 @@ public class GeneratorContext implements Serializable {
     /**
      * 上下文参数
      */
-    private Map<ConstantsType, Object> attributes = Maps.newHashMap();
+    private Map<AutoCodeConstantsType, Object> attributes = Maps.newHashMap();
 
     /**
      * 构造生成代码上下文
@@ -67,24 +67,24 @@ public class GeneratorContext implements Serializable {
      * @param propMap    JDBC数据map
      * @param properties 配置
      */
-    public GeneratorContext(String tableName, Map<String, String> propMap, Properties properties) {
+    public AutoCodeContext(String tableName, Map<String, String> propMap, Properties properties) {
         this.tableName = tableName;
         this.upClassName = GeneratorStringUtils.firstUpperAndNoPrefix(tableName, properties);
         this.lowClassName = GeneratorStringUtils.formatAndNoPrefix(tableName, properties);
         this.packageName = PropertiesUtils.getPackage(properties);
-        this.primaryKeyType = propMap.get(ConstantsType.PRIMARY_KEY_TYPE.getType());
-        this.primaryKey = GeneratorStringUtils.firstUpperNoFormat(GeneratorStringUtils.format(propMap.get(ConstantsType.PRIMARY_KEY.getType())));
+        this.primaryKeyType = propMap.get(AutoCodeConstantsType.PRIMARY_KEY_TYPE.getType());
+        this.primaryKey = GeneratorStringUtils.firstUpperNoFormat(GeneratorStringUtils.format(propMap.get(AutoCodeConstantsType.PRIMARY_KEY.getType())));
         this.properties = properties;
     }
 
-    public Object getAttribute(ConstantsType key) {
+    public Object getAttribute(AutoCodeConstantsType key) {
         if (key == null) {
             return null;
         }
         return this.attributes.get(key);
     }
 
-    public void addAttribute(ConstantsType key, Object value) {
+    public void addAttribute(AutoCodeConstantsType key, Object value) {
         if (key == null) {
             return;
         }

@@ -1,6 +1,6 @@
-package com.oneplus.mybatis.generat.generator.impl;
+package com.oneplus.mybatis.generat.core.impl;
 
-import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
 
 /**
  * 功能描述：VO生成器
@@ -13,8 +13,8 @@ import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
 public class VoGenerator extends ModelGenerator {
 
     @Override
-    protected PackageConfigType getPackageConfigType() {
-        return PackageConfigType.VO;
+    protected AutoCodeGeneratorType getPackageConfigType() {
+        return AutoCodeGeneratorType.VO;
     }
 
     @Override

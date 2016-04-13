@@ -1,4 +1,4 @@
-package com.oneplus.mybatis.generat.generator.context;
+package com.oneplus.mybatis.generat.core.context;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
@@ -14,7 +14,7 @@ import java.util.List;
  * company：一加科技
  * Date: 15/6/14 Time：08:31
  */
-public enum PackageConfigType {
+public enum AutoCodeGeneratorType {
 
     MAPPER("mapper",
             "/dao|/dao",
@@ -86,7 +86,7 @@ public enum PackageConfigType {
      */
     private String template;
 
-    PackageConfigType(String type, String targetDir, String fileName, String template) {
+    AutoCodeGeneratorType(String type, String targetDir, String fileName, String template) {
         this.type = type;
         this.targetDir = targetDir;
         this.fileName = fileName;
@@ -115,11 +115,11 @@ public enum PackageConfigType {
      * @param type
      * @return
      */
-    public static PackageConfigType getByType(String type) {
+    public static AutoCodeGeneratorType getByType(String type) {
         if (StringUtils.isBlank(type))
             return null;
 
-        for (PackageConfigType packageDirType : PackageConfigType.values()) {
+        for (AutoCodeGeneratorType packageDirType : AutoCodeGeneratorType.values()) {
             if (StringUtils.equals(type, packageDirType.getType())) {
                 return packageDirType;
             }
@@ -135,7 +135,7 @@ public enum PackageConfigType {
      */
     public static String getDefaultConfigLayer() {
         List<String> configs = Lists.newArrayList();
-        for (PackageConfigType packageConfigDirType : PackageConfigType.values()) {
+        for (AutoCodeGeneratorType packageConfigDirType : AutoCodeGeneratorType.values()) {
             configs.add(packageConfigDirType.getType());
         }
 

@@ -1,23 +1,56 @@
-package com.oneplus.mybatis.generat.connect;
+package com.oneplus.mybatis.generat.core.connect;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.oneplus.mybatis.generat.utils.ConstantsType;
+import com.oneplus.mybatis.generat.config.AutoCodeConstantsType;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.*;
 
+/**
+ * 功能描述：Mysql Connector实现
+ *
+ * @author: Zhenbin.Li
+ * email： lizhenbin@oneplus.cn
+ * company：一加科技
+ * Date: 15/6/12 Time：23:42
+ */
 public class MysqlConnector implements Connector {
 
+    /**
+     * sl4j
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(MysqlConnector.class);
+
+    /**
+     * Connector session
+     */
     public Map<SessionType, Object> session = Maps.newHashMap();
 
+    /**
+     * 配置properties
+     */
     protected Properties properties;
 
+    /**
+     * 构造带配置
+     *
+     * @param properties
+     */
     public MysqlConnector(Properties properties) {
         this.properties = properties;
     }
 
+    /**
+     * 获取所有属性和类型的map
+     * key:属性 value:类型
+     *
+     * @param tableName
+     * @return
+     */
     public Map<String, String> mapColumnNameType(String tableName) {
         Map<String, String> colMap = new LinkedHashMap<String, String>();
         DatabaseMetaData meta = getDatabaseMetaData();
@@ -37,6 +70,12 @@ public class MysqlConnector implements Connector {
         return colMap;
     }
 
+    /**
+     * 获取表结构字段描述备注
+     *
+     * @param tableName
+     * @return
+     */
     public Map<String, String> mapColumnRemark(String tableName) {
         Map<String, String> colMap = new LinkedHashMap<String, String>();
         DatabaseMetaData meta = getDatabaseMetaData();
@@ -53,12 +92,17 @@ public class MysqlConnector implements Connector {
         return colMap;
     }
 
+    /**
+     * 获取所有的表索引
+     *
+     * @param tableName
+     * @return
+     */
     public List<String> listAllIndex(String tableName) {
         try {
             List<String> indexs = Lists.newArrayList();
             ResultSet resultSet = getDatabaseMetaData().getIndexInfo(null, null, tableName, false, true);
             while (resultSet.next()) {
-
                 String indexName = resultSet.getString("INDEX_NAME");
                 indexs.add(indexName);
             }
@@ -68,6 +112,31 @@ public class MysqlConnector implements Connector {
         }
     }
 
+    /**
+     * 尝试关闭Connection
+     */
+    public void closeConnection() {
+        try {
+            Object connection = session.get(SessionType.connection);
+            if (connection != null) {
+                Connection conn = (Connection) connection;
+                try {
+                    conn.close();
+                } catch (Exception ex) {
+                    LOGGER.error("关闭Connection异常", ex);
+                }
+            }
+        } catch (Exception ex) {
+            LOGGER.error("关闭Connection失败", ex);
+        }
+    }
+
+    /**
+     * 获取主键
+     *
+     * @param tableName
+     * @return
+     */
     public Map<String, String> getPrimaryKey(String tableName) {
         Map<String, String> map = new HashMap<String, String>();
         try {
@@ -75,8 +144,8 @@ public class MysqlConnector implements Connector {
             while (pkRSet.next()) {
                 String primaryKey = pkRSet.getString("COLUMN_NAME");
                 String primaryKeyType = mapColumnNameType(pkRSet.getString("TABLE_NAME")).get(primaryKey);
-                map.put(ConstantsType.PRIMARY_KEY.getDesc(), primaryKey);
-                map.put(ConstantsType.PRIMARY_KEY_TYPE.getDesc(), primaryKeyType);
+                map.put(AutoCodeConstantsType.PRIMARY_KEY.getDesc(), primaryKey);
+                map.put(AutoCodeConstantsType.PRIMARY_KEY_TYPE.getDesc(), primaryKeyType);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -141,6 +210,11 @@ public class MysqlConnector implements Connector {
         return dataType;
     }
 
+    /**
+     * 是否类型转换
+     *
+     * @return
+     */
     private String getPrecisionType() {
         String dataType;
         if ("high".equals(PropertiesUtils.getPrecision(properties))) {
@@ -151,6 +225,11 @@ public class MysqlConnector implements Connector {
         return dataType;
     }
 
+    /**
+     * 获取JDBC连接信息
+     *
+     * @return
+     */
     protected Connection getConnection() {
         Connection connection = (Connection) session.get(SessionType.connection);
         if (connection != null) {
@@ -171,6 +250,11 @@ public class MysqlConnector implements Connector {
         return connection;
     }
 
+    /**
+     * 获取DatabaseMetaData
+     *
+     * @return
+     */
     protected DatabaseMetaData getDatabaseMetaData() {
         Connection connection = getConnection();
         DatabaseMetaData meta = (DatabaseMetaData) session.get(SessionType.DatabaseMetaData);
@@ -187,6 +271,9 @@ public class MysqlConnector implements Connector {
         return meta;
     }
 
+    /**
+     * session配置类型
+     */
     protected enum SessionType {
         connection, DatabaseMetaData
 

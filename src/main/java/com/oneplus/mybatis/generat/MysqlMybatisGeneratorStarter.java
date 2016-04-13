@@ -1,7 +1,7 @@
 package com.oneplus.mybatis.generat;
 
-import com.oneplus.mybatis.generat.start.GeneratorStarter;
-import com.oneplus.mybatis.generat.start.MysqlDefaultGeneratorStarter;
+import com.oneplus.mybatis.generat.starter.GeneratorStarter;
+import com.oneplus.mybatis.generat.starter.impl.MysqlDefaultGeneratorStarterImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +21,7 @@ public class MysqlMybatisGeneratorStarter {
     private static final Logger LOGGER = LoggerFactory.getLogger(MysqlMybatisGeneratorStarter.class);
 
     public static void main(String[] args) {
-        GeneratorStarter starter = new MysqlDefaultGeneratorStarter();
+        GeneratorStarter starter = new MysqlDefaultGeneratorStarterImpl();
         starter.start();
         LOGGER.info("auto plugin Generator code finish...");
     }

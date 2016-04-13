@@ -1,4 +1,4 @@
-package com.oneplus.mybatis.generat.generator.context;
+package com.oneplus.mybatis.generat.core.context;
 
 /**
  * 功能描述：生成文件类信息头部
@@ -8,10 +8,16 @@ package com.oneplus.mybatis.generat.generator.context;
  * company：一加科技
  * Date: 15/6/14 Time：17:36
  */
-public interface AutoCreateClassTitle {
+public interface AutoCodeFileTitle {
 
+    /**
+     * 所属company Message
+     */
     public static final String COMPANY = "一加科技";
 
+    /**
+     * email suffix
+     */
     public static final String MAIL_PREFIX = "@oneplus.cn";
 
 }

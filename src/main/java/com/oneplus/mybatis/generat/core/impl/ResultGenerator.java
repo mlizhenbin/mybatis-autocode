@@ -1,11 +1,11 @@
-package com.oneplus.mybatis.generat.generator.impl;
+package com.oneplus.mybatis.generat.core.impl;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.oneplus.mybatis.generat.connect.Connector;
-import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
-import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
-import com.oneplus.mybatis.generat.utils.ConstantsType;
+import com.oneplus.mybatis.generat.core.connect.Connector;
+import com.oneplus.mybatis.generat.core.context.AutoCodeContext;
+import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
+import com.oneplus.mybatis.generat.config.AutoCodeConstantsType;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
@@ -25,12 +25,12 @@ import java.util.UUID;
 public class ResultGenerator extends AbstractGeneratorImpl {
 
     @Override
-    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
+    public void initVelocityContext(VelocityContext velocityContext, AutoCodeContext cxt) {
         super.initVelocityContext(velocityContext, cxt);
-        velocityContext.put(ConstantsType.SERIAL_VERSION_UID.getDesc(), String.valueOf(UUID.randomUUID().getLeastSignificantBits()));
+        velocityContext.put(AutoCodeConstantsType.SERIAL_VERSION_UID.getDesc(), String.valueOf(UUID.randomUUID().getLeastSignificantBits()));
 
         String tableName = cxt.getTableName();
-        Connector connector = (Connector) cxt.getAttribute(ConstantsType.JDBC_CONNECTOR);
+        Connector connector = (Connector) cxt.getAttribute(AutoCodeConstantsType.JDBC_CONNECTOR);
         Map<String, String> columnNameTypeMap = connector.mapColumnNameType(tableName);
         Map<String, String> columnRemarkMap = connector.mapColumnRemark(tableName);
 
@@ -43,14 +43,14 @@ public class ResultGenerator extends AbstractGeneratorImpl {
         }
 
         String noPrefixTableName = StringUtils.upperCase(tableName.toLowerCase().replaceFirst(PropertiesUtils.getTablePrefix(cxt.getProperties()), ""));
-        velocityContext.put(ConstantsType.NO_PREFIX_TABLE_NAME.getDesc(), noPrefixTableName);
-        velocityContext.put(ConstantsType.ALL_UP_CASE_COLS.getDesc(), allUpCaseCols);
-        velocityContext.put(ConstantsType.REMARK_MAP.getDesc(), remarkMap);
+        velocityContext.put(AutoCodeConstantsType.NO_PREFIX_TABLE_NAME.getDesc(), noPrefixTableName);
+        velocityContext.put(AutoCodeConstantsType.ALL_UP_CASE_COLS.getDesc(), allUpCaseCols);
+        velocityContext.put(AutoCodeConstantsType.REMARK_MAP.getDesc(), remarkMap);
     }
 
     @Override
-    protected PackageConfigType getPackageConfigType() {
-        return PackageConfigType.result;
+    protected AutoCodeGeneratorType getPackageConfigType() {
+        return AutoCodeGeneratorType.result;
     }
 
     @Override

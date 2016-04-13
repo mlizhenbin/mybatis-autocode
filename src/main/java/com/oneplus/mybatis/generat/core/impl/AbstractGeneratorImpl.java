@@ -1,12 +1,12 @@
-package com.oneplus.mybatis.generat.generator.impl;
+package com.oneplus.mybatis.generat.core.impl;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.oneplus.mybatis.generat.generator.Generator;
-import com.oneplus.mybatis.generat.generator.context.AutoCreateClassTitle;
-import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
-import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
-import com.oneplus.mybatis.generat.utils.ConstantsType;
+import com.oneplus.mybatis.generat.core.Generator;
+import com.oneplus.mybatis.generat.core.context.AutoCodeFileTitle;
+import com.oneplus.mybatis.generat.core.context.AutoCodeContext;
+import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
+import com.oneplus.mybatis.generat.config.AutoCodeConstantsType;
 import com.oneplus.mybatis.generat.utils.GeneratorFileUtils;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import org.apache.commons.io.IOUtils;
@@ -49,7 +49,7 @@ public abstract class AbstractGeneratorImpl implements Generator {
      * @param context
      * @param configType
      */
-    public void defaultGenerator(GeneratorContext context, PackageConfigType configType) {
+    public void defaultGenerator(AutoCodeContext context, AutoCodeGeneratorType configType) {
         velocityContext = new VelocityContext();
         VelocityEngine velocityEngine = new VelocityEngine(initDefaultProperties());
         velocityEngine.init();
@@ -62,7 +62,7 @@ public abstract class AbstractGeneratorImpl implements Generator {
      * @param context
      * @param configType
      */
-    public void pluginGenerator(GeneratorContext context, PackageConfigType configType) {
+    public void pluginGenerator(AutoCodeContext context, AutoCodeGeneratorType configType) {
         velocityContext = new VelocityContext();
         VelocityEngine velocityEngine = new VelocityEngine(initPluginProperties());
         velocityEngine.init();
@@ -75,7 +75,7 @@ public abstract class AbstractGeneratorImpl implements Generator {
      * @param generatorContext
      * @param velocityEngine
      */
-    protected void write(GeneratorContext generatorContext, VelocityEngine velocityEngine) {
+    protected void write(AutoCodeContext generatorContext, VelocityEngine velocityEngine) {
         // 读取模板渲染内容，同时创建文件
         Map<String, String> params = initGeneratorParams(generatorContext);
         for (String templateName : params.keySet()) {
@@ -127,17 +127,17 @@ public abstract class AbstractGeneratorImpl implements Generator {
      * @param cxt
      * @return
      */
-    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
-        velocityContext.put(ConstantsType.TABLE_NAME.getType(), cxt.getTableName());
-        velocityContext.put(ConstantsType.UP_CLASS_NAME.getType(), cxt.getUpClassName());
-        velocityContext.put(ConstantsType.LOW_CLASS_NAME.getType(), cxt.getLowClassName());
-        velocityContext.put(ConstantsType.PACKAGE_NAME.getType(), cxt.getPackageName());
-        velocityContext.put(ConstantsType.PRIMARY_KEY_TYPE.getDesc(), cxt.getPrimaryKeyType());
-        velocityContext.put(ConstantsType.PRIMARY_KEY.getDesc(), cxt.getPrimaryKey());
-        velocityContext.put(ConstantsType.NORMAL_PRIMARY_KEY.getDesc(), cxt.getAttribute(ConstantsType.NORMAL_PRIMARY_KEY));
-        velocityContext.put(ConstantsType.CLASS_TITLE.getDesc(), assemblyAutoCreateClassTitle(cxt.getUpClassName()));
-        velocityContext.put(ConstantsType.DOMAIN.getDesc(), cxt.getAttribute(ConstantsType.DOMAIN));
-        velocityContext.put(ConstantsType.COL_ALL_UPPERCASE_PRIMARY_KEY.getDesc(), cxt.getAttribute(ConstantsType.COL_ALL_UPPERCASE_PRIMARY_KEY));
+    public void initVelocityContext(VelocityContext velocityContext, AutoCodeContext cxt) {
+        velocityContext.put(AutoCodeConstantsType.TABLE_NAME.getType(), cxt.getTableName());
+        velocityContext.put(AutoCodeConstantsType.UP_CLASS_NAME.getType(), cxt.getUpClassName());
+        velocityContext.put(AutoCodeConstantsType.LOW_CLASS_NAME.getType(), cxt.getLowClassName());
+        velocityContext.put(AutoCodeConstantsType.PACKAGE_NAME.getType(), cxt.getPackageName());
+        velocityContext.put(AutoCodeConstantsType.PRIMARY_KEY_TYPE.getDesc(), cxt.getPrimaryKeyType());
+        velocityContext.put(AutoCodeConstantsType.PRIMARY_KEY.getDesc(), cxt.getPrimaryKey());
+        velocityContext.put(AutoCodeConstantsType.NORMAL_PRIMARY_KEY.getDesc(), cxt.getAttribute(AutoCodeConstantsType.NORMAL_PRIMARY_KEY));
+        velocityContext.put(AutoCodeConstantsType.CLASS_TITLE.getDesc(), assemblyAutoCreateClassTitle(cxt.getUpClassName()));
+        velocityContext.put(AutoCodeConstantsType.DOMAIN.getDesc(), cxt.getAttribute(AutoCodeConstantsType.DOMAIN));
+        velocityContext.put(AutoCodeConstantsType.COL_ALL_UPPERCASE_PRIMARY_KEY.getDesc(), cxt.getAttribute(AutoCodeConstantsType.COL_ALL_UPPERCASE_PRIMARY_KEY));
     }
 
     /**
@@ -146,8 +146,8 @@ public abstract class AbstractGeneratorImpl implements Generator {
      * @param context
      * @return
      */
-    protected Map<String, String> initGeneratorParams(GeneratorContext context) {
-        PackageConfigType configType = getPackageConfigType();
+    protected Map<String, String> initGeneratorParams(AutoCodeContext context) {
+        AutoCodeGeneratorType configType = getPackageConfigType();
         // 获取模板
         String[] templates = StringUtils.split(configType.getTemplate(), "\\|");
         // 基本的文件后缀及其名称
@@ -160,7 +160,7 @@ public abstract class AbstractGeneratorImpl implements Generator {
 
         Map<String, String> generatorParams = Maps.newHashMap();
         for (int i = 0; i < templates.length; i++) {
-            String tempFileName = baseFileNames[i].replace("{domain}", (CharSequence) properties.get(ConstantsType.DOMAIN.getType()));
+            String tempFileName = baseFileNames[i].replace("{domain}", (CharSequence) properties.get(AutoCodeConstantsType.DOMAIN.getType()));
             String fileName = GeneratorFileUtils.getPackageDirectory(targetDirs[i], properties)
                     + GeneratorStringUtils.firstUpperAndNoPrefix(tableName, properties)
                     + tempFileName;
@@ -174,7 +174,7 @@ public abstract class AbstractGeneratorImpl implements Generator {
      *
      * @return
      */
-    protected abstract PackageConfigType getPackageConfigType();
+    protected abstract AutoCodeGeneratorType getPackageConfigType();
 
 
     /**
@@ -256,8 +256,8 @@ public abstract class AbstractGeneratorImpl implements Generator {
                 .append(" * 功能描述: ").append("{classDescription}").append("\n")
                 .append(" * ").append("\n")
                 .append(" * @author: ").append(System.getProperty("user.name")).append("\n")
-                .append(" * email: ").append(System.getProperty("user.name")).append(AutoCreateClassTitle.MAIL_PREFIX).append("\n")
-                .append(" * company: ").append(AutoCreateClassTitle.COMPANY).append("\n")
+                .append(" * email: ").append(System.getProperty("user.name")).append(AutoCodeFileTitle.MAIL_PREFIX).append("\n")
+                .append(" * company: ").append(AutoCodeFileTitle.COMPANY).append("\n")
                 .append(" * Date: ").append(dateFormat.format(new Date())).append(" Time: ").append(timeFormat.format(new Date())).append("\n")
                 .append(" */");
         return replaceClassTitleDescription(builder.toString(), upClassName);

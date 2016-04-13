@@ -1,9 +1,9 @@
-package com.oneplus.mybatis.generat.generator.impl;
+package com.oneplus.mybatis.generat.core.impl;
 
 import com.google.common.collect.Maps;
-import com.oneplus.mybatis.generat.generator.Generator;
-import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
-import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import com.oneplus.mybatis.generat.core.Generator;
+import com.oneplus.mybatis.generat.core.context.AutoCodeContext;
+import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
 import org.apache.commons.collections4.MapUtils;
 
 import java.util.Iterator;
@@ -19,13 +19,13 @@ import java.util.Map;
  */
 public class GeneratorFacade implements Generator {
 
-    private Map<PackageConfigType, Generator> generatorMap = Maps.newHashMap();
+    private Map<AutoCodeGeneratorType, Generator> generatorMap = Maps.newHashMap();
 
-    public void defaultGenerator(GeneratorContext context, PackageConfigType configType) {
+    public void defaultGenerator(AutoCodeContext context, AutoCodeGeneratorType configType) {
         getGenerator(configType).defaultGenerator(context, configType);
     }
 
-    public void pluginGenerator(GeneratorContext context, PackageConfigType configType) {
+    public void pluginGenerator(AutoCodeContext context, AutoCodeGeneratorType configType) {
         getGenerator(configType).pluginGenerator(context, configType);
     }
 
@@ -35,7 +35,7 @@ public class GeneratorFacade implements Generator {
             while (iterator.hasNext()) {
                 Map.Entry<String, Generator> entry = iterator.next();
                 String key = entry.getKey();
-                PackageConfigType configType = PackageConfigType.getByType(key);
+                AutoCodeGeneratorType configType = AutoCodeGeneratorType.getByType(key);
                 if (null == configType) {
                     throw new RuntimeException("根据key找不到生成代码的Generator，key = " + key);
                 }
@@ -44,7 +44,7 @@ public class GeneratorFacade implements Generator {
         }
     }
 
-    public Generator getGenerator(PackageConfigType configType) {
+    public Generator getGenerator(AutoCodeGeneratorType configType) {
         return generatorMap.get(configType);
     }
 }

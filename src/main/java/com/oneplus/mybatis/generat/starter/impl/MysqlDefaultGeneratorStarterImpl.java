@@ -1,13 +1,14 @@
-package com.oneplus.mybatis.generat.start;
+package com.oneplus.mybatis.generat.starter.impl;
 
 import com.oneplus.mybatis.generat.config.GeneratorConfigurer;
 import com.oneplus.mybatis.generat.config.GeneratorConfigurerFactory;
-import com.oneplus.mybatis.generat.connect.Connector;
-import com.oneplus.mybatis.generat.connect.MysqlConnector;
-import com.oneplus.mybatis.generat.generator.Generator;
-import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
-import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
-import com.oneplus.mybatis.generat.utils.ConstantsType;
+import com.oneplus.mybatis.generat.core.connect.Connector;
+import com.oneplus.mybatis.generat.core.connect.MysqlConnector;
+import com.oneplus.mybatis.generat.core.Generator;
+import com.oneplus.mybatis.generat.core.context.AutoCodeContext;
+import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
+import com.oneplus.mybatis.generat.config.AutoCodeConstantsType;
+import com.oneplus.mybatis.generat.starter.GeneratorStarter;
 import com.oneplus.mybatis.generat.utils.GeneratorFileUtils;
 import com.oneplus.mybatis.generat.utils.GeneratorStringUtils;
 import com.oneplus.mybatis.generat.utils.PropertiesUtils;
@@ -31,12 +32,12 @@ import java.util.Properties;
  * company：一加科技
  * Date: 15/6/12 Time：23:41
  */
-public class MysqlDefaultGeneratorStarter implements GeneratorStarter {
+public class MysqlDefaultGeneratorStarterImpl implements GeneratorStarter {
 
     /**
      * sl4j
      */
-    private static final Logger LOGGER = LoggerFactory.getLogger(MysqlDefaultGeneratorStarter.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MysqlDefaultGeneratorStarterImpl.class);
 
     /**
      * 读取配置
@@ -65,6 +66,7 @@ public class MysqlDefaultGeneratorStarter implements GeneratorStarter {
         try {
             buildConnector();
             generator();
+            connector.closeConnection();
         } catch (Exception e) {
             throw new RuntimeException("启动创建代码工具出现异常", e);
         }
@@ -87,7 +89,7 @@ public class MysqlDefaultGeneratorStarter implements GeneratorStarter {
         for (String tableName : tables) {
             try {
                 Map<String, String> pkMap = connector.getPrimaryKey(tableName);
-                if (StringUtils.isBlank(pkMap.get(ConstantsType.PRIMARY_KEY.getType()))) {
+                if (StringUtils.isBlank(pkMap.get(AutoCodeConstantsType.PRIMARY_KEY.getType()))) {
                     throw new RuntimeException(tableName + " 表结构没有主键，请检查表结构，生成代码失败.");
                 }
             } catch (Exception e) {
@@ -101,10 +103,10 @@ public class MysqlDefaultGeneratorStarter implements GeneratorStarter {
                 return;
             }
 
-            for (PackageConfigType configType : PackageConfigType.values()) {
+            for (AutoCodeGeneratorType configType : AutoCodeGeneratorType.values()) {
                 if (isLoop(configType)) {
                     Generator generator = (Generator) context.getBean(GENERATOR_FACADE);
-                    GeneratorContext generatorContext = assemblyContext(tableName);
+                    AutoCodeContext generatorContext = assemblyContext(tableName);
                     executeGenerator(generator, generatorContext, configType);
                 }
             }
@@ -117,8 +119,8 @@ public class MysqlDefaultGeneratorStarter implements GeneratorStarter {
      * @param configType
      * @return
      */
-    protected boolean isLoop(PackageConfigType configType) {
-        if (configType == PackageConfigType.ORACLE_MAPPER) {
+    protected boolean isLoop(AutoCodeGeneratorType configType) {
+        if (configType == AutoCodeGeneratorType.ORACLE_MAPPER) {
             return false;
         }
         return true;
@@ -131,7 +133,7 @@ public class MysqlDefaultGeneratorStarter implements GeneratorStarter {
      * @param generatorContext
      * @param configType
      */
-    protected void executeGenerator(Generator generator, GeneratorContext generatorContext, PackageConfigType configType) {
+    protected void executeGenerator(Generator generator, AutoCodeContext generatorContext, AutoCodeGeneratorType configType) {
         generator.defaultGenerator(generatorContext, configType);
     }
 
@@ -154,37 +156,57 @@ public class MysqlDefaultGeneratorStarter implements GeneratorStarter {
      * @param tableName
      * @return
      */
-    protected GeneratorContext assemblyContext(String tableName) {
+    protected AutoCodeContext assemblyContext(String tableName) {
         Map<String, String> propMap = connector.getPrimaryKey(tableName);
-        GeneratorContext context = new GeneratorContext(tableName, propMap, properties);
-        context.addAttribute(ConstantsType.JDBC_CONNECTOR, connector);
-        context.addAttribute(ConstantsType.CONFIG_PROPERTIES, properties);
-        context.addAttribute(ConstantsType.DOMAIN, properties.get(ConstantsType.DOMAIN.getType()));
-        context.addAttribute(ConstantsType.NORMAL_PRIMARY_KEY,
-                GeneratorStringUtils.format(propMap.get(ConstantsType.PRIMARY_KEY.getType())));
-        context.addAttribute(ConstantsType.COL_ALL_UPPERCASE_PRIMARY_KEY,
-                StringUtils.upperCase(propMap.get(ConstantsType.PRIMARY_KEY.getType())));
-        context.addAttribute(ConstantsType.ORACLE_SCHEMA,
-                properties.get(ConstantsType.ORACLE_SCHEMA.getType()));
+        AutoCodeContext context = new AutoCodeContext(tableName, propMap, properties);
+        context.addAttribute(AutoCodeConstantsType.JDBC_CONNECTOR, connector);
+        context.addAttribute(AutoCodeConstantsType.CONFIG_PROPERTIES, properties);
+        context.addAttribute(AutoCodeConstantsType.DOMAIN, properties.get(AutoCodeConstantsType.DOMAIN.getType()));
+        context.addAttribute(AutoCodeConstantsType.NORMAL_PRIMARY_KEY,
+                GeneratorStringUtils.format(propMap.get(AutoCodeConstantsType.PRIMARY_KEY.getType())));
+        context.addAttribute(AutoCodeConstantsType.COL_ALL_UPPERCASE_PRIMARY_KEY,
+                StringUtils.upperCase(propMap.get(AutoCodeConstantsType.PRIMARY_KEY.getType())));
+        context.addAttribute(AutoCodeConstantsType.ORACLE_SCHEMA,
+                properties.get(AutoCodeConstantsType.ORACLE_SCHEMA.getType()));
         return context;
     }
 
+    /**
+     *
+     * @param connector
+     */
     public void setConnector(Connector connector) {
         this.connector = connector;
     }
 
+    /**
+     *
+     * @return
+     */
     public Properties getProperties() {
         return properties;
     }
 
+    /**
+     *
+     * @param properties
+     */
     public void setProperties(Properties properties) {
         this.properties = properties;
     }
 
+    /**
+     *
+     * @return
+     */
     public ApplicationContext getContext() {
         return context;
     }
 
+    /**
+     *
+     * @param context
+     */
     public void setContext(ApplicationContext context) {
         this.context = context;
     }

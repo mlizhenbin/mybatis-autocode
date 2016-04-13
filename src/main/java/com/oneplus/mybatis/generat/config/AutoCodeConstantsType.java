@@ -1,4 +1,4 @@
-package com.oneplus.mybatis.generat.utils;
+package com.oneplus.mybatis.generat.config;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -10,7 +10,7 @@ import org.apache.commons.lang.StringUtils;
  * company：一加科技
  * Date: 16/4/12 Time: 14:13
  */
-public enum ConstantsType {
+public enum AutoCodeConstantsType {
 
     /**
      * 数据库连接池
@@ -174,7 +174,7 @@ public enum ConstantsType {
 
     private String desc;
 
-    ConstantsType(String type, String desc) {
+    AutoCodeConstantsType(String type, String desc) {
         this.type = type;
         this.desc = desc;
     }
@@ -195,12 +195,12 @@ public enum ConstantsType {
         this.desc = desc;
     }
 
-    public static ConstantsType getByType(String typeCode) {
+    public static AutoCodeConstantsType getByType(String typeCode) {
         if (StringUtils.isEmpty(typeCode)) {
             return null;
         }
 
-        for (ConstantsType type : ConstantsType.values()) {
+        for (AutoCodeConstantsType type : AutoCodeConstantsType.values()) {
             if (type.getType().equals(typeCode)) {
                 return type;
             }

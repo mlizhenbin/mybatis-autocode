@@ -1,7 +1,7 @@
-package com.oneplus.mybatis.generat.generator;
+package com.oneplus.mybatis.generat.core;
 
-import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
-import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import com.oneplus.mybatis.generat.core.context.AutoCodeContext;
+import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
 
 /**
  * 功能描述：读取配置自动化生成代码接口
@@ -19,7 +19,7 @@ public interface Generator {
      * @param context
      * @param configType
      */
-    public void defaultGenerator(GeneratorContext context, PackageConfigType configType);
+    public void defaultGenerator(AutoCodeContext context, AutoCodeGeneratorType configType);
 
     /**
      * 插件配置生成文件
@@ -27,5 +27,5 @@ public interface Generator {
      * @param context
      * @param configType
      */
-    public void pluginGenerator(GeneratorContext context, PackageConfigType configType);
+    public void pluginGenerator(AutoCodeContext context, AutoCodeGeneratorType configType);
 }

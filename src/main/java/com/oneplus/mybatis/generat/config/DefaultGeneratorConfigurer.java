@@ -1,7 +1,7 @@
 package com.oneplus.mybatis.generat.config;
 
 import com.google.common.collect.Lists;
-import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -101,7 +101,7 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
         if (StringUtils.isNotBlank(value)) {
             return;
         }
-        properties.setProperty("generator.layers", PackageConfigType.getDefaultConfigLayer());
+        properties.setProperty("generator.layers", AutoCodeGeneratorType.getDefaultConfigLayer());
     }
 
     protected void initLocation() {

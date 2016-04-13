@@ -1,7 +1,7 @@
-package com.oneplus.mybatis.generat.generator.impl;
+package com.oneplus.mybatis.generat.core.impl;
 
-import com.oneplus.mybatis.generat.generator.context.GeneratorContext;
-import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import com.oneplus.mybatis.generat.core.context.AutoCodeContext;
+import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
 import org.apache.velocity.VelocityContext;
 
 /**
@@ -15,13 +15,13 @@ import org.apache.velocity.VelocityContext;
 public class ManagerGenerator extends AbstractGeneratorImpl {
 
     @Override
-    public void initVelocityContext(VelocityContext velocityContext, GeneratorContext cxt) {
+    public void initVelocityContext(VelocityContext velocityContext, AutoCodeContext cxt) {
         super.initVelocityContext(velocityContext, cxt);
     }
 
     @Override
-    protected PackageConfigType getPackageConfigType() {
-        return PackageConfigType.MANAGER;
+    protected AutoCodeGeneratorType getPackageConfigType() {
+        return AutoCodeGeneratorType.MANAGER;
     }
 
     @Override

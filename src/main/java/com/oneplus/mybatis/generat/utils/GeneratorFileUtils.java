@@ -1,28 +1,55 @@
 package com.oneplus.mybatis.generat.utils;
 
 
-import com.oneplus.mybatis.generat.generator.context.PackageConfigType;
+import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.Properties;
 
+/**
+ * 功能描述：文件操作类
+ *
+ * @author: Zhenbin.Li
+ * email： lizhenbin@oneplus.cn
+ * company：一加科技
+ * Date: 15/6/12 Time：23:42
+ */
 public class GeneratorFileUtils {
 
-    public static boolean write(String content, String path) {
+    /**
+     * sl4j
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(GeneratorFileUtils.class);
+
+    /**
+     * 写文件
+     *
+     * @param content
+     * @param path
+     * @return
+     */
+    public static void write(String content, String path) {
         try {
             OutputStreamWriter writerStream = new OutputStreamWriter(new FileOutputStream(path), "UTF-8");
             BufferedWriter writer = new BufferedWriter(writerStream);
             writer.write(content);
             writer.flush();
             writer.close();
-            return true;
+            LOGGER.debug("生成文件完成, path=" + path);
         } catch (IOException e) {
-            e.printStackTrace();
-            return false;
+            LOGGER.error("生成文件失败, path=" + path, e);
+            throw new RuntimeException(e);
         }
     }
 
+    /**
+     * 创建Package目录文件
+     *
+     * @param properties
+     */
     public static void createPackageDirectory(Properties properties) {
         String location = PropertiesUtils.getLocation(properties);
 
@@ -33,16 +60,21 @@ public class GeneratorFileUtils {
 
         String packageDir = "/" + PropertiesUtils.getPackage(properties).replaceAll("[.]", "/");
         if (StringUtils.isNoneBlank(project)) {
-            for (PackageConfigType packageConfigDirType : PackageConfigType.values()) {
+            for (AutoCodeGeneratorType packageConfigDirType : AutoCodeGeneratorType.values()) {
                 String[] targetDirs = StringUtils.split(packageConfigDirType.getTargetDir(), "\\|");
                 for (String targetDir : targetDirs) {
-                    mkdir(location + packageDir + targetDir);
+                    createDir(location + packageDir + targetDir);
                 }
             }
         }
     }
 
-    private static void mkdir(String dir) {
+    /**
+     * 创建目录文件
+     *
+     * @param dir
+     */
+    public static void createDir(String dir) {
         File file;
         file = new File(dir);
         if (!file.exists()) {
@@ -50,6 +82,13 @@ public class GeneratorFileUtils {
         }
     }
 
+    /**
+     * 获取Package目录
+     *
+     * @param name
+     * @param properties
+     * @return
+     */
     public static String getPackageDirectory(String name, Properties properties) {
         String location = PropertiesUtils.getLocation(properties);
         String packageDir = "/" + PropertiesUtils.getPackage(properties).replaceAll("[.]", "/");

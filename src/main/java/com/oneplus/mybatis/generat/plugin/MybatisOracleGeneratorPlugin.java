@@ -1,7 +1,7 @@
 package com.oneplus.mybatis.generat.plugin;
 
-import com.oneplus.mybatis.generat.start.GeneratorStarter;
-import com.oneplus.mybatis.generat.start.OraclePluginGeneratorStarter;
+import com.oneplus.mybatis.generat.starter.GeneratorStarter;
+import com.oneplus.mybatis.generat.starter.impl.OraclePluginGeneratorStarterImpl;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -25,7 +25,7 @@ public class MybatisOracleGeneratorPlugin extends AbstractMojo {
      * @throws MojoFailureException
      */
     public void execute() throws MojoExecutionException, MojoFailureException {
-        GeneratorStarter starter = new OraclePluginGeneratorStarter();
+        GeneratorStarter starter = new OraclePluginGeneratorStarterImpl();
         starter.start();
         LOGGER.info("auto plugin Generator code finish...");
     }

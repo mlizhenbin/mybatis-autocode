@@ -1,4 +1,4 @@
-package com.oneplus.mybatis.generat.connect;
+package com.oneplus.mybatis.generat.core.connect;
 
 import com.google.common.collect.Lists;
 import org.apache.commons.collections.MapUtils;
