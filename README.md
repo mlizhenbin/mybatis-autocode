@@ -147,10 +147,41 @@
 
 ### 四、Result日志输出
 
+#### Main Autocode日志:
     2016-04-13 11:03:40 - com.oneplus.mybatis.generat.config.DefaultGeneratorConfigurer.loadProperties(DefaultGeneratorConfigurer.java:148) - INFO: 加载配置文件/Users/a11/Oneplus/wms/wms-autocode/src/main/resources/wms-generator.properties
     2016-04-13 11:03:40 - org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:510) - INFO: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@438da386: startup date [Wed Apr 13 11:03:40 CST 2016]; root of context hierarchy
     2016-04-13 11:03:40 - org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:315) - INFO: Loading XML bean definitions from class path resource [oneplus-spring-generator.xml]
     2016-04-13 11:03:40 - org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:598) - INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4bb4e18: defining beans [controllerGenerator,managerGenerator,oracleMapperGenerator,mapperGenerator,modelGenerator,resultGenerator,serviceGenerator,domainGenerator,voGenerator,jspGenerator,generatorFacade]; root of factory hierarchy
     2016-04-13 11:03:40 - com.oneplus.mybatis.generat.start.MysqlDefaultGeneratorStarter.generator(MysqlDefaultGeneratorStarter.java:77) - INFO: 代码生成工具，开始自动生成代码...
 
+#### Maven Plugin Autocode日志:
+
+    [INFO] Scanning for projects...
+    [WARNING] 
+    [WARNING] Some problems were encountered while building the effective model for com.oneplus.wms.autocode:wms-autocode:jar:3.2.1-SNAPSHOT
+    [WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-surefire-plugin is missing. @ com.oneplus:wms:3.2.1-SNAPSHOT, /Users/a11/Oneplus/wms/pom.xml, line 590, column 21
+    [WARNING] 
+    [WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+    [WARNING] 
+    [WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+    [WARNING] 
+    [INFO]                                                                         
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Building wms-autocode 3.2.1-SNAPSHOT
+    [INFO] ------------------------------------------------------------------------
+    [INFO] 
+    [INFO] --- autocode-plugin:1.0.2-SNAPSHOT:mysql (default-cli) @ wms-autocode ---
+    2016-04-13 11:15:07 - com.oneplus.mybatis.generat.config.DefaultGeneratorConfigurer.loadProperties(DefaultGeneratorConfigurer.java:148) - INFO: 加载配置文件/Users/a11/Oneplus/wms/wms-autocode/src/main/resources/wms-generator.properties
+    2016-04-13 11:15:07 - org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:510) - INFO: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@48bc6410: startup date [Wed Apr 13 11:15:07 CST 2016]; root of context hierarchy
+    2016-04-13 11:15:07 - org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:315) - INFO: Loading XML bean definitions from class path resource [oneplus-spring-generator.xml]
+    2016-04-13 11:15:07 - org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:598) - INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6cb9118f: defining beans [controllerGenerator,managerGenerator,oracleMapperGenerator,mapperGenerator,modelGenerator,resultGenerator,serviceGenerator,domainGenerator,voGenerator,jspGenerator,generatorFacade]; root of factory hierarchy
+    2016-04-13 11:15:07 - com.oneplus.mybatis.generat.start.MysqlDefaultGeneratorStarter.generator(MysqlDefaultGeneratorStarter.java:77) - INFO: 代码生成工具，开始自动生成代码...
+    2016-04-13 11:15:08 - com.oneplus.mybatis.generat.plugin.MybatisMySqlGeneratorPlugin.execute(MybatisMySqlGeneratorPlugin.java:24) - INFO: auto plugin Generator code finish...
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD SUCCESS
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time: 2.064s
+    [INFO] Finished at: Wed Apr 13 11:15:08 CST 2016
+    [INFO] Final Memory: 24M/245M
+    [INFO] ------------------------------------------------------------------------
 
