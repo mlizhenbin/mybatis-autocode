@@ -13,47 +13,47 @@
 
 使用autocode,先配置好生成代码的必要配置文件,具体配置参数如下:
 
-        #Mysql连接配置
-        jdbc.driverClassName=com.mysql.jdbc.Driver
-        jdbc.url=jdbc:mysql://mysql
-        jdbc.username=username
-        jdbc.password=password
-        
-        # oracle连接配置
-        oracle.jdbc.driverClassName=oracle.jdbc.driver.OracleDriver
-        oracle.jdbc.url=jdbc:oracle:thin:@oracle
-        oracle.jdbc.username=username
-        oracle.jdbc.password=password
-        
-        # oracle配置表格主键
-        oracle.primaryKey.name=HEADER_ID
-        
-        # 生成table schema
-        oracle.schema=APPS
-        
-        #生成代码位置
-        generator.location=wms-autocode
-        
-        #文件包名称
-        generator.project.name=autocode
-        
-        #包名称
-        generator.package=com.oneplus.wms
-        
-        #表名称，多个用逗号分隔(,)
-        generator.tables=OP_TRANS_HEADERS_IFACE
-        
-        #过滤掉代码表的前缀
-        generator.tablePrefix=wms_
-        
-        #domain后缀
-        generator.domain=DO
-        
-        #浮点型转化为：BigDecimal，否则转化为：Double
-        generator.precision=high
-        
-        生成代码位置
-        java.src=java
+    # Mysql连接配置
+    jdbc.driverClassName=com.mysql.jdbc.Driver
+    jdbc.url=jdbc:mysql://mysql
+    jdbc.username=username
+    jdbc.password=password
+    
+    # oracle连接配置
+    oracle.jdbc.driverClassName=oracle.jdbc.driver.OracleDriver
+    oracle.jdbc.url=jdbc:oracle:thin:@oracle
+    oracle.jdbc.username=username
+    oracle.jdbc.password=password
+    
+    # oracle配置表格主键
+    oracle.primaryKey.name=HEADER_ID
+    
+    # 生成table schema
+    oracle.schema=APPS
+    
+    # 生成代码位置
+    generator.location=wms-autocode
+    
+    # 文件包名称
+    generator.project.name=autocode
+    
+    # 包名称
+    generator.package=com.oneplus.wms
+    
+    # 表名称，多个用逗号分隔(,)
+    generator.tables=OP_TRANS_HEADERS_IFACE
+    
+    # 过滤掉代码表的前缀
+    generator.tablePrefix=wms_
+    
+    # domain后缀
+    generator.domain=DO
+    
+    # 浮点型转化为：BigDecimal，否则转化为：Double
+    generator.precision=high
+    
+    生成代码位置
+    java.src=java
 
 ### 2、配置log4j.properties
 
