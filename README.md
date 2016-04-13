@@ -1,6 +1,7 @@
 # mybatis-autocode
   
-  JDBC连接Mysql/Oracle数据库, 自动化生成Mybatis映射文件和业务层代码,减少手动创建代码的繁琐工作,提升开发业务功能效率
+  JDBC连接Mysql/Oracle数据库, 自动化生成Mybatis映射文件和业务层代码,减少手动创建代码的繁琐工作,提升开发业务功能效率;
+保持底层DAO风格的一致性,减少配置等.
 
 ## 一、Version
 
