@@ -2,6 +2,7 @@ package com.oneplus.mybatis.generat.core.impl;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.oneplus.mybatis.generat.config.Constants;
 import com.oneplus.mybatis.generat.core.Generator;
 import com.oneplus.mybatis.generat.core.context.AutoCodeFileTitle;
 import com.oneplus.mybatis.generat.core.context.AutoCodeContext;
@@ -79,7 +80,7 @@ public abstract class AbstractGeneratorImpl implements Generator {
         // 读取模板渲染内容，同时创建文件
         Map<String, String> params = initGeneratorParams(generatorContext);
         for (String templateName : params.keySet()) {
-            Template template = velocityEngine.getTemplate(VM_TARGET_PATH + "/" + templateName, "UTF-8");
+            Template template = velocityEngine.getTemplate(VM_TARGET_PATH + Constants.OBLIQUE_STROKE + templateName, "UTF-8");
             initVelocityContext(velocityContext, generatorContext);
             StringWriter writer = new StringWriter();
             template.merge(velocityContext, writer);
@@ -149,11 +150,11 @@ public abstract class AbstractGeneratorImpl implements Generator {
     protected Map<String, String> initGeneratorParams(AutoCodeContext context) {
         AutoCodeGeneratorType configType = getPackageConfigType();
         // 获取模板
-        String[] templates = StringUtils.split(configType.getTemplate(), "\\|");
+        String[] templates = StringUtils.split(configType.getTemplate(), Constants.PIPE);
         // 基本的文件后缀及其名称
-        String[] baseFileNames = StringUtils.split(configType.getFileName(), "\\|");
+        String[] baseFileNames = StringUtils.split(configType.getFileName(), Constants.PIPE);
         // 目标文件目录
-        String[] targetDirs = StringUtils.split(configType.getTargetDir(), "\\|");
+        String[] targetDirs = StringUtils.split(configType.getTargetDir(), Constants.PIPE);
 
         Properties properties = context.getProperties();
         String tableName = context.getTableName();
@@ -207,10 +208,10 @@ public abstract class AbstractGeneratorImpl implements Generator {
         for (String key : keySet) {
             StringBuilder sb = new StringBuilder();
             String value = map.get(key);
-            sb.append("/** \n")
-                    .append("\t * ").append(columnRemarkMap.get(key)).append("\n")
-                    .append("\t */\n")
-                    .append("\tprivate ").append(value + " ").append(GeneratorStringUtils.format(key) + ";\n");
+            sb.append("/** ").append(Constants.LINE_BREAK)
+                    .append("\t * ").append(columnRemarkMap.get(key)).append(Constants.LINE_BREAK)
+                    .append("\t */").append(Constants.LINE_BREAK)
+                    .append("\tprivate ").append(value + " ").append(GeneratorStringUtils.format(key) + ";" + Constants.LINE_BREAK);
             fields.add(sb.toString());
         }
         return fields;
@@ -252,13 +253,13 @@ public abstract class AbstractGeneratorImpl implements Generator {
         StringBuilder builder = new StringBuilder();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-        builder.append("/** ").append("\n")
-                .append(" * 功能描述: ").append("{classDescription}").append("\n")
-                .append(" * ").append("\n")
-                .append(" * @author: ").append(System.getProperty("user.name")).append("\n")
-                .append(" * email: ").append(System.getProperty("user.name")).append(AutoCodeFileTitle.MAIL_PREFIX).append("\n")
-                .append(" * company: ").append(AutoCodeFileTitle.COMPANY).append("\n")
-                .append(" * Date: ").append(dateFormat.format(new Date())).append(" Time: ").append(timeFormat.format(new Date())).append("\n")
+        builder.append("/** ").append(Constants.LINE_BREAK)
+                .append(" * 功能描述: ").append("{classDescription}").append(Constants.LINE_BREAK)
+                .append(" * ").append(Constants.LINE_BREAK)
+                .append(" * @author: ").append(System.getProperty("user.name")).append(Constants.LINE_BREAK)
+                .append(" * email: ").append(System.getProperty("user.name")).append(AutoCodeFileTitle.MAIL_PREFIX).append(Constants.LINE_BREAK)
+                .append(" * company: ").append(AutoCodeFileTitle.COMPANY).append(Constants.LINE_BREAK)
+                .append(" * Date: ").append(dateFormat.format(new Date())).append(" Time: ").append(timeFormat.format(new Date())).append(Constants.LINE_BREAK)
                 .append(" */");
         return replaceClassTitleDescription(builder.toString(), upClassName);
     }
