@@ -34,6 +34,11 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
 
     private static Properties properties;
 
+    /**
+     * 获取配置
+     *
+     * @return
+     */
     public Properties getProperties() {
         synchronized (DefaultGeneratorConfigurer.class) {
             if (null == properties) {
@@ -43,6 +48,9 @@ public class DefaultGeneratorConfigurer implements GeneratorConfigurer {
         }
     }
 
+    /**
+     * 初始化默认配置参数
+     */
     public void initConfigParams() {
         initPackage();
         initProjectName();
