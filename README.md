@@ -5,7 +5,7 @@ JDBC连接Mysql/Oracle数据库, 逆向配置数据库表信息,自动化生成M
 
 ## 一、AutoCode Version
 
-1.0.2-SNAPSHOT
+### 1.0.3-SNAPSHOT
 
 ## 二、AutoCode配置
 
@@ -110,7 +110,7 @@ JDBC连接Mysql/Oracle数据库, 逆向配置数据库表信息,自动化生成M
 #### 增加pom.xml依赖
 
     <properties>
-        <autcode.plugin.version>1.0.2-SNAPSHOT</autcode.plugin.version>
+        <autcode.plugin.version>1.0.3-SNAPSHOT</autcode.plugin.version>
     </properties>
 
     <dependencies>
@@ -170,7 +170,7 @@ JDBC连接Mysql/Oracle数据库, 逆向配置数据库表信息,自动化生成M
     [INFO] Building wms-autocode 3.2.1-SNAPSHOT
     [INFO] ------------------------------------------------------------------------
     [INFO] 
-    [INFO] --- autocode-plugin:1.0.2-SNAPSHOT:mysql (default-cli) @ wms-autocode ---
+    [INFO] --- autocode-plugin:1.0.3-SNAPSHOT:mysql (default-cli) @ wms-autocode ---
     2016-04-13 11:15:07 - com.oneplus.mybatis.generat.config.DefaultGeneratorConfigurer.loadProperties(DefaultGeneratorConfigurer.java:148) - INFO: 加载配置文件/Users/a11/Oneplus/wms/wms-autocode/src/main/resources/wms-generator.properties
     2016-04-13 11:15:07 - org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:510) - INFO: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@48bc6410: startup date [Wed Apr 13 11:15:07 CST 2016]; root of context hierarchy
     2016-04-13 11:15:07 - org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:315) - INFO: Loading XML bean definitions from class path resource [oneplus-spring-generator.xml]
