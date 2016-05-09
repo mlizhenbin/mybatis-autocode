@@ -2,7 +2,7 @@ package com.oneplus.mybatis.generat.utils;
 
 
 import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,12 +54,12 @@ public class GeneratorFileUtils {
         String location = PropertiesUtils.getLocation(properties);
 
         String project = PropertiesUtils.getProject(properties);
-        if (StringUtils.isNoneBlank(project)) {
+        if (StringUtils.isNotBlank(project)) {
             location = location + "/" + properties.get("java.src");
         }
 
         String packageDir = "/" + PropertiesUtils.getPackage(properties).replaceAll("[.]", "/");
-        if (StringUtils.isNoneBlank(project)) {
+        if (StringUtils.isNotBlank(project)) {
             for (AutoCodeGeneratorType packageConfigDirType : AutoCodeGeneratorType.values()) {
                 String[] targetDirs = StringUtils.split(packageConfigDirType.getTargetDir(), "\\|");
                 for (String targetDir : targetDirs) {

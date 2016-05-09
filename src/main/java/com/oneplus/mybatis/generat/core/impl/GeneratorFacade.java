@@ -4,7 +4,7 @@ import com.google.common.collect.Maps;
 import com.oneplus.mybatis.generat.core.Generator;
 import com.oneplus.mybatis.generat.core.context.AutoCodeContext;
 import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
-import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.collections.MapUtils;
 
 import java.util.Iterator;
 import java.util.Map;

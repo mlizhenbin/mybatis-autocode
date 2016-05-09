@@ -2,7 +2,7 @@ package com.oneplus.mybatis.generat.utils;
 
 import com.google.common.collect.Lists;
 import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
 import java.util.Properties;

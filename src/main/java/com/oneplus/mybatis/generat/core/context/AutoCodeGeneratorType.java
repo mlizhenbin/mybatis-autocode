@@ -2,7 +2,7 @@ package com.oneplus.mybatis.generat.core.context;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.List;
 

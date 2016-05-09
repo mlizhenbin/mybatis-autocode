@@ -2,9 +2,9 @@ package com.oneplus.mybatis.generat.config;
 
 import com.google.common.collect.Lists;
 import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
-import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
