@@ -9,57 +9,61 @@ JDBC连接Mysql/Oracle数据库, 逆向配置数据库表信息,自动化生成M
 
 ## 二、AutoCode配置
 
-### 1、配置local-generator.properties
+### 1、配置autocode-generator.properties
 
 使用autocode,先配置好生成代码的必要配置文件,具体配置参数如下:
 
-    # Mysql连接配置
+    #Mysql连接配置
     jdbc.driverClassName=com.mysql.jdbc.Driver
     jdbc.url=jdbc:mysql://mysql
-    jdbc.username=username
-    jdbc.password=password
+    jdbc.username=root
+    jdbc.password=
     
-    # oracle连接配置
+    # oracle
     oracle.jdbc.driverClassName=oracle.jdbc.driver.OracleDriver
     oracle.jdbc.url=jdbc:oracle:thin:@oracle
-    oracle.jdbc.username=username
-    oracle.jdbc.password=password
+    oracle.jdbc.username=
+    oracle.jdbc.password=
     
-    # oracle配置表格主键
+    # oracle table primaryKey
     oracle.primaryKey.name=HEADER_ID
     
     # 生成table schema
     oracle.schema=APPS
     
-    # 生成代码位置
-    generator.location=wms-autocode
+    #生成代码位置
+    generator.location=code
     
-    # 文件包名称
-    generator.project.name=autocode
+    #文件包名称
+    generator.project.name=main
     
-    # 包名称
+    #包名称
     generator.package=com.oneplus.wms
     
-    # 表名称，多个用逗号分隔(,)
-    generator.tables=OP_TRANS_HEADERS_IFACE
+    #表名称，多个用逗号分隔(,)
+    generator.tables=wms_sales_order
     
-    # 过滤掉代码表的前缀
+    #过滤掉代码表的前缀
     generator.tablePrefix=wms_
     
-    # domain后缀
+    #domain后缀
     generator.domain=DO
     
-    # 浮点型转化为：BigDecimal，否则转化为：Double
+    #浮点型转化为：BigDecimal，否则转化为：Double
     generator.precision=high
     
-    生成代码位置
+    #生成代码位置
     java.src=java
+    
+    # 配置生成代码层, 目前支持:mapper,model,service,domain,manage,controller,vo,result,jsp
+    generator.layers=mapper,model,service,domain
+    
 
 ### 2、配置log4j.properties
 
 配置autocode生成代码的log
 
-### 3、配置spring-generator.xml
+### 3、配置autocode-generator.xml
 
 配置生成代码业务层
 
@@ -150,7 +154,7 @@ JDBC连接Mysql/Oracle数据库, 逆向配置数据库表信息,自动化生成M
 #### Main Autocode日志:
     2016-04-13 11:03:40 - com.oneplus.mybatis.generat.config.DefaultGeneratorConfigurer.loadProperties(DefaultGeneratorConfigurer.java:148) - INFO: 加载配置文件/Users/a11/Oneplus/wms/wms-autocode/src/main/resources/wms-generator.properties
     2016-04-13 11:03:40 - org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:510) - INFO: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@438da386: startup date [Wed Apr 13 11:03:40 CST 2016]; root of context hierarchy
-    2016-04-13 11:03:40 - org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:315) - INFO: Loading XML bean definitions from class path resource [oneplus-spring-generator.xml]
+    2016-04-13 11:03:40 - org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:315) - INFO: Loading XML bean definitions from class path resource [autocode-generator.xml]
     2016-04-13 11:03:40 - org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:598) - INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4bb4e18: defining beans [controllerGenerator,managerGenerator,oracleMapperGenerator,mapperGenerator,modelGenerator,resultGenerator,serviceGenerator,domainGenerator,voGenerator,jspGenerator,generatorFacade]; root of factory hierarchy
     2016-04-13 11:03:40 - com.oneplus.mybatis.generat.start.MysqlDefaultGeneratorStarter.generator(MysqlDefaultGeneratorStarter.java:77) - INFO: 代码生成工具，开始自动生成代码...
 
@@ -173,7 +177,7 @@ JDBC连接Mysql/Oracle数据库, 逆向配置数据库表信息,自动化生成M
     [INFO] --- autocode-plugin:1.0.3-SNAPSHOT:mysql (default-cli) @ wms-autocode ---
     2016-04-13 11:15:07 - com.oneplus.mybatis.generat.config.DefaultGeneratorConfigurer.loadProperties(DefaultGeneratorConfigurer.java:148) - INFO: 加载配置文件/Users/a11/Oneplus/wms/wms-autocode/src/main/resources/wms-generator.properties
     2016-04-13 11:15:07 - org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:510) - INFO: Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@48bc6410: startup date [Wed Apr 13 11:15:07 CST 2016]; root of context hierarchy
-    2016-04-13 11:15:07 - org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:315) - INFO: Loading XML bean definitions from class path resource [oneplus-spring-generator.xml]
+    2016-04-13 11:15:07 - org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:315) - INFO: Loading XML bean definitions from class path resource [autocode-generator.xml]
     2016-04-13 11:15:07 - org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:598) - INFO: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@6cb9118f: defining beans [controllerGenerator,managerGenerator,oracleMapperGenerator,mapperGenerator,modelGenerator,resultGenerator,serviceGenerator,domainGenerator,voGenerator,jspGenerator,generatorFacade]; root of factory hierarchy
     2016-04-13 11:15:07 - com.oneplus.mybatis.generat.start.MysqlDefaultGeneratorStarter.generator(MysqlDefaultGeneratorStarter.java:77) - INFO: 代码生成工具，开始自动生成代码...
     2016-04-13 11:15:08 - com.oneplus.mybatis.generat.plugin.MybatisMySqlGeneratorPlugin.execute(MybatisMySqlGeneratorPlugin.java:24) - INFO: auto plugin Generator code finish...

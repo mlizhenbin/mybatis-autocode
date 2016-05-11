@@ -55,7 +55,7 @@ public interface GeneratorConfigurer {
     /**
      * Spring配置文件
      */
-    public static final String SPRING_CONFIG = "oneplus-spring-generator.xml";
+    public static final String SPRING_CONFIG = "autocode-generator.xml";
 
     /**
      * JAVA文件生成的所在包文件
