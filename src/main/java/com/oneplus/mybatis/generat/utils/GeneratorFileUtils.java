@@ -2,6 +2,7 @@ package com.oneplus.mybatis.generat.utils;
 
 
 import com.oneplus.mybatis.generat.core.context.AutoCodeGeneratorType;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,8 +50,9 @@ public class GeneratorFileUtils {
      * 创建Package目录文件
      *
      * @param properties
+     * @param layers
      */
-    public static void createPackageDirectory(Properties properties) {
+    public static void createPackageDirectory(Properties properties, String[] layers) {
         String location = PropertiesUtils.getLocation(properties);
 
         String project = PropertiesUtils.getProject(properties);
@@ -60,10 +62,12 @@ public class GeneratorFileUtils {
 
         String packageDir = "/" + PropertiesUtils.getPackage(properties).replaceAll("[.]", "/");
         if (StringUtils.isNotBlank(project)) {
-            for (AutoCodeGeneratorType packageConfigDirType : AutoCodeGeneratorType.values()) {
-                String[] targetDirs = StringUtils.split(packageConfigDirType.getTargetDir(), "\\|");
-                for (String targetDir : targetDirs) {
-                    createDir(location + packageDir + targetDir);
+            for (AutoCodeGeneratorType configDirType : AutoCodeGeneratorType.values()) {
+                if (ArrayUtils.contains(layers, configDirType.getType())) {
+                    String[] targetDirs = StringUtils.split(configDirType.getTargetDir(), "\\|");
+                    for (String targetDir : targetDirs) {
+                        createDir(location + packageDir + targetDir);
+                    }
                 }
             }
         }

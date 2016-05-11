@@ -45,7 +45,7 @@ public interface GeneratorConfigurer {
     /**
      * 默认配置文件名称
      */
-    public static final String LOCAL_GENERATOR_PATH = "local-generator.properties";
+    public static final String LOCAL_GENERATOR_PATH = "autocode-generator.properties";
 
     /**
      * project下配置的内容
@@ -65,7 +65,7 @@ public interface GeneratorConfigurer {
     /**
      * oracle schema
      */
-    public static final String ORACLE_SCHEMA ="APPS";
+    public static final String ORACLE_SCHEMA = "APPS";
 
     /**
      * 获取配置文件配置集

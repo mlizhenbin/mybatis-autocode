@@ -78,8 +78,12 @@ public class MysqlDefaultGeneratorStarterImpl implements GeneratorStarter {
     protected void generator() {
         LOGGER.info("代码生成工具，开始自动生成代码...");
 
+        // 获取配置layers
+        String layerConfig = PropertiesUtils.getLayers(properties);
+        String[] layers = StringUtils.split(layerConfig, ",");
+
         // 创建目录
-        GeneratorFileUtils.createPackageDirectory(properties);
+        GeneratorFileUtils.createPackageDirectory(properties, layers);
         List<String> tables = PropertiesUtils.getTableList(properties);
         if (CollectionUtils.isEmpty(tables)) {
             throw new RuntimeException("配置代码生成数据库表为空.");
@@ -96,18 +100,18 @@ public class MysqlDefaultGeneratorStarterImpl implements GeneratorStarter {
                 throw new RuntimeException(tableName + " 在数据库中不存在，请检查配置和数据库表结构.", e);
             }
 
-            String layerConfig = PropertiesUtils.getLayers(properties);
-            String[] layers = StringUtils.split(layerConfig, ",");
             if (ArrayUtils.isEmpty(layers)) {
                 LOGGER.error("读取配置文件分层结构为空，请检查配置是否按照逗号隔开.");
                 return;
             }
 
             for (AutoCodeGeneratorType configType : AutoCodeGeneratorType.values()) {
-                if (isLoop(configType)) {
-                    Generator generator = (Generator) context.getBean(GENERATOR_FACADE);
-                    AutoCodeContext generatorContext = assemblyContext(tableName);
-                    executeGenerator(generator, generatorContext, configType);
+                if (ArrayUtils.contains(layers, configType.getType())) {
+                    if (isLoop(configType)) {
+                        Generator generator = (Generator) context.getBean(GENERATOR_FACADE);
+                        AutoCodeContext generatorContext = assemblyContext(tableName);
+                        executeGenerator(generator, generatorContext, configType);
+                    }
                 }
             }
         }
