@@ -16,7 +16,7 @@ JDBC连接Mysql/Oracle数据库, 逆向配置数据库表信息,自动化生成M
     #Mysql连接配置
     jdbc.driverClassName=com.mysql.jdbc.Driver
     jdbc.url=jdbc:mysql://mysql
-    jdbc.username=root
+    jdbc.username=
     jdbc.password=
     
     # oracle
@@ -38,13 +38,13 @@ JDBC连接Mysql/Oracle数据库, 逆向配置数据库表信息,自动化生成M
     generator.project.name=main
     
     #包名称
-    generator.package=org.lzbruby.code
+    generator.package=org.lzbruby.code.template
     
     #表名称，多个用逗号分隔(,)
-    generator.tables=lzbruby_sales_order
+    generator.tables=rl_sales_order
     
     #过滤掉代码表的前缀
-    generator.tablePrefix=lzbruby_
+    generator.tablePrefix=rl_
     
     #domain后缀
     generator.domain=DO
@@ -55,10 +55,16 @@ JDBC连接Mysql/Oracle数据库, 逆向配置数据库表信息,自动化生成M
     #生成代码位置
     java.src=java
     
-    # 配置生成代码层, 目前支持:mapper,model,service,domain,manage,controller,vo,result,jsp
+    #配置生成代码层, 目前支持:mapper,model,service,domain,manage,controller,vo,result,jsp
     generator.layers=mapper,model,service,domain
     
-
+    # 联系邮箱后缀
+    email.suffix=@lzbruby.org
+    
+    # 所属组织
+    org=lzbruby.org
+    
+    
 ### 2、配置log4j.properties
 
 配置autocode生成代码的log
