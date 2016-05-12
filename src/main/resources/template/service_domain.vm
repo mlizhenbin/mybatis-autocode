@@ -4,7 +4,7 @@ package ${packageName}.domain;
 ${ims}
 #end
 import org.apache.commons.lang.builder.ToStringBuilder;
-import com.oneplus.wms.common.NoNullStyle;
+import ${packageName}.common.NoNullStyle;
 import ${packageName}.dao.model.${upClassName};
 import java.io.Serializable;
 

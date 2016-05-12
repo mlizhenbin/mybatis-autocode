@@ -4,20 +4,20 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
     <!--Spring注入Generator-->
-    <bean id="controllerGenerator" class="com.oneplus.mybatis.generat.core.impl.ControllerGenerator"/>
-    <bean id="managerGenerator" class="com.oneplus.mybatis.generat.core.impl.ManagerGenerator"/>
-    <bean id="oracleMapperGenerator" class="com.oneplus.mybatis.generat.core.impl.OracleMapperGenerator"/>
-    <bean id="mapperGenerator" class="com.oneplus.mybatis.generat.core.impl.MapperGenerator"/>
-    <bean id="modelGenerator" class="com.oneplus.mybatis.generat.core.impl.ModelGenerator"/>
-    <bean id="resultGenerator" class="com.oneplus.mybatis.generat.core.impl.ResultGenerator"/>
-    <bean id="serviceGenerator" class="com.oneplus.mybatis.generat.core.impl.ServiceGenerator"/>
-    <bean id="domainGenerator" class="com.oneplus.mybatis.generat.core.impl.DomainGenerator"/>
-    <bean id="voGenerator" class="com.oneplus.mybatis.generat.core.impl.VoGenerator"/>
-    <bean id="jspGenerator" class="com.oneplus.mybatis.generat.core.impl.JspGenerator"/>
+    <bean id="controllerGenerator" class="org.lzbruby.mybatis.generat.core.impl.ControllerGenerator"/>
+    <bean id="managerGenerator" class="org.lzbruby.mybatis.generat.core.impl.ManagerGenerator"/>
+    <bean id="oracleMapperGenerator" class="org.lzbruby.mybatis.generat.core.impl.OracleMapperGenerator"/>
+    <bean id="mapperGenerator" class="org.lzbruby.mybatis.generat.core.impl.MapperGenerator"/>
+    <bean id="modelGenerator" class="org.lzbruby.mybatis.generat.core.impl.ModelGenerator"/>
+    <bean id="resultGenerator" class="org.lzbruby.mybatis.generat.core.impl.ResultGenerator"/>
+    <bean id="serviceGenerator" class="org.lzbruby.mybatis.generat.core.impl.ServiceGenerator"/>
+    <bean id="domainGenerator" class="org.lzbruby.mybatis.generat.core.impl.DomainGenerator"/>
+    <bean id="voGenerator" class="org.lzbruby.mybatis.generat.core.impl.VoGenerator"/>
+    <bean id="jspGenerator" class="org.lzbruby.mybatis.generat.core.impl.JspGenerator"/>
 
 
     <!--Spring facade-->
-    <bean id="generatorFacade" class="com.oneplus.mybatis.generat.core.impl.GeneratorFacade">
+    <bean id="generatorFacade" class="org.lzbruby.mybatis.generat.core.impl.GeneratorFacade">
         <property name="generatorMap">
             <map>
                 <entry key="controller" value-ref="controllerGenerator"/>

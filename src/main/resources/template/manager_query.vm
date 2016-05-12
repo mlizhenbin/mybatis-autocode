@@ -2,8 +2,8 @@ package ${packageName}.manage;
 
 import ${packageName}.dao.model.${upClassName};
 import ${packageName}.vo.${upClassName}VO;
-import com.oneplus.wms.common.page.Paging;
-import com.oneplus.wms.common.page.PagingRequest;
+import ${packageName}.common.page.Paging;
+import ${packageName}.common.page.PagingRequest;
 
 import java.util.List;
 import java.util.Map;

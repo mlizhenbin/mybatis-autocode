@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.oneplus.maven.plugins</groupId>
+    <groupId>org.lzbruby.maven.plugins</groupId>
     <version>1.0.3-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
     <artifactId>autocode-plugin</artifactId>
@@ -111,7 +111,7 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.oneplus.maven.plugins</groupId>
+                <groupId>org.lzbruby.maven.plugins</groupId>
                 <artifactId>autocode-plugin</artifactId>
                 <version>${autcode.plugin.version}</version>
             </plugin>

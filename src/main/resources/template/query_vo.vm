@@ -3,9 +3,9 @@ package ${packageName}.vo;
 #foreach($ims in $importSets)
 ${ims}
 #end
-import com.oneplus.wms.dao.vo.PagingVo;
+import ${packageName}.dao.vo.PagingVo;
 import org.apache.commons.lang.builder.ToStringBuilder;
-import com.oneplus.wms.common.NoNullStyle;
+import ${packageName}.common.NoNullStyle;
 import java.io.Serializable;
 
 ${classTitle}

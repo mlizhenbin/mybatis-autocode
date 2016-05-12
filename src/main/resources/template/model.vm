@@ -5,7 +5,7 @@ ${ims}
 #end
 import org.apache.ibatis.type.Alias;
 import org.apache.commons.lang.builder.ToStringBuilder;
-import com.oneplus.wms.common.NoNullStyle;
+import ${packageName}.common.NoNullStyle;
 import java.io.Serializable;
 
 ${classTitle}
