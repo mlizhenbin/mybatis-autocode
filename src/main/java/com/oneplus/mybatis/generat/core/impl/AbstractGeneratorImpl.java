@@ -1,5 +1,6 @@
 package com.oneplus.mybatis.generat.core.impl;
 
+import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.oneplus.mybatis.generat.config.Constants;
@@ -250,18 +251,23 @@ public abstract class AbstractGeneratorImpl implements Generator {
      * @return
      */
     protected String assemblyAutoCreateClassTitle(String upClassName) {
-        StringBuilder builder = new StringBuilder();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
-        builder.append("/** ").append(Constants.LINE_BREAK)
-                .append(" * 功能描述: ").append("{classDescription}").append(Constants.LINE_BREAK)
-                .append(" * ").append(Constants.LINE_BREAK)
-                .append(" * @author: ").append(System.getProperty("user.name")).append(Constants.LINE_BREAK)
-                .append(" * email: ").append(System.getProperty("user.name")).append(AutoCodeFileTitle.MAIL_PREFIX).append(Constants.LINE_BREAK)
-                .append(" * company: ").append(AutoCodeFileTitle.COMPANY).append(Constants.LINE_BREAK)
-                .append(" * Date: ").append(dateFormat.format(new Date())).append(" Time: ").append(timeFormat.format(new Date())).append(Constants.LINE_BREAK)
-                .append(" */");
-        return replaceClassTitleDescription(builder.toString(), upClassName);
+        Function<String, String> function = new Function<String, String>() {
+            public String apply(String input) {
+                StringBuilder builder = new StringBuilder();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+                SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+                builder.append("/** ").append(Constants.LINE_BREAK)
+                        .append(" * 功能描述: ").append("{classDescription}").append(Constants.LINE_BREAK)
+                        .append(" * ").append(Constants.LINE_BREAK)
+                        .append(" * @author: ").append(System.getProperty("user.name")).append(Constants.LINE_BREAK)
+                        .append(" * email: ").append(System.getProperty("user.name")).append(AutoCodeFileTitle.MAIL_PREFIX).append(Constants.LINE_BREAK)
+                        .append(" * company: ").append(AutoCodeFileTitle.COMPANY).append(Constants.LINE_BREAK)
+                        .append(" * Date: ").append(dateFormat.format(new Date())).append(" Time: ").append(timeFormat.format(new Date())).append(Constants.LINE_BREAK)
+                        .append(" */");
+                return replaceClassTitleDescription(builder.toString(), input);
+            }
+        };
+        return function.apply(upClassName);
     }
 
     /**
