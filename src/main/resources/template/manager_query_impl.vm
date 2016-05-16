@@ -20,8 +20,8 @@ public class ${upClassName}QueryManagerImpl implements ${upClassName}QueryManage
 	private ${upClassName}QueryService ${lowClassName}QueryService;
 
 	@Override
-    public ${upClassName} find${upClassName}By${primaryKey}(${primaryKeyType} ${primaryKey}) {
-        return ${lowClassName}QueryService.find${upClassName}By${primaryKey}(${primaryKey});
+    public ${upClassName} find${upClassName}By${primaryKeyFirstSymbolUppercase}(${primaryKeyType} ${primaryKey}) {
+        return ${lowClassName}QueryService.find${upClassName}By${primaryKeyFirstSymbolUppercase}(${primaryKey});
 	}
 
 	@Override

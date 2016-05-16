@@ -35,7 +35,7 @@ public class ${upClassName}QueryServiceImpl implements ${upClassName}QueryServic
 	private ${upClassName}Mapper ${lowClassName}Mapper;
 
 	@Override
-    public ${upClassName} find${upClassName}By${primaryKey}(${primaryKeyType} ${primaryKey}) {
+    public ${upClassName} find${upClassName}By${primaryKeyFirstSymbolUppercase}(${primaryKeyType} ${primaryKey}) {
 #if(${primaryKeyType} == "String")
 		if (StringUtils.isBlank(${primaryKey})) {
         	return null;
@@ -46,7 +46,7 @@ public class ${upClassName}QueryServiceImpl implements ${upClassName}QueryServic
         }
 		#end
 
-        ${upClassName} ${lowClassName} = ${lowClassName}Mapper.findBy${primaryKey}(${primaryKey});
+        ${upClassName} ${lowClassName} = ${lowClassName}Mapper.findBy${primaryKeyFirstSymbolUppercase}(${primaryKey});
         return ${lowClassName};
 	}
 

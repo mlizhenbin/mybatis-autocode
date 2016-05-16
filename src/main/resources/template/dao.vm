@@ -35,7 +35,7 @@ public interface ${upClassName}Mapper {
      * @param ${primaryKey} ${upClassName}主键
      * @return ${upClassName}对象
      */
-    public ${upClassName} findBy${primaryKey}(${primaryKeyType} ${primaryKey});
+    public ${upClassName} findBy${primaryKeyFirstSymbolUppercase}(${primaryKeyType} ${primaryKey});
 
     /**
      * 查询${upClassName}对象

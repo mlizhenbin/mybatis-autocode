@@ -17,7 +17,7 @@ public interface ${upClassName}QueryService {
 	 * @param ${primaryKey} ${upClassName}主键
 	 * @return ${upClassName}对象
 	 */
-	public ${upClassName} find${upClassName}By${primaryKey}(${primaryKeyType} ${primaryKey});
+	public ${upClassName} find${upClassName}By${primaryKeyFirstSymbolUppercase}(${primaryKeyType} ${primaryKey});
 
 	/**
 	 * 通过${primaryKeyType}集合查询${upClassName}

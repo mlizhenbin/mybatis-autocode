@@ -65,7 +65,7 @@
         <include refid="${upClassName}_Query_List_Sharing" />
     </select>
 
-    <select id="findBy${primaryKey}" resultMap="${lowClassName}_result" parameterType="${primaryKeyType}">
+    <select id="findBy${primaryKeyFirstSymbolUppercase}" resultMap="${lowClassName}_result" parameterType="${primaryKeyType}">
         SELECT
         <include refid="${upClassName}_column" />
         FROM ${oracleSchemaName}.${tableName} ${oracleSchemaName}.${tableName}

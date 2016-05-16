@@ -39,6 +39,11 @@ public enum AutoCodeConstantsType {
     PRIMARY_KEY("primaryKey", "primaryKey"),
 
     /**
+     * 首字母大写主键
+     */
+    PRIMARY_KEY_FIRST_SYMBOL_UPPERCASE("primaryKeyFirstSymbolUppercase", "primaryKeyFirstSymbolUppercase"),
+
+    /**
      * 表主键扩展,与Java属性对应,去掉下划线"_"变成驼峰
      */
     NORMAL_PRIMARY_KEY("NORMAL_PRIMARY_KEY", "primaryKey"),

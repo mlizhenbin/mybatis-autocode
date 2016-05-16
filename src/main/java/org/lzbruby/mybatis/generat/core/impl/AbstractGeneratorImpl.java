@@ -135,8 +135,8 @@ public abstract class AbstractGeneratorImpl implements Generator {
         velocityContext.put(AutoCodeConstantsType.PACKAGE_NAME.getType(), cxt.getPackageName());
         velocityContext.put(AutoCodeConstantsType.PRIMARY_KEY_TYPE.getDesc(), cxt.getPrimaryKeyType());
         velocityContext.put(AutoCodeConstantsType.PRIMARY_KEY.getDesc(), cxt.getPrimaryKey());
+        velocityContext.put(AutoCodeConstantsType.PRIMARY_KEY_FIRST_SYMBOL_UPPERCASE.getType(), GeneratorStringUtils.firstUpper(cxt.getPrimaryKey()));
         velocityContext.put(AutoCodeConstantsType.NORMAL_PRIMARY_KEY.getDesc(), cxt.getAttribute(AutoCodeConstantsType.NORMAL_PRIMARY_KEY));
-//        velocityContext.put(AutoCodeConstantsType.CLASS_TITLE.getDesc(), assemblyAutoCreateClassTitle(cxt.getUpClassName()));
         velocityContext.put(AutoCodeConstantsType.CLASS_TITLE.getDesc(), assemblyAutoCreateClassTitle(cxt));
         velocityContext.put(AutoCodeConstantsType.DOMAIN.getDesc(), cxt.getAttribute(AutoCodeConstantsType.DOMAIN));
         velocityContext.put(AutoCodeConstantsType.COL_ALL_UPPERCASE_PRIMARY_KEY.getDesc(), cxt.getAttribute(AutoCodeConstantsType.COL_ALL_UPPERCASE_PRIMARY_KEY));
