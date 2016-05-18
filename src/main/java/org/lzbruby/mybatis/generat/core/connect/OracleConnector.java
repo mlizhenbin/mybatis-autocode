@@ -1,6 +1,7 @@
 package org.lzbruby.mybatis.generat.core.connect;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.apache.commons.collections.MapUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,7 +70,6 @@ public class OracleConnector extends MysqlConnector {
         try {
             String driver = getProperties().getProperty("oracle.jdbc.driverClassName");
             Class.forName(driver);
-
             String url = getProperties().getProperty("oracle.jdbc.url");
             String username = getProperties().getProperty("oracle.jdbc.username");
             String pwd = getProperties().getProperty("oracle.jdbc.password");
@@ -81,4 +82,8 @@ public class OracleConnector extends MysqlConnector {
         }
     }
 
+    @Override
+    protected Map<String, Integer> getColumnNameAndSize(String tableName) throws SQLException {
+        return Maps.newHashMap();
+    }
 }

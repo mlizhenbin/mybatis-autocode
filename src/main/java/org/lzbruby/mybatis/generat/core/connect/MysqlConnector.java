@@ -2,6 +2,8 @@ package org.lzbruby.mybatis.generat.core.connect;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import org.apache.commons.collections.MapUtils;
+import org.apache.commons.lang.StringUtils;
 import org.lzbruby.mybatis.generat.config.AutoCodeConstantsType;
 import org.lzbruby.mybatis.generat.utils.PropertiesUtils;
 import org.slf4j.Logger;
@@ -60,7 +62,15 @@ public class MysqlConnector implements Connector {
                 String columnName = colRet.getString("COLUMN_NAME");
                 int digits = colRet.getInt("DECIMAL_DIGITS");
                 int dataType = colRet.getInt("DATA_TYPE");
-                int columnSize = colRet.getInt("COLUMN_SIZE");
+
+                Integer columnSize = null;
+                Map<String, Integer> columnNameAndSizeMap = getColumnNameAndSize(tableName);
+                if (MapUtils.isNotEmpty(columnNameAndSizeMap)) {
+                    columnSize = columnNameAndSizeMap.get(columnName);
+                }
+                if (columnSize == null) {
+                    columnSize = colRet.getInt("COLUMN_SIZE");
+                }
                 String columnType = getDataType(dataType, digits, columnSize);
                 colMap.put(columnName, columnType);
             }
@@ -277,6 +287,27 @@ public class MysqlConnector implements Connector {
     protected enum SessionType {
         connection, DatabaseMetaData
 
+    }
+
+    protected Map<String, Integer> getColumnNameAndSize(String tableName) throws SQLException {
+        Connection connection = getConnection();
+        String sql = "select COLUMN_NAME,COLUMN_TYPE from information_schema.columns where table_name = ? and table_schema LIKE '%%'";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, tableName);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        Map<String, Integer> columnNameAndSizeMap = Maps.newHashMap();
+        while (resultSet.next()) {
+            String columnName = resultSet.getString("COLUMN_NAME");
+            String columnType = resultSet.getString("COLUMN_TYPE");
+            if (StringUtils.contains(columnType, "(") && StringUtils.contains(columnType, ")")) {
+                String substringBetween = StringUtils.substringBetween(columnType, "(", ")");
+                if (StringUtils.isNumeric(substringBetween)) {
+                    columnNameAndSizeMap.put(columnName, Integer.parseInt(substringBetween));
+                }
+            }
+        }
+        return columnNameAndSizeMap;
     }
 
     public Properties getProperties() {
