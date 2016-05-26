@@ -48,7 +48,7 @@ public class ServiceGenerator extends AbstractGeneratorImpl {
 
         Properties properties = cxt.getProperties();
 
-        velocityContext.put(AutoCodeConstantsType.METHODS.getDesc(), generateGetAndSetMethods(colMap));
+        velocityContext.put(AutoCodeConstantsType.METHODS.getDesc(), generateGetAndSetMethods(colMap, cxt));
         velocityContext.put(AutoCodeConstantsType.FIELDS.getDesc(), generateFields(colMap, columnRemarkMap));
         velocityContext.put(AutoCodeConstantsType.IMPORT_SETS.getDesc(), importSets);
         velocityContext.put(AutoCodeConstantsType.CONVERT_DOMAINS.getDesc(), getCovertDomainFields(colMap, properties));

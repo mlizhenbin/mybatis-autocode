@@ -222,9 +222,10 @@ public abstract class AbstractGeneratorImpl implements Generator {
      * 生成get/set
      *
      * @param map
+     * @param cxt
      * @return
      */
-    protected List<String> generateGetAndSetMethods(Map<String, String> map) {
+    protected List<String> generateGetAndSetMethods(Map<String, String> map, AutoCodeContext cxt) {
         Set<String> keySet = map.keySet();
         List<String> methods = Lists.newArrayList();
         for (String key : keySet) {
@@ -236,8 +237,9 @@ public abstract class AbstractGeneratorImpl implements Generator {
             getSb.append("public ").append(fieldType + " ").append("get" + GeneratorStringUtils.firstUpperNoFormat(field) + "() {\n\t\t")
                     .append("return " + field + ";\n\t}\n");
             //generate set method
-            setSb.append("public ").append("void ").append("set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(" + fieldType + " " + field + ") {\n\t\t")
-                    .append("this." + field + " = " + field + ";\n\t}\n");
+            setSb.append("public ").append(cxt.getUpClassName() + " ").append("set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(" + fieldType + " " + field + ") {\n\t\t")
+                    .append("this." + field + " = " + field + ";\n\t\t")
+                    .append("return this;\n\t}\n");
             methods.add(getSb.toString());
             methods.add(setSb.toString());
         }

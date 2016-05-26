@@ -43,7 +43,7 @@ public class ModelGenerator extends AbstractGeneratorImpl {
                 importSets.add("import java.sql.Timestamp;\n");
             }
         }
-        velocityContext.put("methods", generateGetAndSetMethods(colMap));
+        velocityContext.put("methods", generateGetAndSetMethods(colMap, cxt));
         velocityContext.put("fields", generateFields(colMap, columnRemarkMap));
         velocityContext.put("importSets", importSets);
     }
