@@ -40,8 +40,8 @@ public class ${upClassName}Controller {
     public String find${upClassName}ByPage(${upClassName}VO ${lowClassName}VO, ModelMap modelMap){
         // 分页查询请求
         PagingRequest pagingRequest = new PagingRequest();
-        pagingRequest.setPageNo(salesOrderQueryVo.getPageNo());
-        pagingRequest.setPageSize(salesOrderQueryVo.getPageSize());
+        pagingRequest.setPageNo(${lowClassName}VO.getPageNo());
+        pagingRequest.setPageSize(${lowClassName}VO.getPageSize());
         pagingRequest.desc("${primaryKey}");
 
         // 分页查询
