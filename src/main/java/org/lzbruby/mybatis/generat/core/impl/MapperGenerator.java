@@ -87,7 +87,8 @@ public class MapperGenerator extends AbstractGeneratorImpl {
                 if (!StringUtils.equals(colShowType, "String")) {
                     defaultFieldStrs = "<if test=\"" + field + "s" + "!=null\">\n";
                 }
-                if ((StringUtils.equals(field, pk) || isKey) && !StringUtils.equals(field, "id")) {
+//                if ((StringUtils.equals(field, pk) || isKey) && !StringUtils.equals(field, "id")) {
+                if ((StringUtils.equals(field, pk) || isKey)) {
                     StringBuilder builder = new StringBuilder();
                     builder.append(defaultFieldStrs)
                             .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" IN\n")

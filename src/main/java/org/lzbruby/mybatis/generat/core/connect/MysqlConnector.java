@@ -113,8 +113,8 @@ public class MysqlConnector implements Connector {
             List<String> indexs = Lists.newArrayList();
             ResultSet resultSet = getDatabaseMetaData().getIndexInfo(null, null, tableName, false, true);
             while (resultSet.next()) {
-                String indexName = resultSet.getString("INDEX_NAME");
-                indexs.add(indexName);
+                String columnName = resultSet.getString("COLUMN_NAME");
+                indexs.add(columnName);
             }
             return indexs;
         } catch (SQLException e) {
