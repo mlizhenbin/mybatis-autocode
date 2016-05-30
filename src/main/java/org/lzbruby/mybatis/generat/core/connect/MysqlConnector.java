@@ -141,6 +141,31 @@ public class MysqlConnector implements Connector {
         }
     }
 
+    public List<String> listAutoIncrementCol(String tableName) {
+        if (StringUtils.isBlank(tableName)) {
+            return Lists.newArrayList();
+        }
+
+        List<String> columnNames = Lists.newArrayList();
+        Connection connection;
+        try {
+            connection = (Connection) session.get(SessionType.connection);
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("Select * from " + tableName);
+            int columnCount = result.getMetaData().getColumnCount();
+            for (int i = 1; i <= columnCount; i++) {
+                if (result.getMetaData().isAutoIncrement(i)) {
+                    columnNames.add(result.getMetaData().getColumnName(i));
+                }
+            }
+        } catch (Exception e) {
+            LOGGER.warn("获取Mysql AUTO_INCREMENT字段异常!", e);
+            return Lists.newArrayList();
+        }
+
+        return columnNames;
+    }
+
     /**
      * 获取主键
      *
@@ -154,6 +179,7 @@ public class MysqlConnector implements Connector {
             while (pkRSet.next()) {
                 String primaryKey = pkRSet.getString("COLUMN_NAME");
                 String primaryKeyType = mapColumnNameType(pkRSet.getString("TABLE_NAME")).get(primaryKey);
+
                 map.put(AutoCodeConstantsType.PRIMARY_KEY.getDesc(), primaryKey);
                 map.put(AutoCodeConstantsType.PRIMARY_KEY_TYPE.getDesc(), primaryKeyType);
             }

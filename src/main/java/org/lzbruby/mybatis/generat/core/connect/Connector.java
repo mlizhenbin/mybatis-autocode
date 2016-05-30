@@ -49,4 +49,12 @@ public interface Connector {
      * 关闭JDBC连接
      */
     public void closeConnection();
+
+    /**
+     * 获取表格自增字段
+     *
+     * @param tableName
+     * @return
+     */
+    public List<String> listAutoIncrementCol(String tableName);
 }

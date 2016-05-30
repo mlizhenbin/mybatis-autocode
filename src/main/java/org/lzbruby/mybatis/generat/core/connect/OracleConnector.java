@@ -86,4 +86,9 @@ public class OracleConnector extends MysqlConnector {
     protected Map<String, Integer> getColumnNameAndSize(String tableName) throws SQLException {
         return Maps.newHashMap();
     }
+
+    @Override
+    public List<String> listAutoIncrementCol(String tableName) {
+        return Lists.newArrayList();
+    }
 }

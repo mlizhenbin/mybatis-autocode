@@ -1,15 +1,16 @@
 package org.lzbruby.mybatis.generat.core.impl;
 
 import com.google.common.collect.Lists;
-import org.lzbruby.mybatis.generat.core.connect.Connector;
-import org.lzbruby.mybatis.generat.core.context.AutoCodeContext;
-import org.lzbruby.mybatis.generat.core.context.AutoCodeGeneratorType;
-import org.lzbruby.mybatis.generat.config.AutoCodeConstantsType;
-import org.lzbruby.mybatis.generat.utils.GeneratorStringUtils;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
-import org.springframework.util.CollectionUtils;
+import org.lzbruby.mybatis.generat.config.AutoCodeConstantsType;
+import org.lzbruby.mybatis.generat.core.connect.Connector;
+import org.lzbruby.mybatis.generat.core.context.AutoCodeContext;
+import org.lzbruby.mybatis.generat.core.context.AutoCodeGeneratorType;
+import org.lzbruby.mybatis.generat.utils.GeneratorStringUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,7 @@ public class MapperGenerator extends AbstractGeneratorImpl {
         Connector connector = (Connector) cxt.getAttribute(AutoCodeConstantsType.JDBC_CONNECTOR);
         Map<String, String> columnNameTypeMap = connector.mapColumnNameType(tableName);
         List<String> allIndexs = connector.listAllIndex(tableName);
+        List<String> autoIncrementCols = connector.listAutoIncrementCol(tableName);
 
         List<String> resultMapColumns = Lists.newArrayList();
         List<String> whereConditions = Lists.newArrayList();
@@ -40,13 +42,25 @@ public class MapperGenerator extends AbstractGeneratorImpl {
         List<String> insertColsConditions = Lists.newArrayList();
         List<String> updateConditions = Lists.newArrayList();
 
-        String pk = (String) velocityContext.get(AutoCodeConstantsType.PRIMARY_KEY.getDesc());
+        final String pk = (String) velocityContext.get(AutoCodeConstantsType.PRIMARY_KEY.getDesc());
         for (String col : columnNameTypeMap.keySet()) {
             String field = GeneratorStringUtils.format(col);
             columns.add(tableName + "." + col);
             StringBuilder cloumBf = new StringBuilder();
             cloumBf.append("<result property=\"").append(field).append("\" column=\"").append(col).append("\"/>");
             resultMapColumns.add(cloumBf.toString());
+
+            // 对应主键自增,不生成代码
+            if (StringUtils.equals(col, pk) && CollectionUtils.isNotEmpty(autoIncrementCols)) {
+                boolean exists = CollectionUtils.exists(autoIncrementCols, new Predicate() {
+                    public boolean evaluate(Object o) {
+                        return StringUtils.equals((String) o, pk);
+                    }
+                });
+                if (exists) {
+                    continue;
+                }
+            }
 
             String defaultFieldStr = "<if test=\"" + field + "!=null and ''!=" + field + "\">\n";
             String defaultFieldStrs = "<if test=\"" + field + "s" + "!=null and ''!=" + field + "s" + "\">\n";
@@ -87,7 +101,6 @@ public class MapperGenerator extends AbstractGeneratorImpl {
                 if (!StringUtils.equals(colShowType, "String")) {
                     defaultFieldStrs = "<if test=\"" + field + "s" + "!=null\">\n";
                 }
-//                if ((StringUtils.equals(field, pk) || isKey) && !StringUtils.equals(field, "id")) {
                 if ((StringUtils.equals(field, pk) || isKey)) {
                     StringBuilder builder = new StringBuilder();
                     builder.append(defaultFieldStrs)
