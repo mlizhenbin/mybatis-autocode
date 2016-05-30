@@ -53,12 +53,12 @@ public class MapperGenerator extends AbstractGeneratorImpl {
             if (columnNameTypeMap.get(col).equals("Date")) {
                 StringBuilder conditionBfs = new StringBuilder();
                 conditionBfs.append(defaultFieldStr)
-                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &gt;= #{").append(AutoCodeConstantsType.DYNAMIC_FILEDS.getDesc()).append(col).append("}\n")
+                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &gt;= #{").append(AutoCodeConstantsType.DYNAMIC_FILEDS.getDesc()).append(field).append("}\n")
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBfs.toString());
                 StringBuilder conditionBfe = new StringBuilder();
                 conditionBfe.append(defaultFieldStr)
-                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &lt; #{").append(AutoCodeConstantsType.DYNAMIC_FILEDS.getDesc()).append(col).append("}\n")
+                        .append("\t\t\t\tAND ").append(tableName).append(".").append(col).append(" &lt; #{").append(AutoCodeConstantsType.DYNAMIC_FILEDS.getDesc()).append(field).append("}\n")
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBfe.toString());
             } else {
