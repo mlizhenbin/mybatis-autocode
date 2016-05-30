@@ -62,7 +62,9 @@ public class MapperGenerator extends AbstractGeneratorImpl {
                         .append("\t\t\t</if>");
                 whereConditions.add(conditionBfe.toString());
             } else {
-                if (columnNameTypeMap.get(col).equals("Long") || columnNameTypeMap.get(col).equals("Integer")) {
+                // 非String类型的,使用null
+                String colShowType = columnNameTypeMap.get(col);
+                if (!StringUtils.equals(colShowType, "String")) {
                     defaultFieldStr = "<if test=\"" + field + "!=null\">\n";
                 }
                 StringBuilder conditionBf = new StringBuilder();
@@ -82,7 +84,7 @@ public class MapperGenerator extends AbstractGeneratorImpl {
                     }
                 }
 
-                if (columnNameTypeMap.get(col).equals("Long") || columnNameTypeMap.get(col).equals("Integer")) {
+                if (!StringUtils.equals(colShowType, "String")) {
                     defaultFieldStrs = "<if test=\"" + field + "s" + "!=null\">\n";
                 }
                 if ((StringUtils.equals(field, pk) || isKey) && !StringUtils.equals(field, "id")) {
