@@ -208,7 +208,7 @@ public class MysqlConnector implements Connector {
                 dataType = "Integer";
                 break;
             case Types.LONGVARCHAR: //-1
-                dataType = "Long";
+                dataType = "String";
                 break;
             case Types.BIGINT: //-5
                 dataType = "Long";
