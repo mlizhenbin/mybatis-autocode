@@ -51,15 +51,13 @@ public class MapperGenerator extends AbstractGeneratorImpl {
             resultMapColumns.add(cloumBf.toString());
 
             // 对应主键自增,不生成代码
+            boolean autoIdKey = false;
             if (StringUtils.equals(col, pk) && CollectionUtils.isNotEmpty(autoIncrementCols)) {
-                boolean exists = CollectionUtils.exists(autoIncrementCols, new Predicate() {
+                autoIdKey = CollectionUtils.exists(autoIncrementCols, new Predicate() {
                     public boolean evaluate(Object o) {
                         return StringUtils.equals((String) o, pk);
                     }
                 });
-                if (exists) {
-                    continue;
-                }
             }
 
             String defaultFieldStr = "<if test=\"" + field + "!=null and ''!=" + field + "\">\n";
@@ -113,21 +111,23 @@ public class MapperGenerator extends AbstractGeneratorImpl {
                 }
             }
 
-            if (col.startsWith("gmt") || StringUtils.equals(field, "createTime") || StringUtils.equals(field, "modifyTime")) {
-                insertValueConditions.add("now(),");
-                insertColsConditions.add(col + ", ");
-            } else {
-                StringBuilder conditionValueBf = new StringBuilder();
-                conditionValueBf.append(defaultFieldStr)
-                        .append("\t\t\t\t").append("#{").append(field).append("},\n")
-                        .append("\t\t\t</if>");
-                insertValueConditions.add(conditionValueBf.toString());
+            if (!autoIdKey) {
+                if (col.startsWith("gmt") || StringUtils.equals(field, "createTime") || StringUtils.equals(field, "modifyTime")) {
+                    insertValueConditions.add("now(),");
+                    insertColsConditions.add(col + ", ");
+                } else {
+                    StringBuilder conditionValueBf = new StringBuilder();
+                    conditionValueBf.append(defaultFieldStr)
+                            .append("\t\t\t\t").append("#{").append(field).append("},\n")
+                            .append("\t\t\t</if>");
+                    insertValueConditions.add(conditionValueBf.toString());
 
-                StringBuilder conditionColBf = new StringBuilder();
-                conditionColBf.append(defaultFieldStr)
-                        .append("\t\t\t\t").append(col).append(",\n")
-                        .append("\t\t\t</if>");
-                insertColsConditions.add(conditionColBf.toString());
+                    StringBuilder conditionColBf = new StringBuilder();
+                    conditionColBf.append(defaultFieldStr)
+                            .append("\t\t\t\t").append(col).append(",\n")
+                            .append("\t\t\t</if>");
+                    insertColsConditions.add(conditionColBf.toString());
+                }
             }
 
             String[] updateFilters = {pk, "createTime"};

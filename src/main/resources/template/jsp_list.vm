@@ -6,7 +6,6 @@
 <!doctype html>
 <html lang="zh-cn">
 <%@ page isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <head>
     <title>B2B制单中心</title>
@@ -21,9 +20,9 @@
         <span class="p-ladder-shaped-down">搜索区</span>
 
         <div id="search-form">
-            <form id="queryForm" action="../${lowClassName}/find${upClassName}ByPage" method="GET">
-                <input id="_pageNo" type="hidden" name="pageNo" value="$!${lowClassName}VO.pageNo}">
-                <input id="_pageSize" type="hidden" name="pageSize" value="$!${lowClassName}VO.pageSize}">
+            <form id="queryForm" action="/${lowClassName}/find${upClassName}ByPage" method="GET">
+                <input id="_pageNo" type="hidden" name="pageNo" value="${${lowClassName}VO.pageNo}">
+                <input id="_pageSize" type="hidden" name="pageSize" value="${${lowClassName}VO.pageSize}">
                 <table width="98%" border="0" cellspacing="0" cellpadding="0" class="noclick">
                     <tr>
                         <td align="right"> 订单号：</td>
@@ -63,8 +62,8 @@
             </thead>
             <tbody id="dataListTbody">
             <c:choose>
-                <c:when test="">
-                    <c:forEach items="" var="item">
+                <c:when test="${ paging.result != null && paging.result.size() > 0}">
+                    <c:forEach items="${paging.result}" var="item">
                         <tr>
                             <td>
                                 <input type="checkbox" name="checkList" class="checkMe" value="${item.orderNo}">
