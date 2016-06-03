@@ -62,9 +62,10 @@ public enum AutoCodeGeneratorType {
             "result.vm|exception.vm"),
 
     JSP("jsp",
-            "/jsp|/jsp",
-            ".jsp|.js",
-            "jsp_list.vm|js_list.vm"),;
+            "/jsp|/jsp|/jsp",
+            "List.jsp|List.js|Detail.jsp",
+            "jsp_list.vm|js_list.vm|jsp_detail.vm"),
+    ;
 
     /**
      * 生成文件类型

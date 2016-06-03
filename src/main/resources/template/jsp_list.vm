@@ -8,12 +8,13 @@
 <%@ page isELIgnored="false" %>
 
 <head>
-    <title>B2B制单中心</title>
+    <title>${upClassName}管理</title>
     <%@include file="/v/wmsCommon/public_head.jsp" %>
     <script src="/v/js/common/wms.upload.js"></script>
     <script src="/v/js/common/wms.jquery.extend.js"></script>
-    <script src="/v/js/${lowClassName}/${lowClassName}.js"></script>
+    <script src="/v/js/${lowClassName}/${lowClassName}List.js"></script>
 </head>
+
 <body class="wms">
 <div id="dataListDiv">
     <div class="search-box">
@@ -25,8 +26,16 @@
                 <input id="_pageSize" type="hidden" name="pageSize" value="${${lowClassName}VO.pageSize}">
                 <table width="98%" border="0" cellspacing="0" cellpadding="0" class="noclick">
                     <tr>
-                        <td align="right"> 订单号：</td>
-                        <td><input type="text" id="_${primaryKey}" name="${primaryKey}" value="${${lowClassName}VO.${primaryKey}}"/></td>
+#foreach($field in $fields)
+                        <td align="right">${field}属性：</td>
+                        <td>
+                            <input type="text" id="_${field}" name="${field}" value="${${lowClassName}VO.${field}}"/>
+                        </td>
+#if($velocityCount%4 == 0)
+                    </tr>
+                    <tr>
+#end
+#end
                         <td colspan="2">
                             <input class="l-button l-button-submit" type="submit" value="搜索" id="searchBtn"/>
                             <input class="l-button l-button-reset" type="reset" value="重置" id="resetBtn"/>
@@ -46,23 +55,23 @@
     <div class="in-order-list">
         <table id="" width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="p-table">
             <thead class="p-table-header">
-            <tr class="p-table-header">
-                <td width="40">
-                    <input type="checkbox" class="checkAll" id="checkAll">全选
-                </td>
+                <tr class="p-table-header">
+                    <td width="40">
+                        <input type="checkbox" class="checkAll" id="checkAll">全选
+                    </td>
 #foreach($field in $fields)
-                <td>${ item.${field} }属性</td>
+                    <td width="100">${field}属性</td>
 #end
-                <td width="100">操作</td>
-            </tr>
+                    <td width="100">操作</td>
+                </tr>
             </thead>
             <tbody id="dataListTbody">
             <c:choose>
                 <c:when test="${ paging.result != null && paging.result.size() > 0}">
-                    <c:forEach items="${paging.result}" var="item">
+                    <c:forEach items="${paging.result} " var="item">
                         <tr>
                             <td>
-                                <input type="checkbox" name="checkList" class="checkMe" value="${item.orderNo}">
+                                <input type="checkbox" name="checkList" class="checkMe" value="${ item.${primaryKey} }">
                             </td>
 #foreach($field in $fields)
                             <td>${ item.${field} }</td>
@@ -75,7 +84,7 @@
                 </c:when>
                 <c:otherwise>
                     <tr>
-                        <td colspan="9">暂无订单数据</td>
+                        <td colspan="${paging.result.size()}">暂无订单数据</td>
                     </tr>
                 </c:otherwise>
             </c:choose>

@@ -1,0 +1,77 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<!doctype html>
+<html lang="zh-cn">
+<%@ page isELIgnored="false" %>
+
+<head>
+    <title>${upClassName}详情</title>
+    <%@include file="/v/wmsCommon/public_head.jsp" %>
+    <script src="/v/js/common/wms.upload.js"></script>
+    <script src="/v/js/common/wms.jquery.extend.js"></script>
+</head>
+
+<body>
+    <div class="in-order-detail-title">
+        <span class="p-ladder-shaped-down">${upClassName}抬头</span>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+#foreach($field in $fields)
+                <td width="100" height="30" align="right">${field}属性：</td>
+                <td width="150">${${lowClassName}.${field}}</td>
+#if($velocityCount%4 == 0)
+            </tr>
+            <tr>
+#end
+#end
+            </tr>
+        </table>
+    </div>
+
+    <div class="in-order-datail-list-title p-ladder-shaped-up">
+        <span>${upClassName}明细</span>
+    </div>
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="p-table in-order-datail-list">
+        <thead class="p-table-header">
+            <tr class="p-table-header">
+#foreach($field in $fields)
+                <td width="100">${field}属性</td>
+#end
+            </tr>
+        </thead>
+
+        <tbody id="dataListTbody">
+            <c:choose>
+                <c:when test="${ ${lowClassName}Details != null && ${lowClassName}Details.size() > 0}">
+                    <c:forEach items="${${lowClassName}Details}" var="item">
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="checkList" class="checkMe" value="${ item.${primaryKey} }">
+                            </td>
+#foreach($field in $fields)
+                            <td>${ item.${field} }</td>
+#end
+                            <td>
+                                <a href="javascript:;">查看</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    <tr>
+                        <td colspan="${paging.result.size()}">暂无明细数据</td>
+                    </tr>
+                </c:otherwise>
+            </c:choose>
+        </tbody>
+    </table>
+
+    <div class="p-center">
+        <input class="l-button" type="button" value="返回" onclick="window.history.back();"/>
+    </div>
+</body>
+<html>
