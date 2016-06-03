@@ -50,14 +50,10 @@
                 <td width="40">
                     <input type="checkbox" class="checkAll" id="checkAll">全选
                 </td>
-                <td width="100"></td>
-                <td width="100"></td>
-                <td width="100"></td>
-                <td width="100"></td>
-                <td width="100"></td>
-                <td width="100"></td>
-                <td width="100"></td>
-                <td width="100"></td>
+#foreach($field in $fields)
+                <td>${ item.${field} }属性</td>
+#end
+                <td width="100">操作</td>
             </tr>
             </thead>
             <tbody id="dataListTbody">
@@ -68,14 +64,12 @@
                             <td>
                                 <input type="checkbox" name="checkList" class="checkMe" value="${item.orderNo}">
                             </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+#foreach($field in $fields)
+                            <td>${ item.${field} }</td>
+#end
+                            <td>
+                                <a href="javascript:;">查看</a>
+                            </td>
                         </tr>
                     </c:forEach>
                 </c:when>

@@ -1,10 +1,10 @@
 package org.lzbruby.mybatis.generat.core.impl;
 
-import org.lzbruby.mybatis.generat.core.context.AutoCodeContext;
-import org.lzbruby.mybatis.generat.core.context.AutoCodeGeneratorType;
-import org.lzbruby.mybatis.generat.config.AutoCodeConstantsType;
 import org.apache.commons.lang.StringUtils;
 import org.apache.velocity.VelocityContext;
+import org.lzbruby.mybatis.generat.config.AutoCodeConstantsType;
+import org.lzbruby.mybatis.generat.core.context.AutoCodeContext;
+import org.lzbruby.mybatis.generat.core.context.AutoCodeGeneratorType;
 
 /**
  * 功能描述：Controller生成器
