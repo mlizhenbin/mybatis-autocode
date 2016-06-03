@@ -90,6 +90,7 @@ public class ${upClassName}QueryServiceImpl implements ${upClassName}QueryServic
             return paging;
         }
 
+    	listAdapter.setPageNo(paging.getCurrentPageNo());
         List<${upClassName}> ${lowClassName}s = ${lowClassName}Mapper.list${upClassName}(queryMap);
         if (CollectionUtil.isEmpty(${lowClassName}s)) {
             paging.setResult(new ArrayList<${upClassName}>(0));
