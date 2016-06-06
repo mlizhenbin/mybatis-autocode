@@ -170,6 +170,7 @@ public class MysqlDefaultGeneratorStarterImpl implements GeneratorStarter {
                 GeneratorStringUtils.format(propMap.get(AutoCodeConstantsType.PRIMARY_KEY.getType())));
         context.addAttribute(AutoCodeConstantsType.COL_ALL_UPPERCASE_PRIMARY_KEY,
                 StringUtils.upperCase(propMap.get(AutoCodeConstantsType.PRIMARY_KEY.getType())));
+        context.addAttribute(AutoCodeConstantsType.COL_NORMAL_PRIMARY_KEY, propMap.get(AutoCodeConstantsType.PRIMARY_KEY.getType()));
         context.addAttribute(AutoCodeConstantsType.ORACLE_SCHEMA,
                 properties.get(AutoCodeConstantsType.ORACLE_SCHEMA.getType()));
         context.addAttribute(AutoCodeConstantsType.CLASS_TITLE_EMAIL_SUFFIX, properties.getProperty(AutoCodeConstantsType.CLASS_TITLE_EMAIL_SUFFIX.getType()));

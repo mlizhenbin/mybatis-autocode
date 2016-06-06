@@ -54,6 +54,11 @@ public enum AutoCodeConstantsType {
     COL_ALL_UPPERCASE_PRIMARY_KEY("COL_ALL_UPPERCASE_PRIMARY_KEY", "colPrimaryKey"),
 
     /**
+     * 表主键
+     */
+    COL_NORMAL_PRIMARY_KEY("COL_NORMAL_PRIMARY_KEY", "colNormalPrimaryKey"),
+
+    /**
      * oracle schema
      */
     ORACLE_SCHEMA("oracle.schema", "oracleSchemaName"),
