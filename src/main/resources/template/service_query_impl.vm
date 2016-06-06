@@ -91,7 +91,7 @@ public class ${upClassName}QueryServiceImpl implements ${upClassName}QueryServic
         }
 
     	listAdapter.setPageNo(paging.getCurrentPageNo());
-    	queryMap.putAll(listAdapter.convert(new ${upClassName}VO()));
+    	queryMap.putAll(listAdapter.convert(null));
 
 		List<${upClassName}> ${lowClassName}s = ${lowClassName}Mapper.list${upClassName}(queryMap);
         if (CollectionUtil.isEmpty(${lowClassName}s)) {
