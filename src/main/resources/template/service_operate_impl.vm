@@ -27,7 +27,7 @@ public class ${upClassName}OperateServiceImpl implements ${upClassName}OperateSe
 		${upClassName}Util.validAdd${upClassName}(${lowClassName});
 
 		${lowClassName}Mapper.add${upClassName}(${lowClassName});
-		LOGGER.info("增加${upClassName}成功, ${lowClassName}=", ${lowClassName});
+		LOGGER.info("增加${upClassName}成功, ${lowClassName}={}", ${lowClassName});
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class ${upClassName}OperateServiceImpl implements ${upClassName}OperateSe
 		${upClassName}Util.validUpdate${upClassName}(${lowClassName});
 
 		${lowClassName}Mapper.update${upClassName}(${lowClassName});
-		LOGGER.info("更新${upClassName}成功, ${lowClassName}=", ${lowClassName});
+		LOGGER.info("更新${upClassName}成功, ${lowClassName}={}", ${lowClassName});
 	}
 
 }
