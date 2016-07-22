@@ -1,16 +1,17 @@
-package ${packageName}.dao.model;
+package com.oneplus.inventory.dao.po;
 
 #foreach($ims in $importSets)
 ${ims}
 #end
+import com.oneplus.common.biz.BasePO;
 import org.apache.ibatis.type.Alias;
-import org.apache.commons.lang.builder.ToStringBuilder;
-import ${packageName}.common.NoNullStyle;
+import com.oneplus.common.lang.NoNullStyle;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import java.io.Serializable;
 
 ${classTitle}
-@Alias("${upClassName}")
-public class ${upClassName} implements Serializable {
+@Alias("${upClassName}PO")
+public class ${upClassName}PO extends BasePO implements Serializable {
     private static final long serialVersionUID = ${SerialVersionUID}L;
 
 #foreach($field in $fields)

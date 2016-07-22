@@ -238,7 +238,7 @@ public abstract class AbstractGeneratorImpl implements Generator {
             getSb.append("public ").append(fieldType + " ").append("get" + GeneratorStringUtils.firstUpperNoFormat(field) + "() {\n\t\t")
                     .append("return " + field + ";\n\t}\n");
             //generate set method
-            setSb.append("public ").append(cxt.getUpClassName() + " ").append("set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(" + fieldType + " " + field + ") {\n\t\t")
+            setSb.append("public ").append(cxt.getUpClassName() + "PO ").append("set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(" + fieldType + " " + field + ") {\n\t\t")
                     .append("this." + field + " = " + field + ";\n\t\t")
                     .append("return this;\n\t}\n");
             methods.add(getSb.toString());

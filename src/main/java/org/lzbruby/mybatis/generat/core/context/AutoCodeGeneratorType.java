@@ -17,9 +17,14 @@ import java.util.List;
 public enum AutoCodeGeneratorType {
 
     MAPPER("mapper",
-            "/dao|/dao",
-            "Mapper.xml|Mapper.java",
+            "../../../../../dao|/dao",
+            "Mapper.xml|DAO.java",
             "mapper.vm|dao.vm"),
+
+    model("model",
+            "/dao/po",
+            "PO.java",
+            "model.vm"),
 
     ORACLE_MAPPER("oracle_mapper",
             "/dao|/dao",
@@ -50,11 +55,6 @@ public enum AutoCodeGeneratorType {
             "/vo",
             "VO.java",
             "query_vo.vm"),
-
-    model("model",
-            "/dao/model",
-            ".java",
-            "model.vm"),
 
     result("result",
             "/result|/result",

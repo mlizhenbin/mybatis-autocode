@@ -3,62 +3,64 @@ package ${packageName}.dao;
 import java.util.List;
 import java.util.Map;
 
-import ${packageName}.model.${upClassName};
+import ${packageName}.dao.po.${upClassName}PO;
+import org.springframework.stereotype.Repository;
 
 ${classTitle}
-public interface ${upClassName}Mapper {
+@Repository
+public interface ${upClassName}DAO {
 
     /**
-     * 创建${upClassName}
+     * 创建${upClassName}PO
      *
-     * @param ${lowClassName} ${upClassName}对象
+     * @param ${lowClassName}PO ${upClassName}PO对象
      */
-    public void add${upClassName}(${upClassName} ${lowClassName});
+    public void add${upClassName}PO(${upClassName}PO ${lowClassName}PO);
 
     /**
-     * 更新${upClassName}
+     * 更新${upClassName}PO
      *
-     * @param ${lowClassName} ${upClassName}对象
+     * @param ${lowClassName}PO ${upClassName}PO对象
      */
-    public void update${upClassName}(${upClassName} ${lowClassName});
+    public void update${upClassName}PO(${upClassName}PO ${lowClassName}PO);
 
     /**
-     * 主键${primaryKey}删除${upClassName}
+     * 主键${primaryKey}删除${upClassName}PO
      *
-     * @param ${primaryKey} ${upClassName}主键
+     * @param ${primaryKey} ${upClassName}PO主键
      */
-    public void delete${upClassName}(${primaryKeyType} ${primaryKey});
+    public void delete${upClassName}PO(${primaryKeyType} ${primaryKey});
 
     /**
-     * 主键${primaryKey}查询${upClassName}
+     * 主键${primaryKey}查询${upClassName}PO
      *
-     * @param ${primaryKey} ${upClassName}主键
-     * @return ${upClassName}对象
+     * @param ${primaryKey} ${upClassName}PO主键
+     * @return ${upClassName}PO对象
      */
-    public ${upClassName} findBy${primaryKeyFirstSymbolUppercase}(${primaryKeyType} ${primaryKey});
+    public ${upClassName}PO findBy${primaryKeyFirstSymbolUppercase}(${primaryKeyType} ${primaryKey});
 
     /**
-     * 查询${upClassName}对象
-     *
-     * @param map 查询参数HashMap
-     * @return ${upClassName}对象
-     */
-    public ${upClassName} find${upClassName}(Map<String, Object> map);
-
-    /**
-     * 查询${upClassName} list集合
+     * 查询${upClassName}PO对象
      *
      * @param map 查询参数HashMap
-     * @return List<${upClassName}>对象
+     * @return ${upClassName}PO对象
      */
-    public List<${upClassName}> list${upClassName}(Map<String, Object> map);
+    public ${upClassName}PO find${upClassName}PO(Map<String, Object> map);
 
     /**
-     * 查询${upClassName}数量
+     * 查询${upClassName}PO list集合
+     *
+     * @param map 查询参数HashMap
+     * @return List<${upClassName}PO>对象
+     */
+    public List<${upClassName}PO> list${upClassName}PO(Map<String, Object> map);
+
+    /**
+     * 查询${upClassName}PO数量
      *
      * @param map 查询参数HashMap
      * @return 查询记录条数
      */
-    public Integer list${upClassName}Count(Map<String, Object> map);
+    public Integer list${upClassName}POCount(Map<String, Object> map);
 
 }
