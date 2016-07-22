@@ -54,11 +54,7 @@ public class GeneratorFileUtils {
      */
     public static void createPackageDirectory(Properties properties, String[] layers) {
         String location = PropertiesUtils.getLocation(properties);
-
         String project = PropertiesUtils.getProject(properties);
-        if (StringUtils.isNotBlank(project)) {
-            location = location + "/" + properties.get("java.src");
-        }
 
         String packageDir = "/" + PropertiesUtils.getPackage(properties).replaceAll("[.]", "/");
         if (StringUtils.isNotBlank(project)) {
@@ -66,7 +62,12 @@ public class GeneratorFileUtils {
                 if (ArrayUtils.contains(layers, configDirType.getType())) {
                     String[] targetDirs = StringUtils.split(configDirType.getTargetDir(), "\\|");
                     for (String targetDir : targetDirs) {
-                        createDir(location + packageDir + targetDir);
+                        if (StringUtils.equals(targetDir, "/resources/dal")) {
+                            createDir(location + targetDir);
+                        }else {
+                            String tempLocation = location + "/" + properties.get("java.src");
+                            createDir(tempLocation + packageDir + targetDir);
+                        }
                     }
                 }
             }
@@ -99,7 +100,11 @@ public class GeneratorFileUtils {
         String project = PropertiesUtils.getProject(properties);
         String directory;
         if (StringUtils.isNotBlank(project)) {
-            directory = location + "/" + properties.get("java.src") + packageDir + "/" + name + "/";
+            if (StringUtils.equals(name, "/resources/dal")) {
+                directory = location + name + "/";
+            } else {
+                directory = location + "/" + properties.get("java.src") + "/" + packageDir + "/" + name + "/";
+            }
         } else {
             directory = location + packageDir + "/" + name + "/";
         }

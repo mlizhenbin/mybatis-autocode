@@ -17,7 +17,7 @@ import java.util.List;
 public enum AutoCodeGeneratorType {
 
     MAPPER("mapper",
-            "../../../../../dao|/dao",
+            "/resources/dal|/dao",
             "Mapper.xml|DAO.java",
             "mapper.vm|dao.vm"),
 
