@@ -27,9 +27,9 @@ public interface ${upClassName}DAO {
     /**
      * 主键${primaryKey}删除${upClassName}PO
      *
-     * @param ${primaryKey} ${upClassName}PO主键
+     * @param ${lowClassName}PO ${upClassName}PO对象
      */
-    public void delete${upClassName}(${primaryKeyType} ${primaryKey});
+    public void delete${upClassName}(${upClassName}PO ${lowClassName}PO);
 
     /**
      * 主键${primaryKey}查询${upClassName}PO
