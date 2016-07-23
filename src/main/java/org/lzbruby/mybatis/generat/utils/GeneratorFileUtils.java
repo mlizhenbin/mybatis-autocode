@@ -71,7 +71,7 @@ public class GeneratorFileUtils {
                             }
                         }
                     } else {
-                        String location = "inventory-service/src/main";
+                        String location = "../inventory-service/src/main";
                         String[] targetDirs = StringUtils.split(configDirType.getTargetDir(), "\\|");
                         for (String targetDir : targetDirs) {
                             String tempLocation = location + "/" + properties.get("java.src");
@@ -117,7 +117,7 @@ public class GeneratorFileUtils {
                     directory = location + "/" + properties.get("java.src") + "/" + packageDir + "/" + name + "/";
                 }
             } else {
-                String location = "inventory-service/src/main";
+                String location = "../inventory-service/src/main";
                 if (StringUtils.equals(name, "/resources/dal")) {
                     directory = location + name + "/";
                 } else {

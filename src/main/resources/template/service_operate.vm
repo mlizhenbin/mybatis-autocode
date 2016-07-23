@@ -2,6 +2,9 @@ package ${packageName}.service.core.service;
 
 import com.oneplus.common.exception.BusinessException;
 import ${packageName}.dao.po.${upClassName}PO;
+import ${packageName}.dao.vo.${upClassName}VO;
+import java.util.List;
+import java.util.Map;
 
 ${classTitle}
 public interface ${upClassName}Service {

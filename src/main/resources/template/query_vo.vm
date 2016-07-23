@@ -1,4 +1,4 @@
-package ${packageName}.vo;
+package ${packageName}.dao.vo;
 
 #foreach($ims in $importSets)
 ${ims}
