@@ -1,60 +1,60 @@
-package ${packageName}.result;
+package ${packageName}.service.exception;
 
-import org.apache.commons.lang.StringUtils;
+import com.oneplus.common.exception.ErrorCode;
+import org.apache.commons.lang3.StringUtils;
 
 ${classTitle}
-public enum ${upClassName}Result {
+public enum ${upClassName}ErrorCode implements ErrorCode {
+
+    /** 系统异常 */
+    SYSTEM_ERROR("SYSTEM_ERROR", "系统异常,请联系管理员"),
+
+    /** 参数错误 */
+    PARAM_ERROR("PARAM_ERROR", "参数异常"),
 
 #foreach($allUpCaseCol in $allUpCaseCols)
     /** $remarkMap.get(${allUpCaseCol})为空 */
-    #set($coudeIndex = $velocityCount + 1000)
-${noPrefixTableName}_${allUpCaseCol}_NULL($coudeIndex, "${noPrefixTableName}_${allUpCaseCol}_NULL"),
+    ${noPrefixTableName}_${allUpCaseCol}_NULL("${noPrefixTableName}_${allUpCaseCol}_NULL", "$remarkMap.get(${allUpCaseCol})为空"),
 
 #end
-    /** 成功 */
-    SUCCESS(200, "SUCCESS"),
-
-    /** */
-    SYSTEM_ERROR(500, "SYSTEM_ERROR"),
-
     ;
 
-    private int code;
+    /**
+     * 错误码
+     */
+    private String code;
 
-    private String type;
+    /**
+     * 描述
+     */
+    private String desc;
 
-    ${upClassName}Result(int code, String type) {
+    ${upClassName}ErrorCode(String code, String desc) {
         this.code = code;
-        this.type = type;
+        this.desc = desc;
     }
 
-    public static ${upClassName}Result getByType(String type) {
-        if (StringUtils.isBlank(type))
+    public static ${upClassName}ErrorCode getByType(String code) {
+        if (StringUtils.isBlank(code))
             return null;
 
-        for (${upClassName}Result result : ${upClassName}Result.values()) {
-            if (StringUtils.equals(type, result.getType())) {
-                return result;
+        for (${upClassName}ErrorCode errorCode : ${upClassName}ErrorCode.values()) {
+            if (StringUtils.equals(code, errorCode.getCode())) {
+                return errorCode;
             }
         }
 
         return null;
     }
 
-    public String getType() {
-        return this.type;
+    @Override
+    public String getCode() {
+        return code;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public int getCode() {
-        return this.code;
-    }
-
-    public void setType(int code) {
-        this.code = code;
+    @Override
+    public String getDesc() {
+        return desc;
     }
 
 }

@@ -55,6 +55,6 @@ public class ResultGenerator extends AbstractGeneratorImpl {
 
     @Override
     protected String getDescription() {
-        return "结果Result";
+        return "结果ErrorCode";
     }
 }

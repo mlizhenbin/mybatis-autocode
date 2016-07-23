@@ -1,41 +1,127 @@
-package ${packageName}.service;
+package ${packageName}.service.core.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ${packageName}.dao.model.${upClassName};
-import ${packageName}.dao.${upClassName}Mapper;
-import ${packageName}.dao.model.${upClassName};
-import ${packageName}.service.Utils.${upClassName}Util;
-import ${packageName}.result.${upClassName}Exception;
-import ${packageName}.result.${upClassName}Result;
+import ${packageName}.dao.po.${upClassName}PO;
+import ${packageName}.dao.${upClassName}DAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 ${classTitle}
-@Service("${lowClassName}OperateService")
-public class ${upClassName}OperateServiceImpl implements ${upClassName}OperateService {
+@Service("${lowClassName}Service")
+public class ${upClassName}ServiceImpl implements ${upClassName}Service {
 
 	/** sl4j */
-	private static final Logger LOGGER = LoggerFactory.getLogger(${upClassName}OperateServiceImpl.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(${upClassName}ServiceImpl.class);
 
 	@Autowired
-	private ${upClassName}Mapper ${lowClassName}Mapper;
+	private ${upClassName}DAO ${lowClassName}DAO;
 
 	@Override
-	public void add${upClassName}(${upClassName} ${lowClassName}) {
-		${upClassName}Util.validAdd${upClassName}(${lowClassName});
+	public void add${upClassName}(${upClassName}PO ${lowClassName}PO) {
+		validAdd${upClassName}(${lowClassName}PO);
 
-		${lowClassName}Mapper.add${upClassName}(${lowClassName});
-		LOGGER.info("增加${upClassName}成功, ${lowClassName}={}", ${lowClassName});
+		${lowClassName}DAO.add${upClassName}(${lowClassName}PO);
+		LOGGER.info("增加${upClassName}成功, ${lowClassName}PO={}", ${lowClassName}PO);
 	}
 
 	@Override
-	public void update${upClassName}(${upClassName} ${lowClassName}) {
-		${upClassName}Util.validUpdate${upClassName}(${lowClassName});
+	public void update${upClassName}(${upClassName}PO ${lowClassName}PO) {
+		validUpdate${upClassName}(${lowClassName}PO);
 
-		${lowClassName}Mapper.update${upClassName}(${lowClassName});
-		LOGGER.info("更新${upClassName}成功, ${lowClassName}={}", ${lowClassName});
+		${lowClassName}DAO.update${upClassName}(${lowClassName}PO);
+		LOGGER.info("更新${upClassName}成功, ${lowClassName}PO={}", ${lowClassName}PO);
 	}
 
+	@Override
+    public ${upClassName} find${upClassName}By${primaryKeyFirstSymbolUppercase}(${primaryKeyType} ${primaryKey}) {
+#if(${primaryKeyType} == "String")
+		if (StringUtils.isBlank(${primaryKey})) {
+        	return null;
+        }
+#else
+        if (${primaryKey} == null) {
+        	return null;
+        }
+		#end
+
+        ${upClassName}PO ${lowClassName}PO = ${lowClassName}DAO.findBy${primaryKeyFirstSymbolUppercase}(${primaryKey});
+        return ${lowClassName}PO;
+	}
+
+	@Override
+	public List<${upClassName}PO> list${upClassName}(${primaryKeyType}[] ${primaryKey}s) {
+		if (ArrayUtils.isEmpty(${primaryKey}s)) {
+			return Lists.newArrayList();
+		}
+
+		Map<String, Object> map = QueryMapperUtils.toQueryMap();
+		map.put("${primaryKey}s", ${primaryKey}s);
+		List<${upClassName}PO> ${lowClassName}POs = ${lowClassName}DAO.list${upClassName}(map);
+        return ${lowClassName}POs;
+	}
+
+	@Override
+	public Map<${primaryKeyType}, ${upClassName}PO> map${upClassName}(${primaryKeyType}[] ${primaryKey}s) {
+		List<${upClassName}> ${lowClassName}POs = list${upClassName}(${primaryKey}s);
+		if (CollectionUtils.isEmpty(${lowClassName}POs)) {
+			return Maps.newHashMap();
+		}
+
+		Map<${primaryKeyType}, ${upClassName}PO> ${lowClassName}Map = ListFieldConvertUtils
+			.getObjectMap(${lowClassName}s, "${primaryKey}");
+		return ${lowClassName}Map;
+	}
+
+	@Override
+	public Paging<${upClassName}PO> find${upClassName}ByPage(${upClassName}VO ${lowClassName}VO, PagingRequest pagingRequest) {
+		// 查询请求参数转换
+        ListAdapter<${upClassName}VO> listAdapter = ListAdapterUtil.<${upClassName}VO>convert2ListAdapter(pagingRequest);
+        Map<String, Object> queryMap = listAdapter.convert(${lowClassName}VO);
+
+        // 分页查询数量
+        Integer count = ${lowClassName}DAO.list${upClassName}Count(queryMap);
+
+        DefaultPaging<${upClassName}PO> paging = new DefaultPaging<${upClassName}PO>
+                (pagingRequest.getPageNo(), pagingRequest.getPageSize(), count);
+        if (count <= 0) {
+            paging.setResult(new ArrayList<${upClassName}>(0));
+            return paging;
+        }
+
+    	listAdapter.setPageNo(paging.getCurrentPageNo());
+    	queryMap.putAll(listAdapter.convert(null));
+
+		List<${upClassName}PO> ${lowClassName}POs = ${lowClassName}DAO.list${upClassName}(queryMap);
+        if (CollectionUtils.isEmpty(${lowClassName}POs)) {
+            paging.setResult(new ArrayList<${upClassName}PO>(0));
+            return paging;
+        }
+
+        paging.setResult(${lowClassName}POs);
+        return paging;
+	}
+
+    /**
+     * 校验增加${upClassName}PO参数
+     *
+     * @param ${lowClassName}PO
+     */
+    private void validAdd${upClassName}(${upClassName}PO ${lowClassName}PO) {
+#foreach($util in $addUtils)
+    ${util}
+#end
+    }
+
+    /**
+     * 校验修改${upClassName}PO参数
+     *
+     * @param ${lowClassName}PO
+     */
+    private void validUpdate${upClassName}(${upClassName}PO ${lowClassName}PO) {
+#foreach($util in $uptUtils)
+    ${util}
+#end
+    }
 }

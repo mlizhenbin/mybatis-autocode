@@ -131,13 +131,13 @@ public class ServiceGenerator extends AbstractGeneratorImpl {
             String colType = colMap.get(key);
             if (StringUtils.equals(colType, "String")) {
                 sb.append("\tif (StringUtils.isBlank(")
-                        .append(velocityContext.get(AutoCodeConstantsType.LOW_CLASS_NAME.getDesc()))
+                        .append(velocityContext.get(AutoCodeConstantsType.LOW_CLASS_NAME.getDesc()) + "PO")
                         .append(".get")
                         .append(GeneratorStringUtils.firstUpperNoFormat(field))
                         .append("())) {\n");
             } else {
                 sb.append("\tif (")
-                        .append(velocityContext.get(AutoCodeConstantsType.LOW_CLASS_NAME.getDesc()))
+                        .append(velocityContext.get(AutoCodeConstantsType.LOW_CLASS_NAME.getDesc()) + "PO")
                         .append(".get")
                         .append(GeneratorStringUtils.firstUpperNoFormat(field))
                         .append("() == null) {\n");
@@ -147,16 +147,15 @@ public class ServiceGenerator extends AbstractGeneratorImpl {
                     .append(field)
                     .append(remark)
                     .append("为空, ")
-                    .append(velocityContext.get(AutoCodeConstantsType.LOW_CLASS_NAME.getDesc()))
-                    .append("=\" + ")
-                    .append(velocityContext.get(AutoCodeConstantsType.LOW_CLASS_NAME.getDesc()))
+                    .append(velocityContext.get(AutoCodeConstantsType.LOW_CLASS_NAME.getDesc()) + "PO")
+                    .append("={}\", ")
+                    .append(velocityContext.get(AutoCodeConstantsType.LOW_CLASS_NAME.getDesc()) + "PO")
                     .append(");\n");
             sb.append("\t\t\t")
                     .append("throw new ")
+                    .append("BusinessException(")
                     .append(velocityContext.get(AutoCodeConstantsType.UP_CLASS_NAME.getDesc()))
-                    .append("Exception(")
-                    .append(velocityContext.get(AutoCodeConstantsType.UP_CLASS_NAME.getDesc()))
-                    .append("Result.")
+                    .append("ErrorCode.")
                     .append(noPrefixTableName)
                     .append("_")
                     .append(StringUtils.upperCase(key))

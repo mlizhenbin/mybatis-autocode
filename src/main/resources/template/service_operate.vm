@@ -1,22 +1,56 @@
-package ${packageName}.service;
+package ${packageName}.service.core.service;
 
-import ${packageName}.dao.model.${upClassName};
+import com.oneplus.common.exception.BusinessException;
+import ${packageName}.dao.po.${upClassName}PO;
 
 ${classTitle}
-public interface ${upClassName}OperateService {
+public interface ${upClassName}Service {
 
 	/**
      * 创建${upClassName}
      *
-     * @param ${lowClassName} ${upClassName}对象
+     * @param ${lowClassName}PO ${upClassName}PO对象
 	 */
-	public void add${upClassName}(${upClassName} ${lowClassName});
+	public void add${upClassName}(${upClassName}PO ${lowClassName}PO);
 
 	/**
 	 * 更新${upClassName}
 	 *
-	 * @param ${lowClassName} ${upClassName}对象
+	 * @param ${lowClassName}PO ${upClassName}PO对象
 	 */
-	public void update${upClassName}(${upClassName} ${lowClassName});
+	public void update${upClassName}(${upClassName}PO ${lowClassName}PO);
+
+	/**
+	 * 通过主键${primaryKeyType}查询${upClassName}
+     *
+	 * @param ${primaryKey} ${upClassName}PO主键
+	 * @return ${upClassName}PO对象
+	 */
+	public ${upClassName}PO find${upClassName}By${primaryKeyFirstSymbolUppercase}(${primaryKeyType} ${primaryKey});
+
+	/**
+	 * 通过${primaryKeyType}集合查询${upClassName}
+	 *
+	 * @param ${primaryKey}s ${upClassName}s主键数组
+	 * @return List<${upClassName}PO>
+	 */
+	public List<${upClassName}PO> list${upClassName}(${primaryKeyType}[] ${primaryKey}s);
+
+	/**
+	 * 通过${primaryKeyType}集合查询${upClassName}
+	 *
+	 * @param ${primaryKey}s ${upClassName}POs主键数组
+	 * @return Map<${primaryKeyType}, ${upClassName}> KEY:${primaryKey} Value:${upClassName}
+	 */
+	public Map<${primaryKeyType}, ${upClassName}PO> map${upClassName}(${primaryKeyType}[] ${primaryKey}s);
+
+	/**
+	 * 分页查询${upClassName}
+	 *
+	 * @param ${lowClassName}VO ${upClassName}VO对象
+     * @param pagingRequest 分页请求
+     * @return paging对象
+	 */
+	public Paging<${upClassName}PO> find${upClassName}ByPage(${upClassName}VO ${lowClassName}VO, PagingRequest pagingRequest);
 
 }

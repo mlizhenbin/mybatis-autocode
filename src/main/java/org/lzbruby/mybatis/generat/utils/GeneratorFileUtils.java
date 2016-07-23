@@ -53,18 +53,27 @@ public class GeneratorFileUtils {
      * @param layers
      */
     public static void createPackageDirectory(Properties properties, String[] layers) {
-        String location = PropertiesUtils.getLocation(properties);
         String project = PropertiesUtils.getProject(properties);
 
         String packageDir = "/" + PropertiesUtils.getPackage(properties).replaceAll("[.]", "/");
         if (StringUtils.isNotBlank(project)) {
             for (AutoCodeGeneratorType configDirType : AutoCodeGeneratorType.values()) {
                 if (ArrayUtils.contains(layers, configDirType.getType())) {
-                    String[] targetDirs = StringUtils.split(configDirType.getTargetDir(), "\\|");
-                    for (String targetDir : targetDirs) {
-                        if (StringUtils.equals(targetDir, "/resources/dal")) {
-                            createDir(location + targetDir);
-                        }else {
+                    if (configDirType == AutoCodeGeneratorType.MAPPER || configDirType == AutoCodeGeneratorType.model || configDirType == AutoCodeGeneratorType.VO) {
+                        String location = PropertiesUtils.getLocation(properties);
+                        String[] targetDirs = StringUtils.split(configDirType.getTargetDir(), "\\|");
+                        for (String targetDir : targetDirs) {
+                            if (StringUtils.equals(targetDir, "/resources/dal")) {
+                                createDir(location + targetDir);
+                            } else {
+                                String tempLocation = location + "/" + properties.get("java.src");
+                                createDir(tempLocation + packageDir + targetDir);
+                            }
+                        }
+                    } else {
+                        String location = "inventory-service/src/main";
+                        String[] targetDirs = StringUtils.split(configDirType.getTargetDir(), "\\|");
+                        for (String targetDir : targetDirs) {
                             String tempLocation = location + "/" + properties.get("java.src");
                             createDir(tempLocation + packageDir + targetDir);
                         }
@@ -95,17 +104,28 @@ public class GeneratorFileUtils {
      * @return
      */
     public static String getPackageDirectory(String name, Properties properties) {
-        String location = PropertiesUtils.getLocation(properties);
+
         String packageDir = "/" + PropertiesUtils.getPackage(properties).replaceAll("[.]", "/");
         String project = PropertiesUtils.getProject(properties);
         String directory;
         if (StringUtils.isNotBlank(project)) {
-            if (StringUtils.equals(name, "/resources/dal")) {
-                directory = location + name + "/";
+            if (StringUtils.equals(name, "/resources/dal") || StringUtils.contains(name, "/dao")) {
+                String location = PropertiesUtils.getLocation(properties);
+                if (StringUtils.equals(name, "/resources/dal")) {
+                    directory = location + name + "/";
+                } else {
+                    directory = location + "/" + properties.get("java.src") + "/" + packageDir + "/" + name + "/";
+                }
             } else {
-                directory = location + "/" + properties.get("java.src") + "/" + packageDir + "/" + name + "/";
+                String location = "inventory-service/src/main";
+                if (StringUtils.equals(name, "/resources/dal")) {
+                    directory = location + name + "/";
+                } else {
+                    directory = location + "/" + properties.get("java.src") + "/" + packageDir + "/" + name + "/";
+                }
             }
         } else {
+            String location = PropertiesUtils.getLocation(properties);
             directory = location + packageDir + "/" + name + "/";
         }
         return directory;

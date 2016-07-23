@@ -163,7 +163,7 @@ public class MapperGenerator extends AbstractGeneratorImpl {
 
     @Override
     protected String getDescription() {
-        return " Dao Mapper";
+        return " DAO Mapper";
     }
 
 

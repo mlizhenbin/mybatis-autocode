@@ -32,9 +32,9 @@ public enum AutoCodeGeneratorType {
             "oracle_mapper.vm|dao.vm"),
 
     SERVICE("service",
-            "/service|/service/impl|/service|/service/impl|/service/convert|/service/convert|/service/utils",
-            "QueryService.java|QueryServiceImpl.java|OperateService.java|OperateServiceImpl.java|{domain}Convert.java|Convert.java|Util.java",
-            "service_query.vm|service_query_impl.vm|service_operate.vm|service_operate_impl.vm|service_convert_domain.vm|service_convert.vm|service_utils.vm"),
+            "/service/core/service|/service/core/service/impl",
+            "Service.java|ServiceImpl.java",
+            "service_operate.vm|service_operate_impl.vm"),
 
     MANAGER("manage",
             "/manage|/manage/impl|/manage|/manage/impl",
@@ -52,14 +52,14 @@ public enum AutoCodeGeneratorType {
             "service_domain.vm"),
 
     VO("vo",
-            "/vo",
+            "/dao/vo",
             "VO.java",
             "query_vo.vm"),
 
     result("result",
-            "/result|/result",
-            "Result.java|Exception.java",
-            "result.vm|exception.vm"),
+            "/service/exception",
+            "ErrorCode.java",
+            "result.vm"),
 
     JSP("jsp",
             "/jsp|/jsp|/jsp",
@@ -142,4 +142,5 @@ public enum AutoCodeGeneratorType {
 
         return Joiner.on(",").join(configs);
     }
+
 }
