@@ -25,9 +25,9 @@ public interface ${upClassName}Mapper {
     /**
      * 主键${primaryKey}删除${upClassName}
      *
-     * @param ${primaryKey} ${upClassName}主键
+     * @param ${lowClassName} ${upClassName}对象
      */
-    public void delete${upClassName}(${primaryKeyType} ${primaryKey});
+    public void delete${upClassName}(${upClassName} ${lowClassName});
 
     /**
      * 主键${primaryKey}查询${upClassName}
