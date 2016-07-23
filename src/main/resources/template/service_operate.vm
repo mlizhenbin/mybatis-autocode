@@ -2,7 +2,9 @@ package ${packageName}.service.core.service;
 
 import com.oneplus.common.exception.BusinessException;
 import ${packageName}.dao.po.${upClassName}PO;
-import ${packageName}.dao.vo.${upClassName}VO;
+import ${packageName}.service.util.page.Paging;
+import ${packageName}.service.util.page.PagingRequest;
+
 import java.util.List;
 import java.util.Map;
 
@@ -50,10 +52,10 @@ public interface ${upClassName}Service {
 	/**
 	 * 分页查询${upClassName}
 	 *
-	 * @param ${lowClassName}VO ${upClassName}VO对象
+	 * @param ${lowClassName}PO ${upClassName}PO对象
      * @param pagingRequest 分页请求
      * @return paging对象
 	 */
-	public Paging<${upClassName}PO> find${upClassName}ByPage(${upClassName}VO ${lowClassName}VO, PagingRequest pagingRequest);
+	public Paging<${upClassName}PO> find${upClassName}ByPage(${upClassName}PO ${lowClassName}PO, PagingRequest pagingRequest);
 
 }

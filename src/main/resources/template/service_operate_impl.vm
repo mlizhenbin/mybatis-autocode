@@ -8,10 +8,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ${packageName}.dao.po.${upClassName}PO;
-import ${packageName}.dao.vo.${upClassName}VO;
 import ${packageName}.dao.${upClassName}DAO;
 import ${packageName}.service.core.service.${upClassName}Service;
 import ${packageName}.service.exception.${upClassName}ErrorCode;
+import ${packageName}.service.util.ListFieldConvertUtils;
+import ${packageName}.service.util.QueryMapperUtils;
+import ${packageName}.service.util.page.Paging;
+import ${packageName}.service.util.page.PagingRequest;
+import ${packageName}.service.util.page.DefaultPaging;
+import ${packageName}.service.util.page.ListAdapterUtil;
+import ${packageName}.service.util.page.adapter.ListAdapter;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -91,10 +97,10 @@ public class ${upClassName}ServiceImpl implements ${upClassName}Service {
 	}
 
 	@Override
-	public Paging<${upClassName}PO> find${upClassName}ByPage(${upClassName}VO ${lowClassName}VO, PagingRequest pagingRequest) {
+	public Paging<${upClassName}PO> find${upClassName}ByPage(${upClassName}PO ${lowClassName}PO, PagingRequest pagingRequest) {
 		// 查询请求参数转换
-        ListAdapter<${upClassName}VO> listAdapter = ListAdapterUtil.<${upClassName}VO>convert2ListAdapter(pagingRequest);
-        Map<String, Object> queryMap = listAdapter.convert(${lowClassName}VO);
+        ListAdapter<${upClassName}PO> listAdapter = ListAdapterUtil.<${upClassName}PO>convert2ListAdapter(pagingRequest);
+        Map<String, Object> queryMap = listAdapter.convert(${lowClassName}PO);
 
         // 分页查询数量
         Integer count = ${lowClassName}DAO.list${upClassName}Count(queryMap);
@@ -102,7 +108,7 @@ public class ${upClassName}ServiceImpl implements ${upClassName}Service {
         DefaultPaging<${upClassName}PO> paging = new DefaultPaging<${upClassName}PO>
                 (pagingRequest.getPageNo(), pagingRequest.getPageSize(), count);
         if (count <= 0) {
-            paging.setResult(new ArrayList<${upClassName}>(0));
+            paging.setResult(new ArrayList<${upClassName}PO>(0));
             return paging;
         }
 

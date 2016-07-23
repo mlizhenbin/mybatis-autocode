@@ -37,7 +37,7 @@ public class VoGenerator extends ModelGenerator {
             getSb.append("public ").append(fieldType + " ").append("get" + GeneratorStringUtils.firstUpperNoFormat(field) + "() {\n\t\t")
                     .append("return " + field + ";\n\t}\n");
             //generate set methoO
-            setSb.append("public ").append(cxt.getUpClassName() + "VO ").append("set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(" + fieldType + " " + field + ") {\n\t\t")
+            setSb.append("public ").append(cxt.getUpClassName() + "Model ").append("set" + GeneratorStringUtils.firstUpperNoFormat(field) + "(" + fieldType + " " + field + ") {\n\t\t")
                     .append("this." + field + " = " + field + ";\n\t\t")
                     .append("return this;\n\t}\n");
             methods.add(getSb.toString());

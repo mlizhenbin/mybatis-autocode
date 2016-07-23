@@ -59,7 +59,7 @@ public class GeneratorFileUtils {
         if (StringUtils.isNotBlank(project)) {
             for (AutoCodeGeneratorType configDirType : AutoCodeGeneratorType.values()) {
                 if (ArrayUtils.contains(layers, configDirType.getType())) {
-                    if (configDirType == AutoCodeGeneratorType.MAPPER || configDirType == AutoCodeGeneratorType.model || configDirType == AutoCodeGeneratorType.VO) {
+                    if (configDirType == AutoCodeGeneratorType.MAPPER || configDirType == AutoCodeGeneratorType.model) {
                         String location = PropertiesUtils.getLocation(properties);
                         String[] targetDirs = StringUtils.split(configDirType.getTargetDir(), "\\|");
                         for (String targetDir : targetDirs) {

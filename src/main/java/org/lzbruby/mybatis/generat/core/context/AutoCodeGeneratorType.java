@@ -52,8 +52,8 @@ public enum AutoCodeGeneratorType {
             "service_domain.vm"),
 
     VO("vo",
-            "/dao/vo",
-            "VO.java",
+            "/service/model",
+            "Model.java",
             "query_vo.vm"),
 
     result("result",

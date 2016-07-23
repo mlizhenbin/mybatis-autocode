@@ -3,7 +3,6 @@ package com.oneplus.inventory.dao.po;
 #foreach($ims in $importSets)
 ${ims}
 #end
-import com.oneplus.common.biz.BasePO;
 import org.apache.ibatis.type.Alias;
 import com.oneplus.common.lang.NoNullStyle;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -11,7 +10,7 @@ import java.io.Serializable;
 
 ${classTitle}
 @Alias("${upClassName}PO")
-public class ${upClassName}PO extends BasePO implements Serializable {
+public class ${upClassName}PO implements Serializable {
     private static final long serialVersionUID = ${SerialVersionUID}L;
 
 #foreach($field in $fields)

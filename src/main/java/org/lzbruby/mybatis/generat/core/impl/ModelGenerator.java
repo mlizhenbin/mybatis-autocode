@@ -55,6 +55,6 @@ public class ModelGenerator extends AbstractGeneratorImpl {
 
     @Override
     protected String getDescription() {
-        return " Model";
+        return " PO";
     }
 }

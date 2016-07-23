@@ -3,13 +3,13 @@ package ${packageName}.dao.vo;
 #foreach($ims in $importSets)
 ${ims}
 #end
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import ${packageName}.dao.vo.PagingVo;
-import org.apache.commons.lang.builder.ToStringBuilder;
 import ${packageName}.common.NoNullStyle;
 import java.io.Serializable;
 
 ${classTitle}
-public class ${upClassName}VO extends PagingVo implements Serializable {
+public class ${upClassName}Model extends PagingVo implements Serializable {
     private static final long serialVersionUID = ${SerialVersionUID}L;
 
 #foreach($field in $fields)
