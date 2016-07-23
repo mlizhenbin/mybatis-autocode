@@ -15,21 +15,21 @@ public interface ${upClassName}DAO {
      *
      * @param ${lowClassName}PO ${upClassName}PO对象
      */
-    public void add${upClassName}PO(${upClassName}PO ${lowClassName}PO);
+    public void add${upClassName}(${upClassName}PO ${lowClassName}PO);
 
     /**
      * 更新${upClassName}PO
      *
      * @param ${lowClassName}PO ${upClassName}PO对象
      */
-    public void update${upClassName}PO(${upClassName}PO ${lowClassName}PO);
+    public void update${upClassName}(${upClassName}PO ${lowClassName}PO);
 
     /**
      * 主键${primaryKey}删除${upClassName}PO
      *
      * @param ${primaryKey} ${upClassName}PO主键
      */
-    public void delete${upClassName}PO(${primaryKeyType} ${primaryKey});
+    public void delete${upClassName}(${primaryKeyType} ${primaryKey});
 
     /**
      * 主键${primaryKey}查询${upClassName}PO
@@ -45,7 +45,7 @@ public interface ${upClassName}DAO {
      * @param map 查询参数HashMap
      * @return ${upClassName}PO对象
      */
-    public ${upClassName}PO find${upClassName}PO(Map<String, Object> map);
+    public ${upClassName}PO find${upClassName}(Map<String, Object> map);
 
     /**
      * 查询${upClassName}PO list集合
@@ -53,7 +53,7 @@ public interface ${upClassName}DAO {
      * @param map 查询参数HashMap
      * @return List<${upClassName}PO>对象
      */
-    public List<${upClassName}PO> list${upClassName}PO(Map<String, Object> map);
+    public List<${upClassName}PO> list${upClassName}(Map<String, Object> map);
 
     /**
      * 查询${upClassName}PO数量
@@ -61,6 +61,6 @@ public interface ${upClassName}DAO {
      * @param map 查询参数HashMap
      * @return 查询记录条数
      */
-    public Integer list${upClassName}POCount(Map<String, Object> map);
+    public Integer list${upClassName}Count(Map<String, Object> map);
 
 }
