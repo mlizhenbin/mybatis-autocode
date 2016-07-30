@@ -36,6 +36,9 @@ JDBC连接Mysql/Oracle数据库, 自动化生成Mybatis映射文件和业务层�
 
 ## 二、配置文件
 
+  + 工程项目中集成
+        <img src="eg.png" width="200">
+
 ### 1、autocode-generator.properties
 
 集成到工程项目使用autocode, 必须先在工程项目下, 配置好生成代码的配置文件,具体配置参数如下:
