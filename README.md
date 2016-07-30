@@ -1,22 +1,49 @@
-# Mybatis-AutoCode
+# AutoCode
   
-JDBC连接Mysql/Oracle数据库, 逆向配置数据库表信息,自动化生成Mybatis映射文件和业务层代码,减少手动创建代码的繁琐工作,
-提升开发业务功能效率;保持底层DAO风格的一致性, 减少配置等.
+Mybatis自动化逆向生成业务代码组件
+----------------------------------------------------------------
+JDBC连接Mysql/Oracle数据库, 自动化生成Mybatis映射文件和业务层代码, 减少手动创建代码的繁琐工作,提升开发业务功能效率;保持底层DAO风格的一致性, 减少配置等. 
 
-## 一、AutoCode Version
+## 一、引入依赖
 
-### 1.0.3-SNAPSHOT
+在pom.xml文件中引入autocode依赖
 
-## 二、AutoCode配置
+    <properties>
+        <autcode.plugin.version>1.0.3-SNAPSHOT</autcode.plugin.version>
+    </properties>
 
-### 1、配置autocode-generator.properties
+    <dependencies>
+        ...
+        <dependency>
+            <groupId>org.lzbruby.maven.plugins</groupId>
+            <artifactId>autocode-plugin</artifactId>
+            <version>${autcode.plugin.version}</version>
+        </dependency>
+        ...
+    </dependencies>
 
-使用autocode,先配置好生成代码的必要配置文件,具体配置参数如下:
+    <build>
+        <plugins>
+            ...
+            <plugin>
+                <groupId>org.lzbruby.maven.plugins</groupId>
+                <artifactId>autocode-plugin</artifactId>
+                <version>${autcode.plugin.version}</version>
+            </plugin>
+            ...
+        </plugins>
+    </build>
+
+## 二、配置文件
+
+### 1、autocode-generator.properties
+
+集成到工程项目使用autocode, 必须先在工程项目下, 配置好生成代码的配置文件,具体配置参数如下:
 
     #Mysql连接配置
     jdbc.driverClassName=com.mysql.jdbc.Driver
     jdbc.url=jdbc:mysql://mysql
-    jdbc.username=
+    jdbc.username=root
     jdbc.password=
     
     # oracle
@@ -63,17 +90,12 @@ JDBC连接Mysql/Oracle数据库, 逆向配置数据库表信息,自动化生成M
     
     # 所属组织
     org=lzbruby.org
-    
-    
-### 2、配置log4j.properties
+        
+### 2、log4j.properties
 
-配置autocode生成代码的log
+autocode自动化逆向生成代码的log信息配置
 
-### 3、配置autocode-generator.xml
-
-配置生成代码业务层
-
-## 三、AutoCode工作方式
+## 二、AutoCode工作方式
 
    Autocode提供了Java Main方法的方式和Maven插件的两种方式执行生成代码.
 
@@ -117,34 +139,6 @@ JDBC连接Mysql/Oracle数据库, 逆向配置数据库表信息,自动化生成M
 
   在工程项目中依赖autocode, 然后使用maven命令执行生成代码
   
-#### 增加pom.xml依赖
-
-    <properties>
-        <autcode.plugin.version>1.0.3-SNAPSHOT</autcode.plugin.version>
-    </properties>
-
-    <dependencies>
-        ...
-        <dependency>
-            <groupId>org.lzbruby.maven.plugins</groupId>
-            <artifactId>autocode-plugin</artifactId>
-            <version>${autcode.plugin.version}</version>
-        </dependency>
-        ...
-    </dependencies>
-
-    <build>
-        <plugins>
-            ...
-            <plugin>
-                <groupId>org.lzbruby.maven.plugins</groupId>
-                <artifactId>autocode-plugin</artifactId>
-                <version>${autcode.plugin.version}</version>
-            </plugin>
-            ...
-        </plugins>
-    </build>
-
 #### 执行Maven命令
 
 ##### Mysql:
@@ -155,7 +149,7 @@ JDBC连接Mysql/Oracle数据库, 逆向配置数据库表信息,自动化生成M
     
     mvn autocode:oracle
 
-### 四、Result日志输出
+### 三、Result日志输出
 
 #### Main Autocode日志:
 
@@ -190,3 +184,17 @@ JDBC连接Mysql/Oracle数据库, 逆向配置数据库表信息,自动化生成M
     [INFO] ------------------------------------------------------------------------
     
 
+### 四、历史版本
+
+   1.0.3-SNAPSHOT, 基本的业务代码生成.
+    	
+		
+### 五、你是好人:
+
+   + 倘若你钱多人傻花不完，小弟乐意效劳，掏出你的**微信神器**做回好人吧:
+    
+       <img src="wechat.png" width="200">
+	
+   + 倘若你还不够尽兴，继续掏出你的**支付宝神器**，疯狂扫吧:
+        
+       <img src="alipay.png" width="200">
